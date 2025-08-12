@@ -1,0 +1,22 @@
+{
+    "Service": "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
+    "DefiningRequests": [{
+            "Name": "ReloadRequest",
+            "Query": "ReloadRequest"
+        },
+        {
+            "Name": "ReloadRequestDelivery",
+            "Query": "ReloadRequestDelivery"
+        },
+        {
+            "Name": "ReloadRequestItem",
+            "Query": "ReloadRequestItem"
+        }
+    ],
+    "_Type": "Action.Type.OfflineOData.Download",
+    "ActionResult": {
+        "_Name": "sync"
+    },
+    "OnFailure": "/LMD_MDKApp/Actions/API_LASTMILERELOADREQUEST/Service/SyncFailureMessage.action",
+    "OnSuccess": "/LMD_MDKApp/Rules/API_LASTMILERELOADREQUEST/ErrorArchive_CheckForSyncError.js"
+}
