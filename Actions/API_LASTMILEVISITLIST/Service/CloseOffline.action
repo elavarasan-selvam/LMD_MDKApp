@@ -1,0 +1,10 @@
+{
+    "_Type": "Action.Type.OfflineOData.Close",
+    "Service": "/LMD_MDKApp/Services/API_LASTMILEVISITLIST.service",
+    "Force": true,
+    "ActionResult": {
+        "_Name": "close"
+    },
+    "OnSuccess": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/CloseOfflineSuccessMessage.action",
+    "OnFailure": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/CloseOfflineFailureMessage.action"
+}

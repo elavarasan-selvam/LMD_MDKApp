@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.3.0"/>
+            <EntityType Name="VisitType">
+                <Key>
+                    <PropertyRef Name="LastMileVisitUUID"/>
+                </Key>
+                <Property Name="LastMileVisitUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitExtUUID" Type="Edm.Guid"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitSequence" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitOpeningTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="LastMileVisitClosingTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="LastMileVisitPlnStartTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="LastMileVisitPlnEndTime" Type="Edm.TimeOfDay" Nullable="false"/>
+                <Property Name="LastMileVisitActStartDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="LastMileVisitActEndDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="LastMileVisitExecutionStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LastMileVisitIsPlannedStop" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="LastMileVisitProposalUnitID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_CustomerDelivery" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.CustomerDelivery_Type)" Partner="_Visit">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitItem" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitItemType)" Partner="_Visit">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitList" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType" Nullable="false" Partner="_Visit">
+                    <ReferentialConstraint Property="LastMileVisitListUUID" ReferencedProperty="LastMileVisitListUUID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="LoadProposal_Type">
+                <Key>
+                    <PropertyRef Name="LastMileLoadPrpslUUID"/>
+                </Key>
+                <Property Name="LastMileLoadPrpslUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_LoadProposalProduct" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposalProduct_Type)" Partner="_LoadProposal">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitList" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType" Nullable="false" Partner="_LoadProposal">
+                    <ReferentialConstraint Property="LastMileVisitListUUID" ReferencedProperty="LastMileVisitListUUID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="CustomerDelivery_Type">
+                <Key>
+                    <PropertyRef Name="LstMiVisitCustomerDeliveryUUID"/>
+                </Key>
+                <Property Name="LstMiVisitCustomerDeliveryUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="DeliveryDocument" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_Visit" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitType" Nullable="false" Partner="_CustomerDelivery">
+                    <ReferentialConstraint Property="LastMileVisitUUID" ReferencedProperty="LastMileVisitUUID"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitList" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType" Nullable="false">
+                    <ReferentialConstraint Property="LastMileVisitListUUID" ReferencedProperty="LastMileVisitListUUID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="LoadProposalProduct_Type">
+                <Key>
+                    <PropertyRef Name="LastMileLoadPrpslProdUUID"/>
+                </Key>
+                <Property Name="LastMileLoadPrpslProdUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileLoadPrpslUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="QuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_LoadProposal" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposal_Type" Nullable="false" Partner="_LoadProposalProduct">
+                    <ReferentialConstraint Property="LastMileLoadPrpslUUID" ReferencedProperty="LastMileLoadPrpslUUID"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitList" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType" Nullable="false">
+                    <ReferentialConstraint Property="LastMileVisitListUUID" ReferencedProperty="LastMileVisitListUUID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="VisitListType">
+                <Key>
+                    <PropertyRef Name="LastMileVisitListUUID"/>
+                </Key>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitListExtUUID" Type="Edm.Guid"/>
+                <Property Name="LastMileVisitListExternalID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="LastMileVisitListType" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="LastMileVisitListDriverID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitListExecutionDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="SourceLocation" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="LastMileVisitListDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="LastMileVisitListStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LastMileVisitListLastChnDteTme" Type="Edm.DateTimeOffset"/>
+                <Property Name="TimeZoneID" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="LstMiRteExecutionOrganization" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_LoadProposal" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposal_Type)" Partner="_VisitList">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_Visit" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitType)" Partner="_VisitList">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="VisitItemType">
+                <Key>
+                    <PropertyRef Name="LastMileVisitItemUUID"/>
+                </Key>
+                <Property Name="LastMileVisitItemUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="LastMileVisitItemID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitItemExtUUID" Type="Edm.Guid"/>
+                <Property Name="LastMileVisitItemCategory" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="LastMileVisitItemDuration" Type="Edm.Decimal" Nullable="false" Precision="11" Scale="2"/>
+                <Property Name="LastMileVisitItemDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="LastMileVisitItemPriority" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LastMileVisitItemStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="LastMileVisitItemActDriverID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LastMileVisitItemSrvcProduct" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="LastMileVisitItemSrvcUnitID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_Visit" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitType" Nullable="false" Partner="_VisitItem">
+                    <ReferentialConstraint Property="LastMileVisitUUID" ReferencedProperty="LastMileVisitUUID"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_VisitList" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType" Nullable="false">
+                    <ReferentialConstraint Property="LastMileVisitListUUID" ReferencedProperty="LastMileVisitListUUID"/>
+                </NavigationProperty>
+            </EntityType>
+            <ComplexType Name="SAP__Message">
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false"/>
+                <Property Name="target" Type="Edm.String"/>
+                <Property Name="additionalTargets" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="longtextUrl" Type="Edm.String"/>
+            </ComplexType>
+            <Action Name="CreateLoadRequest" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposal_Type" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposal_Type" Nullable="false"/>
+            </Action>
+            <EntityContainer Name="Container">
+                <EntitySet Name="CustomerDelivery" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.CustomerDelivery_Type">
+                    <NavigationPropertyBinding Path="_Visit" Target="Visit"/>
+                    <NavigationPropertyBinding Path="_VisitList" Target="VisitList"/>
+                </EntitySet>
+                <EntitySet Name="LoadProposal" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposal_Type">
+                    <NavigationPropertyBinding Path="_LoadProposalProduct" Target="LoadProposalProduct"/>
+                    <NavigationPropertyBinding Path="_VisitList" Target="VisitList"/>
+                </EntitySet>
+                <EntitySet Name="LoadProposalProduct" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.LoadProposalProduct_Type">
+                    <NavigationPropertyBinding Path="_LoadProposal" Target="LoadProposal"/>
+                    <NavigationPropertyBinding Path="_VisitList" Target="VisitList"/>
+                </EntitySet>
+                <EntitySet Name="Visit" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitType">
+                    <NavigationPropertyBinding Path="_CustomerDelivery" Target="CustomerDelivery"/>
+                    <NavigationPropertyBinding Path="_VisitItem" Target="VisitItem"/>
+                    <NavigationPropertyBinding Path="_VisitList" Target="VisitList"/>
+                </EntitySet>
+                <EntitySet Name="VisitItem" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitItemType">
+                    <NavigationPropertyBinding Path="_Visit" Target="Visit"/>
+                    <NavigationPropertyBinding Path="_VisitList" Target="VisitList"/>
+                </EntitySet>
+                <EntitySet Name="VisitList" EntityType="com.sap.gateway.srvd_a2x.api_lastmilevisitlist.v0001.VisitListType">
+                    <NavigationPropertyBinding Path="_LoadProposal" Target="LoadProposal"/>
+                    <NavigationPropertyBinding Path="_Visit" Target="Visit"/>
+                </EntitySet>
+            </EntityContainer>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/Customer">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="PersonalData.FieldSemantics" String="DataSubjectID"/>
+                <Annotation Term="SAP__common.Label" String="Customer"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Customer ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitSequence">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit Sequence"/>
+                <Annotation Term="SAP__common.Heading" String="Sequence of Customers"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Sequence of Customers in Visit List"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitExecutionStatus">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitIsPlannedStop">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Planned Visit"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Is Planned Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitProposalUnitID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Prod. Prop. Unit ID"/>
+                <Annotation Term="SAP__common.Heading" String="Product Proposal Unit ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Product Proposal Unit ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/_CustomerDelivery">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Visit">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_CustomerDelivery"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_VisitItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/_VisitItem">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType">
+                <Annotation Term="SAP__common.Label" String="Visit"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/LastMileLoadPrpslUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Load Proposal UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UUID of Load Proposal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/SalesDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Document"/>
+                <Annotation Term="SAP__common.Heading" String="Sales Doc."/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/SalesOrganization">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Organization"/>
+                <Annotation Term="SAP__common.Heading" String="SOrg."/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/DistributionChannel">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Distribution Channel"/>
+                <Annotation Term="SAP__common.Heading" String="DChl"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/Division">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Division"/>
+                <Annotation Term="SAP__common.Heading" String="Dv"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type/_LoadProposalProduct">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/LoadProposal">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_LoadProposalProduct"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposal_Type">
+                <Annotation Term="SAP__common.Label" String="Load Proposal in Visit List"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CustomerDelivery_Type/LstMiVisitCustomerDeliveryUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Cust. Delivery UUID"/>
+                <Annotation Term="SAP__common.Heading" String="Customer Delivery UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Customer Delivery UUID of Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CustomerDelivery_Type/LastMileVisitUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CustomerDelivery_Type/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CustomerDelivery_Type/DeliveryDocument">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Delivery"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CustomerDelivery_Type">
+                <Annotation Term="SAP__common.Label" String="Customer Delivery"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/CustomerDelivery">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/LastMileLoadPrpslProdUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Load Proposal Prod."/>
+                <Annotation Term="SAP__common.Heading" String="Load Proposal Product UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UUID of Load Proposal Product"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/LastMileLoadPrpslUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Load Proposal UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UUID of Load Proposal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/Product">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Material"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Material Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/Quantity">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__measures.Unit" Path="QuantityUnit"/>
+                <Annotation Term="SAP__common.Label" String="Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Quantity field, 15 characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type/QuantityUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.Label" String="Base Unit of Measure"/>
+                <Annotation Term="SAP__common.Heading" String="BUn"/>
+            </Annotations>
+            <Annotations Target="SAP__self.LoadProposalProduct_Type">
+                <Annotation Term="SAP__common.Label" String="Load Proposal Product in Visit List"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/LoadProposalProduct">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Quantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>
+                                    aggregate
+                                </String>
+                                <String>
+                                    groupby
+                                </String>
+                                <String>
+                                    filter
+                                </String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>
+                            eq
+                        </String>
+                        <String>
+                            ne
+                        </String>
+                        <String>
+                            gt
+                        </String>
+                        <String>
+                            ge
+                        </String>
+                        <String>
+                            lt
+                        </String>
+                        <String>
+                            le
+                        </String>
+                        <String>
+                            and
+                        </String>
+                        <String>
+                            or
+                        </String>
+                        <String>
+                            contains
+                        </String>
+                        <String>
+                            startswith
+                        </String>
+                        <String>
+                            endswith
+                        </String>
+                        <String>
+                            any
+                        </String>
+                        <String>
+                            all
+                        </String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>
+                            application/json
+                        </String>
+                        <String>
+                            application/pdf
+                        </String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit List ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListExternalID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Visit List External ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Visit List Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListDriverID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="PersonalData.FieldSemantics" String="DataSubjectID"/>
+                <Annotation Term="SAP__common.Label" String="Driver"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/SalesOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Organization"/>
+                <Annotation Term="SAP__common.Heading" String="SOrg."/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/DistributionChannel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Distribution Channel"/>
+                <Annotation Term="SAP__common.Heading" String="DChl"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/Division">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Division"/>
+                <Annotation Term="SAP__common.Heading" String="Dv"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListStatus">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Execution Status"/>
+                <Annotation Term="SAP__common.Heading" String="Visit List Execution Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Visit List Execution Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListLastChnDteTme">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Timestamp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/TimeZoneID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Time Zone"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LstMiRteExecutionOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Exec. Organization"/>
+                <Annotation Term="SAP__common.Heading" String="Execution Organization"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Execution Organization"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/_LoadProposal">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VisitList">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_LoadProposal"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Visit"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    LastMileVisitListType
+                                </PropertyPath>
+                                <PropertyPath>
+                                    LastMileVisitListExecutionDate
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/_Visit">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType">
+                <Annotation Term="SAP__common.Label" String="Visit List"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit Item UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitListUUID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Visit List UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemID">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit Item ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemCategory">
+                <Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Item Category"/>
+                <Annotation Term="SAP__common.Heading" String="Visit Item Category"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Visit Item Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemPriority">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Priority"/>
+                <Annotation Term="SAP__common.Heading" String="Visit Item Priority"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Visit Item Priority"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemStatus">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Visit Item Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemActDriverID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="PersonalData.FieldSemantics" String="DataSubjectID"/>
+                <Annotation Term="SAP__common.Label" String="Driver"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemSrvcProduct">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Service Product"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemSrvcUnitID">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Service Unit ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/SalesOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sales Organization"/>
+                <Annotation Term="SAP__common.Heading" String="SOrg."/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/DistributionChannel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Distribution Channel"/>
+                <Annotation Term="SAP__common.Heading" String="DChl"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/Division">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Division"/>
+                <Annotation Term="SAP__common.Heading" String="Dv"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType">
+                <Annotation Term="SAP__common.Label" String="Visit Item"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/VisitItem">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitExtUUID">
+                <Annotation Term="SAP__common.Label" String="Visit External UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitOpeningTime">
+                <Annotation Term="SAP__common.Label" String="Opening Time"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitClosingTime">
+                <Annotation Term="SAP__common.Label" String="Closing Time"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitPlnStartTime">
+                <Annotation Term="SAP__common.Label" String="Planned Start Time of Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitPlnEndTime">
+                <Annotation Term="SAP__common.Label" String="Planned End Time of Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitActStartDteTme">
+                <Annotation Term="SAP__common.Label" String="Actual Start of Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitType/LastMileVisitActEndDteTme">
+                <Annotation Term="SAP__common.Label" String="Actual End of Visit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListExtUUID">
+                <Annotation Term="SAP__common.Label" String="Visit List Ext. UUID"/>
+                <Annotation Term="SAP__common.Heading" String="Visit List External UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Visit List External UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListExecutionDate">
+                <Annotation Term="SAP__common.Label" String="Execution Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Execution Date - Visit List API"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/SourceLocation">
+                <Annotation Term="SAP__common.Label" String="Source Location"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitListType/LastMileVisitListDescription">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description - Visit List API"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemExtUUID">
+                <Annotation Term="SAP__common.Label" String="Visit Item Ext. UUID"/>
+                <Annotation Term="SAP__common.Heading" String="Visit Item External UUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Visit Item External UUID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemDuration">
+                <Annotation Term="SAP__common.Label" String="Visit Duration"/>
+                <Annotation Term="SAP__common.Heading" String="Visit Item Duration"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Duration"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VisitItemType/LastMileVisitItemDescription">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description - Visit List API"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

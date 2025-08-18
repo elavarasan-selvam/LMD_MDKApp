@@ -1,0 +1,35 @@
+{
+    "Service": "/LMD_MDKApp/Services/API_LASTMILEVISITLIST.service",
+    "DefiningRequests": [{
+            "Name": "CustomerDelivery",
+            "Query": "CustomerDelivery"
+        },
+        {
+            "Name": "LoadProposal",
+            "Query": "LoadProposal"
+        },
+        {
+            "Name": "LoadProposalProduct",
+            "Query": "LoadProposalProduct"
+        },
+        {
+            "Name": "Visit",
+            "Query": "Visit"
+        },
+        {
+            "Name": "VisitItem",
+            "Query": "VisitItem"
+        },
+        {
+            "Name": "VisitList",
+            "Query": "VisitList"
+        }
+    ],
+    "_Type": "Action.Type.ODataService.Initialize",
+    "ShowActivityIndicator": true,
+    "ActivityIndicatorText": "Downloading...",
+    "ActionResult": {
+        "_Name": "init"
+    },
+    "OnFailure": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/InitializeOfflineFailureMessage.action"
+}
