@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToStartCheckout"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/Checkout.page"
+}
