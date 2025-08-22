@@ -1,0 +1,188 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "Routes"
+					},
+					"_Name": "SectionObjectCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"ObjectCell": {
+						"Title": "Title",
+						"Tags": [
+							{
+								"Text": "tag"
+							}
+						],
+						"Subhead": "Subhead",
+						"Footnote": "Footnote",
+						"Description": "Description",
+						"DisplayDescriptionInMobile": true,
+						"StatusText": "Status",
+						"SubstatusText": "Substatus",
+						"AccessoryType": "None",
+						"PreserveIconStackSpacing": true,
+						"ProgressIndicator": "InProgress",
+						"ContextMenu": {
+							"PerformFirstActionWithFullSwipe": true
+						},
+						"AvatarStack": {
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
+							"ImageIsCircular": true,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
+							"ImageIsCircular": true
+						},
+						"_Type": "ObjectCollection.Type.ObjectCell"
+					},
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel0",
+							"IsVisible": true,
+							"Separator": true,
+							"Text": "My Tasks",
+							"TextWrap": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection1",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard4",
+							"Visible": true,
+							"Title": "Delivery",
+							"Subhead": "Items :",
+							"Footnote": "Open",
+							"DetailImage": "sap-icon://shipping-status",
+							"DetailImageIsCircular": false,
+							"Description": "Check and confirm the delivery of ordered goods",
+							"PrimaryAction": {
+								"_Type": "ObjectCard.Type.ActionItem",
+								"Title": "Start",
+								"Visible": true
+							}
+						}
+					],
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection2",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard5",
+							"Visible": true,
+							"Title": "Return",
+							"Subhead": "Items :",
+							"Footnote": "Open",
+							"DetailImage": "sap-icon://journey-change",
+							"DetailImageIsCircular": false,
+							"Description": "No planned returns to collect.",
+							"PrimaryAction": {
+								"_Type": "ObjectCard.Type.ActionItem",
+								"Title": "Start",
+								"Visible": true
+							}
+						}
+					],
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "MyVisit",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar1",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Visit"
+	}
+}

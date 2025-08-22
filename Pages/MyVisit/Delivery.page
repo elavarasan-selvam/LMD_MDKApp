@@ -1,0 +1,86 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.ObjectCollection",
+					"_Name": "SectionObjectCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"ObjectCells": [
+						{
+							"ObjectCell": {
+								"_Type": "ObjectCollection.Type.ObjectCell",
+								"_Name": "ObjectCollectionTypeObjectCell0",
+								"Title": "Title",
+								"Visible": true,
+								"Tags": [
+									{
+										"Text": "tag"
+									}
+								],
+								"Subhead": "Subhead",
+								"Footnote": "CGSPR6",
+								"Description": "Description",
+								"DisplayDescriptionInMobile": true,
+								"StatusText": "Status",
+								"SubstatusText": "Substatus",
+								"AccessoryType": "None",
+								"PreserveIconStackSpacing": true,
+								"ProgressIndicator": "InProgress",
+								"ContextMenu": {
+									"PerformFirstActionWithFullSwipe": true
+								},
+								"AvatarStack": {
+									"Avatars": [
+										{
+											"Image": "sap-icon://customer",
+											"ImageText": ""
+										}
+									],
+									"ImageIsCircular": true,
+									"ImageHasBorder": false
+								},
+								"AvatarGrid": {
+									"Avatars": [
+										{
+											"Image": "sap-icon://customer",
+											"ImageText": ""
+										}
+									],
+									"ImageIsCircular": true
+								}
+							}
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Delivery",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar2",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Delivery"
+	}
+}
