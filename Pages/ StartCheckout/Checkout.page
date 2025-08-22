@@ -110,6 +110,7 @@
 							"Description": "Check and confirm your truck load.",
 							"PrimaryAction": {
 								"_Type": "ObjectCard.Type.ActionItem",
+								"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
 								"Title": "Start",
 								"Visible": true
 							}
@@ -161,8 +162,24 @@
 	"_Name": "Checkout",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar3",
+		"_Name": "ActionBar4",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
+	},
+	"FioriToolbar": {
+		"_Type": "Control.Type.FioriToolbar",
+		"_Name": "FioriToolbar0",
+		"Items": [
+			{
+				"_Type": "FioriToolbarItem.Type.Button",
+				"_Name": "ToolbarItem0",
+				"Visible": true,
+				"Title": "Complete Checkout",
+				"Enabled": false,
+				"ButtonType": "Primary",
+				"Semantic": "Tint",
+				"ImagePosition": "Leading"
+			}
+		]
 	}
 }

@@ -1,0 +1,152 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/API_LASTMILEVISITLIST.service",
+						"EntitySet": "LoadProposal"
+					},
+					"_Name": "SectionObjectCollection1",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"ObjectCell": {
+						"Title": "Title",
+						"Tags": [
+							{
+								"Text": "tag"
+							}
+						],
+						"Subhead": "Subhead",
+						"Description": "Description",
+						"DisplayDescriptionInMobile": true,
+						"StatusText": "Status",
+						"SubstatusText": "Substatus",
+						"AccessoryType": "None",
+						"PreserveIconStackSpacing": true,
+						"ProgressIndicator": "InProgress",
+						"ContextMenu": {
+							"PerformFirstActionWithFullSwipe": true
+						},
+						"AvatarStack": {
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
+							"ImageIsCircular": true,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
+							"ImageIsCircular": true
+						},
+						"_Type": "ObjectCollection.Type.ObjectCell"
+					},
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				},
+				{
+					"_Type": "Section.Type.ObjectCollection",
+					"_Name": "SectionObjectCollection2",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"ObjectCells": [
+						{
+							"ObjectCell": {
+								"_Type": "ObjectCollection.Type.ObjectCell",
+								"_Name": "ObjectCollectionTypeObjectCell0",
+								"Title": "Test - Cream Biscuit 500 GM ",
+								"Visible": true,
+								"Subhead": "Cream Biscuit",
+								"DisplayDescriptionInMobile": true,
+								"StatusText": "7 EA ",
+								"AccessoryType": "None",
+								"PreserveIconStackSpacing": true,
+								"ProgressIndicator": "InProgress",
+								"ContextMenu": {
+									"PerformFirstActionWithFullSwipe": true
+								},
+								"AvatarStack": {
+									"Avatars": [],
+									"ImageIsCircular": true,
+									"ImageHasBorder": false
+								},
+								"AvatarGrid": {
+									"Avatars": [],
+									"ImageIsCircular": true
+								}
+							}
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": false
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "TruckLoad",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar2",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Truck Load"
+	},
+	"FioriToolbar": {
+		"_Type": "Control.Type.FioriToolbar",
+		"_Name": "FioriToolbar0",
+		"Items": [
+			{
+				"_Type": "FioriToolbarItem.Type.Button",
+				"_Name": "ToolbarItem0",
+				"Visible": true,
+				"Title": "Confirm Truck Load",
+				"Enabled": true,
+				"ButtonType": "Text",
+				"Semantic": "Normal",
+				"ImagePosition": "Leading"
+			}
+		]
+	}
+}
