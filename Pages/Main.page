@@ -56,9 +56,6 @@
 					}
 				},
 				{
-					"_Type": "Section.Type.KPISection",
-					"_Name": "SectionKPISection0",
-					"Visible": true,
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -66,18 +63,21 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.KPISection",
+					"_Name": "SectionKPISection0",
+					"Visible": true,
 					"KPIItems": [
 						{
 							"_Name": "KPIItem0",
 							"CaptionLabel": "Progress",
 							"MetricItems": [
 								{
-									"Value": "0%",
+									"Value": "5/10",
 									"_Name": "KPIItem0MetricItem0"
 								}
 							],
-							"Icon": "sap-icon://circle-task",
-							"ShowProgress": true
+							"ShowProgress": true,
+							"Progress": 0.5
 						}
 					]
 				},
