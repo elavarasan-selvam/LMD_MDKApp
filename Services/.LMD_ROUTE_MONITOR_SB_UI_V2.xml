@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_lmd_route_monitor_sd" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="LstMiRteMntrProcessMaintType" sap:label="Last Mile Route Monitor Process Maintenance" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LstMiProcessUUID"/>
+                </Key>
+                <Property Name="RestartLastMileRouteProcess_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LstMiProcessUUID" Type="Edm.Guid" Nullable="false" sap:label="Process Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LstMiProcess" Type="Edm.String" MaxLength="30" sap:label="Process"/>
+                <Property Name="LstMiParentProcessUUID" Type="Edm.Guid" sap:label="Process Key"/>
+                <Property Name="LstMiProcessObjectType" Type="Edm.String" MaxLength="30" sap:label="Object Type"/>
+                <Property Name="LstMiProcessObjectUUID" Type="Edm.Guid" sap:label="Object Key"/>
+                <Property Name="LstMiProcessOriginObjectUUID" Type="Edm.Guid" sap:label="Object Key"/>
+                <Property Name="LstMiProcessStep" Type="Edm.String" MaxLength="30" sap:label="Latest Process Step" sap:quickinfo="Process Step"/>
+                <Property Name="LstMiProcessStatusValue" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Process Status"/>
+                <Property Name="LstMiProcessResmblValue" Type="Edm.Boolean" sap:label="Process Resumable" sap:quickinfo="Automatically Resumable"/>
+                <Property Name="LstMiProcessRetryValue" Type="Edm.Int16" sap:label="Remaining Retries" sap:quickinfo="Remaining Number of Retries"/>
+                <Property Name="LstMiProcessNextRetryValue" Type="Edm.DateTimeOffset" Precision="7" sap:label="Next Retry" sap:quickinfo="Next Retry Scheduled For"/>
+                <Property Name="LstMiProcessLastChangedDteTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Timestamp" sap:quickinfo="Changed At Timestamp"/>
+                <Property Name="LstMiProcessHasError" Type="Edm.Byte"/>
+            </EntityType>
+            <EntityType Name="LstMiRteMntrRouteTPType" sap:label="Last Mile Route Monitor Route" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteUUID"/>
+                </Key>
+                <Property Name="CancelLastMileRoute_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DisableManualLstMiRteDataEntry_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EnableManualLstMiRteDataEntry_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RepublishLastMileRoute_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetLastMileRouteToSettled_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastMileRouteUUID" Type="Edm.Guid" Nullable="false" sap:label="Route UUID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TransportationVehicleDriver" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="to_RouteDriverVH/TranspVehicleDriverName" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ResourceSecondDriver" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Driver"/>
+                <Property Name="TransportationVehicle" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Vehicle ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VehicleLicensePlateNumber" Type="Edm.String" MaxLength="20" sap:label="License Plate" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="LstMiRouteReferenceRouteType" Type="Edm.String" MaxLength="4" sap:label="Reference Route Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRoute" Type="Edm.String" MaxLength="35" sap:label="Route ID" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="LastMileRouteType" Type="Edm.String" MaxLength="2" sap:text="to_RouteTypeVH/LastMileRouteType_Text" sap:label="Route Type" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
+                <Property Name="LastMileRouteCategory" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Route Category" sap:value-list="fixed-values"/>
+                <Property Name="TranspOrdDepartureDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Departure Timestamp" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TranspOrdArrivalDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Arrival Timestamp" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TranspOrdDepartureDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Departure Date"/>
+                <Property Name="TranspOrdArrivalDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Arrival Date"/>
+                <Property Name="TranspOrdDepartureTime" Type="Edm.Time" Precision="0" sap:label="Departure Time" sap:filterable="false"/>
+                <Property Name="TranspOrdArrivalTime" Type="Edm.Time" Precision="0" sap:label="Arrival Time" sap:filterable="false"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Timestamp" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Processing Date"/>
+                <Property Name="LastMileRouteTimeZone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Time Zone" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteLifecycleStatus" Type="Edm.String" MaxLength="30" sap:text="to_LifecycleStatusVH/LastMileRouteStatus_Text" sap:label="Route Life Cycle Status" sap:value-list="fixed-values"/>
+                <Property Name="LastMileRouteHasError" Type="Edm.Byte" sap:label="Route Life Cycle Error"/>
+                <Property Name="LastMileRouteSettlementStatus" Type="Edm.String" MaxLength="30" sap:text="to_SettlementStatusVH/LastMileRouteStatus_Text" sap:label="Settlement Status" sap:value-list="fixed-values"/>
+                <Property Name="LstMiRouteSettlementHasError" Type="Edm.Byte" sap:label="Settlement Error"/>
+                <Property Name="LastMileRouteMobileStatus" Type="Edm.String" MaxLength="30" sap:text="to_MobileStatusVH/LastMileRouteStatus_Text" sap:label="Mobile Data Status" sap:value-list="fixed-values"/>
+                <Property Name="LstMiRteDepartureShippingPoint" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Source Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LstMiRteArrivalShippingPoint" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Arrival Shipg. Point" sap:quickinfo="Arrival Shipping Point" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LstMiRteExecutionOrganization" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:text="to_ExecutionOrganisationVH/LstMiRteExecOrganizationName" sap:label="Execution Organization" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
+                <Property Name="LstMiRouteDaysSinceLastChange" Type="Edm.Int32"/>
+                <Property Name="LastMileRouteDepartureLocation" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Source Location" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="LastMileRouteArrivalLocation" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Arrival Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteStockIdentifier" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Route Stock Identifier"/>
+                <NavigationProperty Name="to_ExecutionOrganisationVH" Relationship="cds_lmd_route_monitor_sd.assoc_3106857BBA58DCEB3D15341EA27ACB4D" FromRole="FromRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D" ToRole="ToRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D"/>
+                <NavigationProperty Name="to_LifecycleStatusVH" Relationship="cds_lmd_route_monitor_sd.assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306" FromRole="FromRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306" ToRole="ToRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306"/>
+                <NavigationProperty Name="to_MobileStatusVH" Relationship="cds_lmd_route_monitor_sd.assoc_13142D8D1D74FA5F0322F1F04D7F2C59" FromRole="FromRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59" ToRole="ToRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59"/>
+                <NavigationProperty Name="to_ProcessMaintenance" Relationship="cds_lmd_route_monitor_sd.assoc_8C0F18833813941E15A793416E5F7607" FromRole="FromRole_assoc_8C0F18833813941E15A793416E5F7607" ToRole="ToRole_assoc_8C0F18833813941E15A793416E5F7607"/>
+                <NavigationProperty Name="to_RouteDriverVH" Relationship="cds_lmd_route_monitor_sd.assoc_E5CF1822BCFD2F1779BE4B58684918D4" FromRole="FromRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4" ToRole="ToRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4"/>
+                <NavigationProperty Name="to_RouteTypeVH" Relationship="cds_lmd_route_monitor_sd.assoc_73A799AC61AF866856D32671AC678C45" FromRole="FromRole_assoc_73A799AC61AF866856D32671AC678C45" ToRole="ToRole_assoc_73A799AC61AF866856D32671AC678C45"/>
+                <NavigationProperty Name="to_SettlementStatusVH" Relationship="cds_lmd_route_monitor_sd.assoc_D20D9421F541DA251AC839570BFC5200" FromRole="FromRole_assoc_D20D9421F541DA251AC839570BFC5200" ToRole="ToRole_assoc_D20D9421F541DA251AC839570BFC5200"/>
+                <NavigationProperty Name="to_StatusHistory" Relationship="cds_lmd_route_monitor_sd.assoc_2DC5951DB240F3701934136CFA3D72B1" FromRole="FromRole_assoc_2DC5951DB240F3701934136CFA3D72B1" ToRole="ToRole_assoc_2DC5951DB240F3701934136CFA3D72B1"/>
+            </EntityType>
+            <EntityType Name="LstMiRteMntrStatusHistoryTPType" sap:label="Last Mile Route Monitor Status History" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteUUID"/>
+                    <PropertyRef Name="LastMileRouteStatus"/>
+                    <PropertyRef Name="LastChangeDateTime"/>
+                    <PropertyRef Name="LastMileRouteStatusActivity"/>
+                </Key>
+                <Property Name="LastMileRouteUUID" Type="Edm.Guid" Nullable="false" sap:label="DB Key"/>
+                <Property Name="LastMileRouteStatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:text="to_RouteStatusVH/LastMileRouteStatus_Text" sap:label="Route Processing Status" sap:value-list="fixed-values"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Nullable="false" Precision="7" sap:label="Timestamp"/>
+                <Property Name="LastMileRouteStatusActivity" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="to_StatusActivityVH/DomainValuePosition_Text" sap:label="Status Activity" sap:value-list="fixed-values"/>
+                <Property Name="LastMileRouteHasError" Type="Edm.Byte"/>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" MaxLength="30" sap:text="to_StatusCategoryVH/LastMileRouteStatusCategory_Text" sap:label="Route Processing Category" sap:value-list="fixed-values"/>
+                <NavigationProperty Name="to_RouteStatusVH" Relationship="cds_lmd_route_monitor_sd.assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71" FromRole="FromRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71" ToRole="ToRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71"/>
+                <NavigationProperty Name="to_StatusActivityVH" Relationship="cds_lmd_route_monitor_sd.assoc_478BEA44F885DAF8012F937AC737F3A8" FromRole="FromRole_assoc_478BEA44F885DAF8012F937AC737F3A8" ToRole="ToRole_assoc_478BEA44F885DAF8012F937AC737F3A8"/>
+                <NavigationProperty Name="to_StatusCategoryVH" Relationship="cds_lmd_route_monitor_sd.assoc_603D6C045FBE8F30831D7FACF7B07F63" FromRole="FromRole_assoc_603D6C045FBE8F30831D7FACF7B07F63" ToRole="ToRole_assoc_603D6C045FBE8F30831D7FACF7B07F63"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRouteApplicationLogTPType" sap:label="LstMi Distribution UI Application Log" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRoute"/>
+                    <PropertyRef Name="LastMileRouteLogSubObjectID"/>
+                    <PropertyRef Name="LastMileRouteLogNumber"/>
+                    <PropertyRef Name="LastMileRouteLogMsgNumber"/>
+                </Key>
+                <Property Name="LastMileRoute" Type="Edm.String" Nullable="false" MaxLength="35" sap:filter-restriction="single-value" sap:label="Route ID"/>
+                <Property Name="LastMileRouteLogSubObjectID" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Subobject" sap:quickinfo="Application Log: Subobject"/>
+                <Property Name="LastMileRouteLogNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Log Number" sap:quickinfo="Application Log: Log Number"/>
+                <Property Name="LastMileRouteLogMsgNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Message Serial No." sap:quickinfo="Application Log: Internal Message Serial Number"/>
+                <Property Name="LastMileRouteLogHandleValue" Type="Edm.String" sap:display-format="UpperCase" sap:label="BAL Handle String" sap:heading=""/>
+                <Property Name="LastMileRouteLogMsgText" Type="Edm.String" MaxLength="1024" sap:label="Message" sap:quickinfo="BAL Message Text"/>
+                <Property Name="LastMileRouteLogMsgHasDetails" Type="Edm.Boolean" sap:label="Details" sap:quickinfo="BAL Message Text Has Details"/>
+                <Property Name="LastMileRouteLogMsgType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Message Type"/>
+                <Property Name="LastMileRouteLogMsgArea" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Message Type" sap:quickinfo="BAL Message Type"/>
+                <Property Name="LastMileRouteLogMsgDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="Application Log: Message Time Stamp"/>
+                <Property Name="SalesDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document No."/>
+                <Property Name="LastMileRouteDocumentType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Document Type"/>
+                <Property Name="LastMileRouteCustomer" Type="Edm.String" MaxLength="10" sap:label="Customer ID"/>
+                <Property Name="LastMileRouteCustomerName" Type="Edm.String" MaxLength="40" sap:label="Customer" sap:quickinfo="Customer Name"/>
+                <Property Name="LastMileVisitListUUID" Type="Edm.Guid" sap:label="Visit List UUID"/>
+                <Property Name="LastMileVisitUUID" Type="Edm.Guid" sap:label="Visit UUID"/>
+                <Property Name="LastMileRouteDocumentIsReturn" Type="Edm.Boolean" sap:label="Return" sap:quickinfo="Is Return"/>
+                <Property Name="PostingFiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+            </EntityType>
+            <EntityType Name="I_CountryVHType" sap:label="Country/Region" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Country"/>
+                </Key>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text" sap:label="Country/Region Key"/>
+                <Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50" sap:label="Country/Region Name"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char" sap:quickinfo="ISO Country/Region Code 3 Characters"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3" sap:quickinfo="ISO Country/Region Code Numeric 3-Characters"/>
+            </EntityType>
+            <EntityType Name="LocationAddressVHType" sap:label="Location Value help with Address Attributes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Location"/>
+                </Key>
+                <Property Name="Location" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="LocationUUID" Type="Edm.Guid" sap:label="Location ID" sap:quickinfo="Internal Location Number (Customer, Supplier, or Plant)"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:label="BP GUID" sap:quickinfo="Business Partner GUID"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.Boolean" sap:label="PurposeComplete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="LocationDescription" Type="Edm.String" MaxLength="40" sap:label="Loc. Description" sap:quickinfo="Location Description"/>
+                <Property Name="LocationType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Location Type"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key" sap:value-list="standard"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="House Number"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="GlobalLocationNumber" Type="Edm.String" MaxLength="13" sap:display-format="NonNegative" sap:label="GLN" sap:quickinfo="Global Location Number"/>
+                <Property Name="LocationDUNSNumber" Type="Edm.String" MaxLength="13" sap:label="DUNS+4 Number"/>
+                <Property Name="LocationUNCode" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="UN/LOCODE" sap:quickinfo="United Nations Code for Trade and Transport Locations"/>
+                <Property Name="LocationIATACode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="IATA Code" sap:quickinfo="International Air Transport Association Location Identifier"/>
+            </EntityType>
+            <EntityType Name="RouteDriverVHType" sap:label="Last Mile Route Driver VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TransportationVehicleDriver"/>
+                </Key>
+                <Property Name="TransportationVehicleDriver" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="TranspVehicleDriverName" sap:label="Driver"/>
+                <Property Name="TranspVehicleDriverName" Type="Edm.String" MaxLength="81" sap:display-format="UpperCase" sap:label="Description" sap:quickinfo="Driver Name"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First Name of Business Partner (Person)"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last Name of Business Partner (Person)"/>
+            </EntityType>
+            <EntityType Name="LastMileRouteType" sap:label="Last Mile Route ID" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRoute"/>
+                </Key>
+                <Property Name="LastMileRoute" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Route ID"/>
+                <Property Name="LastMileRouteType" Type="Edm.String" MaxLength="2" sap:label="Route Type"/>
+                <Property Name="LastMileRouteDepartureLocation" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Departure Location"/>
+                <Property Name="LastMileRouteArrivalLocation" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Arrival Location"/>
+                <Property Name="LstMiRteExecutionOrganization" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Exec. Organization" sap:quickinfo="Execution Organization"/>
+                <Property Name="TransportationVehicleDriver" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="to_RouteDriverVH/TranspVehicleDriverName" sap:label="Driver" sap:value-list="standard"/>
+                <Property Name="ResourceSecondDriver" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Driver"/>
+                <NavigationProperty Name="to_RouteDriverVH" Relationship="cds_lmd_route_monitor_sd.assoc_A5AA780C16797084AD242973AB4B818D" FromRole="FromRole_assoc_A5AA780C16797084AD242973AB4B818D" ToRole="ToRole_assoc_A5AA780C16797084AD242973AB4B818D"/>
+            </EntityType>
+            <EntityType Name="RouteLicensePlateVHType" sap:label="Last Mile Route License Plate VH" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RsceRegistrationNumber"/>
+                </Key>
+                <Property Name="RsceRegistrationNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="License Plate"/>
+            </EntityType>
+            <EntityType Name="I_LstMiRouteTypeVHType" sap:label="Last Mile UI Route Type Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteType"/>
+                </Key>
+                <Property Name="LastMileRouteType" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="LastMileRouteType_Text" sap:label="Route Type"/>
+                <Property Name="LastMileRouteType_Text" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Route Type Desc." sap:quickinfo="Route Type Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LstMiRteDepartureLocationVHType" sap:label="Last Mile Route Departure Location" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteDepartureLocation"/>
+                </Key>
+                <Property Name="LastMileRouteDepartureLocation" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:text="LastMileRouteDepartureLocation_Text" sap:label="Departure Location"/>
+                <Property Name="LastMileRouteDepartureLocation_Text" Type="Edm.String" MaxLength="40" sap:label="Loc. Description" sap:quickinfo="Location Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LstMiRteExecOrganizationVHType" sap:label="Last Mile Route Exec Organization VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LstMiRteExecutionOrganization"/>
+                </Key>
+                <Property Name="LstMiRteExecutionOrganization" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:text="LstMiRteExecOrganizationName" sap:label="Execution Organization"/>
+                <Property Name="LstMiRteExecOrganizationName" Type="Edm.String" MaxLength="40" sap:label="Object Name"/>
+            </EntityType>
+            <EntityType Name="LstMiRteMobileStatusVHType" sap:label="Last Mile Route Mobile Data Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteStatus"/>
+                </Key>
+                <Property Name="LastMileRouteStatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="LastMileRouteStatus_Text" sap:label="Status" sap:quickinfo="Status Management Status"/>
+                <Property Name="LastMileRouteStatus_Text" Type="Edm.String" MaxLength="100" sap:label="Text" sap:quickinfo="Status Management Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" MaxLength="30" sap:label="Category" sap:quickinfo="Status Management Category"/>
+                <Property Name="LastMileRouteStatusType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type" sap:quickinfo="Status Management Type"/>
+            </EntityType>
+            <EntityType Name="LstMiRteSetlReslnCodeVHType" sap:label="Last Mile Route Resolution Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LstMiRteSetlResolutionCode"/>
+                </Key>
+                <Property Name="LstMiRteSetlResolutionCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="LstMiRteSetlResolutionCodeText" sap:label="Settl. Resol. Code" sap:quickinfo="Settlement Resolution Code"/>
+                <Property Name="LstMiRteSetlResolutionCodeText" Type="Edm.String" MaxLength="50" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRouteCategoryVHType" sap:label="Last Mile UI Route Category Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteCategory"/>
+                </Key>
+                <Property Name="LastMileRouteCategory" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="LastMileRouteCategory_Text" sap:label="Route Category"/>
+                <Property Name="LastMileRouteCategory_Text" Type="Edm.String" MaxLength="60" sap:label="Route Category Text" sap:heading="" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRouteStatusActivityVHType" sap:label="Last Mile UI Route Status Activity VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainValuePosition"/>
+                </Key>
+                <Property Name="DomainValuePosition" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="DomainValuePosition_Text" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="DomainValuePosition_Text" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRouteStatusCategoryVHType" sap:label="Last Mile UI Route Status Category VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteStatusCategory"/>
+                </Key>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" Nullable="false" MaxLength="30" sap:text="LastMileRouteStatusCategory_Text" sap:label="Category" sap:quickinfo="Status Management Category"/>
+                <Property Name="LastMileRouteStatusCategory_Text" Type="Edm.String" MaxLength="100" sap:label="Text" sap:quickinfo="Status Management Text" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LastMileRteStatusValueHelpType" sap:label="Last Mile UI Route Status Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteStatus"/>
+                </Key>
+                <Property Name="LastMileRouteStatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="LastMileRouteStatus_Text" sap:label="Status" sap:quickinfo="Status Management Status"/>
+                <Property Name="LastMileRouteStatus_Text" Type="Edm.String" MaxLength="100" sap:label="Text" sap:quickinfo="Status Management Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" MaxLength="30" sap:label="Category" sap:quickinfo="Status Management Category"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRouteTypeVHType" sap:label="Last Mile UI Route Type Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteType"/>
+                </Key>
+                <Property Name="LastMileRouteType" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="LastMileRouteType_Text" sap:label="Route Type"/>
+                <Property Name="LastMileRouteType_Text" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Route Type Desc." sap:quickinfo="Route Type Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRteLifecycleStatusVHType" sap:label="Last Mile UI Route Life Cycle Status VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteStatus"/>
+                </Key>
+                <Property Name="LastMileRouteStatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="LastMileRouteStatus_Text" sap:label="Status" sap:quickinfo="Status Management Status"/>
+                <Property Name="LastMileRouteStatus_Text" Type="Edm.String" MaxLength="100" sap:label="Text" sap:quickinfo="Status Management Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" MaxLength="30" sap:label="Category" sap:quickinfo="Status Management Category"/>
+                <Property Name="LastMileRouteStatusType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type" sap:quickinfo="Status Management Type"/>
+            </EntityType>
+            <EntityType Name="LstMiUIRteSettlementStatusVHType" sap:label="Last Mile UI Route Settlement Status VH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LastMileRouteStatus"/>
+                </Key>
+                <Property Name="LastMileRouteStatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="LastMileRouteStatus_Text" sap:label="Status" sap:quickinfo="Status Management Status"/>
+                <Property Name="LastMileRouteStatus_Text" Type="Edm.String" MaxLength="100" sap:label="Text" sap:quickinfo="Status Management Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastMileRouteStatusCategory" Type="Edm.String" MaxLength="30" sap:label="Category" sap:quickinfo="Status Management Category"/>
+                <Property Name="LastMileRouteStatusType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type" sap:quickinfo="Status Management Type"/>
+            </EntityType>
+            <EntityType Name="SAP__Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CurrencyCode"/>
+                </Key>
+                <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+            </EntityType>
+            <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitCode"/>
+                </Key>
+                <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO Code"/>
+                <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Meas. Unit Text"/>
+                <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+            </EntityType>
+            <EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
+                <NavigationProperty Name="Format" Relationship="cds_lmd_route_monitor_sd.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_lmd_route_monitor_sd.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_lmd_route_monitor_sd.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_lmd_route_monitor_sd.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+                <NavigationProperty Name="PDFStandard" Relationship="cds_lmd_route_monitor_sd.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
+                <NavigationProperty Name="Hierarchy" Relationship="cds_lmd_route_monitor_sd.to_Hierarchy" FromRole="FromRole_to_Hierarchy" ToRole="ToRole_to_Hierarchy"/>
+                <NavigationProperty Name="Header" Relationship="cds_lmd_route_monitor_sd.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/>
+                <NavigationProperty Name="Footer" Relationship="cds_lmd_route_monitor_sd.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/>
+            </EntityType>
+            <EntityType Name="SAP__Format" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="FitToPage" Type="cds_lmd_route_monitor_sd.SAP__FitToPage" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaperSize" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BorderSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MarginSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FontName" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Font Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Padding" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFStandard" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UsePDFAConformance" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoEnableAccessibility" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__TableColumns" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                    <PropertyRef Name="Header"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Header" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HorizontalAlignment" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__CoverPage" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Title"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Name"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Signature" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DoSign" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reason" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__Hierarchy" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DistanceFromRootElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DrillStateElement" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__PDFFooter" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Right" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_lmd_route_monitor_sd.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SAP__ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VALUEHELP"/>
+                </Key>
+                <Property Name="VALUEHELP" Type="Edm.String" Nullable="false"/>
+                <Property Name="FIELD_VALUE" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="DESCRIPTION" Type="Edm.String"/>
+            </EntityType>
+            <ComplexType Name="SAP__FitToPage">
+                <Property Name="ErrorRecoveryBehavior" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Error behavior" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsEnabled" Type="Edm.Boolean" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MinimumFontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__HeaderFooterField">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrStatusHistoryTPType" Multiplicity="1" Role="FromRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71"/>
+                <End Type="cds_lmd_route_monitor_sd.LastMileRteStatusValueHelpType" Multiplicity="0..1" Role="ToRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71">
+                        <PropertyRef Name="LastMileRouteStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71">
+                        <PropertyRef Name="LastMileRouteStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_478BEA44F885DAF8012F937AC737F3A8" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrStatusHistoryTPType" Multiplicity="1" Role="FromRole_assoc_478BEA44F885DAF8012F937AC737F3A8"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiUIRouteStatusActivityVHType" Multiplicity="0..1" Role="ToRole_assoc_478BEA44F885DAF8012F937AC737F3A8"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_478BEA44F885DAF8012F937AC737F3A8">
+                        <PropertyRef Name="DomainValuePosition"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_478BEA44F885DAF8012F937AC737F3A8">
+                        <PropertyRef Name="LastMileRouteStatusActivity"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_603D6C045FBE8F30831D7FACF7B07F63" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrStatusHistoryTPType" Multiplicity="1" Role="FromRole_assoc_603D6C045FBE8F30831D7FACF7B07F63"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiUIRouteStatusCategoryVHType" Multiplicity="0..1" Role="ToRole_assoc_603D6C045FBE8F30831D7FACF7B07F63"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_603D6C045FBE8F30831D7FACF7B07F63">
+                        <PropertyRef Name="LastMileRouteStatusCategory"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_603D6C045FBE8F30831D7FACF7B07F63">
+                        <PropertyRef Name="LastMileRouteStatusCategory"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiUIRteLifecycleStatusVHType" Multiplicity="0..1" Role="ToRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306">
+                        <PropertyRef Name="LastMileRouteStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306">
+                        <PropertyRef Name="LastMileRouteLifecycleStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_13142D8D1D74FA5F0322F1F04D7F2C59" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMobileStatusVHType" Multiplicity="0..1" Role="ToRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59">
+                        <PropertyRef Name="LastMileRouteStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59">
+                        <PropertyRef Name="LastMileRouteMobileStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_8C0F18833813941E15A793416E5F7607" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_8C0F18833813941E15A793416E5F7607"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrProcessMaintType" Multiplicity="*" Role="ToRole_assoc_8C0F18833813941E15A793416E5F7607"/>
+            </Association>
+            <Association Name="assoc_E5CF1822BCFD2F1779BE4B58684918D4" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4"/>
+                <End Type="cds_lmd_route_monitor_sd.RouteDriverVHType" Multiplicity="0..1" Role="ToRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4">
+                        <PropertyRef Name="TransportationVehicleDriver"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4">
+                        <PropertyRef Name="TransportationVehicleDriver"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_73A799AC61AF866856D32671AC678C45" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_73A799AC61AF866856D32671AC678C45"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiUIRouteTypeVHType" Multiplicity="0..1" Role="ToRole_assoc_73A799AC61AF866856D32671AC678C45"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_73A799AC61AF866856D32671AC678C45">
+                        <PropertyRef Name="LastMileRouteType"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_73A799AC61AF866856D32671AC678C45">
+                        <PropertyRef Name="LastMileRouteType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_D20D9421F541DA251AC839570BFC5200" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_D20D9421F541DA251AC839570BFC5200"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiUIRteSettlementStatusVHType" Multiplicity="0..1" Role="ToRole_assoc_D20D9421F541DA251AC839570BFC5200"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_D20D9421F541DA251AC839570BFC5200">
+                        <PropertyRef Name="LastMileRouteStatus"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_D20D9421F541DA251AC839570BFC5200">
+                        <PropertyRef Name="LastMileRouteSettlementStatus"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_2DC5951DB240F3701934136CFA3D72B1" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_2DC5951DB240F3701934136CFA3D72B1"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrStatusHistoryTPType" Multiplicity="*" Role="ToRole_assoc_2DC5951DB240F3701934136CFA3D72B1"/>
+            </Association>
+            <Association Name="assoc_3106857BBA58DCEB3D15341EA27ACB4D" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" Multiplicity="1" Role="FromRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D"/>
+                <End Type="cds_lmd_route_monitor_sd.LstMiRteExecOrganizationVHType" Multiplicity="0..1" Role="ToRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D">
+                        <PropertyRef Name="LstMiRteExecutionOrganization"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D">
+                        <PropertyRef Name="LstMiRteExecutionOrganization"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_format" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_format">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_tablecolumns" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_tablecolumns">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_coverpage" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_coverpage">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_signature" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_signature">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_pdfstandard" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_pdfstandard">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Hierarchy" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Hierarchy">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_header" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_header">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="to_Footer" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/>
+                <End Type="cds_lmd_route_monitor_sd.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_to_Footer">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_A5AA780C16797084AD242973AB4B818D" sap:content-version="1">
+                <End Type="cds_lmd_route_monitor_sd.LastMileRouteType" Multiplicity="1" Role="FromRole_assoc_A5AA780C16797084AD242973AB4B818D"/>
+                <End Type="cds_lmd_route_monitor_sd.RouteDriverVHType" Multiplicity="0..1" Role="ToRole_assoc_A5AA780C16797084AD242973AB4B818D"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_A5AA780C16797084AD242973AB4B818D">
+                        <PropertyRef Name="TransportationVehicleDriver"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_A5AA780C16797084AD242973AB4B818D">
+                        <PropertyRef Name="TransportationVehicleDriver"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_lmd_route_monitor_sd_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__Currencies" EntityType="cds_lmd_route_monitor_sd.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_lmd_route_monitor_sd.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_lmd_route_monitor_sd.SAP__DocumentDescription" sap:content-version="1"/>
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_lmd_route_monitor_sd.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_lmd_route_monitor_sd.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_lmd_route_monitor_sd.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_lmd_route_monitor_sd.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_lmd_route_monitor_sd.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__HierarchySet" EntityType="cds_lmd_route_monitor_sd.SAP__Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_lmd_route_monitor_sd.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_lmd_route_monitor_sd.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_lmd_route_monitor_sd.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteMntrProcessMaint" EntityType="cds_lmd_route_monitor_sd.LstMiRteMntrProcessMaintType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteMntrRouteTP" EntityType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteMntrStatusHistoryTP" EntityType="cds_lmd_route_monitor_sd.LstMiRteMntrStatusHistoryTPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRouteApplicationLogTP" EntityType="cds_lmd_route_monitor_sd.LstMiUIRouteApplicationLogTPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CountryVH" EntityType="cds_lmd_route_monitor_sd.I_CountryVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LocationAddressVH" EntityType="cds_lmd_route_monitor_sd.LocationAddressVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="RouteDriverVH" EntityType="cds_lmd_route_monitor_sd.RouteDriverVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LastMileRoute" EntityType="cds_lmd_route_monitor_sd.LastMileRouteType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="RouteLicensePlateVH" EntityType="cds_lmd_route_monitor_sd.RouteLicensePlateVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_LstMiRouteTypeVH" EntityType="cds_lmd_route_monitor_sd.I_LstMiRouteTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteDepartureLocationVH" EntityType="cds_lmd_route_monitor_sd.LstMiRteDepartureLocationVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteExecOrganizationVH" EntityType="cds_lmd_route_monitor_sd.LstMiRteExecOrganizationVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteMobileStatusVH" EntityType="cds_lmd_route_monitor_sd.LstMiRteMobileStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiRteSetlReslnCodeVH" EntityType="cds_lmd_route_monitor_sd.LstMiRteSetlReslnCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRouteCategoryVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRouteCategoryVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRouteStatusActivityVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRouteStatusActivityVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRouteStatusCategoryVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRouteStatusCategoryVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LastMileRteStatusValueHelp" EntityType="cds_lmd_route_monitor_sd.LastMileRteStatusValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRouteTypeVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRouteTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRteLifecycleStatusVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRteLifecycleStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LstMiUIRteSettlementStatusVH" EntityType="cds_lmd_route_monitor_sd.LstMiUIRteSettlementStatusVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_E5CF1822BCFD2F1779BE4B58684918D4" Association="cds_lmd_route_monitor_sd.assoc_E5CF1822BCFD2F1779BE4B58684918D4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4"/>
+                    <End EntitySet="RouteDriverVH" Role="ToRole_assoc_E5CF1822BCFD2F1779BE4B58684918D4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_73A799AC61AF866856D32671AC678C45" Association="cds_lmd_route_monitor_sd.assoc_73A799AC61AF866856D32671AC678C45" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_73A799AC61AF866856D32671AC678C45"/>
+                    <End EntitySet="LstMiUIRouteTypeVH" Role="ToRole_assoc_73A799AC61AF866856D32671AC678C45"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71" Association="cds_lmd_route_monitor_sd.assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrStatusHistoryTP" Role="FromRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71"/>
+                    <End EntitySet="LastMileRteStatusValueHelp" Role="ToRole_assoc_F5CB92C7E40DC2EC2F79A1B9ADA8CF71"/>
+                </AssociationSet>
+                <AssociationSet Name="to_FooterSet" Association="cds_lmd_route_monitor_sd.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
+                    <End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/>
+                </AssociationSet>
+                <AssociationSet Name="to_headerSet" Association="cds_lmd_route_monitor_sd.to_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_header"/>
+                    <End EntitySet="SAP__PDFHeaderSet" Role="ToRole_to_header"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D20D9421F541DA251AC839570BFC5200" Association="cds_lmd_route_monitor_sd.assoc_D20D9421F541DA251AC839570BFC5200" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_D20D9421F541DA251AC839570BFC5200"/>
+                    <End EntitySet="LstMiUIRteSettlementStatusVH" Role="ToRole_assoc_D20D9421F541DA251AC839570BFC5200"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_478BEA44F885DAF8012F937AC737F3A8" Association="cds_lmd_route_monitor_sd.assoc_478BEA44F885DAF8012F937AC737F3A8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrStatusHistoryTP" Role="FromRole_assoc_478BEA44F885DAF8012F937AC737F3A8"/>
+                    <End EntitySet="LstMiUIRouteStatusActivityVH" Role="ToRole_assoc_478BEA44F885DAF8012F937AC737F3A8"/>
+                </AssociationSet>
+                <AssociationSet Name="to_formatSet" Association="cds_lmd_route_monitor_sd.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
+                    <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
+                </AssociationSet>
+                <AssociationSet Name="to_pdfstandardSet" Association="cds_lmd_route_monitor_sd.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/>
+                    <End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_603D6C045FBE8F30831D7FACF7B07F63" Association="cds_lmd_route_monitor_sd.assoc_603D6C045FBE8F30831D7FACF7B07F63" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrStatusHistoryTP" Role="FromRole_assoc_603D6C045FBE8F30831D7FACF7B07F63"/>
+                    <End EntitySet="LstMiUIRouteStatusCategoryVH" Role="ToRole_assoc_603D6C045FBE8F30831D7FACF7B07F63"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2DC5951DB240F3701934136CFA3D72B1" Association="cds_lmd_route_monitor_sd.assoc_2DC5951DB240F3701934136CFA3D72B1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_2DC5951DB240F3701934136CFA3D72B1"/>
+                    <End EntitySet="LstMiRteMntrStatusHistoryTP" Role="ToRole_assoc_2DC5951DB240F3701934136CFA3D72B1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3106857BBA58DCEB3D15341EA27ACB4D" Association="cds_lmd_route_monitor_sd.assoc_3106857BBA58DCEB3D15341EA27ACB4D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D"/>
+                    <End EntitySet="LstMiRteExecOrganizationVH" Role="ToRole_assoc_3106857BBA58DCEB3D15341EA27ACB4D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_13142D8D1D74FA5F0322F1F04D7F2C59" Association="cds_lmd_route_monitor_sd.assoc_13142D8D1D74FA5F0322F1F04D7F2C59" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59"/>
+                    <End EntitySet="LstMiRteMobileStatusVH" Role="ToRole_assoc_13142D8D1D74FA5F0322F1F04D7F2C59"/>
+                </AssociationSet>
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_lmd_route_monitor_sd.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
+                    <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8C0F18833813941E15A793416E5F7607" Association="cds_lmd_route_monitor_sd.assoc_8C0F18833813941E15A793416E5F7607" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_8C0F18833813941E15A793416E5F7607"/>
+                    <End EntitySet="LstMiRteMntrProcessMaint" Role="ToRole_assoc_8C0F18833813941E15A793416E5F7607"/>
+                </AssociationSet>
+                <AssociationSet Name="to_signatureSet" Association="cds_lmd_route_monitor_sd.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
+                    <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A5AA780C16797084AD242973AB4B818D" Association="cds_lmd_route_monitor_sd.assoc_A5AA780C16797084AD242973AB4B818D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LastMileRoute" Role="FromRole_assoc_A5AA780C16797084AD242973AB4B818D"/>
+                    <End EntitySet="RouteDriverVH" Role="ToRole_assoc_A5AA780C16797084AD242973AB4B818D"/>
+                </AssociationSet>
+                <AssociationSet Name="to_coverpageSet" Association="cds_lmd_route_monitor_sd.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
+                    <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306" Association="cds_lmd_route_monitor_sd.assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LstMiRteMntrRouteTP" Role="FromRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306"/>
+                    <End EntitySet="LstMiUIRteLifecycleStatusVH" Role="ToRole_assoc_BF0AC6CF3A5AC7AECB7DACD5A2B77306"/>
+                </AssociationSet>
+                <AssociationSet Name="to_HierarchySet" Association="cds_lmd_route_monitor_sd.to_Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/>
+                    <End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/>
+                </AssociationSet>
+                <FunctionImport Name="RestartLastMileRouteProcess" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrProcessMaintType" EntitySet="LstMiRteMntrProcessMaint" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrProcessMaintType" sap:applicable-path="RestartLastMileRouteProcess_ac">
+                    <Parameter Name="LstMiProcessUUID" Type="Edm.Guid" Mode="In" sap:label="Process Key"/>
+                </FunctionImport>
+                <FunctionImport Name="CancelLastMileRoute" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" EntitySet="LstMiRteMntrRouteTP" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:applicable-path="CancelLastMileRoute_ac">
+                    <Parameter Name="LastMileRouteUUID" Type="Edm.Guid" Mode="In" sap:label="Route UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="DisableManualLstMiRteDataEntry" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" EntitySet="LstMiRteMntrRouteTP" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:applicable-path="DisableManualLstMiRteDataEntry_ac">
+                    <Parameter Name="LastMileRouteUUID" Type="Edm.Guid" Mode="In" sap:label="Route UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="EnableManualLstMiRteDataEntry" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" EntitySet="LstMiRteMntrRouteTP" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:applicable-path="EnableManualLstMiRteDataEntry_ac">
+                    <Parameter Name="LastMileRouteUUID" Type="Edm.Guid" Mode="In" sap:label="Route UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="RepublishLastMileRoute" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" EntitySet="LstMiRteMntrRouteTP" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:applicable-path="RepublishLastMileRoute_ac">
+                    <Parameter Name="LastMileRouteUUID" Type="Edm.Guid" Mode="In" sap:label="Route UUID"/>
+                </FunctionImport>
+                <FunctionImport Name="SetLastMileRouteToSettled" ReturnType="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" EntitySet="LstMiRteMntrRouteTP" m:HttpMethod="POST" sap:action-for="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType" sap:applicable-path="SetLastMileRouteToSettled_ac">
+                    <Parameter Name="LastMileRouteUUID" Type="Edm.Guid" Mode="In" sap:label="Route UUID"/>
+                    <Parameter Name="ResolutionCode" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Settl. Resol. Code"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/TransportationVehicleDriver" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Driver"/>
+                        <PropertyValue Property="CollectionPath" String="RouteDriverVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TransportationVehicleDriver"/>
+                                    <PropertyValue Property="ValueListProperty" String="TransportationVehicleDriver"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="TranspVehicleDriverName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/VehicleLicensePlateNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="License Plate"/>
+                        <PropertyValue Property="CollectionPath" String="RouteLicensePlateVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VehicleLicensePlateNumber"/>
+                                    <PropertyValue Property="ValueListProperty" String="RsceRegistrationNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRoute" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Route ID"/>
+                        <PropertyValue Property="CollectionPath" String="LastMileRoute"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRoute"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRoute"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Route Type"/>
+                        <PropertyValue Property="CollectionPath" String="I_LstMiRouteTypeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteType"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteType_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Route Category"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiUIRouteCategoryVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteCategory_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteLifecycleStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Route Life Cycle Status"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiUIRteLifecycleStatusVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteLifecycleStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteSettlementStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Settlement Status"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiUIRteSettlementStatusVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteSettlementStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteMobileStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Mobile Data Status"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiRteMobileStatusVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteMobileStatus"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteStatus_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LstMiRteExecutionOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Exec. Organization"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiRteExecOrganizationVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LstMiRteExecutionOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="LstMiRteExecutionOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LstMiRteExecOrganizationName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/LastMileRouteDepartureLocation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Departure Location"/>
+                        <PropertyValue Property="CollectionPath" String="LstMiRteDepartureLocationVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LastMileRouteDepartureLocation"/>
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteDepartureLocation"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastMileRouteDepartureLocation_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LocationAddressVHType/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Country/Region Key"/>
+                        <PropertyValue Property="CollectionPath" String="I_CountryVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country"/>
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/TranspOrdArrivalDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiRteMntrRouteTPType/TranspOrdDepartureDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities/LstMiRteMntrProcessMaint" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    RestartLastMileRouteProcess_ac
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    RestartLastMileRouteProcess_ac
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities/LstMiRteMntrRouteTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    CancelLastMileRoute_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    DisableManualLstMiRteDataEntry_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    EnableManualLstMiRteDataEntry_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    RepublishLastMileRoute_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    SetLastMileRouteToSettled_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    TranspOrdDepartureTime
+                                </PropertyPath>
+                                <PropertyPath>
+                                    TranspOrdArrivalTime
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteCategory"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="TranspOrdDepartureDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ExecutionOrganisationVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_LifecycleStatusVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MobileStatusVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ProcessMaintenance"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RouteDriverVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RouteTypeVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SettlementStatusVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_StatusHistory"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>
+                            LastChangeDateTime
+                        </PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    CancelLastMileRoute_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    DisableManualLstMiRteDataEntry_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    EnableManualLstMiRteDataEntry_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    RepublishLastMileRoute_ac
+                                </PropertyPath>
+                                <PropertyPath>
+                                    SetLastMileRouteToSettled_ac
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities/LstMiUIRouteApplicationLogTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRoute"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteLogSubObjectID"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteLogHandleValue"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteLogMsgText"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteLogMsgType"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastMileRouteDocumentType"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>
+                                    LastMileRouteLogHandleValue
+                                </PropertyPath>
+                                <PropertyPath>
+                                    LastMileRouteLogMsgText
+                                </PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities/LastMileRoute" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RouteDriverVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities/LstMiRteMntrStatusHistoryTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RouteStatusVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_StatusActivityVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_StatusCategoryVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LocationAddressVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="adr">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                                    <PropertyValue Property="country" Path="Country"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Address" Qualifier="pref">
+                    <Record>
+                        <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                        <PropertyValue Property="country" Path="Country"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.LstMiUIRouteApplicationLogTPType/LastMileRouteCustomerName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="PersonalData.IsPotentiallySensitive" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.RouteDriverVHType/TranspVehicleDriverName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="PersonalData.IsPotentiallySensitive" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.RouteDriverVHType/FirstName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="PersonalData.IsPotentiallySensitive" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.RouteDriverVHType/LastName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="PersonalData.IsPotentiallySensitive" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.cds_lmd_route_monitor_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="./$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="SAP__MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.SAP__DocumentDescription">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__MyDocumentDescriptions"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.Text" Path="Text"/>
+                <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.AlternateKeys">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Key">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="Name" Path="ExternalCode"/>
+                                        <PropertyValue Property="Alias" String="ExternalCode"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__capabilties.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilties.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/Orientation"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Format/PaperSize"/>
+                                    <PropertyValue Property="AllowedExpressions" String="Multivalue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="../../../../SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27ErrorRecoveryBehaviour%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27PaperSize%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFHeader/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFHeader/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFHeader/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFFooter/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFFooter/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__PDFFooter/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HeaderFooter%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27FontName%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_lmd_route_monitor_sd.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Record>
+                        <PropertyValue Property="Url" String="./$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="SAP__ValueHelpSet?$filter=VALUEHELP%20eq%20%27HorizontalAlignment%27"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+            </Annotations>
+            <atom:link rel="self" href="https://accenture-myconcerto-cgs-sfdfim4n-dev-com-myconcerto-lmd.cfapps.eu10-004.hana.ondemand.com/LMD_ROUTE_MONITOR_SB_UI_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://accenture-myconcerto-cgs-sfdfim4n-dev-com-myconcerto-lmd.cfapps.eu10-004.hana.ondemand.com/LMD_ROUTE_MONITOR_SB_UI_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

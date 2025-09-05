@@ -9,12 +9,6 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"_Type": "Section.Type.ObjectCollection",
-					"_Name": "SectionObjectCollection0",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -22,9 +16,18 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.ObjectCollection",
+					"_Name": "SectionObjectCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"ObjectCells": [
 						{
 							"ObjectCell": {
+								"ContextMenu": {
+									"PerformFirstActionWithFullSwipe": true
+								},
 								"_Type": "ObjectCollection.Type.ObjectCell",
 								"_Name": "ObjectCollectionTypeObjectCell0",
 								"Title": "Title",
@@ -43,9 +46,6 @@
 								"AccessoryType": "None",
 								"PreserveIconStackSpacing": true,
 								"ProgressIndicator": "InProgress",
-								"ContextMenu": {
-									"PerformFirstActionWithFullSwipe": true
-								},
 								"AvatarStack": {
 									"Avatars": [
 										{
@@ -79,7 +79,7 @@
 	"_Name": "Delivery",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar2",
+		"_Name": "ActionBar3",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Delivery"
 	}

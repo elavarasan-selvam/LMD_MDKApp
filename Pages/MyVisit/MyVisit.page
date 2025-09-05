@@ -9,16 +9,6 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-						"EntitySet": "Routes"
-					},
-					"_Name": "SectionObjectCollection0",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -26,46 +16,36 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_ROUTE_MONITOR_SB_UI_V2.service",
+						"EntitySet": "LocationAddressVH"
+					},
+					"_Name": "SectionObjectCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Title",
-						"Tags": [
-							{
-								"Text": "tag"
-							}
-						],
-						"Subhead": "Subhead",
-						"Footnote": "Footnote",
-						"Description": "Description",
+						"Title": "Warehouse",
+						"Footnote": "{CityName}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "Status",
-						"SubstatusText": "Substatus",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
 						},
 						"AvatarStack": {
-							"Avatars": [
-								{
-									"Image": "sap-icon://customer",
-									"ImageText": ""
-								}
-							],
+							"Avatars": [],
 							"ImageIsCircular": true,
 							"ImageHasBorder": false
 						},
 						"AvatarGrid": {
-							"Avatars": [
-								{
-									"Image": "sap-icon://customer",
-									"ImageText": ""
-								}
-							],
+							"Avatars": [],
 							"ImageIsCircular": true
 						},
 						"_Type": "ObjectCollection.Type.ObjectCell"
@@ -119,16 +99,17 @@
 					"Cards": [
 						{
 							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard4",
+							"_Name": "ObjectCardCollectionTypeCard0",
 							"Visible": true,
 							"Title": "Delivery",
 							"Subhead": "Items :",
-							"Footnote": "Open",
+							"Footnote": "{Country}",
 							"DetailImage": "sap-icon://shipping-status",
 							"DetailImageIsCircular": false,
 							"Description": "Check and confirm the delivery of ordered goods",
 							"PrimaryAction": {
 								"_Type": "ObjectCard.Type.ActionItem",
+								"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
 								"Title": "Start",
 								"Visible": true
 							}
@@ -147,7 +128,7 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection2",
+					"_Name": "SectionObjectCardCollection0",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -155,11 +136,10 @@
 					"Cards": [
 						{
 							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard5",
+							"_Name": "ObjectCardCollectionTypeCard1",
 							"Visible": true,
 							"Title": "Return",
-							"Subhead": "Items :",
-							"Footnote": "Open",
+							"Footnote": "Open ",
 							"DetailImage": "sap-icon://journey-change",
 							"DetailImageIsCircular": false,
 							"Description": "No planned returns to collect.",
@@ -177,12 +157,31 @@
 			]
 		}
 	],
+	"DesignTimeTarget": {
+		"Service": "/LMD_MDKApp/Services/LMD_ROUTE_MONITOR_SB_UI_V2.service"
+	},
 	"_Type": "Page",
-	"_Name": "MyVisit",
+	"_Name": "Visit",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar1",
+		"_Name": "ActionBar14",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
+	},
+	"FioriToolbar": {
+		"_Type": "Control.Type.FioriToolbar",
+		"_Name": "FioriToolbar0",
+		"Items": [
+			{
+				"_Type": "FioriToolbarItem.Type.Button",
+				"_Name": "ToolbarItem0",
+				"Visible": true,
+				"Title": "Complete Checkout",
+				"Enabled": false,
+				"ButtonType": "Primary",
+				"Semantic": "Tint",
+				"ImagePosition": "Leading"
+			}
+		]
 	}
 }
