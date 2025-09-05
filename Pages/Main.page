@@ -63,32 +63,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.KPISection",
-					"_Name": "SectionKPISection0",
-					"Visible": true,
-					"KPIItems": [
-						{
-							"_Name": "KPIItem0",
-							"CaptionLabel": "Progress",
-							"MetricItems": [
-								{
-									"Value": "5/10",
-									"_Name": "KPIItem0MetricItem0"
-								}
-							],
-							"ShowProgress": true,
-							"Progress": 0.5
-						}
-					]
-				},
-				{
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
@@ -107,11 +81,12 @@
 					"Card": {
 						"Visible": true,
 						"Title": "{StopType}",
+						"Subhead": "Time ",
 						"DetailImageIsCircular": false,
-						"Description": "{RouteUUID}",
+						"Description": "/LMD_MDKApp/Rules/GetStopInfo.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
-							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToStartCheckout.action",
+							"OnPress": "/LMD_MDKApp/Rules/NavToStartStopTypes/NavigateBasedOnStopType.js",
 							"Title": "{StopType}",
 							"Visible": true
 						},

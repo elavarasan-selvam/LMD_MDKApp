@@ -8,6 +8,7 @@
         },
         "right": {
             "visible": true
-        }
+        },
+        "device": "tablet"
     }
 }

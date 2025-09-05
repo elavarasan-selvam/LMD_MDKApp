@@ -1,12 +1,5 @@
 {
-    "DestinationName": "DEST_SAMLMD_PPROP",
-    "OfflineEnabled": true,
-    "LanguageURLParam": "",
-    "OnlineOptions": {},
-    "OfflineOptions": {
-	"StoreParameters": {}
-},
-    "PathSuffix": "",
-    "SourceType": "Mobile",
-    "ServiceUrl":""
+	"DestinationName": "DEST_SAMLMD_PPROP",
+	"OfflineEnabled": true,
+	"SourceType": "Mobile"
 }

@@ -32,7 +32,8 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Warehouse",
+						"Title": "Warehouse: {DepartureLocationID}",
+						"Subhead": "Time",
 						"Footnote": "My Truck:  {VehicleID}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
@@ -92,30 +93,36 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection1",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+					},
+					"_Name": "SectionObjectCardCollection2",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"Cards": [
-						{
-							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard0",
-							"Visible": true,
-							"Title": "Truck Load",
-							"Subhead": "Items :",
-							"Footnote": "Open",
-							"DetailImage": "sap-icon://shipping-status",
-							"DetailImageIsCircular": false,
-							"Description": "Check and confirm your truck load.",
-							"PrimaryAction": {
-								"_Type": "ObjectCard.Type.ActionItem",
-								"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
-								"Title": "Start",
-								"Visible": true
-							}
-						}
-					],
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Truck Load",
+						"Subhead": "/LMD_MDKApp/Rules/GetItemCountText.js",
+						"Footnote": "/LMD_MDKApp/Rules/GetTruckLoadStatus.js",
+						"DetailImage": "sap-icon://shipping-status",
+						"DetailImageIsCircular": false,
+						"Description": "Check and confirm your truck load.",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -129,28 +136,35 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection0",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "Stops",
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+					},
+					"_Name": "SectionObjectCardCollection3",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"Cards": [
-						{
-							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard1",
-							"Visible": true,
-							"Title": "Truck Info",
-							"Footnote": "Open ",
-							"DetailImage": "sap-icon://time-account",
-							"DetailImageIsCircular": false,
-							"Description": "Record the mileage of your truck.",
-							"PrimaryAction": {
-								"_Type": "ObjectCard.Type.ActionItem",
-								"Title": "Start",
-								"Visible": true
-							}
-						}
-					],
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Truck Info",
+						"Footnote": "open",
+						"DetailImage": "sap-icon://time-account",
+						"DetailImageIsCircular": false,
+						"Description": "Record the mileage of your truck.",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckInfo.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -162,7 +176,7 @@
 	"_Name": "Checkout",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar4",
+		"_Name": "ActionBar14",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
@@ -175,7 +189,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Checkout",
-				"Enabled": false,
+				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
 				"ImagePosition": "Leading"
