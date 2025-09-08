@@ -174,9 +174,10 @@
 	],
 	"_Type": "Page",
 	"_Name": "Checkout",
+	"OnReturning": "/LMD_MDKApp/Rules/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar14",
+		"_Name": "ActionBar15",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

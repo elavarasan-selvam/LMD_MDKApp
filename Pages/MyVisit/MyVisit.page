@@ -17,10 +17,6 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/LMD_ROUTE_MONITOR_SB_UI_V2.service",
-						"EntitySet": "LocationAddressVH"
-					},
 					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
@@ -32,7 +28,6 @@
 					},
 					"ObjectCell": {
 						"Title": "Warehouse",
-						"Footnote": "{CityName}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -103,7 +98,6 @@
 							"Visible": true,
 							"Title": "Delivery",
 							"Subhead": "Items :",
-							"Footnote": "{Country}",
 							"DetailImage": "sap-icon://shipping-status",
 							"DetailImageIsCircular": false,
 							"Description": "Check and confirm the delivery of ordered goods",
@@ -164,7 +158,7 @@
 	"_Name": "Visit",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar14",
+		"_Name": "ActionBar16",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

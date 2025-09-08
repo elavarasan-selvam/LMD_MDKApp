@@ -162,7 +162,7 @@
 	"_Name": "Check-In",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar7",
+		"_Name": "ActionBar8",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In",
 		"OverflowIcon": "sap-icon://sys-cancel",
@@ -177,7 +177,6 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Check-In",
-				"OnPress": "/LMD_MDKApp/Rules/KPI_Progress/OnCheckin.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Normal",

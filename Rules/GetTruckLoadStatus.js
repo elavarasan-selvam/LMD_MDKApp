@@ -1,5 +1,13 @@
 export default function GetTruckLoadStatus(context) {
-    // read client data flag
-    let isConfirmed = context.getPageProxy().getClientData().TruckLoadConfirmed;
-    return isConfirmed ? "Done" : "Open";   // default "Open", changes to "Done"
+    try {
+        // Read the confirmation flag
+        let isConfirmed = context.getAppClientData().TruckLoadConfirmed;
+        if (isConfirmed === true) {
+            return "Done";   // only after confirmation
+        }
+        return "Open";       // default before confirmation
+    } catch (e) {
+        context.getLogger().error("GetTruckLoadStatus error: " + e);
+        return "Open";       // fallback
+    }
 }

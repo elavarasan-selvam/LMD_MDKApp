@@ -1,7 +1,6 @@
 export default function ConfirmTruckLoadAndNavigate(context) {
-    // set client data flag before navigation
-    context.getPageProxy().getClientData().TruckLoadConfirmed = true;
+    context.getAppClientData().TruckLoadConfirmed = true;
 
-    // now execute your navigation action
+    // Navigate back to Checkout
     return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/NavBackToCheckoutFromConfirmTruckInfo.action');
 }

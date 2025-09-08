@@ -67,7 +67,7 @@
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Stops",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=3"
+						"QueryOptions": "$orderby=RouteUUID desc, Sequence asc&$top=3"
 					},
 					"_Name": "SectionObjectCardCollection0",
 					"Visible": true,
