@@ -110,16 +110,16 @@
 					"Card": {
 						"Visible": true,
 						"Title": "Truck Load",
-						"Subhead": "/LMD_MDKApp/Rules/GetItemCountText.js",
-						"Footnote": "/LMD_MDKApp/Rules/GetTruckLoadStatus.js",
+						"Subhead": "/LMD_MDKApp/Rules/Checkout/GetItemCountText.js",
+						"Footnote": "/LMD_MDKApp/Rules/Checkout/GetTruckLoadStatus.js",
 						"DetailImage": "sap-icon://shipping-status",
 						"DetailImageIsCircular": false,
-						"Description": "Check and confirm your truck load.",
+						"Description": "/LMD_MDKApp/Rules/Checkout/GetTruckLoadDescription.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
 							"Title": "Start",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Checkout/IsStartButtonVisibleforTruckLoad.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -153,15 +153,15 @@
 					"Card": {
 						"Visible": true,
 						"Title": "Truck Info",
-						"Footnote": "open",
+						"Footnote": "/LMD_MDKApp/Rules/Checkout/GetTruckInfoStatus.js",
 						"DetailImage": "sap-icon://time-account",
 						"DetailImageIsCircular": false,
-						"Description": "Record the mileage of your truck.",
+						"Description": "/LMD_MDKApp/Rules/Checkout/GetTruckInfoDescription.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckInfo.action",
 							"Title": "Start",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Checkout/IsStartBttonVisibleforTruckInfo.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -174,10 +174,11 @@
 	],
 	"_Type": "Page",
 	"_Name": "Checkout",
-	"OnReturning": "/LMD_MDKApp/Rules/OnReturnRefresh.js",
+	"OnLoaded": "/LMD_MDKApp/Rules/Checkout/InitializeTruckLoadandTruckInfoFlag.js",
+	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar15",
+		"_Name": "ActionBar16",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
@@ -190,7 +191,8 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Checkout",
-				"Enabled": true,
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToMainPagefromCompleteCheckout.action",
+				"Enabled": "/LMD_MDKApp/Rules/Checkout/CompleteCheckoutButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
 				"ImagePosition": "Leading"

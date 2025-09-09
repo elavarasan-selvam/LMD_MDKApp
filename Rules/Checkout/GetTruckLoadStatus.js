@@ -7,7 +7,7 @@ export default function GetTruckLoadStatus(context) {
         }
         return "Open";       // default before confirmation
     } catch (e) {
-        context.getLogger().error("GetTruckLoadStatus error: " + e);
+        context.getLogger().error("GetTruckInfoStatus error: " + e);
         return "Open";       // fallback
     }
 }

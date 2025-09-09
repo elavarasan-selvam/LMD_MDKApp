@@ -83,10 +83,10 @@
 						"Title": "{StopType}",
 						"Subhead": "Time ",
 						"DetailImageIsCircular": false,
-						"Description": "/LMD_MDKApp/Rules/GetStopInfo.js",
+						"Description": "/LMD_MDKApp/Rules/Main/GetStopInfo.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
-							"OnPress": "/LMD_MDKApp/Rules/NavToStartStopTypes/NavigateBasedOnStopType.js",
+							"OnPress": "/LMD_MDKApp/Rules/Main/NavigateBasedOnStopType.js",
 							"Title": "{StopType}",
 							"Visible": true
 						},

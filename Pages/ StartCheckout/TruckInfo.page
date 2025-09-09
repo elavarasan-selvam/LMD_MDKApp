@@ -1,13 +1,14 @@
 {
 	"Controls": [
 		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
 			"_Type": "Control.Type.SectionedTable",
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"_Type": "Section.Type.Image",
-					"_Name": "SectionImage0",
-					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
@@ -18,6 +19,9 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.Image",
+					"_Name": "SectionImage0",
+					"Visible": true,
 					"Image": "/LMD_MDKApp/Images/Odometer.png",
 					"Width": 300,
 					"Height": 300,
@@ -25,10 +29,6 @@
 					"ContentMode": "ScaleAspectFit"
 				},
 				{
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -36,8 +36,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell0",
 					"Controls": [
 						{
 							"_Type": "Control.Type.FormCell.Label",
@@ -50,13 +48,15 @@
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
-				},
-				{
+					},
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -64,17 +64,15 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell1",
 					"Controls": [
 						{
+							"Validation": {
+								"Visible": true
+							},
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty0",
 							"IsVisible": true,
 							"Separator": true,
-							"Validation": {
-								"Visible": true
-							},
 							"Caption": "Odometer Reading at Checkout*",
 							"PlaceHolder": "Enter Odometer Reading",
 							"KeyboardType": "Number",
@@ -84,20 +82,22 @@
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell1"
 				}
-			],
-			"FilterFeedbackBar": {
-				"ShowAllFilters": false,
-				"_Type": "Control.Type.FilterFeedbackBar"
-			}
+			]
 		}
 	],
 	"_Type": "Page",
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar1",
+		"_Name": "ActionBar3",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},
@@ -110,7 +110,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Truck Info",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavBackToCheckoutFromConfirmTruckInfo.action",
+				"OnPress": "/LMD_MDKApp/Rules/Checkout/TruckInfo/ConfirmTruckInfoAndNavigate.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
