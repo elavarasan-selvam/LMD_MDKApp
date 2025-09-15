@@ -32,7 +32,7 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Product Description",
+						"Title": "Product Description ",
 						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
 						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
@@ -68,7 +68,7 @@
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar9",
+		"_Name": "ActionBar11",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},
@@ -81,7 +81,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Truck Load",
-				"OnPress": "/LMD_MDKApp/Rules/Checkout/TruckLoad/ConfirmTruckLoadAndNavigate.js",
+				"OnPress": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/ConfirmCheckinTruckLoadAndNavigate.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Normal",

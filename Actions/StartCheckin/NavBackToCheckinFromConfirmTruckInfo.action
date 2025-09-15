@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavBackToCheckoutFromConfirmTruckInfo"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/Checkin.page"
+}

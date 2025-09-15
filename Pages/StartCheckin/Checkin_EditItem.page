@@ -33,7 +33,7 @@
 					},
 					"Card": {
 						"Visible": true,
-						"Title": "Product Description ",
+						"Title": "{ProductID}",
 						"Subhead": "{ProductID}",
 						"DetailImage": "res://mdk_logo.png",
 						"DetailImageIsCircular": false,
@@ -59,7 +59,7 @@
 							"_Name": "FormCellSimpleProperty0",
 							"IsVisible": true,
 							"Separator": true,
-							"Caption": "Loaded :",
+							"Caption": "Unloaded :",
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
