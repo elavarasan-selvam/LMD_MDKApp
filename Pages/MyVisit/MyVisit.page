@@ -17,6 +17,11 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+					},
 					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
@@ -27,7 +32,9 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Warehouse",
+						"Title": "--",
+						"Subhead": "City Name - Postal Code - Country",
+						"Footnote": "Start Time",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -86,29 +93,36 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection1",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+					},
+					"_Name": "SectionObjectCardCollection2",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"Cards": [
-						{
-							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard0",
-							"Visible": true,
-							"Title": "Delivery",
-							"Subhead": "Items :",
-							"DetailImage": "sap-icon://shipping-status",
-							"DetailImageIsCircular": false,
-							"Description": "Check and confirm the delivery of ordered goods",
-							"PrimaryAction": {
-								"_Type": "ObjectCard.Type.ActionItem",
-								"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoad.action",
-								"Title": "Start",
-								"Visible": true
-							}
-						}
-					],
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Delivery",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/GetItemsCountOfVisit.js",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/Delivery/GetDeliveryStatus.js",
+						"DetailImage": "sap-icon://shipping-status",
+						"DetailImageIsCircular": false,
+						"Description": "/LMD_MDKApp/Rules/Visit/GetDeliveryDescription.js",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitDeliveryPage.action",
+							"Title": "Start",
+							"Visible": "/LMD_MDKApp/Rules/Visit/IsStartButtonVisibleForDelivery.js"
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -122,28 +136,41 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection0",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+					},
+					"_Name": "SectionObjectCardCollection3",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"Cards": [
-						{
-							"_Type": "ObjectCardCollection.Type.Card",
-							"_Name": "ObjectCardCollectionTypeCard1",
-							"Visible": true,
-							"Title": "Return",
-							"Footnote": "Open ",
-							"DetailImage": "sap-icon://journey-change",
-							"DetailImageIsCircular": false,
-							"Description": "No planned returns to collect.",
-							"PrimaryAction": {
-								"_Type": "ObjectCard.Type.ActionItem",
-								"Title": "Start",
-								"Visible": true
-							}
-						}
-					],
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Returns",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItems.js",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/GetReturnStatus.js",
+						"DetailImage": "sap-icon://reset",
+						"DetailImageIsCircular": false,
+						"Description": "/LMD_MDKApp/Rules/Visit/Return/GetReturnDescription.js",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/NavToReturnItemPage.action",
+							"Title": "Start",
+							"Visible": "/LMD_MDKApp/Rules/Visit/IsStartButtonVisibleForReturn.js"
+						},
+						"SecondaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"Title": "Confirm",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -151,14 +178,12 @@
 			]
 		}
 	],
-	"DesignTimeTarget": {
-		"Service": "/LMD_MDKApp/Services/LMD_ROUTE_MONITOR_SB_UI_V2.service"
-	},
 	"_Type": "Page",
 	"_Name": "Visit",
+	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar16",
+		"_Name": "ActionBar26",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
@@ -170,8 +195,9 @@
 				"_Type": "FioriToolbarItem.Type.Button",
 				"_Name": "ToolbarItem0",
 				"Visible": true,
-				"Title": "Complete Checkout",
-				"Enabled": false,
+				"Title": "Complete Visit",
+				"OnPress": "/LMD_MDKApp/Actions/NavToMainPagefromMyVisitPage.action",
+				"Enabled": "/LMD_MDKApp/Rules/Visit/CompleteVisitButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
 				"ImagePosition": "Leading"

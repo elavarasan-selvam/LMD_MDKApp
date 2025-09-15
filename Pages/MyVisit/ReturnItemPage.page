@@ -22,7 +22,7 @@
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
-					"_Name": "SectionObjectCollection3",
+					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -32,25 +32,31 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "{ProductID}",
-						"Subhead": "{ProductID}",
-						"Description": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItems.js",
+						"Title": "Object Cell",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
-						"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToDeliveryEditItemPage.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
 						},
 						"AvatarStack": {
-							"Avatars": [],
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
 							"ImageIsCircular": true,
 							"ImageHasBorder": false
 						},
 						"AvatarGrid": {
-							"Avatars": [],
+							"Avatars": [
+								{
+									"Image": "sap-icon://customer",
+									"ImageText": ""
+								}
+							],
 							"ImageIsCircular": true
 						},
 						"_Type": "ObjectCollection.Type.ObjectCell"
@@ -59,19 +65,26 @@
 						"NumberOfColumns": 2
 					}
 				}
-			],
-			"LoadingIndicator": {
-				"Enabled": false
-			}
+			]
 		}
 	],
 	"_Type": "Page",
-	"_Name": "Delivery",
+	"_Name": "ReturnItemPage",
 	"ActionBar": {
-		"Items": [],
-		"_Name": "ActionBar13",
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Add",
+				"SystemItem": "Add",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true
+			}
+		],
+		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Delivery"
+		"Caption": "Returns"
 	},
 	"FioriToolbar": {
 		"_Type": "Control.Type.FioriToolbar",
@@ -81,11 +94,11 @@
 				"_Type": "FioriToolbarItem.Type.Button",
 				"_Name": "ToolbarItem0",
 				"Visible": true,
-				"Title": "Confirm Delivery",
-				"OnPress": "/LMD_MDKApp/Rules/ConfirmVisitDeliveryAndNavigate.js",
+				"Title": "Confirm Returns",
+				"OnPress": "/LMD_MDKApp/Rules/ConfirmVisitReturnAndNavigate.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
-				"Semantic": "Normal",
+				"Semantic": "Tint",
 				"ImagePosition": "Leading"
 			}
 		]

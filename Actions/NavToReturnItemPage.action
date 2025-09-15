@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToReturnItemPage"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/ReturnItemPage.page"
+}

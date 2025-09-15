@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavBackToMyVisitFromConfirmDelivered"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MyVisit.page"
+}

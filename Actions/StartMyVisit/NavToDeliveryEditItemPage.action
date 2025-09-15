@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToDeliveryEditItemPage"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MyVisit_Edit_Item.page"
+}
