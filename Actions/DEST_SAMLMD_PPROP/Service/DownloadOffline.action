@@ -1,122 +1,115 @@
 {
-    "Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-    "DefiningRequests": [{
-            "Name": "Attachments",
-            "Query": "Attachments"
-        },
-        {
-            "Name": "BankDeposits",
-            "Query": "BankDeposits"
-        },
-        {
-            "Name": "CociBehaviors",
-            "Query": "CociBehaviors"
-        },
-        {
-            "Name": "COCIPayments",
-            "Query": "COCIPayments"
-        },
-        {
-            "Name": "CollectionClearings",
-            "Query": "CollectionClearings"
-        },
-        {
-            "Name": "CollectionPayments",
-            "Query": "CollectionPayments"
-        },
-        {
-            "Name": "Collections",
-            "Query": "Collections"
-        },
-        {
-            "Name": "Contents",
-            "Query": "Contents"
-        },
-        {
-            "Name": "DepositAccountReferences",
-            "Query": "DepositAccountReferences"
-        },
-        {
-            "Name": "DocumentItemConditions",
-            "Query": "DocumentItemConditions"
-        },
-        {
-            "Name": "DocumentItems",
-            "Query": "DocumentItems"
-        },
-        {
-            "Name": "Documents",
-            "Query": "Documents"
-        },
-        {
-            "Name": "DriverLanguages",
-            "Query": "DriverLanguages"
-        },
-        {
-            "Name": "InventoryGroups",
-            "Query": "InventoryGroups"
-        },
-        {
-            "Name": "MaterialTypeInventoryGroups",
-            "Query": "MaterialTypeInventoryGroups"
-        },
-        {
-            "Name": "MobileClientSynchronizationSessions",
-            "Query": "MobileClientSynchronizationSessions"
-        },
-        {
-            "Name": "MobileDocumentTypes",
-            "Query": "MobileDocumentTypes"
-        },
-        {
-            "Name": "MobileNumberRanges",
-            "Query": "MobileNumberRanges"
-        },
-        {
-            "Name": "MobileSalesDocumentItems",
-            "Query": "MobileSalesDocumentItems"
-        },
-        {
-            "Name": "MobileSalesDocuments",
-            "Query": "MobileSalesDocuments"
-        },
-        {
-            "Name": "OpenItems",
-            "Query": "OpenItems"
-        },
-        {
-            "Name": "ReasonCodes",
-            "Query": "ReasonCodes"
-        },
-        {
-            "Name": "ReasonCodeUsages",
-            "Query": "ReasonCodeUsages"
-        },
-        {
-            "Name": "Routes",
-            "Query": "Routes"
-        },
-        {
-            "Name": "RouteTypes",
-            "Query": "RouteTypes"
-        },
-        {
-            "Name": "ServiceTasks",
-            "Query": "ServiceTasks"
-        },
-        {
-            "Name": "Stops",
-            "Query": "Stops"
-        },
-        {
-            "Name": "Texts",
-            "Query": "Texts"
-        }
-    ],
-    "_Type": "Action.Type.OfflineOData.Download",
-    "ActionResult": {
-        "_Name": "sync"
-    },
-    "OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
-    "OnSuccess": "/LMD_MDKApp/Rules/DEST_SAMLMD_PPROP/ErrorArchive_CheckForSyncError.js"
+	"_Type": "Action.Type.OfflineOData.Download",
+	"ActionResult": {
+		"_Name": "sync"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/DEST_SAMLMD_PPROP/ErrorArchive_CheckForSyncError.js",
+	"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+	"DefiningRequests": [
+		{
+			"Name": "Attachments",
+			"Query": "Attachments"
+		},
+		{
+			"Name": "BankDeposits",
+			"Query": "BankDeposits"
+		},
+		{
+			"Name": "CociBehaviors",
+			"Query": "CociBehaviors"
+		},
+		{
+			"Name": "COCIPayments",
+			"Query": "COCIPayments"
+		},
+		{
+			"Name": "CollectionClearings",
+			"Query": "CollectionClearings"
+		},
+		{
+			"Name": "CollectionPayments",
+			"Query": "CollectionPayments"
+		},
+		{
+			"Name": "Collections",
+			"Query": "Collections"
+		},
+		{
+			"Name": "Contents",
+			"Query": "Contents"
+		},
+		{
+			"Name": "DepositAccountReferences",
+			"Query": "DepositAccountReferences"
+		},
+		{
+			"Name": "DocumentItemConditions",
+			"Query": "DocumentItemConditions"
+		},
+		{
+			"Name": "DocumentItems",
+			"Query": "DocumentItems"
+		},
+		{
+			"Name": "Documents",
+			"Query": "Documents"
+		},
+		{
+			"Name": "DriverLanguages",
+			"Query": "DriverLanguages"
+		},
+		{
+			"Name": "InventoryGroups",
+			"Query": "InventoryGroups"
+		},
+		{
+			"Name": "MaterialTypeInventoryGroups",
+			"Query": "MaterialTypeInventoryGroups"
+		},
+		{
+			"Name": "MobileDocumentTypes",
+			"Query": "MobileDocumentTypes"
+		},
+		{
+			"Name": "MobileSalesDocumentItems",
+			"Query": "MobileSalesDocumentItems"
+		},
+		{
+			"Name": "MobileSalesDocuments",
+			"Query": "MobileSalesDocuments"
+		},
+		{
+			"Name": "OpenItems",
+			"Query": "OpenItems"
+		},
+		{
+			"Name": "ReasonCodes",
+			"Query": "ReasonCodes"
+		},
+		{
+			"Name": "ReasonCodeUsages",
+			"Query": "ReasonCodeUsages"
+		},
+		{
+			"Name": "Routes",
+			"Query": "Routes"
+		},
+		{
+			"Name": "RouteTypes",
+			"Query": "RouteTypes"
+		},
+		{
+			"Name": "ServiceTasks",
+			"Query": "ServiceTasks"
+		},
+		{
+			"Name": "Stops",
+			"Query": "Stops"
+		},
+		{
+			"Name": "Texts",
+			"Query": "Texts"
+		}
+	]
 }

@@ -68,16 +68,8 @@
 			"Query": "MaterialTypeInventoryGroups"
 		},
 		{
-			"Name": "MobileClientSynchronizationSessions",
-			"Query": "MobileClientSynchronizationSessions"
-		},
-		{
 			"Name": "MobileDocumentTypes",
 			"Query": "MobileDocumentTypes"
-		},
-		{
-			"Name": "MobileNumberRanges",
-			"Query": "MobileNumberRanges"
 		},
 		{
 			"Name": "MobileSalesDocumentItems",
