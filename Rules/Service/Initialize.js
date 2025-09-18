@@ -7,10 +7,12 @@ export default function Initialize(context) {
     // let _API_LASTMILEVISITLIST = context.executeAction('/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/InitializeOffline.action');
     // let _API_LASTMILERELOADREQUEST = context.executeAction('/LMD_MDKApp/Actions/API_LASTMILERELOADREQUEST/Service/InitializeOffline.action');
     let _DEST_SAMLMD_PPROP = context.executeAction('/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/InitializeOffline.action');
-
+    //Added LMD_MA_SMA Service
+    let _DEST_SAMSMA_PPROP = context.executeAction('/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/InitializeOffline.action');
+    
     //You can add more service initialize actions here
     // Removed _API_LASTMILEVISITLIST and _API_LASTMILERELOADREQUEST 
-    return Promise.all([_DEST_SAMLMD_PPROP]).then(() => {
+    return Promise.all([_DEST_SAMLMD_PPROP,_DEST_SAMSMA_PPROP]).then(() => {
         // After Initializing the DB connections
 
         // Display successful initialization  message to the user

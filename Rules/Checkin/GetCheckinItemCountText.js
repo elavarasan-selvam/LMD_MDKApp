@@ -11,8 +11,6 @@ export default function GetCheckinItemCountText(context) {
         let count = 0;
         if (result && result.length > 0) {
             count = result.getItem(0).ItemCount;
-            //testing whether confirm button activate
-            //count=0;
         }
 
         // set flag here for the Start/Confirm Button

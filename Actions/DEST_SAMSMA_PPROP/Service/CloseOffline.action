@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.OfflineOData.Close",
+	"ActionResult": {
+		"_Name": "close"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/CloseOfflineFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/CloseOfflineSuccessMessage.action",
+	"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+	"Force": true
+}
