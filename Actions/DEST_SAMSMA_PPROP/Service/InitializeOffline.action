@@ -53,10 +53,6 @@
 			"Query": "DocumentItems"
 		},
 		{
-			"Name": "Documents",
-			"Query": "Documents"
-		},
-		{
 			"Name": "DriverLanguages",
 			"Query": "DriverLanguages"
 		},
@@ -67,14 +63,6 @@
 		{
 			"Name": "MaterialTypeInventoryGroups",
 			"Query": "MaterialTypeInventoryGroups"
-		},
-		{
-			"Name": "MobileDocumentTypes",
-			"Query": "MobileDocumentTypes"
-		},
-		{
-			"Name": "MobileSalesDocumentItems",
-			"Query": "MobileSalesDocumentItems"
 		},
 		{
 			"Name": "MobileSalesDocuments",
@@ -148,18 +136,8 @@
 			"AutomaticallyRetrievesStreams": false
 		},
 		{
-			"Name": "SalesOrderTypes",
-			"Query": "SalesOrderTypes",
-			"AutomaticallyRetrievesStreams": false
-		},
-		{
 			"Name": "Products",
 			"Query": "Products",
-			"AutomaticallyRetrievesStreams": false
-		},
-		{
-			"Name": "ProductSales",
-			"Query": "ProductSales",
 			"AutomaticallyRetrievesStreams": false
 		},
 		{
@@ -175,21 +153,6 @@
 		{
 			"Name": "Customers",
 			"Query": "Customers",
-			"AutomaticallyRetrievesStreams": false
-		},
-		{
-			"Name": "CustomerBillingData",
-			"Query": "CustomerBillingData",
-			"AutomaticallyRetrievesStreams": false
-		},
-		{
-			"Name": "CustomerPaymentMethods",
-			"Query": "CustomerPaymentMethods",
-			"AutomaticallyRetrievesStreams": false
-		},
-		{
-			"Name": "CustomerSalesData",
-			"Query": "CustomerSalesData",
 			"AutomaticallyRetrievesStreams": false
 		},
 		{

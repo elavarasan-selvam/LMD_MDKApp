@@ -10,7 +10,7 @@
 			"Sections": [
 				{
 					"Separators": {
-						"TopSectionSeparator": false,
+						"TopSectionSeparator": true,
 						"BottomSectionSeparator": true,
 						"HeaderSeparator": true,
 						"FooterSeparator": true,
@@ -18,11 +18,11 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"EntitySet": "Addresses",
+						"QueryOptions": "$filter=AddressNumber eq '{AddressID}'&$select=AddressNumber,Altitude,Building,City,Country,CountryVersionFlag,FirstName,Floor,HouseNumber,LastName,Latitutde,LocalizedAddress,Longitude,Name,PersonalAddress,PostalCode,Region,RoomNumber,Street,TelephoneExtension,TelephoneNumber"
 					},
-					"_Name": "SectionObjectCollection0",
+					"_Name": "SectionObjectCollection1",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -32,28 +32,17 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "--",
-						"Subhead": "City Name - Postal Code - Country",
-						"Footnote": "Start Time",
-						"DisplayDescriptionInMobile": true,
+						"Title": "{City} {PostalCode} {Country}",
+						"Subhead": "/LMD_MDKApp/Rules/Main/GetStopTime.js",
 						"AccessoryType": "None",
-						"PreserveIconStackSpacing": true,
+						"PreserveIconStackSpacing": false,
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
-						},
-						"AvatarStack": {
-							"Avatars": [],
-							"ImageIsCircular": true,
-							"ImageHasBorder": false
-						},
-						"AvatarGrid": {
-							"Avatars": [],
-							"ImageIsCircular": true
 						},
 						"_Type": "ObjectCollection.Type.ObjectCell"
 					},
 					"Layout": {
-						"NumberOfColumns": 2
+						"NumberOfColumns": 1
 					}
 				},
 				{
@@ -94,7 +83,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -137,7 +126,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -183,7 +172,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar26",
+		"_Name": "ActionBar32",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

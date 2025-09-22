@@ -18,9 +18,9 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Routes",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+						"QueryOptions": "$orderby=RouteUUID asc&$top=1"
 					},
 					"_Name": "SectionObjectCollection1",
 					"Visible": true,
@@ -65,7 +65,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Stops",
 						"QueryOptions": "$orderby=RouteUUID desc, Sequence asc&$top=3"
 					},
@@ -81,7 +81,7 @@
 					"Card": {
 						"Visible": true,
 						"Title": "{StopType}",
-						"Subhead": "Time ",
+						"Subhead": "/LMD_MDKApp/Rules/Main/GetStopTime.js",
 						"DetailImageIsCircular": false,
 						"Description": "/LMD_MDKApp/Rules/Main/GetStopInfo.js",
 						"PrimaryAction": {

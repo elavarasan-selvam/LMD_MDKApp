@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -33,7 +33,7 @@
 					},
 					"ObjectCell": {
 						"Title": "Warehouse: {DepartureLocationID}",
-						"Subhead": "Time",
+						"Subhead": "/LMD_MDKApp/Rules/Main/GetStopTime.js",
 						"Footnote": "My Truck:  {VehicleID}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
@@ -94,7 +94,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -137,7 +137,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Stops",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -178,7 +178,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar16",
+		"_Name": "ActionBar18",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
@@ -191,7 +191,6 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Checkout",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToMainPagefromCompleteCheckout.action",
 				"Enabled": "/LMD_MDKApp/Rules/Checkout/CompleteCheckoutButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
