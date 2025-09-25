@@ -1,8 +1,8 @@
 {
-    "Message": "Upload in progress...",
-    "CompletionMessage": "Sync completed",
-    "CompletionTimeout": 7,
-    "OnSuccess": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/UploadOffline.action",
-    "OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
-    "_Type": "Action.Type.ProgressBanner"
+	"_Type": "Action.Type.ProgressBanner",
+	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/SyncFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/UploadOffline.action",
+	"Message": "Upload in progress...",
+	"CompletionMessage": "Sync completed",
+	"CompletionTimeout": 7
 }

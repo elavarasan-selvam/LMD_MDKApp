@@ -1,4 +1,5 @@
 export default function ConfirmTruckInfoAndNavigate(context) {
+    //alert(JSON.stringify(context.binding));
     context.getAppClientData().TruckInfoConfirmed = true;
     //context.getAppClientData().CompleteCheckoutButton = true;
 

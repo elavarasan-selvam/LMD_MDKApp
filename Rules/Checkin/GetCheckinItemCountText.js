@@ -1,22 +1,21 @@
-export default function GetCheckinItemCountText(context) {
+export default function GetItemCountText(context) {
     let binding = context.binding;
     let service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
 
-    return context.read(
-        service,
-        "DocumentItems",
-        [],
-        `$apply=filter(DocumentUUID eq guid'${binding.DocumentUUID}')/aggregate(DocumentItemUUID with countdistinct as ItemCount)`
-    ).then(result => {
-        let count = 0;
+    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
+
+    return context.read(service, "DocumentItems", [], query)
+    .then(result => {
         if (result && result.length > 0) {
-            count = result.getItem(0).ItemCount;
+            let count = result.getItem(0).ProductCount || 0;
+            //Sets flag if count>0
+            context.getAppClientData().StartButton = (count > 0);
+            return `Items: ${count}`;
+            
+        } else {
+            return "Items: 0";
         }
-
-        // set flag here for the Start/Confirm Button
-        context.getAppClientData().StartButton = (count > 0);
-
-        return `Items: ${count}`;
     });
 }
+
 

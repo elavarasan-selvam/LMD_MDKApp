@@ -69,6 +69,7 @@
 							"Validation": {
 								"Visible": true
 							},
+							"Value": "{OdometerBegin}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty0",
 							"IsVisible": true,
@@ -80,8 +81,9 @@
 							"IsEditable": true
 						},
 						{
+							"Value": "{OdometerEnd}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty1",
+							"_Name": "OdometerEndInput",
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Odometer Reading at Checkout*",
@@ -104,11 +106,16 @@
 			]
 		}
 	],
+	"DesignTimeTarget": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "Routes",
+		"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+	},
 	"_Type": "Page",
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar5",
+		"_Name": "ActionBar8",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},
@@ -121,7 +128,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Truck Info",
-				"OnPress": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/ConfirmCheckinTruckInfoAndNavigate.js",
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerEnd.action",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

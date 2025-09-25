@@ -94,8 +94,8 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-						"EntitySet": "DocumentItems",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
 					"_Name": "SectionObjectCardCollection2",
@@ -138,7 +138,7 @@
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-						"EntitySet": "Stops",
+						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
 					"_Name": "SectionObjectCardCollection3",
@@ -178,7 +178,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar18",
+		"_Name": "ActionBar20",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
@@ -191,6 +191,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Checkout",
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToMainPagefromCompleteCheckout.action",
 				"Enabled": "/LMD_MDKApp/Rules/Checkout/CompleteCheckoutButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

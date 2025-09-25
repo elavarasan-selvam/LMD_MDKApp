@@ -1,0 +1,17 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "UpdateOdometerBegin"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/Checkout/TruckInfo/ConfirmTruckInfoAndNavigate.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "Routes",
+		"ReadLink": "/LMD_MDKApp/Rules/Checkout/TruckInfo/UpdateOdometerBeginReadLink.js"
+	},
+	"Properties": {
+		"OdometerBegin": "{#Control:OdometerBeginInput/#Value}",
+		"LastChangeTimestamp": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js"
+	}
+}
