@@ -20,7 +20,7 @@
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Routes",
-						"QueryOptions": "$orderby=RouteUUID asc&$top=1"
+						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
 					"_Name": "SectionObjectCollection1",
 					"Visible": true,
@@ -63,6 +63,31 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.KPISection",
+					"_Name": "SectionKPISection0",
+					"Visible": true,
+					"KPIItems": [
+						{
+							"_Name": "KPIItem0",
+							"MetricItems": [
+								{
+									"Value": "0",
+									"TrailingUnit": "%",
+									"_Name": "KPIItem0MetricItem0"
+								}
+							],
+							"ShowProgress": true
+						}
+					]
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
@@ -95,6 +120,34 @@
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel1",
+							"IsVisible": true,
+							"Separator": false,
+							"Text": "/LMD_MDKApp/Rules/Main/SetLastSyncAfterSync.js",
+							"TextWrap": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
 				}
 			]
 		}
