@@ -16,80 +16,23 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
-					},
-					"_Name": "SectionObjectCollection0",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"ObjectCell": {
-						"Title": "Product Description",
-						"Subhead": "{ProductID}",
-						"DisplayDescriptionInMobile": true,
-						"StatusText": "ST: {OrderedQuantity}  {OrderedUOM}",
-						"SubstatusText": "Substatus",
-						"AccessoryType": "None",
-						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
-						"ContextMenu": {
-							"PerformFirstActionWithFullSwipe": true
-						},
-						"AvatarStack": {
-							"Avatars": [],
-							"ImageIsCircular": true,
-							"ImageHasBorder": false
-						},
-						"AvatarGrid": {
-							"Avatars": [],
-							"ImageIsCircular": true
-						},
-						"_Type": "ObjectCollection.Type.ObjectCell"
-					},
-					"Layout": {
-						"NumberOfColumns": 2
-					}
-				},
-				{
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
-					},
-					"_Name": "SectionObjectCardCollection0",
+					"_Name": "SectionObjectCardCollection1",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"Card": {
-						"Visible": true,
-						"Title": "Product Description ",
-						"Subhead": "{ProductID}",
-						"DetailImage": "res://mdk_logo.png",
-						"DetailImageIsCircular": false,
-						"StatusText": "{OrderedQuantity}  {OrderedUOM}",
-						"_Type": "ObjectCardCollection.Type.Card"
-					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard0",
+							"Visible": true,
+							"Title": "Product Description",
+							"Subhead": "{ProductID}",
+							"DetailImageIsCircular": false,
+							"StatusText": "{OrderedQuantity}  {OrderedUOM}"
+						}
+					],
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -106,36 +49,54 @@
 						{
 							"Value": "{OrderedQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty0",
+							"_Name": "OrderedQuantityInput",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Loaded :",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/SetOrderedFlag.js",
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
 						},
 						{
+							"Value": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/ReasonCodeInitialValue.js",
 							"_Type": "Control.Type.FormCell.ListPicker",
-							"_Name": "FormCellListPicker0",
+							"_Name": "ReasonCodePicker",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"AllowMultipleSelection": true,
-							"AllowEmptySelection": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
 							"Caption": "Reason Code",
 							"DataPaging": {
 								"ShowLoadingIndicator": false,
 								"PageSize": 50
 							},
 							"PlaceHolder": "Select",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/SetReasonFlag.js",
 							"IsSelectedSectionEnabled": false,
 							"IsPickerDismissedOnSelection": false,
 							"IsSearchCancelledAfterSelection": false,
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
 							"PickerItems": [
-								"One",
-								"Two",
-								"Three"
+								{
+									"DisplayValue": "Driver Correction",
+									"ReturnValue": "DC"
+								},
+								{
+									"DisplayValue": "Damaged Goods",
+									"ReturnValue": "DG"
+								},
+								{
+									"DisplayValue": "Packing Difference",
+									"ReturnValue": "PD"
+								},
+								{
+									"DisplayValue": "Others",
+									"ReturnValue": "OT"
+								}
 							]
 						}
 					],
@@ -164,7 +125,7 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoadfromEditItemSave.action"
+				"OnPress": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/CheckFlagsbeforeSave.js"
 			}
 		],
 		"_Name": "ActionBar2",

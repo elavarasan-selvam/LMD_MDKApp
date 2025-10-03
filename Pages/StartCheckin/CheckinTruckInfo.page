@@ -40,6 +40,7 @@
 						{
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Text": "Distance Driven ",
@@ -72,6 +73,7 @@
 							"Value": "{OdometerBegin}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty0",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Odometer Reading at Checkout",
@@ -84,6 +86,7 @@
 							"Value": "{OdometerEnd}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "OdometerEndInput",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Odometer Reading at Checkout*",
@@ -115,7 +118,7 @@
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar8",
+		"_Name": "ActionBar9",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},
@@ -128,7 +131,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Truck Info",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerEnd.action",
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/odometer_end_changeset.action",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

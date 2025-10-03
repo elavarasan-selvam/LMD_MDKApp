@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "SaveMessageofOQandRC"
+	},
+	"Message": "Both OrderedQuantity and ReasonCode must be changed together.",
+	"Title": "Cannot Save !!",
+	"OKCaption": "Ok"
+}

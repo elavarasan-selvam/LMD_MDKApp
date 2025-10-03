@@ -1,0 +1,13 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "OdometerUpdations"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartCheckout/UpdateOdometerBegin.action"
+	]
+}

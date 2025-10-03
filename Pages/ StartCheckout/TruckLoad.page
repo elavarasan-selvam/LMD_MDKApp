@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -64,11 +64,16 @@
 			}
 		}
 	],
+	"DesignTimeTarget": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "COCIProducts",
+		"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+	},
 	"_Type": "Page",
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar9",
+		"_Name": "ActionBar16",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

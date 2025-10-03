@@ -1,0 +1,17 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "OrderedQuantityUpdate"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/Checkout_EditItemFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoadfromEditItemSave.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "DocumentItems",
+		"ReadLink": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/OrderedQuantityUpdate_ReadLink.js"
+	},
+	"Properties": {
+		"OrderedQuantity": "{#Control:OrderedQuantityInput/#Value}",
+		"ReasonCode": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/GetReasonCodeValue.js"
+	}
+}

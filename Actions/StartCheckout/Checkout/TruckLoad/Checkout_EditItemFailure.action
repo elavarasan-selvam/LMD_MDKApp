@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Checkout_EditItemFailure"
+	},
+	"Message": "{#ActionResults:OrderedQuantityUpdate/error}  ",
+	"Title": "{Error}",
+	"OKCaption": "OK"
+}
