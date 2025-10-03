@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -32,9 +32,8 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "{ProductID}",
+						"Title": "Product Description",
 						"Subhead": "{ProductID}",
-						"Description": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItems.js",
 						"DisplayDescriptionInMobile": true,
 						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
 						"AccessoryType": "None",
@@ -69,7 +68,7 @@
 	"_Name": "Delivery",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar13",
+		"_Name": "ActionBar15",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Delivery"
 	},

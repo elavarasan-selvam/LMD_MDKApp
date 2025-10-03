@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "DeliveryUpdateFailure"
+	},
+	"Message": "Failure error",
+	"Title": "{Failure}",
+	"OKCaption": "OK"
+}

@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -37,7 +37,7 @@
 						"Subhead": "{ProductID}",
 						"DetailImage": "res://mdk_logo.png",
 						"DetailImageIsCircular": false,
-						"StatusText": "{OrderedQuantity}  {OrderedUOM}",
+						"StatusText": "{DeliveredQuantity}  {OrderedUOM}",
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
 					"Layout": {
@@ -56,7 +56,8 @@
 						{
 							"Value": "{DeliveredQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty0",
+							"_Name": "FCDeliveredQuantity",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Delivered:",
@@ -67,6 +68,7 @@
 						{
 							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "FormCellListPicker0",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"AllowMultipleSelection": true,
@@ -114,7 +116,7 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitDeliveryPage.action"
+				"OnPress": "/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateEntity.action"
 			}
 		],
 		"_Name": "ActionBar2",

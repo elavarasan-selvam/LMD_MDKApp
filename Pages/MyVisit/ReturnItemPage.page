@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -32,8 +32,10 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Object Cell",
+						"Title": "Product Description",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItemsDescription.js",
 						"DisplayDescriptionInMobile": true,
+						"StatusText": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItemsDescription.js",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
@@ -41,22 +43,12 @@
 							"PerformFirstActionWithFullSwipe": true
 						},
 						"AvatarStack": {
-							"Avatars": [
-								{
-									"Image": "sap-icon://customer",
-									"ImageText": ""
-								}
-							],
+							"Avatars": [],
 							"ImageIsCircular": true,
 							"ImageHasBorder": false
 						},
 						"AvatarGrid": {
-							"Avatars": [
-								{
-									"Image": "sap-icon://customer",
-									"ImageText": ""
-								}
-							],
+							"Avatars": [],
 							"ImageIsCircular": true
 						},
 						"_Type": "ObjectCollection.Type.ObjectCell"

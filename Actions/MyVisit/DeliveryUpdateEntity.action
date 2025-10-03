@@ -1,0 +1,16 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "DeliveryUpdateEntity"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DeliveredUpdateSucess.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "DocumentItems",
+		"ReadLink": "/LMD_MDKApp/Rules/Visit/Delivery/DeliveryUpdateEntity.js"
+	},
+	"Properties": {
+		"DeliveredQuantity": "{#Control:FCDeliveredQuantity/#Value}"
+	}
+}

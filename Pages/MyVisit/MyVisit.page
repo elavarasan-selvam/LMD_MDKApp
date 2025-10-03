@@ -57,6 +57,7 @@
 						{
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Text": "My Tasks",
@@ -149,14 +150,15 @@
 						"Description": "/LMD_MDKApp/Rules/Visit/Return/GetReturnDescription.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
-							"OnPress": "/LMD_MDKApp/Actions/NavToReturnItemPage.action",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitReturnItemPage.action",
 							"Title": "Start",
-							"Visible": "/LMD_MDKApp/Rules/Visit/IsStartButtonVisibleForReturn.js"
+							"Visible": "/LMD_MDKApp/Rules/Visit/Return/IsStartButtonVisible.js"
 						},
 						"SecondaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/CloseOffline.action",
 							"Title": "Confirm",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Visit/Return/IsConfirmButtonVisible.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -172,7 +174,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar32",
+		"_Name": "ActionBar33",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
