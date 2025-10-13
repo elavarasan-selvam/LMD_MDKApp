@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -69,6 +69,7 @@
 					"KPIItems": [
 						{
 							"_Name": "KPIItem0",
+							"CaptionLabel": "CaptionLabel",
 							"MetricItems": [
 								{
 									"Value": "0",
@@ -90,7 +91,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Stops",
 						"QueryOptions": "$orderby=RouteUUID desc, Sequence asc&$top=3"
 					},
@@ -131,6 +132,7 @@
 					},
 					"Controls": [
 						{
+							"RequiredIndicator": false,
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel1",
 							"IsVisible": true,

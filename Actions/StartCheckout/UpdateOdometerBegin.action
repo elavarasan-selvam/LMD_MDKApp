@@ -12,6 +12,7 @@
 	},
 	"Properties": {
 		"OdometerBegin": "{#Control:OdometerBeginInput/#Value}",
+		"StartDateTime": "",
 		"LastChangeTimestamp": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js"
 	}
 }

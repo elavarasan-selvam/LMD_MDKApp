@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "ActualandUnloadedQuantity_Updates"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "COCIProducts"
+	},
+	"Properties": {
+		"ActualQuantity": "{ActualQuantity}"
+	}
+}

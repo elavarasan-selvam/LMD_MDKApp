@@ -38,9 +38,9 @@
 					},
 					"Controls": [
 						{
+							"RequiredIndicator": false,
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
-							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Text": "Distance Driven ",
@@ -118,7 +118,7 @@
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar9",
+		"_Name": "ActionBar14",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},
@@ -131,7 +131,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Truck Info",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/odometer_end_changeset.action",
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerEnd.action",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

@@ -1,68 +1,50 @@
-export default function InitializeCheckinTruckLoadandTruckInfoFlag(clientAPI) {
+/**
+ * Store products locally with ActualQuantity, UnloadedQuantity, ActualUOM
+ * @param {IClientAPI} clientAPI
+ */
+export default function UpdatingTruckLoad(clientAPI) {
     const appData = clientAPI.getAppClientData();
-
-    // Initialize app-level flags if not already defined
-    if (appData.CheckinTruckLoadConfirmed === undefined) {
-        appData.CheckinTruckLoadConfirmed = false;
-    }
-    if (appData.CheckinTruckInfoConfirmed === undefined) {
-        appData.CheckinTruckInfoConfirmed = false;
-    }
-    // if (appData.CompleteCheckoutButton === undefined) {
-    //     appData.CompleteCheckoutButton = false;
-    // }
-
-    // Reset the local list
-    appData.PendingProductList = [];
+    appData.PendingProductList = []; // Reset the local list
 
     const binding = clientAPI.getPageProxy().binding;
     const routeUUID = binding.RouteUUID;
 
     alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
 
-    // --- Read DocumentItems for this Route ---
+    // Read DocumentItems for this Route
     return clientAPI.read(
         '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
         'DocumentItems',
         [],
         `$filter=RouteUUID eq guid'${routeUUID}'`
     ).then(result => {
-        let pendingCount = 0;
         if (result && result.length > 0) {
             alert(`Found ${result.length} DocumentItems`);
 
             for (let i = 0; i < result.length; i++) {
                 const item = result.getItem(i);
-                const ordered = Number(item.OrderedQuantity) || 0;
-                const delivered = Number(item.DeliveredQuantity) || 0;
+                const ordered = item.OrderedQuantity || 0;
+                const delivered = item.DeliveredQuantity || 0;
                 const actual = ordered - delivered;
                 const uom = item.OrderedUOM || '';
-                const routeuuid = item.RouteUUID;
-                const stopuuid = item.StopUUID;
 
                 alert(`ProductID: ${item.ProductID}\nOrdered: ${ordered}\nDelivered: ${delivered}\nActual: ${actual}\nUOM: ${uom}`);
 
                 if (actual > 0) {
                     // Store locally
-                    pendingCount++;
                     appData.PendingProductList.push({
                         ProductID: item.ProductID,
                         ActualQuantity: actual,
                         UnloadedQuantity: actual, // initially same as ActualQuantity
-                        ActualUOM: uom ,
-                        RouteUUID: routeuuid,//I am doing it 
-                        StopUUID: stopuuid
+                        ActualUOM: uom
                     });
                 }
             }
         } else {
             alert('No DocumentItems found for this Route');
         }
-        appData.StartButton = (pendingCount > 0);
-        appData.PendingCount = pendingCount;
-        // Redraw the page so caption rule refreshes
-        clientAPI.getPageProxy().redraw();
-        alert(`Pending Products Stored Locally:\n${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
+
+        alert(`Pending Products Stored Locally: ${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
         return true;
     }).catch(error => {
         alert(`Error: ${error.message}`);

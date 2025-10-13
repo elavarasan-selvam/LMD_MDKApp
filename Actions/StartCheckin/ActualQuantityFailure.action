@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ActualQuantityFailure"
+	},
+	"Message": "{#ActionResults:COCIProduct_Create/error}",
+	"Title": "{Error}",
+	"OKCaption": "Ok"
+}

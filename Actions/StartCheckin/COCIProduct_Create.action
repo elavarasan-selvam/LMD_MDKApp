@@ -1,0 +1,22 @@
+{
+	"_Type": "Action.Type.ODataService.CreateEntity",
+	"ActionResult": {
+		"_Name": "COCIProduct_Create"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "COCIProducts"
+	},
+	"Properties": {
+		"InventoryGroup": "{InventoryGroup}",
+		"ActualQuantity": "{ActualQuantity}",
+		"RouteUUID": "{RouteUUID}",
+		"StopUUID": "{StopUUID}",
+		"ProductID": "{ProductID}",
+		"ActualUOM": "{ActualUOM}",
+		"IsManuallyAdded": false,
+		"UnloadedQuantity": "{#Control:UnloadedQuantityInput/#Value}"
+	}
+}

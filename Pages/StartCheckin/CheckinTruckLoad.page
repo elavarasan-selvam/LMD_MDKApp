@@ -17,11 +17,7 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
-					},
+					"Target": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/GetUploadProducts.js",
 					"_Name": "SectionObjectCollection3",
 					"Visible": true,
 					"EmptySection": {
@@ -35,11 +31,11 @@
 						"Title": "Product Description ",
 						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
+						"StatusText": "{ActualQuantity}   {ActualUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
-						"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToCheckout_EditItem.action",
+						"OnPress": "/LMD_MDKApp/Actions/StartCheckin/NavToCheckin_EditItem.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
 						},
@@ -68,7 +64,7 @@
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar12",
+		"_Name": "ActionBar16",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

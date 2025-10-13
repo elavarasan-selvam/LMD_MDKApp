@@ -65,6 +65,7 @@
 					},
 					"Controls": [
 						{
+							"RequiredIndicator": false,
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
 							"IsVisible": true,
@@ -172,12 +173,12 @@
 		}
 	],
 	"_Type": "Page",
-	"_Name": "Checkout",
+	"_Name": "CheckIn",
 	"OnLoaded": "/LMD_MDKApp/Rules/Checkin/InitializeCheckinTruckLoadandTruckInfoFlag.js",
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar23",
+		"_Name": "ActionBar33",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},
@@ -190,7 +191,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Check-In",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/NavToMainPagefromCompleteCheckin.action",
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action",
 				"Enabled": "/LMD_MDKApp/Rules/Checkin/CompleteCheckinButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

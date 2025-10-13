@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -66,6 +66,7 @@
 					},
 					"Controls": [
 						{
+							"RequiredIndicator": false,
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
 							"IsVisible": true,
@@ -94,7 +95,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -178,7 +179,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar20",
+		"_Name": "ActionBar23",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

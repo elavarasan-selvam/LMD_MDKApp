@@ -17,29 +17,23 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
-					},
-					"_Name": "SectionObjectCardCollection0",
+					"_Name": "SectionObjectCardCollection1",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"Card": {
-						"Visible": true,
-						"Title": "{ProductID}",
-						"Subhead": "{ProductID}",
-						"DetailImage": "res://mdk_logo.png",
-						"DetailImageIsCircular": false,
-						"StatusText": "{OrderedQuantity}  {OrderedUOM}",
-						"_Type": "ObjectCardCollection.Type.Card"
-					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard0",
+							"Visible": true,
+							"Title": "{ProductID}",
+							"Subhead": "{ActualQuantity}    {ActualUOM}",
+							"Footnote": "Footnote",
+							"DetailImage": "res://mdk_logo.png",
+							"DetailImageIsCircular": false
+						}
+					],
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
@@ -54,9 +48,10 @@
 					},
 					"Controls": [
 						{
-							"Value": "{OrderedQuantity}",
+							"Value": "{UnloadedQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty0",
+							"_Name": "UnloadedQuantityInput",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Unloaded :",
@@ -67,6 +62,7 @@
 						{
 							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "FormCellListPicker0",
+							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"AllowMultipleSelection": true,
@@ -114,7 +110,7 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoadfromEditItemSave.action"
+				"OnPress": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/CreateCOCIProducts.js"
 			}
 		],
 		"_Name": "ActionBar2",

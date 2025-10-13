@@ -64,16 +64,11 @@
 			}
 		}
 	],
-	"DesignTimeTarget": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
-		"EntitySet": "COCIProducts",
-		"QueryOptions": "$orderby=RouteUUID desc&$top=1"
-	},
 	"_Type": "Page",
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar16",
+		"_Name": "ActionBar21",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

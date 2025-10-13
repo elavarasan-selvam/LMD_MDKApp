@@ -1,21 +1,7 @@
 export default function GetItemCountText(context) {
-    let binding = context.binding;
-    let service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
-
-    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
-
-    return context.read(service, "DocumentItems", [], query)
-    .then(result => {
-        if (result && result.length > 0) {
-            let count = result.getItem(0).ProductCount || 0;
-            //Sets flag if count>0
-            context.getAppClientData().StartButton = (count > 0);
-            return `Items: ${count}`;
-            
-        } else {
-            return "Items: 0";
-        }
-    });
+    const appData = context.getAppClientData();
+    const count = appData.PendingCount || 0;
+    return `Items: ${count}`;
 }
 
 
