@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},
@@ -33,9 +33,9 @@
 					},
 					"ObjectCell": {
 						"Title": "Product Description",
-						"Subhead": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItemsDescription.js",
+						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItemsDescription.js",
+						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
@@ -61,7 +61,7 @@
 		}
 	],
 	"_Type": "Page",
-	"_Name": "ReturnItemPage",
+	"_Name": "Return",
 	"ActionBar": {
 		"Items": [
 			{
@@ -74,9 +74,9 @@
 				"Visible": true
 			}
 		],
-		"_Name": "ActionBar0",
+		"_Name": "ActionBar5",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Returns"
+		"Caption": "Return Page"
 	},
 	"FioriToolbar": {
 		"_Type": "Control.Type.FioriToolbar",
@@ -87,7 +87,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Returns",
-				"OnPress": "/LMD_MDKApp/Rules/ConfirmVisitReturnAndNavigate.js",
+				"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitPage.action",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

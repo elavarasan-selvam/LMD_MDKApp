@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
 					},

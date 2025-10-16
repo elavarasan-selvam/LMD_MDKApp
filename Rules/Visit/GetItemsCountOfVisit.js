@@ -1,6 +1,6 @@
 export default function GetItemsCountOfVisit(context) {
     let binding = context.binding;
-    let service = "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service";
+    let service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
 
     return context.read(
         service,

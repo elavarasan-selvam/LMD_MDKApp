@@ -56,9 +56,6 @@
 					}
 				},
 				{
-					"_Type": "Section.Type.KPISection",
-					"_Name": "SectionKPISection0",
-					"Visible": true,
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -66,6 +63,9 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.KPISection",
+					"_Name": "SectionKPISection0",
+					"Visible": true,
 					"KPIItems": [
 						{
 							"_Name": "KPIItem0",
@@ -91,7 +91,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Stops",
 						"QueryOptions": "$orderby=RouteUUID desc, Sequence asc&$top=3"
 					},
