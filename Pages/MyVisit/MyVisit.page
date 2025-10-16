@@ -55,9 +55,9 @@
 					},
 					"Controls": [
 						{
+							"RequiredIndicator": false,
 							"_Type": "Control.Type.FormCell.Label",
 							"_Name": "FormCellLabel0",
-							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Text": "My Tasks",
@@ -174,7 +174,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar33",
+		"_Name": "ActionBar34",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
@@ -187,7 +187,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Visit",
-				"OnPress": "/LMD_MDKApp/Actions/NavToMainPagefromMyVisitPage.action",
+				"OnPress": "/LMD_MDKApp/Rules/KPI/BumpCompletedStops.js",
 				"Enabled": "/LMD_MDKApp/Rules/Visit/CompleteVisitButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

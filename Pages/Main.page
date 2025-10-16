@@ -56,6 +56,9 @@
 					}
 				},
 				{
+					"_Type": "Section.Type.KPISection",
+					"_Name": "SectionKPISection0",
+					"Visible": true,
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -63,21 +66,18 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.KPISection",
-					"_Name": "SectionKPISection0",
-					"Visible": true,
 					"KPIItems": [
 						{
 							"_Name": "KPIItem0",
-							"CaptionLabel": "CaptionLabel",
+							"CaptionLabel": "/LMD_MDKApp/Rules/KPI/GetStopsFractionText.js",
 							"MetricItems": [
 								{
-									"Value": "0",
-									"TrailingUnit": "%",
+									"Value": "/LMD_MDKApp/Rules/KPI/GetProgressPctText.js",
 									"_Name": "KPIItem0MetricItem0"
 								}
 							],
-							"ShowProgress": true
+							"ShowProgress": true,
+							"Progress": "/LMD_MDKApp/Rules/KPI/GetProgressFraction.js"
 						}
 					]
 				},

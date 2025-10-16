@@ -179,7 +179,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar23",
+		"_Name": "ActionBar24",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
@@ -192,7 +192,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Checkout",
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/NavToMainPagefromCompleteCheckout.action",
+				"OnPress": "/LMD_MDKApp/Rules/KPI/BumpCompletedStops.js",
 				"Enabled": "/LMD_MDKApp/Rules/Checkout/CompleteCheckoutButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
