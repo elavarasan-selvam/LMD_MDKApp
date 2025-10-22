@@ -1,0 +1,15 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "StartDateTime"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"EntitySet": "Routes",
+		"ReadLink": "{@odata.readLink}"
+	},
+	"Properties": {
+		"RouteUUID": "",
+		"StartDateTime": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js"
+	}
+}

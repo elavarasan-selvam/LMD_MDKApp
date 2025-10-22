@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UpdateOdometerChangeSet_Success"
+	},
+	"Message": "Successfully Updated both Odometer Begin and End !!",
+	"Title": "Success",
+	"OKCaption": "Ok"
+}

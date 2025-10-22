@@ -4,15 +4,15 @@
 		"_Name": "UpdateOdometerBegin"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
-	"OnSuccess": "/LMD_MDKApp/Rules/Checkout/TruckInfo/ConfirmTruckInfoAndNavigate.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 		"EntitySet": "Routes",
 		"ReadLink": "/LMD_MDKApp/Rules/Checkout/TruckInfo/UpdateOdometerBeginReadLink.js"
 	},
 	"Properties": {
-		"OdometerBegin": "{#Control:OdometerBeginInput/#Value}",
-		"StartDateTime": "",
-		"LastChangeTimestamp": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js"
+		"OdometerBegin": "{#Control:OdometerBeginInput/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

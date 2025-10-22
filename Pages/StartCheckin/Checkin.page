@@ -178,7 +178,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar34",
+		"_Name": "ActionBar37",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},
@@ -191,7 +191,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Complete Check-In",
-				"OnPress": "/LMD_MDKApp/Rules/KPI/BumpCompletedStops.js",
+				"OnPress": "/LMD_MDKApp/Rules/Checkin/BumpCompletedStopAtCheckin.js",
 				"Enabled": "/LMD_MDKApp/Rules/Checkin/CompleteCheckinButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

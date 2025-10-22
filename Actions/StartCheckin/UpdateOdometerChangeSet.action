@@ -1,0 +1,17 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "UpdateOdometerChangeSet"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet_Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/Main/Stops/UpdateStopsChangeset.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/Main/Routes/StartDateTime.action",
+		"/LMD_MDKApp/Actions/StartCheckout/UpdateOdometerBegin.action",
+		"/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerEnd.action",
+		"/LMD_MDKApp/Actions/Main/Routes/EndDateTime.action"
+	]
+}

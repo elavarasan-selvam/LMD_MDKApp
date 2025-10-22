@@ -1,12 +1,13 @@
 {
 	"_Type": "Action.Type.ODataService.ChangeSet",
 	"ActionResult": {
-		"_Name": "odometer_end_changeset"
+		"_Name": "UpdateStopsChangeset"
 	},
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service"
 	},
 	"Actions": [
-		"/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerEnd.action"
+		"/LMD_MDKApp/Actions/Main/Stops/StartDateTime.action",
+		"/LMD_MDKApp/Actions/Main/Stops/EndDateTime.action"
 	]
 }
