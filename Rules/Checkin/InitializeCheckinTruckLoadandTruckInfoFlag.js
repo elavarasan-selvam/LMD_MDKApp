@@ -1,26 +1,30 @@
 export default function InitializeCheckinTruckLoadandTruckInfoFlag(clientAPI) {
     const appData = clientAPI.getAppClientData();
 
-    // Initialize app-level flags if not already defined
+    // 1️⃣ Initialize flags if not already defined
     if (appData.CheckinTruckLoadConfirmed === undefined) {
         appData.CheckinTruckLoadConfirmed = false;
     }
     if (appData.CheckinTruckInfoConfirmed === undefined) {
         appData.CheckinTruckInfoConfirmed = false;
     }
-    // if (appData.CompleteCheckoutButton === undefined) {
-    //     appData.CompleteCheckoutButton = false;
-    // }
 
-    // Reset the local list
+    // 2️⃣ Reset local list for pending products
     appData.PendingProductList = [];
 
+    // 3️⃣ Store Stop and Route references for later use
     const binding = clientAPI.getPageProxy().binding;
-    const routeUUID = binding.RouteUUID;
+    if (binding) {
+        appData.currentStop = binding;  // store Stop reference
+        if (binding.RouteUUID) {
+            appData.currentRouteUUID = binding.RouteUUID; // store Route UUID
+        }
+    }
 
+    const routeUUID = binding ? binding.RouteUUID : null;
     alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
 
-    // --- Read DocumentItems for this Route ---
+    // 4️⃣ Read DocumentItems for this Route
     return clientAPI.read(
         '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
         'DocumentItems',
@@ -49,8 +53,8 @@ export default function InitializeCheckinTruckLoadandTruckInfoFlag(clientAPI) {
                         ProductID: item.ProductID,
                         ActualQuantity: actual,
                         UnloadedQuantity: actual, // initially same as ActualQuantity
-                        ActualUOM: uom ,
-                        RouteUUID: routeuuid,//I am doing it 
+                        ActualUOM: uom,
+                        RouteUUID: routeuuid,
                         StopUUID: stopuuid
                     });
                 }
@@ -58,11 +62,15 @@ export default function InitializeCheckinTruckLoadandTruckInfoFlag(clientAPI) {
         } else {
             alert('No DocumentItems found for this Route');
         }
+
         appData.StartButton = (pendingCount > 0);
         appData.PendingCount = pendingCount;
-        // Redraw the page so caption rule refreshes
+
+        // Redraw the page so UI reflects changes
         clientAPI.getPageProxy().redraw();
+
         alert(`Pending Products Stored Locally:\n${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
+
         return true;
     }).catch(error => {
         alert(`Error: ${error.message}`);

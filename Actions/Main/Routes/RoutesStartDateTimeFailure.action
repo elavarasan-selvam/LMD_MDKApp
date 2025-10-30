@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "UpdateOdometerChangeSet_BeginFailure"
 	},
-	"Message": "{#ActionResults:UpdateOdometerChangeSet_Begin/error}",
+	"Message": "{#ActionResults:StartDateTime/error}",
 	"Title": "{Error}",
 	"OKCaption": "Ok"
 }

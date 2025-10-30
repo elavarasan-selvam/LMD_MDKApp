@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ReadlinkFailedforRouteStart"
+	},
+	"Message": "{#ActionResults:ReadRouteByUUID/error}",
+	"Title": "{Error}",
+	"OKCaption": "Ok"
+}

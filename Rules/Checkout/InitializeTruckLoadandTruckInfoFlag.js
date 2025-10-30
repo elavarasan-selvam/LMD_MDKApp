@@ -1,12 +1,19 @@
 export default function InitializeTruckLoadandTruckInfoFlag(context) {
-    if (context.getAppClientData().TruckLoadConfirmed === undefined) {
-        context.getAppClientData().TruckLoadConfirmed = false;
+    const appCD = context.getAppClientData();
+
+    // 1️⃣ Initialize TruckLoad and TruckInfo flags
+    if (appCD.TruckLoadConfirmed === undefined) {
+        appCD.TruckLoadConfirmed = false;
     }
-    if (context.getAppClientData().TruckInfoConfirmed === undefined) {
-        context.getAppClientData().TruckInfoConfirmed = false;
+    if (appCD.TruckInfoConfirmed === undefined) {
+        appCD.TruckInfoConfirmed = false;
     }
-    //if (context.getAppClientData().CompleteCheckoutButton === undefined) {
-       // context.getAppClientData().CompleteCheckoutButton = false;
-    //}
+
+    // 2️⃣ Store Stop reference for later use in Complete Checkout
+    if (!appCD.currentStop && context.binding) {
+        appCD.currentStop = context.binding; // store Stop entity
+        console.log('Stop reference stored: ' + context.binding.StopID);
+    }
+
     return true;
 }

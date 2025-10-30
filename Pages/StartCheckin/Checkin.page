@@ -178,7 +178,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar37",
+		"_Name": "ActionBar38",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},

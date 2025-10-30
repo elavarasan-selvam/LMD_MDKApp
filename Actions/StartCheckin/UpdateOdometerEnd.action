@@ -13,6 +13,6 @@
 		"OdometerEnd": "{#Control:OdometerEndInput/#Value}"
 	},
 	"Headers": {
-		"OfflineOData.TransactionID": "#Property:RouteUUID"
+		"BatchGroup": "RouteStopBatch"
 	}
 }

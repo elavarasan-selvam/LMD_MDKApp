@@ -3,7 +3,6 @@
 	"ActionResult": {
 		"_Name": "UpdateOdometerChangeSet"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet_Failure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/Main/Stops/UpdateStopsChangeset.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service"

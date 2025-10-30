@@ -6,10 +6,12 @@
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 		"EntitySet": "Routes",
-		"ReadLink": "{@odata.readLink}"
+		"ReadLink": "{{#Property:ReadLink}}"
 	},
 	"Properties": {
-		"RouteUUID": "",
-		"EndDateTime": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js"
+		"EndDateTime": "{{#Property:EndDateTime}}"
+	},
+	"Headers": {
+		"BatchGroup": "RouteStopBatch"
 	}
 }
