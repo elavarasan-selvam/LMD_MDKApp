@@ -1,0 +1,15 @@
+{
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": {
+		"_Name": "InitializeOffline"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/InitializeOfflineFailureMessage.action",
+	"Service": "/LMD_MDKApp/Services/MD_BUSINESSPARTNER_SRV.service",
+	"DefiningRequests": [
+		{
+			"Name": "C_BPEmailAddress",
+			"Query": "C_BPEmailAddress",
+			"AutomaticallyRetrievesStreams": false
+		}
+	]
+}

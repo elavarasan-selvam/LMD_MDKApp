@@ -1,0 +1,6 @@
+{
+	"DestinationName": "MD_BUSINESSPARTNER_SRV",
+	"OfflineEnabled": false,
+	"SourceType": "Mobile",
+	"RestService": false
+}

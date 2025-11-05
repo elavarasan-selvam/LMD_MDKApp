@@ -18,11 +18,11 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Routes",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
-					"_Name": "SectionObjectCollection1",
+					"_Name": "SectionObjectCollection2",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -32,7 +32,8 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Route ID: {RouteID}",
+						"Title": "Route ID : {RouteID}",
+						"Footnote": "BusinessPartnerID : {MainDriverID}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -47,7 +48,7 @@
 						},
 						"AvatarGrid": {
 							"Avatars": [],
-							"ImageIsCircular": false
+							"ImageIsCircular": true
 						},
 						"_Type": "ObjectCollection.Type.ObjectCell"
 					},
@@ -93,9 +94,9 @@
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 						"EntitySet": "Stops",
-						"QueryOptions": "$orderby=RouteUUID desc, Sequence asc&$top=3"
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetStopFilter.js"
 					},
-					"_Name": "SectionObjectCardCollection0",
+					"_Name": "SectionObjectCardCollection1",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -113,7 +114,7 @@
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Rules/Main/NavigateBasedOnStopType.js",
-							"Title": "{StopType}",
+							"Title": "START {StopType}",
 							"Visible": true
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
