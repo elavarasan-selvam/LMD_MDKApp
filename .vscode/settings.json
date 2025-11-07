@@ -4,11 +4,14 @@
     ],
     "mdk.uieditor": {
         "left": {
-            "visible": true
+            "visible": false,
+            "width": 231.9980926513672
         },
         "right": {
             "visible": true
-        },
-        "device": "tablet"
+        }
+    },
+    "mdk.i18n": {
+        "displayLanguages": "i18n"
     }
 }

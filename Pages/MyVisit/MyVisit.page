@@ -75,6 +75,92 @@
 					"_Name": "SectionFormCell0"
 				},
 				{
+					"_Type": "Section.Type.ObjectCardCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+					},
+					"_Name": "SectionObjectCardCollection4",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Delivery ",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/GetItemsCountOfVisit.js",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/Delivery/GetDeliveryStatus.js",
+						"DetailImage": "sap-icon://shipping-status",
+						"DetailImageIsCircular": false,
+						"Description": "/LMD_MDKApp/Rules/Visit/GetDeliveryDescription.js",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitDeliveryPage.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"_Type": "Section.Type.ObjectCardCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+					},
+					"_Name": "SectionObjectCardCollection5",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Return",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/Return/GetReturnItems.js",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/GetReturnStatus.js",
+						"DetailImage": "sap-icon://reset",
+						"DetailImageIsCircular": false,
+						"Description": "/LMD_MDKApp/Rules/Visit/Return/GetReturnDescription.js",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitReturnItemPage.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -171,10 +257,11 @@
 	],
 	"_Type": "Page",
 	"_Name": "Visit",
+	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Delivery/InitializeDeliveryandReturnFlag.js",
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar36",
+		"_Name": "ActionBar37",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

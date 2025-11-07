@@ -20,7 +20,7 @@
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "DocumentItems",
-						"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
 					"_Name": "SectionObjectCardCollection0",
 					"Visible": true,

@@ -8,35 +8,18 @@
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 		"EntitySet": "Routes",
-		"QueryOptions": "$filter=RouteUUID eq guid'{{#Property:RouteUUID}}'&$top=1"
+		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},
 	"Properties": [
 		"RouteUUID",
 		"RouteID",
 		"MainDriverID",
 		"CoDriverID",
-		"TrailerID",
-		"TrailerLicensePlate",
-		"VehicleID",
-		"VehicleType",
-		"LicensePlate",
-		"RouteType",
 		"OdometerBegin",
 		"PlannedStartDateTime",
 		"OdometerEnd",
 		"PlannedEndDateTime",
 		"StartDateTime",
-		"EndDateTime",
-		"Timezone",
-		"OdometerUOM",
-		"DepartureShippingPoint",
-		"ArrivalShippingPoint",
-		"ExecutionOrganization",
-		"LastChangeTimestamp",
-		"DepartureLocationID",
-		"ArrivalLocationID",
-		"CheckSumUploadedStops",
-		"UploadType",
-		"Currency"
+		"EndDateTime"
 	]
 }

@@ -3,7 +3,6 @@
 	"ActionResult": {
 		"_Name": "StartDateTime"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/Main/Routes/RoutesStartDateTimeFailure.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 		"EntitySet": "Routes",
@@ -13,6 +12,6 @@
 		"StartDateTime": "{{#Property:StartDateTime}}"
 	},
 	"Headers": {
-		"BatchGroup": "RouteStopBatch"
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

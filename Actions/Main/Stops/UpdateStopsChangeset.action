@@ -3,7 +3,6 @@
 	"ActionResult": {
 		"_Name": "UpdateStopsChangeset"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/NavToMainPagefromCompleteCheckin.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service"
 	},

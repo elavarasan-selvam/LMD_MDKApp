@@ -1,6 +1,6 @@
 export default async function UpdateRouteStartDateTime(context) {
     try {
-        alert('JS started');
+        //alert('JS started');
 
         // Step 1: Get the route from ReadRouteByUUID
         const readResult = context.getActionResult('ReadRouteByUUID');
@@ -19,12 +19,12 @@ export default async function UpdateRouteStartDateTime(context) {
             return;
         }
 
-        alert('Extracted routeReadLink: ' + routeReadLink);
+        //alert('Extracted routeReadLink: ' + routeReadLink);
 
         // Step 2: Prepare the current StartDateTime
         const now = new Date();
         const currentDate = now.toISOString().split('.')[0];
-        alert('Updating StartDateTime to: ' + currentDate);
+        //alert('Updating StartDateTime to: ' + currentDate);
 
         // Step 3: Execute UpdateEntity action directly from JS
         await context.executeAction({
@@ -35,7 +35,7 @@ export default async function UpdateRouteStartDateTime(context) {
             }
         });
 
-        alert('StartDateTime updated successfully!');
+        //alert('StartDateTime updated successfully!');
 
     } catch (err) {
         alert('Error in UpdateRouteStartDateTime: ' + err.message);

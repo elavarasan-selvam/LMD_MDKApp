@@ -12,6 +12,6 @@
 		"EndDateTime": "{{#Property:EndDateTime}}"
 	},
 	"Headers": {
-		"BatchGroup": "RouteStopBatch"
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UpdateStopsChangesetFailure"
+	},
+	"Message": "{#ActionResults:UpdateStopsChangeset/error}",
+	"Title": "{ErrorATStopsChangeset}",
+	"OKCaption": "Ok"
+}

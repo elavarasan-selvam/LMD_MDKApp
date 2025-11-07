@@ -1,12 +1,17 @@
 export default function InitializeDeliveryandReturnFlag(context) {
-    if (context.getAppClientData().TruckDeliveryConfirmed === undefined) {
-        context.getAppClientData().TruckDeliveryConfirmed = false;
+    const appCD = context.getAppClientData();
+
+    if (appCD.TruckDeliveryConfirmed === undefined) appCD.TruckDeliveryConfirmed = false;
+    if (appCD.TruckReturnConfirmed === undefined) appCD.TruckReturnConfirmed = false;
+
+    // Store Visit Stop reference separately
+    if (context.binding) {
+    appCD.currentStop = context.binding;
+    //alert('Visit Stop reference updated: ' + context.binding.StopID);
     }
-    if (context.getAppClientData().TruckReturnConfirmed === undefined) {
-        context.getAppClientData().TruckReturnConfirmed = false;
-    }
-    //if (context.getAppClientData().CompleteCheckoutButton === undefined) {
-       // context.getAppClientData().CompleteCheckoutButton = false;
-    //}
+    //alert('Visit StopID: ' + context.binding.StopID + 
+    //  '\nStopUUID: ' + context.binding.StopUUID);
+
+
     return true;
 }

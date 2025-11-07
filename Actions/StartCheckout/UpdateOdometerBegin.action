@@ -4,6 +4,7 @@
 		"_Name": "UpdateOdometerBegin"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/Checkout/TruckInfo/ConfirmTruckInfoAndNavigate.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
 		"EntitySet": "Routes",
@@ -13,6 +14,6 @@
 		"OdometerBegin": "{#Control:OdometerBeginInput/#Value}"
 	},
 	"Headers": {
-		"BatchGroup": "RouteStopBatch"
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

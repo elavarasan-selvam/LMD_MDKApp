@@ -112,13 +112,13 @@
 	"DesignTimeTarget": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "Routes",
-		"QueryOptions": "$orderby=RouteUUID desc&$top=1"
+		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},
 	"_Type": "Page",
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar17",
+		"_Name": "ActionBar18",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},
