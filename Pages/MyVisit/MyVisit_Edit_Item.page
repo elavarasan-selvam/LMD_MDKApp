@@ -9,6 +9,12 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection1",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -16,30 +22,18 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.ObjectCardCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
-					},
-					"_Name": "SectionObjectCardCollection0",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"Card": {
-						"Visible": true,
-						"Title": "{ProductID}",
-						"Subhead": "{ProductID}",
-						"DetailImage": "res://mdk_logo.png",
-						"DetailImageIsCircular": false,
-						"StatusText": "{DeliveredQuantity}  {OrderedUOM}",
-						"_Type": "ObjectCardCollection.Type.Card"
-					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard0",
+							"Visible": true,
+							"Title": "/LMD_MDKApp/Rules/Visit/Delivery/GetEditProductDescription.js",
+							"Subhead": "{ProductID}",
+							"DetailImage": "res://mdk_logo.png",
+							"DetailImageIsCircular": false,
+							"StatusText": "{DeliveredQuantity} {OrderedUOM}"
+						}
+					],
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}

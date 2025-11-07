@@ -32,10 +32,10 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Product Description",
+						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
+						"StatusText": "{DeliveredQuantity} {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
@@ -68,7 +68,7 @@
 	"_Name": "Delivery",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar19",
+		"_Name": "ActionBar20",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Delivery"
 	},

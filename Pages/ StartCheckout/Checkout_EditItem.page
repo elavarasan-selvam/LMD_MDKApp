@@ -27,7 +27,7 @@
 							"_Type": "ObjectCardCollection.Type.Card",
 							"_Name": "ObjectCardCollectionTypeCard0",
 							"Visible": true,
-							"Title": "Product Description",
+							"Title": "/LMD_MDKApp/Rules/Visit/Delivery/GetEditProductDescription.js",
 							"Subhead": "{ProductID}",
 							"DetailImageIsCircular": false,
 							"StatusText": "{OrderedQuantity}  {OrderedUOM}"

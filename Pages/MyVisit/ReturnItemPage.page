@@ -17,11 +17,6 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
-					},
 					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
@@ -87,7 +82,7 @@
 				"_Name": "ToolbarItem0",
 				"Visible": true,
 				"Title": "Confirm Returns",
-				"OnPress": "/LMD_MDKApp/Actions/NavBackToMyVisitFromConfirmReturn.action",
+				"OnPress": "/LMD_MDKApp/Rules/ConfirmVisitReturnAndNavigate.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Tint",

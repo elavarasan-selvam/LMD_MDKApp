@@ -1,24 +1,19 @@
-export default function GetReturnItemsText(context) {
+export default function GetReturnItems(context) {
     let binding = context.binding;
     let service = "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service";
 
-    return context.read(
-        service,
-        "DocumentItems",
-        [],
-        `$filter=DocumentUUID eq guid'${binding.DocumentUUID}'`
-    ).then(result => {
+   // let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
+      
+    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}' and IsReturn eq true)/aggregate(ProductID with countdistinct as ProductCount)`;
+
+
+
+
+    return context.read(service, "DocumentItems", [], query)
+    .then(result => {
         if (result && result.length > 0) {
-            let totalReturn = 0;
-            for (let i = 0; i < result.length; i++) {
-                let item = result.getItem(i);
-                let ordered = item.OrderedQuantity || 0;
-                let delivered = item.DeliveredQuantity || 0;
-                if (ordered > delivered) {
-                    totalReturn += (ordered - delivered);
-                }
-            }
-            return `Items: ${totalReturn}`;
+            let count = result.getItem(0).ProductCount || 0;
+            return `Items: ${count}`;
         } else {
             return "Items: 0";
         }

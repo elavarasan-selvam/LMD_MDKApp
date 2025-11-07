@@ -1,0 +1,170 @@
+{
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": {
+		"_Name": "InitializeOffline"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/API_PRODUCT_SRV/Service/InitializeOfflineFailureMessage.action",
+	"Service": "/LMD_MDKApp/Services/API_PRODUCT_SRV.service",
+	"DefiningRequests": [
+		{
+			"Name": "A_Product",
+			"Query": "A_Product",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductBasicText",
+			"Query": "A_ProductBasicText",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductDescription",
+			"Query": "A_ProductDescription",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductInspectionText",
+			"Query": "A_ProductInspectionText",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductMLAccount",
+			"Query": "A_ProductMLAccount",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductMLPrices",
+			"Query": "A_ProductMLPrices",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlant",
+			"Query": "A_ProductPlant",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantCosting",
+			"Query": "A_ProductPlantCosting",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantForecasting",
+			"Query": "A_ProductPlantForecasting",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantIntlTrd",
+			"Query": "A_ProductPlantIntlTrd",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantMRPArea",
+			"Query": "A_ProductPlantMRPArea",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantProcurement",
+			"Query": "A_ProductPlantProcurement",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantQualityMgmt",
+			"Query": "A_ProductPlantQualityMgmt",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantSales",
+			"Query": "A_ProductPlantSales",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantStorage",
+			"Query": "A_ProductPlantStorage",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPlantText",
+			"Query": "A_ProductPlantText",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductProcurement",
+			"Query": "A_ProductProcurement",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductPurchaseText",
+			"Query": "A_ProductPurchaseText",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductQualityMgmt",
+			"Query": "A_ProductQualityMgmt",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductSales",
+			"Query": "A_ProductSales",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductSalesDelivery",
+			"Query": "A_ProductSalesDelivery",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductSalesTax",
+			"Query": "A_ProductSalesTax",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductSalesText",
+			"Query": "A_ProductSalesText",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductStorage",
+			"Query": "A_ProductStorage",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductStorageLocation",
+			"Query": "A_ProductStorageLocation",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductSupplyPlanning",
+			"Query": "A_ProductSupplyPlanning",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductUnitsOfMeasure",
+			"Query": "A_ProductUnitsOfMeasure",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductUnitsOfMeasureEAN",
+			"Query": "A_ProductUnitsOfMeasureEAN",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductValuation",
+			"Query": "A_ProductValuation",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductValuationAccount",
+			"Query": "A_ProductValuationAccount",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductValuationCosting",
+			"Query": "A_ProductValuationCosting",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "A_ProductWorkScheduling",
+			"Query": "A_ProductWorkScheduling",
+			"AutomaticallyRetrievesStreams": false
+		}
+	]
+}

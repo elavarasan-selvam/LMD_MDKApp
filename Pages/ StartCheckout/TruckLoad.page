@@ -9,6 +9,13 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
@@ -20,19 +27,12 @@
 					"EmptySection": {
 						"FooterVisible": false
 					},
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Description",
+						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
 						"Footnote": "{RouteUUID}",
 						"Description": "{DocumentItemID}",
@@ -71,7 +71,7 @@
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar23",
+		"_Name": "ActionBar24",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},
