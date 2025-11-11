@@ -1,6 +1,6 @@
 export default function GetReturnItems(context) {
     let binding = context.binding;
-    let service = "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service";
+    let service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
 
    // let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
       

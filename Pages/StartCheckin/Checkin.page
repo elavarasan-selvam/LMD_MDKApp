@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
@@ -94,7 +94,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
@@ -137,7 +137,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
@@ -178,7 +178,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar39",
+		"_Name": "ActionBar40",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},

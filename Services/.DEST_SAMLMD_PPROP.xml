@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="http://awsast0500.enggsap.accenture.com:8000/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="sap_mobile" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -43,6 +46,24 @@
                 <Property Name="PaymentType" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Payment Method" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Currency" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
                 <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="Currency" sap:visible_detail="false" sap:visible_list="false" sap:label="Amount" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="COCIProduct" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="COCIProductUUID"/>
+                </Key>
+                <Property Name="InventoryGroup" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Inventory Group" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InventoryGroupDifference" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Difference Inventory Group" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActualQuantity" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="ActualUOM" sap:visible_detail="false" sap:visible_list="false" sap:label="Quantity" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COCIProductUUID" Type="Edm.Guid" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Product COCI UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RouteUUID" Type="Edm.Guid" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Route UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StopUUID" Type="Edm.Guid" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Stop UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProductID" Type="Edm.String" Nullable="false" MaxLength="40" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Product ID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActualUOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Unit" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="ReasonCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Reason" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsManuallyAdded" Type="Edm.Boolean" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Manually Added" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnloadedQuantity" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="ActualUOM" sap:visible_detail="false" sap:visible_list="false" sap:label="Unloaded Quantity" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Batch" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Plant" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="CociBehavior" sap:content-version="1">
                 <Key>
@@ -103,6 +124,7 @@
                 <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="Currency" sap:visible_detail="false" sap:visible_list="false" sap:label="Amount" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Currency" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
                 <Property Name="BankName" Type="Edm.String" Nullable="false" MaxLength="60" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Bank Name" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DigitalPaymentRequestID" Type="Edm.String" Nullable="false" MaxLength="40" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Payment Request" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="TransactionReference" Type="Edm.String" MaxLength="32" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Transaction Reference" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="AssignmentReference" Type="Edm.String" Nullable="false" MaxLength="18" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Assignment Reference" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <NavigationProperty Name="to_CollectionClearings" Relationship="sap_mobile.CollectionPayment_CollectionClearing" FromRole="FromRole_CollectionPayment_CollectionClearing" ToRole="ToRole_CollectionPayment_CollectionClearing"/>
@@ -114,6 +136,7 @@
                 <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="MIME type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="255" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Original" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FileID" Type="Edm.String" Nullable="false" MaxLength="32" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Physical Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_Attachment" Relationship="sap_mobile.Content_Attachment" FromRole="FromRole_Content_Attachment" ToRole="ToRole_Content_Attachment"/>
             </EntityType>
             <EntityType Name="DepositAccountReference" sap:content-version="1">
                 <Key>
@@ -154,7 +177,7 @@
                 <Property Name="TotalGrossAmount" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="Currency" sap:visible_detail="false" sap:visible_list="false" sap:label="Amount" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="PaymentTerms" Type="Edm.String" Nullable="false" MaxLength="4" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Payment Terms" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="SD Doc. Type" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="CustomerRelevantOrderNumber" Type="Edm.String" Nullable="false" MaxLength="35" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Reference Document No." sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerRelevantOrderNumber" Type="Edm.String" Nullable="false" MaxLength="35" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Reference Document No." sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ReasonCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Reason" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="OriginalSalesOrderType" Type="Edm.String" Nullable="false" MaxLength="4" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Orig. Sls Order Type" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ScheduledDeliveryDate" Type="Edm.DateTime" Precision="0" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Sched. Delivery Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -170,7 +193,7 @@
                 <Key>
                     <PropertyRef Name="DocumentItemUUID"/>
                 </Key>
-                <Property Name="InventoryGroup" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Inventory Group" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InventoryGroup" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Inventory Group" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="InventoryGroupDifference" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Difference Inventory Group" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ReferenceDocumentItemID" Type="Edm.String" Nullable="false" MaxLength="6" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Item ID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ReferenceDocumentID" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Document No." sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -194,7 +217,7 @@
                 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Currency" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
                 <Property Name="DocumentID" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Document No." sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DocumentCategory" Type="Edm.String" Nullable="false" MaxLength="3" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Document Type" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Product Batch" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Batch" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Plant" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="UnloadingPoint" Type="Edm.String" Nullable="false" MaxLength="25" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Unloading Point" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ConditionValue1" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:unit="Currency" sap:visible_detail="false" sap:visible_list="false" sap:label="Condition Value 1" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -275,7 +298,7 @@
                     <PropertyRef Name="MobileDocumentType"/>
                     <PropertyRef Name="SalesOrganization"/>
                 </Key>
-                <Property Name="BusinessPartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Busn. Partner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Bus. Partner" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Distribution Channel" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Division" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MobileDocumentType" Type="Edm.String" Nullable="false" MaxLength="3" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Mobile Doc. No. Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -360,6 +383,14 @@
                 <Property Name="AssignmentReference" Type="Edm.String" Nullable="false" MaxLength="18" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Assignment Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="DocumentItemText" Type="Edm.String" Nullable="false" MaxLength="50" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Document Item Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="PaymentType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PaymentType"/>
+                </Key>
+                <Property Name="PaymentType" Type="Edm.String" Nullable="false" MaxLength="2" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RelevantForCheckIn" Type="Edm.String" Nullable="false" MaxLength="1" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Rlvt for Check-In" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentCategory" Type="Edm.String" Nullable="false" MaxLength="16" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Payment Category" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="ReasonCode" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Language"/>
@@ -394,6 +425,7 @@
                 <Key>
                     <PropertyRef Name="RouteUUID"/>
                 </Key>
+                <Property Name="CoDriverName" Type="Edm.String" Nullable="false" MaxLength="81" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="RouteUUID" Type="Edm.Guid" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Route UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="RouteID" Type="Edm.String" Nullable="false" MaxLength="35" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Route ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MainDriverID" Type="Edm.String" Nullable="false" MaxLength="10" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Driver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -457,6 +489,7 @@
                 <Key>
                     <PropertyRef Name="StopUUID"/>
                 </Key>
+                <Property Name="StopDataVersionUUID" Type="Edm.Guid" Nullable="false" ConcurrencyMode="Fixed" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Data Version UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ClerkName" Type="Edm.String" Nullable="false" MaxLength="30" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Checker" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="IsManuallyAdded" Type="Edm.Boolean" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Manually Added" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="StopUUID" Type="Edm.Guid" Nullable="false" sap:custom_label="" sap:is_extension_field="false" sap:searchable="false" sap:visible_detail="false" sap:visible_list="false" sap:label="Stop UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -479,6 +512,7 @@
                 <NavigationProperty Name="to_Attachments" Relationship="sap_mobile.Stop_Attachment" FromRole="FromRole_Stop_Attachment" ToRole="ToRole_Stop_Attachment"/>
                 <NavigationProperty Name="to_BankDeposits" Relationship="sap_mobile.Stop_BankDeposit" FromRole="FromRole_Stop_BankDeposit" ToRole="ToRole_Stop_BankDeposit"/>
                 <NavigationProperty Name="to_COCIPayments" Relationship="sap_mobile.Stop_COCIPayment" FromRole="FromRole_Stop_COCIPayment" ToRole="ToRole_Stop_COCIPayment"/>
+                <NavigationProperty Name="to_COCIProducts" Relationship="sap_mobile.Stop_COCIProduct" FromRole="FromRole_Stop_COCIProduct" ToRole="ToRole_Stop_COCIProduct"/>
                 <NavigationProperty Name="to_Collections" Relationship="sap_mobile.Stop_Collection" FromRole="FromRole_Stop_Collection" ToRole="ToRole_Stop_Collection"/>
                 <NavigationProperty Name="to_Documents" Relationship="sap_mobile.Stop_Document" FromRole="FromRole_Stop_Document" ToRole="ToRole_Stop_Document"/>
                 <NavigationProperty Name="to_MobileSalesDocuments" Relationship="sap_mobile.Stop_MobileSalesDocument" FromRole="FromRole_Stop_MobileSalesDocument" ToRole="ToRole_Stop_MobileSalesDocument"/>
@@ -732,6 +766,22 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="Content_Attachment" sap:content-version="1">
+                <End Type="sap_mobile.Content" Multiplicity="1" Role="FromRole_Content_Attachment">
+                    <OnDelete Action="None"/>
+                </End>
+                <End Type="sap_mobile.Attachment" Multiplicity="1" Role="ToRole_Content_Attachment">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Content_Attachment">
+                        <PropertyRef Name="FileID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Content_Attachment">
+                        <PropertyRef Name="FileID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <Association Name="MobileSalesDocumentItem_DocItmCondition" sap:content-version="1">
                 <End Type="sap_mobile.MobileSalesDocumentItem" Multiplicity="1" Role="FromRole_MobileSalesDocumentItem_DocItmCondition">
                     <OnDelete Action="None"/>
@@ -808,6 +858,22 @@
                         <PropertyRef Name="StopUUID"/>
                     </Principal>
                     <Dependent Role="ToRole_Stop_COCIPayment">
+                        <PropertyRef Name="StopUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Stop_COCIProduct" sap:content-version="1">
+                <End Type="sap_mobile.Stop" Multiplicity="1" Role="FromRole_Stop_COCIProduct">
+                    <OnDelete Action="None"/>
+                </End>
+                <End Type="sap_mobile.COCIProduct" Multiplicity="*" Role="ToRole_Stop_COCIProduct">
+                    <OnDelete Action="None"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Stop_COCIProduct">
+                        <PropertyRef Name="StopUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Stop_COCIProduct">
                         <PropertyRef Name="StopUUID"/>
                     </Dependent>
                 </ReferentialConstraint>
@@ -905,6 +971,7 @@
                 <EntitySet Name="Attachments" EntityType="sap_mobile.Attachment" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="BankDeposits" EntityType="sap_mobile.BankDeposit" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="COCIPayments" EntityType="sap_mobile.COCIPayment" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="COCIProducts" EntityType="sap_mobile.COCIProduct" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="CociBehaviors" EntityType="sap_mobile.CociBehavior" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="Collections" EntityType="sap_mobile.Collection" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="CollectionClearings" EntityType="sap_mobile.CollectionClearing" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
@@ -922,6 +989,7 @@
                 <EntitySet Name="MobileSalesDocuments" EntityType="sap_mobile.MobileSalesDocument" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="MobileSalesDocumentItems" EntityType="sap_mobile.MobileSalesDocumentItem" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="OpenItems" EntityType="sap_mobile.OpenItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PaymentTypes" EntityType="sap_mobile.PaymentType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ReasonCodes" EntityType="sap_mobile.ReasonCode" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ReasonCodeUsages" EntityType="sap_mobile.ReasonCodeUsage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="Routes" EntityType="sap_mobile.Route" sap:creatable="false" sap:deletable="false" sap:content-version="1"/>
@@ -932,6 +1000,10 @@
                 <AssociationSet Name="ServiceTask_Attachments" Association="sap_mobile.ServiceTask_Attachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ServiceTasks" Role="FromRole_ServiceTask_Attachment"/>
                     <End EntitySet="Attachments" Role="ToRole_ServiceTask_Attachment"/>
+                </AssociationSet>
+                <AssociationSet Name="Stop_COCIProducts" Association="sap_mobile.Stop_COCIProduct" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Stops" Role="FromRole_Stop_COCIProduct"/>
+                    <End EntitySet="COCIProducts" Role="ToRole_Stop_COCIProduct"/>
                 </AssociationSet>
                 <AssociationSet Name="Collection_CollectionPayments" Association="sap_mobile.Collection_CollectionPayment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="Collections" Role="FromRole_Collection_CollectionPayment"/>
@@ -1008,6 +1080,10 @@
                 <AssociationSet Name="Route_OpenItems" Association="sap_mobile.Route_OpenItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="Routes" Role="FromRole_Route_OpenItem"/>
                     <End EntitySet="OpenItems" Role="ToRole_Route_OpenItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Content_Attachments" Association="sap_mobile.Content_Attachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Contents" Role="FromRole_Content_Attachment"/>
+                    <End EntitySet="Attachments" Role="ToRole_Content_Attachment"/>
                 </AssociationSet>
                 <AssociationSet Name="Route_Attachments" Association="sap_mobile.Route_Attachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="Routes" Role="FromRole_Route_Attachment"/>
@@ -3426,6 +3502,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="sap_mobile.sap_mobile_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <atom:link rel="self" href="https://accenture-myconcerto-cgs-sfdfim4n-dev-com-myconcerto-lmd.cfapps.eu10-004.hana.ondemand.com/DEST_SAMLMD_PPROP/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="https://accenture-myconcerto-cgs-sfdfim4n-dev-com-myconcerto-lmd.cfapps.eu10-004.hana.ondemand.com/DEST_SAMLMD_PPROP/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>

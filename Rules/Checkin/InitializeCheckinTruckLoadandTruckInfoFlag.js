@@ -19,7 +19,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     } else if (binding && binding.StopID) {
         // Binding exists but StopUUID missing, fetch it
         const readStop = await clientAPI.read(
-            '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
+            '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
             'Stops',
             [],
             `$filter=StopID eq '${binding.StopID}'`
@@ -43,7 +43,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         //alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
 
         return clientAPI.read(
-            '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
+            '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
             'DocumentItems',
             [],
             `$filter=RouteUUID eq guid'${routeUUID}'`

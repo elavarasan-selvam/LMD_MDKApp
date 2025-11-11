@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "DocumentItemsChangeset"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DocumentItemsFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/Main/Stops/StopEndDateTimeSuccess.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateEntity.action"
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ReadDocumentFailure"
+	},
+	"Message": "{#ActionResults:ReadDocumentUUID/error}",
+	"Title": "{DocERROR}",
+	"OKCaption": "oK"
+}

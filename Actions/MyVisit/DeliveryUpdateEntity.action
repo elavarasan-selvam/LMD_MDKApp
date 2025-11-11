@@ -6,11 +6,14 @@
 	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DeliveredUpdateSucess.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "DocumentItems",
 		"ReadLink": "/LMD_MDKApp/Rules/Visit/Delivery/DeliveryUpdateEntity.js"
 	},
 	"Properties": {
 		"DeliveredQuantity": "#Control:FCDeliveredQuantity/#Value"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID ": "#Property:RouteUUID"
 	}
 }

@@ -1,0 +1,19 @@
+{
+	"_Type": "Action.Type.ODataService.Read",
+	"ActionResult": {
+		"_Name": "ReadDocumentUUID"
+	},
+	"OnSuccess": "/LMD_MDKApp/Rules/Visit/ReadDocumentUUIDReadLink.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"EntitySet": "Documents",
+		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+	},
+	"Properties": [
+		"DocumentUUID",
+		"RouteUUID",
+		"StopUUID",
+		"DocumentID",
+		"DeliveryDate"
+	]
+}

@@ -13,7 +13,7 @@ export default function CompleteVisitButtonEnabling(context) {
         let isTruckDeliveryConfirmed = c.TruckDeliveryConfirmed === true;
         let isTruckReturnConfirmed = c.TruckReturnConfirmed === true;
 
-        return isTruckDeliveryConfirmed && isTruckReturnConfirmed;  
+        return isTruckDeliveryConfirmed || isTruckReturnConfirmed;  
     } catch (e) {
         context.getLogger().error("IsStartButtonVisible error: " + e);
         return false;  // safe fallback: Don't show button

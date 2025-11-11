@@ -20,7 +20,7 @@ export default function GetStopInfo(context) {
            return '';
        }
        // The AddressNumber in metadata is a string (Edm.String) -> quote the value
-       const service = '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service';
+       const service = '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service';
        const entity = 'Addresses';
        const filter = `$filter=AddressNumber eq '${addressKey}'`;
        return context.read(service, entity, [], filter).then(result => {
@@ -40,7 +40,7 @@ export default function GetStopInfo(context) {
    }
    // CASE 2: CHECKIN / CHECKOUT -> same as before (fetch vehicle from Routes)
    if ((stopType === 'CHECKIN' || stopType === 'CHECKOUT') && stop.RouteUUID) {
-       const service = '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service';
+       const service = '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service';
        const entity = 'Routes';
        const filter = `$filter=RouteUUID eq guid'${stop.RouteUUID}'`;
        return context.read(service, entity, [], filter).then(result => {

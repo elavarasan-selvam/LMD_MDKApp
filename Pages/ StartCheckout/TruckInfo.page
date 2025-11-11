@@ -97,7 +97,7 @@
 		}
 	],
 	"DesignTimeTarget": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "Routes",
 		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},
@@ -105,7 +105,7 @@
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar21",
+		"_Name": "ActionBar22",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},

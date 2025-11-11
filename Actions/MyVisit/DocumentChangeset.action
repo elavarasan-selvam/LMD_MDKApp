@@ -1,0 +1,13 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "DocumentChangeset"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DocumentItemsChangeset.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDate.action"
+	]
+}

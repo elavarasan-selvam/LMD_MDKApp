@@ -91,7 +91,7 @@ export default function GetStopTime(context) {
 
         if (!addrKey) return "";
 
-        const service = "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service";
+        const service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
         const entity = "Stops";
 
         // Use AddressNumber for filter (common field in Stops)

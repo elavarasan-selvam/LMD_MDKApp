@@ -5,7 +5,7 @@
 	},
 	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "COCIProducts"
 	},
 	"Properties": {

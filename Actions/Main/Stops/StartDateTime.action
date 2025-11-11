@@ -4,7 +4,7 @@
 		"_Name": "StartDateTime"
 	},
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "Stops",
 		"ReadLink": "{@odata.readLink}"
 	},

@@ -16,7 +16,7 @@ export default async function BumpCompletedStopAtCheckin(context) {
  
     // Read Stop freshly to get readLink
     const readResult = await context.read(
-        '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
+        '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
         'Stops',
         [],
         `$filter=StopUUID eq guid'${stopUUID}'`
@@ -70,6 +70,5 @@ export default async function BumpCompletedStopAtCheckin(context) {
  
     // Execute Odometer changeset
     await context.executeAction('/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action');
-
     return context.executeAction("/LMD_MDKApp/Actions/StartCheckout/CompleteCheckout.action");
 }

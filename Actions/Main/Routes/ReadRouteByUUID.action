@@ -6,7 +6,7 @@
 	"OnFailure": "/LMD_MDKApp/Actions/Main/Routes/ReadlinkFailedforRouteStart.action",
 	"OnSuccess": "/LMD_MDKApp/Rules/UpdateRouteUsingReadLink.js",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 		"EntitySet": "Routes",
 		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},

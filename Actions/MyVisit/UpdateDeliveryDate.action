@@ -1,17 +1,18 @@
 {
 	"_Type": "Action.Type.ODataService.UpdateEntity",
 	"ActionResult": {
-		"_Name": "EndDateTime"
+		"_Name": "UpdateDeliveryDate"
 	},
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
-		"EntitySet": "Stops",
+		"EntitySet": "Documents",
 		"ReadLink": "{{#Property:ReadLink}}"
 	},
 	"Properties": {
-		"EndDateTime": "{{#Property:EndDateTime}}"
+		"DocumentID": "{{#Property:DocumentID}}",
+		"DeliveryDate": "{{#Property:DeliveryDate}}"
 	},
 	"Headers": {
-		"OfflineOData.TransactionID": "#Property:RouteUUID"
+		"OfflineOData.TransactionID ": "#Property:RouteUUID"
 	}
 }

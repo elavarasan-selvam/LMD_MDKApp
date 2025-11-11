@@ -13,7 +13,7 @@ export default function UpdatingTruckLoad(clientAPI) {
 
     // Read DocumentItems for this Route
     return clientAPI.read(
-        '/LMD_MDKApp/Services/DEST_SAMSMA_PPROP.service',
+        '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
         'DocumentItems',
         [],
         `$filter=RouteUUID eq guid'${routeUUID}'`
