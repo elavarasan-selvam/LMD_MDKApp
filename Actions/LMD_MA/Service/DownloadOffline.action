@@ -1,0 +1,37 @@
+{
+	"_Type": "Action.Type.OfflineOData.Download",
+	"ActionResult": {
+		"_Name": "sync"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/DEST_SAMLMD_PPROP/ErrorArchive_CheckForSyncError.js",
+	"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+	"DefiningRequests": [
+		{
+			"Name": "DocumentItems",
+			"Query": "DocumentItems"
+		},
+		{
+			"Name": "Documents",
+			"Query": "Documents"
+		},
+		{
+			"Name": "Routes",
+			"Query": "Routes"
+		},
+		{
+			"Name": "Stops",
+			"Query": "Stops"
+		},
+		{
+			"Name": "COCIProducts",
+			"Query": "COCIProducts",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "DocumentItemConditions",
+			"Query": "DocumentItemConditions",
+			"AutomaticallyRetrievesStreams": false
+		}
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UpdateDeliveryDateSuccess"
+	},
+	"Message": "Document date is updated",
+	"Title": "Success",
+	"OKCaption": "Ok"
+}

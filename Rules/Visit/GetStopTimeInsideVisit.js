@@ -60,7 +60,7 @@ export default function GetStopTime(context) {
         const addrKey = binding.AddressNumber || binding.AddressID || binding.AddressId || binding.AddressKey;
         if (!addrKey) return "";
 
-        const service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
+        const service = "/LMD_MDKApp/Services/LMD_MA.service";
         const entity = "Stops";
         const isNumericKey = !isNaN(Number(addrKey));
         let filter;

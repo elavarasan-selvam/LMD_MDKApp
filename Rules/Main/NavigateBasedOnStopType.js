@@ -7,10 +7,9 @@ export default function NavigateBasedOnStopType(context) {
     // 2) Only for CHECKOUT, update Route StartDateTime
     if (stopType === 'CHECKOUT') {
         // Call ReadRouteByUUID which will trigger UpdateRouteStartDateTime.js on success
-        context.executeAction('/LMD_MDKApp/Actions/Main/Routes/ReadRouteByUUID.action');
-
+        return context.executeAction('/LMD_MDKApp/Actions/Main/Routes/ReadRouteByUUID.action');
         // Navigate to Checkout page
-        return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/NavToStartCheckout.action');
+        //return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/NavToStartCheckout.action');
 
     } else if (stopType === 'VISIT') {
         return context.executeAction('/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitPage.action');

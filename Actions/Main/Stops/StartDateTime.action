@@ -4,7 +4,7 @@
 		"_Name": "StartDateTime"
 	},
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Stops",
 		"ReadLink": "{@odata.readLink}"
 	},
@@ -13,5 +13,8 @@
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	},
+	"RequestOptions": {
+		"UpdateMode": "Merge"
 	}
 }

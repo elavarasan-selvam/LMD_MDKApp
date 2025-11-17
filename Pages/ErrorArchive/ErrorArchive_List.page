@@ -1,6 +1,10 @@
 {
 	"Controls": [
 		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
 			"_Type": "Control.Type.SectionedTable",
 			"_Name": "SectionedTable0",
 			"Sections": [
@@ -12,9 +16,22 @@
 						"UseTopPadding": true,
 						"Caption": "DEST_SAMLMD_PPROP"
 					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Grouping": {
+						"GroupingProperties": [],
+						"Header": {
+							"Items": []
+						}
+					},
 					"_Type": "Section.Type.ObjectTable",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "ErrorArchive"
 					},
 					"_Name": "SectionObjectTable_DEST_SAMLMD_PPROP",
@@ -22,13 +39,6 @@
 					"EmptySection": {
 						"Caption": "No record found!",
 						"FooterVisible": false
-					},
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
 					},
 					"ObjectCell": {
 						"ContextMenu": {
@@ -60,11 +70,77 @@
 						"ShowLoadingIndicator": false,
 						"PageSize": 50
 					},
+					"HighlightSelectedItem": false,
+					"Selection": {
+						"ExitOnLastDeselect": true,
+						"LongPressToEnable": "None",
+						"Mode": "None"
+					}
+				},
+				{
+					"Header": {
+						"_Type": "SectionCommon.Type.Header",
+						"_Name": "SectionHeader_LMD_MA",
+						"AccessoryType": "None",
+						"UseTopPadding": true,
+						"Caption": "LMD_MA"
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"Grouping": {
 						"GroupingProperties": [],
 						"Header": {
 							"Items": []
 						}
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "ErrorArchive"
+					},
+					"_Name": "SectionObjectTable_LMD_MA",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"ContextMenu": {
+							"Items": [],
+							"PerformFirstActionWithFullSwipe": true,
+							"LeadingItems": [],
+							"TrailingItems": [],
+							"_Type": "ObjectCell.Type.ContextMenu"
+						},
+						"Title": "{HTTPStatusCode}",
+						"Subhead": "{RequestURL}",
+						"Footnote": "{Message}",
+						"DisplayDescriptionInMobile": true,
+						"StatusText": "{RequestMethod}",
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "None",
+						"ProgressIndicator": "InProgress",
+						"Tags": [],
+						"AvatarStack": {
+							"Avatars": [],
+							"ImageIsCircular": false,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"Avatars": [],
+							"ImageIsCircular": true
+						},
+						"OnPress": "/LMD_MDKApp/Actions/ErrorArchive/NavToErrorArchive_Detail.action",
+						"_Type": "ObjectTable.Type.ObjectCell",
+						"Selected": false
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
 					},
 					"HighlightSelectedItem": false,
 					"Selection": {
@@ -73,18 +149,14 @@
 						"Mode": "None"
 					}
 				}
-			],
-			"FilterFeedbackBar": {
-				"ShowAllFilters": false,
-				"_Type": "Control.Type.FilterFeedbackBar"
-			}
+			]
 		}
 	],
 	"_Type": "Page",
 	"_Name": "ErrorArchive_List",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar1",
+		"_Name": "ActionBar4",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Error List",
 		"PrefersLargeCaption": true

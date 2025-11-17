@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "DocumentChangesetfailure"
+	},
+	"Message": "{#ActionResults:DocumentChangeset/error}",
+	"Title": "{ErrorAtDOC}",
+	"OKCaption": "OK"
+}

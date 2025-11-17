@@ -14,7 +14,7 @@ export default async function BumpCompletedStops(context) {
  
     // Step 1: Read Stop entity
     const readResult = await context.read(
-        '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
+        '/LMD_MDKApp/Services/LMD_MA.service',
         'Stops',
         [],
         `$filter=StopUUID eq guid'${stopUUID}'`
@@ -43,7 +43,7 @@ export default async function BumpCompletedStops(context) {
     // Step 3: Update Document DeliveryDate only for StopID = 20
     if (stopID == 20) {
         alert(" StopID 20 detected, reading DocumentItems for StopUUID...");
-        context.executeAction('/LMD_MDKApp/Actions/MyVisit/ReadDocumentUUID.action');
+        await context.executeAction('/LMD_MDKApp/Actions/MyVisit/ReadDocumentUUID.action');
         //ADDing This
         alert('Updated doc date');
     }

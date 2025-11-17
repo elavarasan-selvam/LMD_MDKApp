@@ -3,8 +3,9 @@
 	"ActionResult": {
 		"_Name": "StartDateTime"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/NavToStartCheckout.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Routes",
 		"ReadLink": "{{#Property:routeReadLink}}"
 	},
@@ -13,5 +14,8 @@
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	},
+	"RequestOptions": {
+		"UpdateMode": "Merge"
 	}
 }

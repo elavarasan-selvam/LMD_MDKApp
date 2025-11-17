@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "DocumentItems",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},

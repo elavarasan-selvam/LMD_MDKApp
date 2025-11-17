@@ -8,7 +8,7 @@ export default async function InitializeDeliveryandReturnFlag(context) {
     if (!binding || !binding.StopUUID) {
         //alert("Visit page has no StopUUID in binding, fetching it...");
         const readStops = await context.read(
-            '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
+            '/LMD_MDKApp/Services/LMD_MA.service',
             'Stops',
             [],
             `$filter=StopID eq '${binding.StopID}'`

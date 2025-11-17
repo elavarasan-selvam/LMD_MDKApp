@@ -16,7 +16,7 @@ export default async function BumpCompletedStopAtCheckin(context) {
  
     // Read Stop freshly to get readLink
     const readResult = await context.read(
-        '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service',
+        '/LMD_MDKApp/Services/LMD_MA.service',
         'Stops',
         [],
         `$filter=StopUUID eq guid'${stopUUID}'`
@@ -58,7 +58,7 @@ export default async function BumpCompletedStopAtCheckin(context) {
         //alert('Route EndDateTime updated: ' + routeReadLink);
     }
  
-    // Update Stop EndDateTime
+    // Update Stop EndDateTime 
     await context.executeAction({
         Name: '/LMD_MDKApp/Actions/Main/Stops/EndDateTime.action',
         Properties: {

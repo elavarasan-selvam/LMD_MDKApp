@@ -3,9 +3,10 @@
 	"ActionResult": {
 		"_Name": "UpdateStopsChangeset"
 	},
+	"OnFailure": "/LMD_MDKApp/Actions/Main/Stops/UpdateStopsChangesetFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DocumentChangeset.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service"
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
 		"/LMD_MDKApp/Actions/Main/Stops/StartDateTime.action",

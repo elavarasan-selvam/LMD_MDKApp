@@ -4,7 +4,7 @@
 		{
 			"Enabled": true,
 			"Icon": "sap-icon://synchronize",
-			"OnPress": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncStartedMessage.action",
+			"OnPress": "/LMD_MDKApp/Actions/LMD_MA/Service/SyncStartedMessage.action",
 			"Title": "Sync Changes",
 			"Visible": "$(PLT,true,true,false)"
 		},

@@ -5,7 +5,7 @@
 	},
 	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIProducts"
 	},
 	"Properties": {

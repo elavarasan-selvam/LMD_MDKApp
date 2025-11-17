@@ -4,7 +4,7 @@
     ],
     "mdk.uieditor": {
         "left": {
-            "visible": false,
+            "visible": true,
             "width": 231.9980926513672
         },
         "right": {

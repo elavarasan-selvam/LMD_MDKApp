@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.OfflineOData.Close",
+	"ActionResult": {
+		"_Name": "close"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/LMD_MA/Service/CloseOfflineFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/LMD_MA/Service/CloseOfflineSuccessMessage.action",
+	"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+	"Force": true
+}

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "DocumentChangsetSuccess"
+	},
+	"Message": "Document Delivery Date Changeset called",
+	"Title": "Success",
+	"OKCaption": "Ok"
+}

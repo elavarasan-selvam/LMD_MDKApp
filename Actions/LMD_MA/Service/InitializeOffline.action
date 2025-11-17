@@ -1,0 +1,38 @@
+{
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": {
+		"_Name": "init"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/LMD_MA/Service/InitializeOfflineFailureMessage.action",
+	"ShowActivityIndicator": true,
+	"ActivityIndicatorText": "Downloading...",
+	"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+	"DefiningRequests": [
+		{
+			"Name": "DocumentItems",
+			"Query": "DocumentItems"
+		},
+		{
+			"Name": "Documents",
+			"Query": "Documents"
+		},
+		{
+			"Name": "Routes",
+			"Query": "Routes"
+		},
+		{
+			"Name": "Stops",
+			"Query": "Stops"
+		},
+		{
+			"Name": "COCIProducts",
+			"Query": "COCIProducts",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "DocumentItemConditions",
+			"Query": "DocumentItemConditions",
+			"AutomaticallyRetrievesStreams": false
+		}
+	]
+}

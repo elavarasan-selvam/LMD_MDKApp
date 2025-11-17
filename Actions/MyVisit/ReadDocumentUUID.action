@@ -3,9 +3,10 @@
 	"ActionResult": {
 		"_Name": "ReadDocumentUUID"
 	},
+	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/ReadDocumentFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Rules/Visit/ReadDocumentUUIDReadLink.js",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Documents",
 		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},
@@ -14,6 +15,8 @@
 		"RouteUUID",
 		"StopUUID",
 		"DocumentID",
-		"DeliveryDate"
+		"DocumentCategory",
+		"DeliveryDate",
+		"IsReturn"
 	]
 }

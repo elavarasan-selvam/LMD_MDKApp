@@ -20,7 +20,7 @@ export default function GetStopInfo(context) {
         const addressKey = stop.AddressID;
         if (!addressKey) return '';
 
-        const service = '/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service';
+        const service = '/LMD_MDKApp/Services/LMD_MA.service';
         const entity = 'Addresses';
         const filter = `$filter=AddressNumber eq '${addressKey}'`;
 

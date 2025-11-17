@@ -7,7 +7,7 @@ export default function GetReturnDescription(context) {
         }
 
         const binding = context.binding;
-        const service = "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service";
+        const service = "/LMD_MDKApp/Services/LMD_MA.service";
 
         // ✅ If only OrderedQuantity exists
         return context.read(

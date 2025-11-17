@@ -18,7 +18,7 @@
 					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
@@ -95,7 +95,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
@@ -138,7 +138,7 @@
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
-						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},

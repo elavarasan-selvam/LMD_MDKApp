@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "StopStartDateTimeSuccess"
+	},
+	"Message": "Stop Start Date Time Updated ",
+	"Title": "{Success}",
+	"OKCaption": "Ok"
+}

@@ -110,7 +110,7 @@
 		}
 	],
 	"DesignTimeTarget": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Routes",
 		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 	},

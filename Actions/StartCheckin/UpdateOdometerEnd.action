@@ -6,7 +6,7 @@
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/ConfirmCheckinTruckInfoAndNavigate.js",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Routes",
 		"ReadLink": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/UpdateOdometerEndReadLink.js"
 	},
@@ -15,5 +15,8 @@
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	},
+	"RequestOptions": {
+		"UpdateMode": "Merge"
 	}
 }

@@ -25,16 +25,16 @@ export default async function ReadDocumentUUIDReadLink(context) {
                 alert(`Document ${doc.DocumentUUID || doc.DocumentID} has empty ReadLink.`);
                 continue;
             }
-            const documentID = doc.DocumentID;
-            alert('DocumentID:'+documentID);
+            const docID = doc.DocumentID;
             alert(`Updating DeliveryDate for Document ReadLink:\n${JSON.stringify(docReadLink, null, 2)}`);
 
             await context.executeAction({
                 Name:'/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDate.action',
                 Properties: {
                     Target: { ReadLink: docReadLink },
-                    Properties: { DeliveryDate: currentDate ,
-                        DocumentID: documentID}
+                    Properties: { DeliveryDate: currentDate,
+                        DocumentID: docID
+                    }
                 }
             });
 

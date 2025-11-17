@@ -3,16 +3,19 @@
 	"ActionResult": {
 		"_Name": "UpdateDeliveryDate"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDateSuccess.action",
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Documents",
 		"ReadLink": "{{#Property:ReadLink}}"
 	},
 	"Properties": {
-		"DocumentID": "{{#Property:DocumentID}}",
 		"DeliveryDate": "{{#Property:DeliveryDate}}"
 	},
 	"Headers": {
-		"OfflineOData.TransactionID ": "#Property:RouteUUID"
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	},
+	"RequestOptions": {
+		"UpdateMode": "Merge"
 	}
 }
