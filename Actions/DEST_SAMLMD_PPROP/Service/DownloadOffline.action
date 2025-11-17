@@ -110,6 +110,11 @@
 		{
 			"Name": "Texts",
 			"Query": "Texts"
+		},
+		{
+			"Name": "COCIProducts",
+			"Query": "COCIProducts",
+			"AutomaticallyRetrievesStreams": false
 		}
 	]
 }

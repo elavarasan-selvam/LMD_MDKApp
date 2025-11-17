@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.OfflineOData.Close",
+	"ActionResult": {
+		"_Name": "CloseOffline"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/CloseOfflineFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/CloseOfflineSuccessMessage.action",
+	"Service": "/LMD_MDKApp/Services/MD_BUSINESSPARTNER_SRV.service",
+	"Force": true
+}

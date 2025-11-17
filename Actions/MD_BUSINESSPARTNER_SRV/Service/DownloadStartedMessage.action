@@ -1,6 +1,6 @@
 {
 	"_Type": "Action.Type.ProgressBanner",
-	"OnSuccess": "/LMD_MDKApp/Actions/DEST_SAMSMA_PPROP/Service/DownloadOffline.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/DownloadOffline.action",
 	"Message": "Download in progress...",
 	"CompletionMessage": "Download Successful",
 	"CompletionTimeout": 7

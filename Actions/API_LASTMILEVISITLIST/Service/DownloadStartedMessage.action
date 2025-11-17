@@ -1,7 +1,0 @@
-{
-    "Message": "Download in progress...",
-    "CompletionMessage": "Download Successful",
-    "CompletionTimeout": 7,
-    "OnSuccess": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/DownloadOffline.action",
-    "_Type": "Action.Type.ProgressBanner"
-}

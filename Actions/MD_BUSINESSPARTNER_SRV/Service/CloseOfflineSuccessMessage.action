@@ -1,0 +1,11 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "CloseOfflineSuccessMessage"
+	},
+	"Message": "Data service closed successfully",
+	"NumberOfLines": 1,
+	"Duration": 3,
+	"IsIconHidden": true,
+	"Animated": true
+}

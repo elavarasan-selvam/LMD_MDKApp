@@ -1,9 +1,0 @@
-{
-    "Service": "/LMD_MDKApp/Services/API_LASTMILEVISITLIST.service",
-    "_Type": "Action.Type.OfflineOData.Upload",
-    "ActionResult": {
-        "_Name": "sync"
-    },
-    "OnSuccess": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/DownloadStartedMessage.action",
-    "OnFailure": "/LMD_MDKApp/Actions/API_LASTMILEVISITLIST/Service/SyncFailureMessage.action"
-}

@@ -1,0 +1,11 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "CloseOfflineFailureMessage"
+	},
+	"Message": "Failure closing data service - {#ActionResults:close/error}",
+	"NumberOfLines": 1,
+	"Duration": 3,
+	"IsIconHidden": true,
+	"Animated": true
+}

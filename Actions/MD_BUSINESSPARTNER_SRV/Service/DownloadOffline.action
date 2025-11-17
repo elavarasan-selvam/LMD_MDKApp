@@ -1,9 +1,9 @@
 {
-	"_Type": "Action.Type.ODataService.Initialize",
+	"_Type": "Action.Type.OfflineOData.Download",
 	"ActionResult": {
-		"_Name": "init"
+		"_Name": "DownloadOffline"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/InitializeOfflineFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/MD_BUSINESSPARTNER_SRV/ErrorArchive_CheckForSyncError.js",
 	"Service": "/LMD_MDKApp/Services/MD_BUSINESSPARTNER_SRV.service",
 	"DefiningRequests": [
 		{

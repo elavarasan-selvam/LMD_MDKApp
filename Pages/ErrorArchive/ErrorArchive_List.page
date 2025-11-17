@@ -5,112 +5,14 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"_Type": "Section.Type.ObjectTable",
 					"Header": {
-						"_Name": "SectionHeader_API_LASTMILERELOADREQUEST",
-						"AccessoryType": "None",
-						"UseTopPadding": true,
-						"Caption": "API_LASTMILERELOADREQUEST",
-						"_Type": "SectionCommon.Type.Header"
-					},
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
-						"EntitySet": "ErrorArchive"
-					},
-					"_Name": "SectionObjectTable_API_LASTMILERELOADREQUEST",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false,
-						"Caption": "No record found!"
-					},
-					"ObjectCell": {
-						"ContextMenu": {
-							"Items": [],
-							"PerformFirstActionWithFullSwipe": true,
-							"_Type": "ObjectCell.Type.ContextMenu"
-						},
-						"Title": "{HTTPStatusCode}",
-						"Subhead": "{RequestURL}",
-						"Footnote": "{Message}",
-						"StatusText": "{RequestMethod}",
-						"AvatarStack": {
-							"ImageIsCircular": false
-						},
-						"PreserveIconStackSpacing": false,
-						"AccessoryType": "None",
-						"OnPress": "/LMD_MDKApp/Actions/ErrorArchive/NavToErrorArchive_Detail.action",
-						"Selected": false,
-						"_Type": "ObjectTable.Type.ObjectCell"
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"HighlightSelectedItem": false,
-					"Selection": {
-						"ExitOnLastDeselect": true,
-						"LongPressToEnable": "None",
-						"Mode": "None"
-					}
-				},
-				{
-					"_Type": "Section.Type.ObjectTable",
-					"Header": {
-						"_Name": "SectionHeader_API_LASTMILEVISITLIST",
-						"AccessoryType": "None",
-						"UseTopPadding": true,
-						"Caption": "API_LASTMILEVISITLIST",
-						"_Type": "SectionCommon.Type.Header"
-					},
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/API_LASTMILEVISITLIST.service",
-						"EntitySet": "ErrorArchive"
-					},
-					"_Name": "SectionObjectTable_API_LASTMILEVISITLIST",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false,
-						"Caption": "No record found!"
-					},
-					"ObjectCell": {
-						"ContextMenu": {
-							"Items": [],
-							"PerformFirstActionWithFullSwipe": true,
-							"_Type": "ObjectCell.Type.ContextMenu"
-						},
-						"Title": "{HTTPStatusCode}",
-						"Subhead": "{RequestURL}",
-						"Footnote": "{Message}",
-						"StatusText": "{RequestMethod}",
-						"AvatarStack": {
-							"ImageIsCircular": false
-						},
-						"PreserveIconStackSpacing": false,
-						"AccessoryType": "None",
-						"OnPress": "/LMD_MDKApp/Actions/ErrorArchive/NavToErrorArchive_Detail.action",
-						"Selected": false,
-						"_Type": "ObjectTable.Type.ObjectCell"
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"HighlightSelectedItem": false,
-					"Selection": {
-						"ExitOnLastDeselect": true,
-						"LongPressToEnable": "None",
-						"Mode": "None"
-					}
-				},
-				{
-					"_Type": "Section.Type.ObjectTable",
-					"Header": {
+						"_Type": "SectionCommon.Type.Header",
 						"_Name": "SectionHeader_DEST_SAMLMD_PPROP",
 						"AccessoryType": "None",
 						"UseTopPadding": true,
-						"Caption": "DEST_SAMLMD_PPROP",
-						"_Type": "SectionCommon.Type.Header"
+						"Caption": "DEST_SAMLMD_PPROP"
 					},
+					"_Type": "Section.Type.ObjectTable",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service",
 						"EntitySet": "ErrorArchive"
@@ -118,31 +20,51 @@
 					"_Name": "SectionObjectTable_DEST_SAMLMD_PPROP",
 					"Visible": true,
 					"EmptySection": {
-						"FooterVisible": false,
-						"Caption": "No record found!"
+						"Caption": "No record found!",
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
 					},
 					"ObjectCell": {
 						"ContextMenu": {
 							"Items": [],
 							"PerformFirstActionWithFullSwipe": true,
-							"_Type": "ObjectCell.Type.ContextMenu"
+							"_Type": "ObjectCell.Type.ContextMenu",
+							"LeadingItems": [],
+							"TrailingItems": []
 						},
 						"Title": "{HTTPStatusCode}",
 						"Subhead": "{RequestURL}",
 						"Footnote": "{Message}",
 						"StatusText": "{RequestMethod}",
-						"AvatarStack": {
-							"ImageIsCircular": false
-						},
 						"PreserveIconStackSpacing": false,
 						"AccessoryType": "None",
+						"Tags": [],
+						"AvatarStack": {
+							"ImageIsCircular": false,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"ImageIsCircular": true
+						},
 						"OnPress": "/LMD_MDKApp/Actions/ErrorArchive/NavToErrorArchive_Detail.action",
-						"Selected": false,
-						"_Type": "ObjectTable.Type.ObjectCell"
+						"_Type": "ObjectTable.Type.ObjectCell",
+						"Selected": false
 					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
 						"PageSize": 50
+					},
+					"Grouping": {
+						"GroupingProperties": [],
+						"Header": {
+							"Items": []
+						}
 					},
 					"HighlightSelectedItem": false,
 					"Selection": {
@@ -151,14 +73,20 @@
 						"Mode": "None"
 					}
 				}
-			]
+			],
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			}
 		}
 	],
 	"_Type": "Page",
 	"_Name": "ErrorArchive_List",
 	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar1",
+		"_Type": "Control.Type.ActionBar",
 		"Caption": "Error List",
-		"PrefersLargeCaption": true,
-		"_Type": "Control.Type.ActionBar"
+		"PrefersLargeCaption": true
 	}
 }
