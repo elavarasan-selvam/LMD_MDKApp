@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "ActualQuantityUpdateSucccess"
 	},
-	"Message": "COCIProduct Entity set is updated !!",
+	"Message": "COCIProduct Entity set is created",
 	"Title": "Success!!",
 	"OKCaption": "Ok"
 }

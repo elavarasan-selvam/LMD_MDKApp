@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "ActualQuantityFailure"
 	},
-	"Message": "{#ActionResults:COCIProduct_Create/error}",
+	"Message": "{#ActionResults:COCIProduct_Create_from_Stops/error}",
 	"Title": "{Error}",
 	"OKCaption": "Ok"
 }

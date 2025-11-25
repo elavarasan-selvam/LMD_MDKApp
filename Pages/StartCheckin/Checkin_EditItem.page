@@ -110,7 +110,7 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/CreateCOCIProducts.js"
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/COCIProduct_Create_from_Stops.action"
 			}
 		],
 		"_Name": "ActionBar2",

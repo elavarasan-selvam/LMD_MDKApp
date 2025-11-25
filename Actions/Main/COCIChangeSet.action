@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "COCIChangeSet"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/COCI_Changset_Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DocumentChangeset.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartCheckin/COCIProduct_Create_from_Stops.action"
+	]
+}

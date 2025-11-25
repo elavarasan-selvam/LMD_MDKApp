@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "COXI_Changset_Failure"
+	},
+	"Message": "{#ActionResults:COCIChangeSet/error}",
+	"Title": "{Error}",
+	"OKCaption": "Ok"
+}

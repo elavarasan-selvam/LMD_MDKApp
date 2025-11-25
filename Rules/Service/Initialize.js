@@ -3,13 +3,13 @@ export default async function Initialize(context) {
     try {
         
         // -------------------- STEP 1: Initialize Services --------------------
-        let _DEST_SAMLMD_PPROP = context.executeAction('/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/InitializeOffline.action');
+        //let _DEST_SAMLMD_PPROP = context.executeAction('/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/InitializeOffline.action');
         let _LMD_MA = context.executeAction('/LMD_MDKApp/Actions/LMD_MA/Service/InitializeOffline.action');
         let _MD_BUSINESSPARTNES_SRV = context.executeAction('/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/InitializeOffline.action');
         let _API_PRODUCT_SRV = context.executeAction('/LMD_MDKApp/Actions/API_PRODUCT_SRV/Service/InitializeOffline.action')
       
       
-        await Promise.all([_DEST_SAMLMD_PPROP,_MD_BUSINESSPARTNES_SRV, _API_PRODUCT_SRV,_LMD_MA]);
+        await Promise.all([_LMD_MA,_MD_BUSINESSPARTNES_SRV, _API_PRODUCT_SRV]);
 
         // -------------------- STEP 2: Business Partner Logic --------------------
         let loggedInEmail = context.evaluateTargetPath("#Application/#AppData/UserId");

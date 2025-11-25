@@ -4,6 +4,7 @@
 		"_Name": "DocumentItemsChangeset"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DocumentItemsFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/Main/COCIChangeSet.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},

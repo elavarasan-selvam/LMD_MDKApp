@@ -1,7 +1,7 @@
 {
-	"_Type": "Action.Type.ODataService.CreateEntity",
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
 	"ActionResult": {
-		"_Name": "COCIProduct_Create"
+		"_Name": "COCIProduct_Create_from_Stops"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
@@ -9,14 +9,20 @@
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIProducts"
 	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/GetCOCIStopReadLink.js"
+		},
+		"Property": "to_COCIProducts"
+	},
 	"Properties": {
-		"InventoryGroup": "{InventoryGroup}",
 		"ActualQuantity": "{ActualQuantity}",
-		"RouteUUID": "{RouteUUID}",
-		"StopUUID": "{StopUUID}",
 		"ProductID": "{ProductID}",
 		"ActualUOM": "{ActualUOM}",
-		"IsManuallyAdded": false,
-		"UnloadedQuantity": "{#Control:UnloadedQuantityInput/#Value}"
+		"IsManuallyAdded": true
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

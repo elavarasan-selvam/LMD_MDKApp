@@ -29,7 +29,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             const stopEntity = readStop.getItem ? readStop.getItem(0) : readStop[0];
             appData.currentStop = stopEntity;
             appData.currentRouteUUID = stopEntity.RouteUUID;
-            //alert(`Stop fetched from backend\nStopID: ${stopEntity.StopID}\nStopUUID: ${stopEntity.StopUUID}\nRouteUUID: ${stopEntity.RouteUUID}`);
+            alert(`Stop fetched from backend\nStopID: ${stopEntity.StopID}\nStopUUID: ${stopEntity.StopUUID}\nRouteUUID: ${stopEntity.RouteUUID}`);
         } else {
             alert('Stop not found in backend for StopID: ' + binding.StopID);
         }
