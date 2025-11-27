@@ -1,42 +1,37 @@
 /* GetStopInfo.js */
-export default function GetStopInfo(context) {
+export default async function GetStopInfo(context) {
    let stop = context.binding;
    if (!stop) return '';
    const stopType = stop.StopType;
    // CASE 1: VISIT -> try to use the navigation property first (to_Address)
-   if (stopType === 'VISIT') {
-       // 1) If the navigation property is already present on the binding (from offline store), use it
-       if (stop.to_Address && Array.isArray(stop.to_Address) && stop.to_Address.length > 0) {
-           const addr = stop.to_Address[0];
-           const City = addr.City || '';
-           const postal = addr.PostalCode || '';
-           const country = addr.Country || '';
-           return `${city} ${postal} ${country}`.trim();
-       }
-       // 2) Otherwise fallback to reading the Addresses entity with filter on AddressNumber
-       // ensure AddressNumber exists on Stop - it may be called AddressID on Stop in your metadata
-       const addressKey = stop.AddressID; // try common names
-       if (!addressKey) {
-           return '';
-       }
-       // The AddressNumber in metadata is a string (Edm.String) -> quote the value
-       const service = '/LMD_MDKApp/Services/LMD_MA.service';
-       const entity = 'Addresses';
-       const filter = `$filter=AddressNumber eq '${addressKey}'`;
-       return context.read(service, entity, [], filter).then(result => {
+  if (stopType === 'VISIT') {
+       try {
+           // If address navigation property already exists, use CompleteAddress directly
+           if (stop.to_Address && Array.isArray(stop.to_Address) && stop.to_Address.length > 0) {
+               const addr = stop.to_Address[0];
+               if (addr.CompleteAddress) {
+                   return addr.CompleteAddress;
+               }
+           }
+           // Otherwise, fallback to cross-service fetch using LocationAddressID
+           const addressKey = stop.AddressID || stop.AddressNumber || stop.LocationAddressID;
+           if (!addressKey) {
+               return 'No address ID available';
+           }
+           // Use address lookup service
+           const service = '/LMD_MDKApp/Services/MD_BUSINESSPARTNER_SRV.service';
+           const entity = 'C_BPAddressValueHelp';
+           const filter = `$filter=AddressNumber eq '${addressKey}'`;
+           const result = await context.read(service, entity, [], filter);
            if (result && result.length > 0) {
                const address = result.getItem(0);
-               const city = address.City || '';
-               const postal = address.PostalCode || '';
-               const country = address.Country || '';
-               return ` ${city} ${postal} ${country}`.trim();
+               return address.CompleteAddress || 'Address not available';
            }
-           return '';
-       }).catch(err => {
-           // swallow error but you can log for debugging:
-           // console.log('GetStopInfo - read Addresses error', err);
-           return '';
-       });
+           return 'Address not found';
+       } catch (error) {
+           console.error('Error fetching VISIT address:', error);
+           return 'Error fetching address';
+       }
    }
    // CASE 2: CHECKIN / CHECKOUT -> same as before (fetch vehicle from Routes)
    if ((stopType === 'CHECKIN' || stopType === 'CHECKOUT') && stop.RouteUUID) {

@@ -1,43 +1,25 @@
-/* GetStopInfo.js */
-export default function GetStopInfo(context) {
-    let stop = context.binding;
-    if (!stop) return '';
-
-    const stopType = stop.StopType;
-
-    // Only handle VISIT stops
-    if (stopType === 'VISIT') {
-        // 1) Use navigation property if available
-        if (stop.to_Address && Array.isArray(stop.to_Address) && stop.to_Address.length > 0) {
-            const addr = stop.to_Address[0];
-            const city = addr.City || '';
-            const postal = addr.PostalCode || '';
-            const country = addr.Country || '';
-            return `${city} ${postal} ${country}`.trim();
-        }
-
-        // 2) Otherwise, read from Addresses entity
-        const addressKey = stop.AddressID;
-        if (!addressKey) return '';
-
-        const service = '/LMD_MDKApp/Services/LMD_MA.service';
-        const entity = 'Addresses';
-        const filter = `$filter=AddressNumber eq '${addressKey}'`;
-
-        return context.read(service, entity, [], filter).then(result => {
-            if (result && result.length > 0) {
-                const address = result.getItem(0);
-                const city = address.City || '';
-                const postal = address.PostalCode || '';
-                const country = address.Country || '';
-                return `${city} ${postal} ${country}`.trim();
-            }
-            return '';
-        }).catch(() => {
-            return '';
-        });
-    }
-
-    // For all other stop types, return nothing
-    return '';
+export default async function GetStopInfoInsideVisit(context) {
+   try {
+       // Get Stop record from the binding
+       const stop = context.binding;
+       if (!stop) return "No stop data";
+       // Use LocationAddressID directly from Stop record
+       const locationAddressID = stop.LocationAddressID;
+       if (!locationAddressID) return "No address ID";
+       // Fetch CompleteAddress from BP service
+       const addressResult = await context.read(
+           '/LMD_MDKApp/Services/MD_BUSINESSPARTNER_SRV.service',
+           'C_BPAddressValueHelp',
+           [],
+           `$filter=AddressNumber eq '${locationAddressID}'`
+       );
+       if (addressResult && addressResult.length > 0) {
+           return addressResult.getItem(0).CompleteAddress || "Address not available";
+       } else {
+           return "Address not found";
+       }
+   } catch (error) {
+       console.error("Error fetching address:", error);
+       return "Error fetching address";
+   }
 }

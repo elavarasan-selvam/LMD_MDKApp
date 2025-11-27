@@ -9,41 +9,17 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"Separators": {
-						"TopSectionSeparator": true,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
-					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-						"EntitySet": "Stops",
-						"QueryOptions": "$filter=StopType eq 'VISIT'&$orderby=RouteUUID desc, Sequence asc&$top=1"
-					},
-					"_Name": "SectionObjectCollection1",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"ObjectCell": {
-						"Title": "/LMD_MDKApp/Rules/Visit/GetStopInfoInsideVisit.js",
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader0",
+					"ObjectHeader": {
 						"Subhead": "/LMD_MDKApp/Rules/Visit/GetStopTimeInsideVisit.js",
-						"AccessoryType": "None",
-						"PreserveIconStackSpacing": false,
-						"ContextMenu": {
-							"PerformFirstActionWithFullSwipe": true
-						},
-						"_Type": "ObjectCollection.Type.ObjectCell"
+						"DetailImageIsCircular": false,
+						"HeadlineText": "/LMD_MDKApp/Rules/Visit/GetStopInfoInsideVisit.js",
+						"StatusPosition": "Stacked",
+						"StatusImagePosition": "Leading",
+						"SubstatusImagePosition": "Leading"
 					},
-					"Layout": {
-						"NumberOfColumns": 1
-					}
+					"Visible": true
 				},
 				{
 					"Separators": {
@@ -175,7 +151,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar39",
+		"_Name": "ActionBar40",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
