@@ -142,6 +142,47 @@
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
+					"_Name": "SectionObjectCardCollection4",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Cash",
+						"Footnote": "Open",
+						"DetailImageIsCircular": false,
+						"Description": "Record and confirm the amount of cash you recieve for this stop.",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/Checkout/Nav_To_PaymentPage.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "Routes",
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+					},
 					"_Name": "SectionObjectCardCollection3",
 					"Visible": true,
 					"EmptySection": {
@@ -179,7 +220,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar27",
+		"_Name": "ActionBar30",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},
