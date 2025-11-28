@@ -1,0 +1,17 @@
+{
+	"_Type": "Action.Type.ODataService.Read",
+	"ActionResult": {
+		"_Name": "CheckoutCOCIReadLink"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Stops",
+		"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+	},
+	"Properties": [
+		"StopUUID",
+		"RouteUUID",
+		"StopID",
+		"StopType"
+	]
+}
