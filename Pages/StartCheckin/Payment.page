@@ -20,7 +20,7 @@
 						{
 							"Value": "CA",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "PaymentTypeInput",
+							"_Name": "CheckinPaymentTypeInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
@@ -29,28 +29,28 @@
 							"IsEditable": false
 						},
 						{
-							"Value": "/LMD_MDKApp/Rules/Checkout/Payment/Currency_Loaded.js",
+							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_Loaded.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "CurrencyInput",
+							"_Name": "CheckinCurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Currency",
 							"PlaceHolder": "Enter currency (e.g. USD)",
-							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/Payment/Currency_OnValueChange.js",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_OnValueChange.js",
 							"Enabled": true,
 							"IsEditable": true
 						},
 						{
-							"Value": "/LMD_MDKApp/Rules/Checkout/Payment/SetAmountPaymentloaded.js",
+							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetAmountPaymentloaded.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "AmountInput",
+							"_Name": "CheckinAmountInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"Caption": "Check-Out: Amount",
+							"Caption": "Check-In: Collected Payments",
 							"PlaceHolder": "Enter amount  \"<>= 0>\"",
-							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/Payment/SetPaymentAmount.js",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetPaymentAmount.js",
 							"Enabled": true,
 							"IsEditable": true
 						}
@@ -70,7 +70,7 @@
 	],
 	"_Type": "Page",
 	"_Name": "Payment",
-	"OnLoaded": "/LMD_MDKApp/Rules/Checkout/Payment/DebugPaymentType.js",
+	"OnLoaded": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDebugPaymentType.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -81,11 +81,12 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckout/Checkout/COCI_CheckoutPayment.action"
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
 			}
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-Out: Payments"
+		"Caption": "Check-In: Payments",
+		"OnBackButtonPressed": "/LMD_MDKApp/Actions/StartCheckin/NavBackToCheckinFromConfirmTruckLoad.action"
 	}
 }

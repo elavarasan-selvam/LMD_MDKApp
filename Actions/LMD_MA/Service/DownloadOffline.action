@@ -32,6 +32,11 @@
 			"Name": "DocumentItemConditions",
 			"Query": "DocumentItemConditions",
 			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "COCIPayments",
+			"Query": "COCIPayments",
+			"AutomaticallyRetrievesStreams": false
 		}
 	]
 }

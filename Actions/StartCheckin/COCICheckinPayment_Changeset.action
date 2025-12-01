@@ -1,0 +1,12 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "COCICheckinPayment_Changeset"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
+	]
+}

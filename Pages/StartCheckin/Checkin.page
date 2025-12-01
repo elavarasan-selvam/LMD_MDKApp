@@ -128,6 +128,48 @@
 					}
 				},
 				{
+					"_Type": "Section.Type.ObjectCardCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "Routes",
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+					},
+					"_Name": "SectionObjectCardCollection4",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Collected Payments",
+						"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDisplayAmount_Currency.js",
+						"Footnote": "Open",
+						"DetailImage": "sap-icon://money-bills",
+						"DetailImageIsCircular": false,
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_CheckinPayment.action",
+							"Title": "Start",
+							"Visible": true
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -178,7 +220,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar40",
+		"_Name": "ActionBar41",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},
