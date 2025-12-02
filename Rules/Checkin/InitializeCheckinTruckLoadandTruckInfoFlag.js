@@ -12,12 +12,9 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     const binding = clientAPI.getPageProxy().binding;
 
     if (binding && binding.StopUUID) {
-        // Binding has Stop info
         appData.currentStop = binding;
         appData.currentRouteUUID = binding.RouteUUID;
-        //alert(`CheckIn Page Loaded\nStopID: ${binding.StopID}\nStopUUID: ${binding.StopUUID}\nRouteUUID: ${binding.RouteUUID}`);
     } else if (binding && binding.StopID) {
-        // Binding exists but StopUUID missing, fetch it
         const readStop = await clientAPI.read(
             '/LMD_MDKApp/Services/LMD_MA.service',
             'Stops',
@@ -33,43 +30,83 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         } else {
             alert('Stop not found in backend for StopID: ' + binding.StopID);
         }
-    } else {
-        //alert('No binding found on CheckIn page!');
     }
 
-    // Load DocumentItems for the Route
     const routeUUID = appData.currentRouteUUID;
     if (routeUUID) {
-        //alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
+        // Step 1: Read all stops for this route
+        const stopsResult = await clientAPI.read(
+            '/LMD_MDKApp/Services/LMD_MA.service',
+            'Stops',
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}'`
+        );
+
+        let checkoutStopUUID = null;
+
+        if (stopsResult && stopsResult.length > 0) {
+            for (let i = 0; i < stopsResult.length; i++) {
+                const stop = stopsResult.getItem ? stopsResult.getItem(i) : stopsResult[i];
+                if (stop.StopType === 'CHECKOUT') {
+                    checkoutStopUUID = stop.StopUUID;
+                    break;
+                }
+            }
+        }
 
         return clientAPI.read(
             '/LMD_MDKApp/Services/LMD_MA.service',
             'DocumentItems',
             [],
             `$filter=RouteUUID eq guid'${routeUUID}'`
-        ).then(result => {
+        ).then(async result => {
             let pendingCount = 0;
 
             if (result && result.length > 0) {
                 alert(`Found ${result.length} DocumentItems`);
 
                 for (let i = 0; i < result.length; i++) {
-                    const item = result.getItem(i);
+                    const item = result.getItem ? result.getItem(i) : result[i];
                     const ordered = Number(item.OrderedQuantity) || 0;
                     const delivered = Number(item.DeliveredQuantity) || 0;
-                    const actual = ordered - delivered;
                     const uom = item.OrderedUOM || '';
                     const routeuuid = item.RouteUUID;
                     const stopuuid = item.StopUUID;
 
-                    alert(`ProductID: ${item.ProductID}\nOrdered: ${ordered}\nDelivered: ${delivered}\nActual: ${actual}\nUOM: ${uom}`);
+                    // Default actual
+                    let actual = ordered - delivered;
+                    let cociActual = null;
+
+                    // Step 2: Read COCIProducts for CHECKOUT stop
+                    if (checkoutStopUUID) {
+                        try {
+                            const cociResult = await clientAPI.read(
+                                '/LMD_MDKApp/Services/LMD_MA.service',
+                                'COCIProducts',
+                                [],
+                                `$filter=StopUUID eq guid'${checkoutStopUUID}' and ProductID eq '${item.ProductID}'`
+                            );
+
+                            if (cociResult && cociResult.length > 0) {
+                                const cociItem = cociResult.getItem ? cociResult.getItem(0) : cociResult[0];
+                                cociActual = cociItem.ActualQuantity;
+                                if (cociItem.ActualQuantity !== undefined && cociItem.ActualQuantity !== null) {
+                                    actual = Number(cociItem.ActualQuantity) - delivered;
+                                }
+                            }
+                        } catch (err) {
+                            // fallback remains ordered - delivered
+                        }
+                    }
+
+                    alert(`ProductID: ${item.ProductID}\nOrdered: ${ordered}\nDelivered: ${delivered}\nCOCI ActualQuantity: ${cociActual}\nFinal ActualQuantityUsed: ${actual}\nUOM: ${uom}`);
 
                     if (actual > 0) {
                         pendingCount++;
                         appData.PendingProductList.push({
                             ProductID: item.ProductID,
                             ActualQuantity: actual,
-                            UnloadedQuantity: actual, // initially same as ActualQuantity
+                            UnloadedQuantity: null,
                             ActualUOM: uom,
                             RouteUUID: routeuuid,
                             StopUUID: stopuuid
@@ -83,11 +120,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             appData.StartButton = (pendingCount > 0);
             appData.PendingCount = pendingCount;
 
-            // Refresh UI
             clientAPI.getPageProxy().redraw();
-
-            //alert(`Pending Products Stored Locally:\n${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
-
             return true;
         }).catch(error => {
             alert(`Error: ${error.message}`);

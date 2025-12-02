@@ -30,7 +30,7 @@
 							"Title": "/LMD_MDKApp/Rules/Visit/Delivery/GetEditProductDescription.js",
 							"Subhead": "{ProductID}",
 							"DetailImageIsCircular": false,
-							"StatusText": "{OrderedQuantity}  {OrderedUOM}"
+							"StatusText": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/LoadedValue_Card.js"
 						}
 					],
 					"Layout": {
@@ -47,7 +47,7 @@
 					},
 					"Controls": [
 						{
-							"Value": "{OrderedQuantity}",
+							"Value": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/Loaded_Value.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "OrderedQuantityInput",
 							"RequiredIndicator": false,

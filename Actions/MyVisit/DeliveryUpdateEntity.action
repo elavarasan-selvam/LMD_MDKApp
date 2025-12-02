@@ -16,6 +16,6 @@
 		"DocumentCategory": "{DocumentCategory}"
 	},
 	"Headers": {
-		"OfflineOData.TransactionID ": "#Property:RouteUUID"
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
 	}
 }

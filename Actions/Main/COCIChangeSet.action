@@ -4,7 +4,7 @@
 		"_Name": "COCIChangeSet"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/COCI_Changset_Failure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/DocumentChangeset.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/COCIProducts_Checkout_Changseset.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},

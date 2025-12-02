@@ -1,0 +1,27 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "COCIProduct_Create_from_Checkout"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/COCIProduct_Checkout_Success.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "COCIProducts"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/COCIProduct_CheckoutReadLink.js"
+		},
+		"Property": "to_COCIProducts"
+	},
+	"Properties": {
+		"ActualQuantity": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/Checkout_ActualQuantity.js",
+		"ProductID": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/Checkout_ProductID.js",
+		"ActualUOM": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/Checkout_ActualUOM.js",
+		"IsManuallyAdded": true
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

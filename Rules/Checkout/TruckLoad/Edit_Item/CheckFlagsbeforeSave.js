@@ -19,7 +19,7 @@ export default function CheckBeforeSave(clientAPI) {
         } else {
             // Both changed → proceed with update
             //alert("OrderedQuantity changed & ReasonCode present → Do Update");
-            return clientAPI.executeAction("/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/OrderedQuantityUpdate.action");
+            return clientAPI.executeAction("/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/COCIProduct_Create_from_Checkout.action");
         }
     }
 }

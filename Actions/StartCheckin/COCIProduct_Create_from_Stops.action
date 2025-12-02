@@ -20,7 +20,8 @@
 		"ActualQuantity": "{ActualQuantity}",
 		"ProductID": "{ProductID}",
 		"ActualUOM": "{ActualUOM}",
-		"IsManuallyAdded": true
+		"IsManuallyAdded": true,
+		"UnloadedQuantity": "{UnloadedQuantity}"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"

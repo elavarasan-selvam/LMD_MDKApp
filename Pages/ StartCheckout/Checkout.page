@@ -154,7 +154,9 @@
 					"Card": {
 						"Visible": true,
 						"Title": "Cash",
+						"Subhead": "/LMD_MDKApp/Rules/Checkout/Payment/DisplayAmount_Currency.js",
 						"Footnote": "Open",
+						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
 						"Description": "Record and confirm the amount of cash you recieve for this stop.",
 						"PrimaryAction": {
@@ -220,7 +222,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar30",
+		"_Name": "ActionBar31",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

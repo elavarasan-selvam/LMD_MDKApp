@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "COCIProduct_Checkout_Success"
+	},
+	"Message": "COCI from Checkout is created!!",
+	"Title": "{Success}",
+	"OKCaption": "Ok"
+}

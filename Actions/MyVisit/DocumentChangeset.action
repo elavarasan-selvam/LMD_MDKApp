@@ -10,5 +10,8 @@
 	},
 	"Actions": [
 		"/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDate.action"
-	]
+	],
+	"Headers": {
+		"OfflineOData.TransactionID": "{{#Property:RouteUUID}}"
+	}
 }

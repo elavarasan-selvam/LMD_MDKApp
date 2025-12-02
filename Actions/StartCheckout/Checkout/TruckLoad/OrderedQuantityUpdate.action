@@ -11,7 +11,6 @@
 		"ReadLink": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/OrderedQuantityUpdate_ReadLink.js"
 	},
 	"Properties": {
-		"OrderedQuantity": "{#Control:OrderedQuantityInput/#Value}",
 		"ReasonCode": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/GetReasonCodeValue.js"
 	}
 }

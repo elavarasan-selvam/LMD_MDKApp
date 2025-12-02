@@ -48,13 +48,26 @@
 					},
 					"Controls": [
 						{
+							"Value": "{ActualQuantity}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Actual :",
+							"PlaceHolder": "PlaceHolder",
+							"Enabled": true,
+							"IsEditable": true
+						},
+						{
 							"Value": "{UnloadedQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "UnloadedQuantityInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"Caption": "Unloaded :",
+							"Caption": "Unloaded:",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/UpdateUnloadedQuantity.js",
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
