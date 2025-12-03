@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "ReturnPlannedQuantityChangeset"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/FailureChangeset.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/SuccessMessage.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartMyVisit/ReturnUpdateEntity.action"
+	]
+}

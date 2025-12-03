@@ -1,0 +1,19 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "ReturnUpdateEntity"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/Successfully_Updated.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "DocumentItems",
+		"ReadLink": "/LMD_MDKApp/Rules/Visit/Return/ReturnUpdatereadlink.js"
+	},
+	"Properties": {
+		"DeliveredQuantity": "#Control:FCReturnQuantity/#Value"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

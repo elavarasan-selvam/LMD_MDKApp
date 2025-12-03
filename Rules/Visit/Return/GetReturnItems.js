@@ -2,12 +2,7 @@ export default function GetReturnItems(context) {
     let binding = context.binding;
     let service = "/LMD_MDKApp/Services/LMD_MA.service";
 
-   // let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
-      
-    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}' and IsReturn eq true)/aggregate(ProductID with countdistinct as ProductCount)`;
-
-
-
+    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
 
     return context.read(service, "DocumentItems", [], query)
     .then(result => {

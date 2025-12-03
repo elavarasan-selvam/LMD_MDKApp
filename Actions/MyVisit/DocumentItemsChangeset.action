@@ -9,6 +9,7 @@
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
-		"/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateEntity.action"
+		"/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateEntity.action",
+		"/LMD_MDKApp/Actions/StartMyVisit/ReturnUpdateEntity.action"
 	]
 }

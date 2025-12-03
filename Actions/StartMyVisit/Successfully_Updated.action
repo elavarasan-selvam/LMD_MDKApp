@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Successfully_Updated"
+	},
+	"Message": "Success",
+	"OKCaption": "Ok"
+}

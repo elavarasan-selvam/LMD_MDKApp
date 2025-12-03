@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "FailureChangeset"
+	},
+	"Message": "{#ActionResults:DeliveryUpdateEntity/error}",
+	"Title": "{Error}",
+	"OKCaption": "OK"
+}

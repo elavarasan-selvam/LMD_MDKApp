@@ -17,6 +17,11 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "DocumentItems",
+						"QueryOptions": "/LMD_MDKApp/Rules/Visit/Return/GetPlannedReturn.js"
+					},
 					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
@@ -27,13 +32,14 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Product Description",
+						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "{OrderedQuantity}   {OrderedUOM}",
+						"StatusText": "{DeliveredQuantity} {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
 						"ProgressIndicator": "InProgress",
+						"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToReturnItemEditPage.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
 						},
