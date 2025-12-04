@@ -69,6 +69,6 @@ export default async function BumpCompletedStopAtCheckin(context) {
     //alert('Stop EndDateTime updated: ' + stopID);
  
     // Execute Odometer changeset
-    await context.executeAction('/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action');
-    return context.executeAction("/LMD_MDKApp/Actions/StartCheckout/CompleteCheckout.action");
+    //return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action');
+    return context.executeAction("/LMD_MDKApp/Actions/StartCheckin/NavToMainPagefromCompleteCheckin.action");
 }

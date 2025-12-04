@@ -6,7 +6,7 @@ export default async function Loaded_Value(clientAPI) {
     }
 
     const productID = binding.ProductID;
-    const orderedQty = binding.OrderedQuantity || 0;
+    const orderedQty = Number(binding.OrderedQuantity) || 0;
     const routeUUID = binding.RouteUUID;
 
     try {
@@ -15,7 +15,7 @@ export default async function Loaded_Value(clientAPI) {
             '/LMD_MDKApp/Services/LMD_MA.service',
             'Stops',
             [],
-            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKOUT'`
+            "$filter=RouteUUID eq guid'" + routeUUID + "' and StopType eq 'CHECKOUT'"
         );
 
         if (stopResult && stopResult.length > 0) {
@@ -27,14 +27,14 @@ export default async function Loaded_Value(clientAPI) {
                 '/LMD_MDKApp/Services/LMD_MA.service',
                 'COCIProducts',
                 [],
-                `$filter=ProductID eq '${productID}' and StopUUID eq guid'${checkoutStopUUID}'`
+                "$filter=ProductID eq '" + productID + "' and StopUUID eq guid'" + checkoutStopUUID + "'"
             );
 
             if (cociResult && cociResult.length > 0) {
                 const cociProduct = cociResult.getItem(0);
 
                 if (cociProduct.ActualQuantity !== null && cociProduct.ActualQuantity !== undefined) {
-                    return cociProduct.ActualQuantity;
+                    return Number(cociProduct.ActualQuantity) + orderedQty;
                 }
             }
         }

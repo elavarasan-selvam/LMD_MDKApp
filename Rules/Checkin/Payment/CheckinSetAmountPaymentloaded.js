@@ -1,35 +1,65 @@
-export default function CheckinSetAmountPaymentloaded(clientAPI) {
-    const appData = clientAPI.getAppClientData();
+export default async function CheckinSetAmountPaymentloaded(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
-    const stopUUID = binding?.StopUUID;
+    if (!binding) return "";
 
-    // 1. If user already changed in Checkin
-    if (appData.Checkin_Amount !== undefined && appData.Checkin_Amount !== "") {
-        return appData.Checkin_Amount;
-    }
+    const routeUUID = binding.RouteUUID;
+    if (!routeUUID) return "";
 
-    // 2. Otherwise take from Checkout
-    if (appData.Checkout_Amount !== undefined && appData.Checkout_Amount !== "") {
-        return appData.Checkout_Amount;
-    }
+    try {
+        // 1. Read CHECKIN stop using RouteUUID
+        const checkinStops = await clientAPI.read(
+            "/LMD_MDKApp/Services/LMD_MA.service",
+            "Stops",
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKIN'`
+        );
 
-    // 3. Otherwise read from backend
-    if (!stopUUID) {
-        return "";
-    }
+        if (checkinStops && checkinStops.length > 0) {
+            const checkinStopUUID = checkinStops.getItem(0).StopUUID;
 
-    return clientAPI.read(
-        "/LMD_MDKApp/Services/LMD_MA.service",
-        "COCIPayments",
-        [],
-        "$filter=StopUUID eq guid'" + stopUUID + "'"
-    ).then(result => {
-        if (result && result.length > 0) {
-            const payment = result.getItem ? result.getItem(0) : result[0];
-            return payment.Amount || "";
+            const checkinPayments = await clientAPI.read(
+                "/LMD_MDKApp/Services/LMD_MA.service",
+                "COCIPayments",
+                [],
+                `$filter=StopUUID eq guid'${checkinStopUUID}'`
+            );
+
+            if (checkinPayments && checkinPayments.length > 0) {
+                const payment = checkinPayments.getItem(0);
+                if (payment.Amount !== null && payment.Amount !== undefined && payment.Amount !== "") {
+                    return payment.Amount;
+                }
+            }
         }
+
+        // 2. If no CHECKIN payment, read CHECKOUT stop
+        const checkoutStops = await clientAPI.read(
+            "/LMD_MDKApp/Services/LMD_MA.service",
+            "Stops",
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKOUT'`
+        );
+
+        if (checkoutStops && checkoutStops.length > 0) {
+            const checkoutStopUUID = checkoutStops.getItem(0).StopUUID;
+
+            const checkoutPayments = await clientAPI.read(
+                "/LMD_MDKApp/Services/LMD_MA.service",
+                "COCIPayments",
+                [],
+                `$filter=StopUUID eq guid'${checkoutStopUUID}'`
+            );
+
+            if (checkoutPayments && checkoutPayments.length > 0) {
+                const payment = checkoutPayments.getItem(0);
+                if (payment.Amount !== null && payment.Amount !== undefined && payment.Amount !== "") {
+                    return payment.Amount;
+                }
+            }
+        }
+
         return "";
-    }).catch(() => {
+    } catch {
         return "";
-    });
+    }
 }

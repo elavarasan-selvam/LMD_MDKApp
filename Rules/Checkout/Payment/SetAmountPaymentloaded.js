@@ -1,32 +1,42 @@
-export default function SetAmountPaymentloaded(clientAPI) {
-
-    const appData = clientAPI.getAppClientData();
+export default async function SetAmountPaymentloaded(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
-
-    const stopUUID = binding?.StopUUID;
-
-    //  1) If user already entered value in this session → show it
-    if (appData.Checkout_Amount !== undefined && appData.Checkout_Amount !== "") {
-        return appData.Checkout_Amount;
-    }
-
-    //  2) Otherwise read from backend COCIPayments
-    if (!stopUUID) {
+    if (!binding) {
         return "";
     }
 
-    return clientAPI.read(
-        '/LMD_MDKApp/Services/LMD_MA.service',
-        'COCIPayments',
-        [],
-        `$filter=StopUUID eq guid'${stopUUID}'`
-    ).then(result => {
-        if (result && result.length > 0) {
-            const payment = result.getItem ? result.getItem(0) : result[0];
-            return payment.Amount || "";
+    const routeUUID = binding.RouteUUID;
+
+    try {
+        // 1. Get the CHECKOUT stop for this route
+        const stopResult = await clientAPI.read(
+            '/LMD_MDKApp/Services/LMD_MA.service',
+            'Stops',
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKOUT'`
+        );
+
+        if (stopResult && stopResult.length > 0) {
+            const checkoutStopUUID = stopResult.getItem(0).StopUUID;
+
+            // 2. Read COCIPayments for CHECKOUT stop
+            const paymentResult = await clientAPI.read(
+                '/LMD_MDKApp/Services/LMD_MA.service',
+                'COCIPayments',
+                [],
+                `$filter=StopUUID eq guid'${checkoutStopUUID}'`
+            );
+
+            if (paymentResult && paymentResult.length > 0) {
+                const payment = paymentResult.getItem(0);
+                if (payment.Amount !== null && payment.Amount !== undefined) {
+                    return payment.Amount;
+                }
+            }
         }
+
         return "";
-    }).catch(() => {
+
+    } catch (e) {
         return "";
-    });
+    }
 }

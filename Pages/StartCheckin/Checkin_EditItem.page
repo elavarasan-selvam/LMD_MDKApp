@@ -28,7 +28,7 @@
 							"_Name": "ObjectCardCollectionTypeCard0",
 							"Visible": true,
 							"Title": "{ProductID}",
-							"Subhead": "{ActualQuantity}    {ActualUOM}",
+							"Subhead": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/Loaded_Actual_Quantity.js",
 							"Footnote": "Footnote",
 							"DetailImage": "res://mdk_logo.png",
 							"DetailImageIsCircular": false
@@ -48,7 +48,7 @@
 					},
 					"Controls": [
 						{
-							"Value": "{ActualQuantity}",
+							"Value": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/Actual_Quantity_Checkin.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty0",
 							"RequiredIndicator": false,
@@ -56,11 +56,12 @@
 							"Separator": true,
 							"Caption": "Actual :",
 							"PlaceHolder": "PlaceHolder",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/UpdateActualQuantity.js",
 							"Enabled": true,
 							"IsEditable": true
 						},
 						{
-							"Value": "{UnloadedQuantity}",
+							"Value": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/Unloaded_Quantity.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "UnloadedQuantityInput",
 							"RequiredIndicator": false,

@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavToMainPagefromCompleteCheckout"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/Main.page"
 }

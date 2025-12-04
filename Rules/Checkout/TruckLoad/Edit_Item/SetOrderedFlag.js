@@ -20,7 +20,7 @@ export default function SetOrderedFlag(clientAPI) {
     // 3) Always store LATEST values in AppClientData
     appData.Checkout_ProductID = binding.ProductID;
     appData.Checkout_UOM = binding.OrderedUOM;
-    appData.Checkout_Quantity = newQty;              // ✅ latest value always
+    appData.Checkout_Quantity = newQty;              
     appData.Checkout_StopUUID = binding.StopUUID;
 
     // 4) Debug (you can remove once verified)
