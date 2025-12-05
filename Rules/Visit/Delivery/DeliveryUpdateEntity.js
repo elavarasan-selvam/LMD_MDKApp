@@ -4,6 +4,6 @@
  */
 
 export default function UpdateDeliveredQuantityReadLink(clientAPI) {
-//   alert(JSON.stringify(clientAPI.getPageProxy().binding));
+    //alert(JSON.stringify(clientAPI.getPageProxy().binding));
     return clientAPI.getPageProxy().binding['@odata.readLink'];
 }

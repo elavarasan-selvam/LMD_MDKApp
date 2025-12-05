@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavToCheckout_EditItem"
 	},
+	"OnSuccess": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/StoreBindingforEditItemPage_Checkout.js",
 	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/Checkout_EditItem.page"
 }

@@ -18,6 +18,8 @@ export default async function COCIProduct_CheckoutReadLink(clientAPI) {
 
             if (stop.StopType === "CHECKOUT") {
                 CheckoutStopUUID = stop.StopUUID;
+                const appData = clientAPI.getAppClientData();
+                appData.CheckoutActualStopUUID = CheckoutStopUUID;
                 break;
             }
         }

@@ -1,9 +1,0 @@
-{
-	"_Type": "Action.Type.OfflineOData.Upload",
-	"ActionResult": {
-		"_Name": "sync"
-	},
-	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/DownloadStartedMessage.action",
-	"Service": "/LMD_MDKApp/Services/DEST_SAMLMD_PPROP.service"
-}

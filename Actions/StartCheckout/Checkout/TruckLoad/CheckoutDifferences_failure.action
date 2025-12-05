@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "CheckoutDifferences_failure"
+	},
+	"Message": "{#ActionResults:COCIProduct_Create_from_Checkout/error}",
+	"Title": "{Error}",
+	"OKCaption": "ok"
+}

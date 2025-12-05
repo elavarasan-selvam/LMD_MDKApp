@@ -1,10 +1,14 @@
 export default async function ReadDocumentUUIDReadLink(context) {
     try {
+        const appCD = context.getAppClientData();
+        const currentStopUUID = appCD.currentStop?.StopUUID;
+        if (!currentStopUUID) {
+            alert("No current StopUUID found. Skipping document update.");
+            return;
+        }
+
         // Step 1: Get the result from the already executed ReadDocumentUUID action
         const readResult = context.getActionResult('ReadDocumentUUID');
-        //const readResult = await context.executeAction('/LMD_MDKApp/Actions/MyVisit/ReadDocumentUUID.action');
-
-        alert(`Raw ReadDocumentUUID result:\n${JSON.stringify(readResult, null, 2)}`);
         const documentsArray = readResult?.data?._array;
 
         if (!documentsArray || documentsArray.length === 0) {
@@ -12,38 +16,38 @@ export default async function ReadDocumentUUIDReadLink(context) {
             return;
         }
 
-        alert(`Found ${documentsArray.length} documents:\n${JSON.stringify(documentsArray, null, 2)}`);
+        // Step 2: Filter only documents for the current StopUUID
+        const stopDocs = documentsArray.filter(doc => doc.StopUUID === currentStopUUID);
 
-        // Step 2: Loop through each document and update DeliveryDate
+        if (stopDocs.length === 0) {
+            alert("No DocumentItems found for the current stop.");
+            return;
+        }
+
+        alert(`Found ${stopDocs.length} documents for current StopUUID: ${currentStopUUID}`);
+
         const currentDate = new Date().toISOString().split('.')[0];
 
-        for (let i = 0; i < documentsArray.length; i++) {
-            const doc = documentsArray[i];
+        // Step 3: Loop through each filtered document and update DeliveryDate
+        for (let doc of stopDocs) {
             const docReadLink = doc['@odata.readLink'];
-            
             if (!docReadLink) {
                 alert(`Document ${doc.DocumentUUID || doc.DocumentID} has empty ReadLink.`);
                 continue;
             }
-            const docID = doc.DocumentID;
-            alert(`Updating DeliveryDate for Document ReadLink:\n${JSON.stringify(docReadLink, null, 2)}`);
 
             await context.executeAction({
-                Name:'/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDate.action',
+                Name: '/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDate.action',
                 Properties: {
                     Target: { ReadLink: docReadLink },
-                    Properties: { DeliveryDate: currentDate,
-                        DocumentID: docID
-                    }
+                    Properties: { DeliveryDate: currentDate, DocumentID: doc.DocumentID }
                 }
             });
 
-            alert(` DeliveryDate updated for DocumentUUID: ${doc.DocumentUUID || 'unknown'}`);
+            alert(`DeliveryDate updated for DocumentUUID: ${doc.DocumentUUID || 'unknown'}`);
         }
 
     } catch (err) {
-        alert('Error in UpdateDocumentDeliveryDate: ' + err.message);
+        alert('Error in ReadDocumentUUIDReadLink: ' + err.message);
     }
 }
-
-

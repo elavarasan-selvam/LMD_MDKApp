@@ -17,11 +17,7 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "/LMD_MDKApp/Rules/Visit/Delivery/GetPlannedDelivery.js"
-					},
+					"Target": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Checkout_Stop_Items_List.js",
 					"_Name": "SectionObjectCollection4",
 					"Visible": true,
 					"EmptySection": {
@@ -34,10 +30,10 @@
 					"ObjectCell": {
 						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
-						"Footnote": "{RouteUUID}",
-						"Description": "{DocumentItemID}",
+						"Footnote": "{DocumentItemIDs}",
+						"Description": "Documents: {DocumentCount}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "DocId: {DocumentID}",
+						"StatusText": "DocIds: {DocumentIDs}",
 						"SubstatusText": "{OrderedQuantity}   {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -71,7 +67,7 @@
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar26",
+		"_Name": "ActionBar27",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

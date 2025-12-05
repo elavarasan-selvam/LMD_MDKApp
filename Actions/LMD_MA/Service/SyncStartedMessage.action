@@ -1,5 +1,8 @@
 {
 	"_Type": "Action.Type.ProgressBanner",
+	"ActionResult": {
+		"_Name": "sync"
+	},
 	"OnFailure": "/LMD_MDKApp/Actions/LMD_MA/Service/SyncFailureMessage.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/LMD_MA/Service/UploadOffline.action",
 	"Message": "Upload in progress...",

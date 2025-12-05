@@ -3,8 +3,8 @@
 	"ActionResult": {
 		"_Name": "sync"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/DEST_SAMLMD_PPROP/Service/SyncFailureMessage.action",
-	"OnSuccess": "/LMD_MDKApp/Rules/DEST_SAMLMD_PPROP/ErrorArchive_CheckForSyncError.js",
+	"OnFailure": "/LMD_MDKApp/Actions/LMD_MA/Service/SyncFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/LMD_MA/ErrorArchive_CheckForSyncError.js",
 	"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 	"DefiningRequests": [
 		{

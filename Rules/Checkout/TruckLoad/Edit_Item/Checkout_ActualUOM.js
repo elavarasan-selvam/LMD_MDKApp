@@ -1,8 +1,6 @@
-/**
- * Return ActualUOM for Checkout COCIProduct
- * @param {IClientAPI} clientAPI
- */
 export default function Checkout_ActualUOM(clientAPI) {
     const appData = clientAPI.getAppClientData();
-    return appData.Checkout_UOM || "";
+    const uom = (appData.Checkout_UOM || "").trim().toUpperCase();
+    alert("ActualUOM sent to backend: " + uom);
+    return uom;
 }
