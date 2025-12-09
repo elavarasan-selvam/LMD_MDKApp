@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_To_CheckIn_Payment_Summary"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/CheckIn_Cash_Check_Payments.page"
+}

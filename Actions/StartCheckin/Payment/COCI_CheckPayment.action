@@ -1,0 +1,26 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "COCI_CheckPayment"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/CheckIn_CheckPaymentSuccess.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "COCIPayments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Checkin/Payment/COCI_Checkinpaymentreadlink.js"
+		},
+		"Property": "to_COCIPayments"
+	},
+	"Properties": {
+		"PaymentType": "{#Control:CheckinCheckPaymentTypeInput:/#Value}",
+		"Currency": "{#Control:CheckinCheckCurrencyInput/#Value}",
+		"Amount": "{#Control:CheckinCheckAmountInput/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

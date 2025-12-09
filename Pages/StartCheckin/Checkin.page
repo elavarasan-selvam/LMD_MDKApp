@@ -128,6 +128,13 @@
 					}
 				},
 				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
@@ -138,13 +145,6 @@
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
-					},
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
 					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
@@ -157,9 +157,10 @@
 						"Footnote": "Open",
 						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
+						"StatusText": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
-							"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_CheckinPayment.action",
+							"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_CheckIn_Payment_Summary.action",
 							"Title": "Start",
 							"Visible": true
 						},
@@ -220,7 +221,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar41",
+		"_Name": "ActionBar42",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},

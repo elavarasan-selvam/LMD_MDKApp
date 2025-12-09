@@ -3,14 +3,14 @@ export default async function GetPlannedDelivery(context) {
     const stopRef = appCD.currentStop || context.binding;
 
     if (!stopRef || !stopRef.StopUUID || !context.binding?.RouteUUID) {
-        alert("Stop or Route information missing");
+        //alert("Stop or Route information missing");
         return "$filter=1 eq 0";
     }
 
     const stopUUID = stopRef.StopUUID;
     const routeUUID = context.binding.RouteUUID;
 
-    alert("Using StopUUID: " + stopUUID + ", RouteUUID: " + routeUUID);
+    //alert("Using StopUUID: " + stopUUID + ", RouteUUID: " + routeUUID);
 
     try {
         const documentItems = await context.read(
@@ -21,14 +21,14 @@ export default async function GetPlannedDelivery(context) {
         );
 
         if (!documentItems || documentItems.length === 0) {
-            alert("No DocumentItems found for this StopUUID");
+            //alert("No DocumentItems found for this StopUUID");
             return "$filter=1 eq 0";
         }
 
         const documentIDs = documentItems.map(item => `'${item.DocumentID}'`);
         const filter = `$filter=DocumentID in (${documentIDs.join(",")})`;
 
-        alert("PlannedDelivery Filter: " + filter);
+        //alert("PlannedDelivery Filter: " + filter);
 
         return filter;
 

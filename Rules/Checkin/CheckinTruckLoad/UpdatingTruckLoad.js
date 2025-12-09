@@ -9,7 +9,7 @@ export default function UpdatingTruckLoad(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
     const routeUUID = binding.RouteUUID;
 
-    alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
+    //alert(`CheckIn Page Loaded\nRouteUUID: ${routeUUID}`);
 
     // Read DocumentItems for this Route
     return clientAPI.read(
@@ -19,7 +19,7 @@ export default function UpdatingTruckLoad(clientAPI) {
         `$filter=RouteUUID eq guid'${routeUUID}'`
     ).then(result => {
         if (result && result.length > 0) {
-            alert(`Found ${result.length} DocumentItems`);
+            //alert(`Found ${result.length} DocumentItems`);
 
             for (let i = 0; i < result.length; i++) {
                 const item = result.getItem(i);
@@ -28,7 +28,7 @@ export default function UpdatingTruckLoad(clientAPI) {
                 const actual = ordered - delivered;
                 const uom = item.OrderedUOM || '';
 
-                alert(`ProductID: ${item.ProductID}\nOrdered: ${ordered}\nDelivered: ${delivered}\nActual: ${actual}\nUOM: ${uom}`);
+                //alert(`ProductID: ${item.ProductID}\nOrdered: ${ordered}\nDelivered: ${delivered}\nActual: ${actual}\nUOM: ${uom}`);
 
                 if (actual > 0) {
                     // Store locally
@@ -41,10 +41,10 @@ export default function UpdatingTruckLoad(clientAPI) {
                 }
             }
         } else {
-            alert('No DocumentItems found for this Route');
+            //alert('No DocumentItems found for this Route');
         }
 
-        alert(`Pending Products Stored Locally: ${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
+        //alert(`Pending Products Stored Locally: ${appData.PendingProductList.map(p => p.ProductID).join(', ')}`);
         return true;
     }).catch(error => {
         alert(`Error: ${error.message}`);

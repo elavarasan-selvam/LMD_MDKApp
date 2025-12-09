@@ -4,12 +4,12 @@ export default async function COCI_Checkinpaymentreadlink(context) {
             '/LMD_MDKApp/Actions/StartCheckout/Checkout/CheckoutCOCIReadLink.action'
         );
 
-        alert("Raw ReadAllStops result:\n" + JSON.stringify(readResult, null, 2));
+        //alert("Raw ReadAllStops result:\n" + JSON.stringify(readResult, null, 2));
 
         const stopsArray = readResult && readResult.data && readResult.data._array;
 
         if (!stopsArray || stopsArray.length === 0) {
-            alert("No stops found from Read action.");
+            //alert("No stops found from Read action.");
             return "";
         }
 
@@ -34,7 +34,7 @@ export default async function COCI_Checkinpaymentreadlink(context) {
         const appData = context.getAppClientData();
         appData.Checkin_StopReadLink = CheckinStopReadLink;
 
-        alert("Final CHECKIN Stop ReadLink:\n" + CheckinStopReadLink);
+        //alert("Final CHECKIN Stop ReadLink:\n" + CheckinStopReadLink);
 
         return CheckinStopReadLink;
 

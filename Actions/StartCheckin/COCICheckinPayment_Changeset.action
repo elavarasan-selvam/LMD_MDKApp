@@ -7,6 +7,7 @@
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
-		"/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
+		"/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action",
+		"/LMD_MDKApp/Actions/StartCheckin/Payment/COCI_CheckPayment.action"
 	]
 }

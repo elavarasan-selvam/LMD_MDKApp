@@ -4,25 +4,25 @@ export default async function UpdateRouteStartDateTime(context) {
         const readResult = context.getActionResult('ReadRouteByUUID');
 
         // Alert the raw readResult
-        alert('Raw ReadRouteByUUID result:\n' + JSON.stringify(readResult, null, 2));
+        //alert('Raw ReadRouteByUUID result:\n' + JSON.stringify(readResult, null, 2));
 
         // Extract data array
         const dataArray = readResult?.data?._array;
 
         if (!dataArray || dataArray.length === 0) {
-            alert('No route objects found inside observable array.');
+            //alert('No route objects found inside observable array.');
             return;
         }
 
         const route = dataArray[0];
 
         // Alert the first route object
-        alert('First route object:\n' + JSON.stringify(route, null, 2));
+        //alert('First route object:\n' + JSON.stringify(route, null, 2));
 
         const routeReadLink = route['@odata.readLink'];
 
         if (!routeReadLink) {
-            alert('Route object found but missing @odata.readLink.\nKeys:\n' + Object.keys(route).join('\n'));
+            //alert('Route object found but missing @odata.readLink.\nKeys:\n' + Object.keys(route).join('\n'));
             return;
         }
 
@@ -31,7 +31,7 @@ export default async function UpdateRouteStartDateTime(context) {
         const currentDate = now.toISOString().split('.')[0];
 
         // Alert before updating
-        alert('Updating StartDateTime for routeReadLink: ' + routeReadLink + '\nTo: ' + currentDate);
+        //alert('Updating StartDateTime for routeReadLink: ' + routeReadLink + '\nTo: ' + currentDate);
 
         // Step 2: Execute UpdateEntity action
         await context.executeAction({
@@ -42,7 +42,7 @@ export default async function UpdateRouteStartDateTime(context) {
             }
         });
 
-        alert('StartDateTime updated successfully!');
+        //alert('StartDateTime updated successfully!');
 
     } catch (err) {
         alert('Error in UpdateRouteStartDateTime: ' + err.message);

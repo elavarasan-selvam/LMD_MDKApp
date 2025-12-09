@@ -6,11 +6,7 @@ export default function Checkout_ActualQuantity(clientAPI) {
 
     const actualQty = enteredQty - summedQty;
 
-    alert(
-        "Old (summed) OrderedQuantity = " + summedQty +
-        "\nNew Entered Quantity = " + enteredQty +
-        "\nActualQuantity sent to backend = " + actualQty
-    );
+    //alert("Old (summed) OrderedQuantity = " + summedQty +"\nNew Entered Quantity = " + enteredQty +"\nActualQuantity sent to backend = " + actualQty);
 
     return actualQty;
 }

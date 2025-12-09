@@ -2,7 +2,7 @@ export default async function Actual_Quantity_Checkin(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
 
     if (!binding) {
-        alert("No binding found");
+        //alert("No binding found");
         return 0;
     }
 
@@ -21,7 +21,7 @@ export default async function Actual_Quantity_Checkin(clientAPI) {
         if (checkinStops && checkinStops.length > 0) {
             const checkinStopUUID = checkinStops.getItem ? checkinStops.getItem(0).StopUUID : checkinStops[0].StopUUID;
 
-            alert("CHECKIN StopUUID: " + checkinStopUUID);
+            //alert("CHECKIN StopUUID: " + checkinStopUUID);
 
             // 2. Read COCIProducts for this Stop and Product
             const cociProducts = await clientAPI.read(
@@ -34,10 +34,10 @@ export default async function Actual_Quantity_Checkin(clientAPI) {
             if (cociProducts && cociProducts.length > 0) {
                 const coci = cociProducts.getItem ? cociProducts.getItem(0) : cociProducts[0];
 
-                alert("COCIProduct ActualQuantity: " + coci.ActualQuantity);
+                //alert("COCIProduct ActualQuantity: " + coci.ActualQuantity);
 
                 if (coci.ActualQuantity !== null && coci.ActualQuantity !== undefined) {
-                    alert("Returning COCIProduct ActualQuantity: " + coci.ActualQuantity);
+                    //alert("Returning COCIProduct ActualQuantity: " + coci.ActualQuantity);
                     return Number(coci.ActualQuantity);
                 }
             }
@@ -45,7 +45,7 @@ export default async function Actual_Quantity_Checkin(clientAPI) {
 
         // 3. Fallback to binding value
         const fallbackValue = Number(binding.ActualQuantity) || 0;
-        alert("No COCIProduct found. Returning binding ActualQuantity: " + fallbackValue);
+        //alert("No COCIProduct found. Returning binding ActualQuantity: " + fallbackValue);
         return fallbackValue;
 
     } catch (e) {

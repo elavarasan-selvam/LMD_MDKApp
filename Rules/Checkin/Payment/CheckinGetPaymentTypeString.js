@@ -4,20 +4,20 @@ export default function GetPaymentTypeString(clientAPI) {
     );
 
     // Debug: see what we received
-    alert("Raw pickerValue: " + JSON.stringify(pickerValue));
+    //alert("Raw pickerValue: " + JSON.stringify(pickerValue));
 
     let finalValue = '';
 
     // Always return a single string of max 2 characters
     if (Array.isArray(pickerValue)) {
         finalValue = pickerValue[0] || ''; // CA
-        alert("Array detected. Using first element: " + finalValue);
+        //alert("Array detected. Using first element: " + finalValue);
     } else if (typeof pickerValue === 'string') {
         finalValue = pickerValue.substring(0, 2); // truncate to 2 chars
-        alert("String detected. Truncated to 2 chars: " + finalValue);
+        //alert("String detected. Truncated to 2 chars: " + finalValue);
     } else {
         finalValue = '';
-        alert("Neither array nor string. Returning blank.");
+        //alert("Neither array nor string. Returning blank.");
     }
 
     return finalValue;

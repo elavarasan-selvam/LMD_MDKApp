@@ -2,15 +2,15 @@ export default async function Checkout_Stop_Items_List(context) {
     const binding = context.binding;
 
     if (!binding || !binding.RouteUUID) {
-        alert("No RouteUUID found in binding");
+        //alert("No RouteUUID found in binding");
         return [];
     }
 
     const routeUUID = binding.RouteUUID;
-    alert("Using RouteUUID: " + routeUUID);
+    //alert("Using RouteUUID: " + routeUUID);
 
     const filter = "$filter=IsReturn eq false and RouteUUID eq guid'" + routeUUID + "'";
-    alert("Applied Filter: " + filter);
+    //alert("Applied Filter: " + filter);
 
     const result = await context.read(
         "/LMD_MDKApp/Services/LMD_MA.service",
@@ -19,7 +19,7 @@ export default async function Checkout_Stop_Items_List(context) {
         filter
     );
 
-    alert("Total records fetched: " + result.length);
+    //alert("Total records fetched: " + result.length);
 
     const map = {};
 
@@ -54,10 +54,10 @@ export default async function Checkout_Stop_Items_List(context) {
     });
 
     const finalList = Object.values(map);
-    alert("Final aggregated product count: " + finalList.length);
+    //alert("Final aggregated product count: " + finalList.length);
 
     // Store aggregated list in clientData for Edit Item page
     context.getPageProxy().getClientData().AggregatedList = finalList;
-    alert("Aggregated list stored in AppClientData: " + JSON.stringify(finalList));
+    //alert("Aggregated list stored in AppClientData: " + JSON.stringify(finalList));
     return finalList;
 }

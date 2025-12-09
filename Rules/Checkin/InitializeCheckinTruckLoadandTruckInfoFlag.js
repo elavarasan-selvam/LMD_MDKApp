@@ -24,7 +24,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             const stopEntity = readStop.getItem(0);
             appData.currentStop = stopEntity;
             appData.currentRouteUUID = stopEntity.RouteUUID;
-            alert("Stop fetched\nStopUUID: " + stopEntity.StopUUID);
+            //alert("Stop fetched\nStopUUID: " + stopEntity.StopUUID);
         } else {
             alert("Stop not found");
         }
@@ -32,7 +32,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     const routeUUID = appData.currentRouteUUID;
     if (!routeUUID) {
-        alert("RouteUUID missing");
+        //alert("RouteUUID missing");
         return true;
     }
 
@@ -54,7 +54,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             }
         }
     }
-    alert("Checkout StopUUID: " + checkoutStopUUID);
+    //alert("Checkout StopUUID: " + checkoutStopUUID);
 
     // Fetch all document items for the route
     return clientAPI.read(
@@ -66,11 +66,11 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
         let pendingCount = 0;
         if (!result || result.length === 0) {
-            alert("No DocumentItems Found");
+            //alert("No DocumentItems Found");
             return true;
         }
 
-        alert("DocumentItems Found: " + result.length);
+        //alert("DocumentItems Found: " + result.length);
 
         // Map to sum ordered and delivered per product
         const productMap = {};
@@ -119,7 +119,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                         checkoutActual = Number(cociItem.ActualQuantity) || 0;
                     }
                 } catch (e) {
-                    alert("COCI read failed for Product: " + product.ProductID);
+                    //alert("COCI read failed for Product: " + product.ProductID);
                     checkoutActual = 0;
                 }
             }
@@ -127,13 +127,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             // finalActual = checkoutActual + orderedSum - deliveredSum
             const finalActual = checkoutActual + product.OrderedSum - product.DeliveredSum;
 
-            alert(
-                "Product: " + product.ProductID +
-                "\nCheckout Actual: " + checkoutActual +
-                "\nOrdered Sum: " + product.OrderedSum +
-                "\nDelivered Sum: " + product.DeliveredSum +
-                "\nFinal Actual: " + finalActual
-            );
+            //alert("Product: " + product.ProductID +"\nCheckout Actual: " + checkoutActual +"\nOrdered Sum: " + product.OrderedSum +"\nDelivered Sum: " + product.DeliveredSum +"\nFinal Actual: " + finalActual);
 
             if (finalActual > 0) {
                 pendingCount++;
@@ -150,7 +144,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
         appData.StartButton = (pendingCount > 0);
         appData.PendingCount = pendingCount;
-        alert("Pending Count: " + pendingCount);
+        //alert("Pending Count: " + pendingCount);
 
         clientAPI.getPageProxy().redraw();
         return true;

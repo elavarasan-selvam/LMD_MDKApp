@@ -18,12 +18,12 @@ export default async function OnWillUpdate(clientAPI) {
         for (let store of closeActions) {
             try {
                 await clientAPI.executeAction(store.path);
-                //alert(store.name + " closed successfully"); // optional success alert
+                //alert(store.name + " closed successfully"); // optional success //alert
             } catch (err) {
                 if (err.message.includes("engine already running")) {
-                    alert("Engine already running for " + store.name);
+                    //alert("Engine already running for " + store.name);
                 } else {
-                    alert("Failed to close " + store.name + ": " + err.message);
+                    //alert("Failed to close " + store.name + ": " + err.message);
                 }
             }
         }

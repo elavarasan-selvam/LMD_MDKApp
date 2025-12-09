@@ -11,6 +11,6 @@ export default function SetReasonFlag(clientAPI) {
         binding.ReasonCode = "";
     }
 
-    alert(`ReasonCodeChanged → Flag=${binding._ReasonCodeSelected}, Value=${JSON.stringify(currentValue)}, StoredReasonCode=${binding.ReasonCode}`);
+    //alert(`ReasonCodeChanged → Flag=${binding._ReasonCodeSelected}, Value=${JSON.stringify(currentValue)}, StoredReasonCode=${binding.ReasonCode}`);
     return true;
 }

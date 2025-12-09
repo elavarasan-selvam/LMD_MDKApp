@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "CheckIn_CheckPaymentSuccess"
+	},
+	"Message": "CheckIn CheckPayment Created",
+	"Title": "{Success}",
+	"OKCaption": "Ok"
+}

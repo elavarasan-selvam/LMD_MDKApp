@@ -10,8 +10,7 @@ export default function InitializeTruckLoadandTruckInfoFlag(context) {
         appCD.currentRouteUUID = context.binding.RouteUUID;
         console.log('Checkout Stop reference stored: ' + context.binding.StopID);
     }
-    alert('Checkout StopID: ' + context.binding.StopID + 
-      '\nStopUUID: ' + context.binding.StopUUID + 'StopType:'+context.binding.StopType);
+    //alert('Checkout StopID: ' + context.binding.StopID + '\nStopUUID: ' + context.binding.StopUUID + 'StopType:'+context.binding.StopType);
 
     return true;
 }

@@ -1,14 +1,14 @@
 {
 	"Controls": [
 		{
-			"FilterFeedbackBar": {
-				"ShowAllFilters": false,
-				"_Type": "Control.Type.FilterFeedbackBar"
-			},
 			"_Type": "Control.Type.SectionedTable",
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -16,11 +16,13 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0",
 					"Controls": [
 						{
-							"Value": "CA",
+							"Value": "CH",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "CheckinPaymentTypeInput",
+							"_Name": "CheckinCheckPaymentTypeInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
@@ -29,64 +31,58 @@
 							"IsEditable": false
 						},
 						{
-							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_Loaded.js",
+							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckCurrency_Loaded.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "CheckinCurrencyInput",
+							"_Name": "CheckinCheckCurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Currency",
-							"PlaceHolder": "Enter currency (e.g. USD)",
-							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_OnValueChange.js",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckCurrency_OnValueChange.js",
 							"Enabled": true,
 							"IsEditable": true
 						},
 						{
-							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetAmountPaymentloaded.js",
+							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckTotalAmount_Loaded.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "CheckinAmountInput",
+							"_Name": "CheckinCheckAmountInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"Caption": "Check-In: Cash Collected ",
-							"PlaceHolder": "Enter amount  \"<>= 0>\"",
-							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetPaymentAmount.js",
+							"Caption": "Amount",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckSetPayment_Amount.js",
 							"Enabled": true,
 							"IsEditable": true
 						}
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					},
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell0"
+					}
 				}
-			]
+			],
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			}
 		}
 	],
 	"_Type": "Page",
-	"_Name": "Payment",
-	"OnLoaded": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDebugPaymentType.js",
+	"_Name": "CheckIn_CheckPayment",
 	"ActionBar": {
 		"Items": [
 			{
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
-				"Caption": "",
+				"Caption": "Save",
 				"Icon": "sap-icon://save",
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
+				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCI_CheckPayment.action"
 			}
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Cash",
-		"OnBackButtonPressed": "/LMD_MDKApp/Actions/StartCheckin/NavBackToCheckinFromConfirmTruckLoad.action"
+		"Caption": "Check-In: Check"
 	}
 }

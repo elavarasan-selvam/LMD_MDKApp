@@ -9,7 +9,8 @@
         },
         "right": {
             "visible": true
-        }
+        },
+        "device": "tablet"
     },
     "mdk.i18n": {
         "displayLanguages": "i18n"

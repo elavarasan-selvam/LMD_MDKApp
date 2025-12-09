@@ -7,7 +7,7 @@ export default async function BumpCompletedStopAtCheckin(context) {
     const routeUUID = appCD.currentRouteUUID || (context.binding ? context.binding.RouteUUID : null);
  
     if (!stop || !stop.StopUUID) {
-        alert('Stop reference missing or StopUUID undefined!');
+        //alert('Stop reference missing or StopUUID undefined!');
         return;
     }
  
@@ -23,7 +23,7 @@ export default async function BumpCompletedStopAtCheckin(context) {
     );
  
     if (!readResult || readResult.length === 0) {
-        alert('Stop not found for UUID: ' + stopUUID);
+        //alert('Stop not found for UUID: ' + stopUUID);
         return;
     }
  

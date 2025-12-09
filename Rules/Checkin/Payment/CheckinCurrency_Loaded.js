@@ -44,7 +44,7 @@ export default async function CheckinCurrency_Loaded(clientAPI) {
                 '/LMD_MDKApp/Services/LMD_MA.service',
                 'COCIPayments',
                 [],
-                `$filter=StopUUID eq guid'${checkoutStopUUID}'`
+                `$filter=StopUUID eq guid'${checkoutStopUUID}' and PaymentType eq 'CA'`
             );
 
             if (payOut && payOut.length > 0) {

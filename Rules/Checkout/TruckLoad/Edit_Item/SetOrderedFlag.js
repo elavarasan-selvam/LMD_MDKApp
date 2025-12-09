@@ -9,11 +9,8 @@ export default function SetOrderedFlag(clientAPI) {
 
     appData.Checkout_Quantity = newQty;
 
-    alert(
-        "Old (sum) = " + oldQty + "\n" +
-        "New = " + newQty + "\n" +
-        "Actual quantity to send = " + (newQty - oldQty)
-    );
+    //alert("Old (sum) = " + oldQty + "\n" +"New = " + newQty + "\n" +"Actual quantity to send = " + (newQty - oldQty)
+   // );
 
     return true;
 }

@@ -2,7 +2,7 @@ export default async function Unloaded_Quantity(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
 
     if (!binding) {
-        alert("No binding found");
+        //alert("No binding found");
         return null;
     }
 
@@ -23,7 +23,7 @@ export default async function Unloaded_Quantity(clientAPI) {
                 ? checkinStops.getItem(0).StopUUID
                 : checkinStops[0].StopUUID;
 
-            alert("CHECKIN StopUUID: " + checkinStopUUID);
+            //alert("CHECKIN StopUUID: " + checkinStopUUID);
 
             // 2. Read COCIProducts for this Stop and Product
             const cociProducts = await clientAPI.read(
@@ -36,22 +36,22 @@ export default async function Unloaded_Quantity(clientAPI) {
             if (cociProducts && cociProducts.length > 0) {
                 const coci = cociProducts.getItem ? cociProducts.getItem(0) : cociProducts[0];
 
-                alert("COCIProduct UnloadedQuantity: " + coci.UnloadedQuantity);
+                //alert("COCIProduct UnloadedQuantity: " + coci.UnloadedQuantity);
 
                 if (coci.UnloadedQuantity !== null && coci.UnloadedQuantity !== undefined) {
-                    alert("Returning COCIProduct UnloadedQuantity: " + coci.UnloadedQuantity);
+                    //alert("Returning COCIProduct UnloadedQuantity: " + coci.UnloadedQuantity);
                     return Number(coci.UnloadedQuantity);
                 }
             }
         }
 
         // If nothing found in read → return NULL
-        alert("Returning binding UnloadedQuantity: " + binding.UnloadedQuantity);
+        //alert("Returning binding UnloadedQuantity: " + binding.UnloadedQuantity);
         return binding.UnloadedQuantity;
 
     } catch (e) {
         alert("Error reading COCIProducts: " + e.message);
-        alert("Returning binding UnloadedQuantity: " + binding.UnloadedQuantity);
+        //alert("Returning binding UnloadedQuantity: " + binding.UnloadedQuantity);
         return binding.UnloadedQuantity;
     }
 }

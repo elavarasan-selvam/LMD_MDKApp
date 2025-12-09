@@ -7,7 +7,7 @@ export default async function COCIProduct_CheckoutReadLink(clientAPI) {
         const stopsArray = readResult && readResult.data && readResult.data._array;
 
         if (!stopsArray || stopsArray.length === 0) {
-            alert("No stops found from Checkout Read action.");
+            //alert("No stops found from Checkout Read action.");
             return "";
         }
 
@@ -25,13 +25,13 @@ export default async function COCIProduct_CheckoutReadLink(clientAPI) {
         }
 
         if (!CheckoutStopUUID) {
-            alert("No Checkout StopType found in stops list.");
+            //alert("No Checkout StopType found in stops list.");
             return "";
         }
 
         const readLink = `Stops(guid'${CheckoutStopUUID}')`;
 
-        alert("Final Checkout COCIProduct ReadLink:\n" + readLink);
+        //alert("Final Checkout COCIProduct ReadLink:\n" + readLink);
 
         return readLink;
 

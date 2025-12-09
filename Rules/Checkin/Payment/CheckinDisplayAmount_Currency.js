@@ -21,7 +21,7 @@ export default async function CheckinDisplayAmount_Currency(clientAPI) {
                 "/LMD_MDKApp/Services/LMD_MA.service",
                 "COCIPayments",
                 [],
-                `$filter=StopUUID eq guid'${checkinStopUUID}'`
+                `$filter=StopUUID eq guid'${checkinStopUUID}' and PaymentType eq 'CA'`
             );
 
             if (checkinPayments && checkinPayments.length > 0) {

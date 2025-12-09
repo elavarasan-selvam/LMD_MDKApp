@@ -3,7 +3,7 @@ export default async function ReadDocumentUUIDReadLink(context) {
         const appCD = context.getAppClientData();
         const currentStopUUID = appCD.currentStop?.StopUUID;
         if (!currentStopUUID) {
-            alert("No current StopUUID found. Skipping document update.");
+            //alert("No current StopUUID found. Skipping document update.");
             return;
         }
 
@@ -12,7 +12,7 @@ export default async function ReadDocumentUUIDReadLink(context) {
         const documentsArray = readResult?.data?._array;
 
         if (!documentsArray || documentsArray.length === 0) {
-            alert('No documents found from ReadDocumentUUID action.');
+            //alert('No documents found from ReadDocumentUUID action.');
             return;
         }
 
@@ -20,11 +20,11 @@ export default async function ReadDocumentUUIDReadLink(context) {
         const stopDocs = documentsArray.filter(doc => doc.StopUUID === currentStopUUID);
 
         if (stopDocs.length === 0) {
-            alert("No DocumentItems found for the current stop.");
+            //alert("No DocumentItems found for the current stop.");
             return;
         }
 
-        alert(`Found ${stopDocs.length} documents for current StopUUID: ${currentStopUUID}`);
+        //alert(`Found ${stopDocs.length} documents for current StopUUID: ${currentStopUUID}`);
 
         const currentDate = new Date().toISOString().split('.')[0];
 
@@ -32,7 +32,7 @@ export default async function ReadDocumentUUIDReadLink(context) {
         for (let doc of stopDocs) {
             const docReadLink = doc['@odata.readLink'];
             if (!docReadLink) {
-                alert(`Document ${doc.DocumentUUID || doc.DocumentID} has empty ReadLink.`);
+                //alert(`Document ${doc.DocumentUUID || doc.DocumentID} has empty ReadLink.`);
                 continue;
             }
 
@@ -44,7 +44,7 @@ export default async function ReadDocumentUUIDReadLink(context) {
                 }
             });
 
-            alert(`DeliveryDate updated for DocumentUUID: ${doc.DocumentUUID || 'unknown'}`);
+            //alert(`DeliveryDate updated for DocumentUUID: ${doc.DocumentUUID || 'unknown'}`);
         }
 
     } catch (err) {

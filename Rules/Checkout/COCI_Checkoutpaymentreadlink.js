@@ -9,12 +9,12 @@ export default async function COCI_Checkoutpaymentreadlink(context) {
             '/LMD_MDKApp/Actions/StartCheckout/Checkout/CheckoutCOCIReadLink.action'
         );
 
-        alert(`Raw ReadAllStops result:\n${JSON.stringify(readResult, null, 2)}`);
+        //alert(`Raw ReadAllStops result:\n${JSON.stringify(readResult, null, 2)}`);
 
         const stopsArray = readResult?.data?._array;
 
         if (!stopsArray || stopsArray.length === 0) {
-            alert('No stops found from Read action.');
+            //alert('No stops found from Read action.');
             return "";
         }
 
@@ -31,7 +31,7 @@ export default async function COCI_Checkoutpaymentreadlink(context) {
         }
 
         if (!checkoutStopUUID) {
-            alert('No CHECKOUT StopType found in stops list.');
+            //alert('No CHECKOUT StopType found in stops list.');
             return "";
         }
 
@@ -42,7 +42,7 @@ export default async function COCI_Checkoutpaymentreadlink(context) {
         const appData = context.getAppClientData();
         appData.Checkout_StopReadLink = checkoutStopReadLink;
 
-        alert(`Final CHECKOUT Stop ReadLink:\n${checkoutStopReadLink}`);
+        //alert(`Final CHECKOUT Stop ReadLink:\n${checkoutStopReadLink}`);
 
         //  Step 5: RETURN READLINK (not UUID)
         return checkoutStopReadLink;
