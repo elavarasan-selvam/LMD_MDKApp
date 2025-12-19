@@ -1,0 +1,13 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "Collection_and_Collection_Payment_Changeset"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Creation.action",
+		"/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Creation_Cash.action"
+	]
+}

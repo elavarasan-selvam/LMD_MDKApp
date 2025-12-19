@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Collection_Payment_Success"
+	},
+	"Message": "Collection_Payment and clearings created!!",
+	"Title": "{Success}",
+	"OKCaption": "Ok"
+}

@@ -1,0 +1,25 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "Collection_Payment_Creation_Cash"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "CollectionPayments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Collections",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionReadLink.js"
+		},
+		"Property": "to_CollectionPayments"
+	},
+	"Properties": {
+		"PaymentType": "{#Control:VisitPaymentInput/#Value}",
+		"Amount": "{#Control:VisitAmountInput/#Value}",
+		"Currency": "{#Control:VisitCurrencyInput/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

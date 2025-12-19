@@ -3,6 +3,7 @@
 	"ActionResult": {
 		"_Name": "COCICheckinPayment_Changeset"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_and_Collection_Payment_Changeset.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},

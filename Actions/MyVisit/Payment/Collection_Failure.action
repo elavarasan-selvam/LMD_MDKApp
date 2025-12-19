@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Collection_Failure"
+	},
+	"Message": "{#ActionResults:CollectionClearings_Cash/error}",
+	"Title": "{Error}",
+	"OKCaption": "Ok"
+}

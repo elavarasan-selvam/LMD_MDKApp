@@ -1,0 +1,85 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0",
+					"Controls": [
+						{
+							"Value": "CA",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "VisitPaymentInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Payment Type",
+							"Enabled": true,
+							"IsEditable": false
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "VisitCurrencyInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Currency",
+							"PlaceHolder": "PlaceHolder",
+							"Enabled": true,
+							"IsEditable": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "VisitAmountInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Amount",
+							"PlaceHolder": "PlaceHolder",
+							"Enabled": true,
+							"IsEditable": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Cash_Collection_Payment",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"Icon": "sap-icon://save",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Creation.action"
+			}
+		],
+		"_Name": "ActionBar0",
+		"_Type": "Control.Type.ActionBar"
+	}
+}
