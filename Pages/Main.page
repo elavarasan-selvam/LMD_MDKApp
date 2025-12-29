@@ -64,23 +64,25 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.KPISection",
-					"_Name": "SectionKPISection0",
-					"Visible": true,
-					"KPIItems": [
-						{
-							"_Name": "KPIItem0",
-							"CaptionLabel": "/LMD_MDKApp/Rules/KPI/GetStopsFractionText.js",
-							"MetricItems": [
-								{
-									"Value": "/LMD_MDKApp/Rules/KPI/GetProgressPctText.js",
-									"_Name": "KPIItem0MetricItem0"
-								}
-							],
-							"ShowProgress": true,
-							"Progress": "/LMD_MDKApp/Rules/KPI/GetProgressFraction.js"
-						}
-					]
+					"KPIHeader": {
+						"KPIItems": [
+							{
+								"_Name": "KPIItem1",
+								"CaptionLabel": "/LMD_MDKApp/Rules/KPI/GetStopsFractionText.js",
+								"MetricItems": [
+									{
+										"Value": "/LMD_MDKApp/Rules/KPI/GetProgressPctText.js",
+										"_Name": "KPIItem1MetricItem0"
+									}
+								],
+								"ShowProgress": true,
+								"Progress": "/LMD_MDKApp/Rules/KPI/GetProgressFraction.js"
+							}
+						]
+					},
+					"_Type": "Section.Type.KPIHeader",
+					"_Name": "SectionKPIHeader0",
+					"Visible": true
 				},
 				{
 					"Separators": {
@@ -122,35 +124,6 @@
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
 					}
-				},
-				{
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
-					"Controls": [
-						{
-							"RequiredIndicator": false,
-							"_Type": "Control.Type.FormCell.Label",
-							"_Name": "FormCellLabel1",
-							"IsVisible": true,
-							"Separator": false,
-							"Text": "/LMD_MDKApp/Rules/Main/SetLastSyncAfterSync.js",
-							"TextWrap": true
-						}
-					],
-					"Layout": {
-						"NumberOfColumns": 1
-					},
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell0"
 				}
 			]
 		}
