@@ -1,0 +1,28 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "Collection_Payment_Creation_Cheque"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/NavToOpenItemsPopUp.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "CollectionPayments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Collections",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionReadLink.js"
+		},
+		"Property": "to_CollectionPayments"
+	},
+	"Properties": {
+		"CheckNumber": "{#Control:CheckNumberInput/#Value}",
+		"PaymentType": "{#Control:ChequePaymentInput/#Value}",
+		"Amount": "{#Control:ChequeAmountInput/#Value}",
+		"Currency": "{#Control:ChequeCurrencyInput/#Value}",
+		"BankName": "{#Control:BankNameInput/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

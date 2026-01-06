@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToChequePayment"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/Cheque_Collection_Payment.page"
+}

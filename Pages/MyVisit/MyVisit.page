@@ -118,14 +118,14 @@
 					},
 					"Card": {
 						"Visible": true,
-						"Title": "Collection Payments",
-						"Subhead": "Subhead",
-						"Footnote": "Footnote",
+						"Title": "Cash/Cheque",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/Payment/GetPaymentStatus.js",
 						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
+						"Description": "Record and confirm the amount of Cash/Cheque you receive for this stop.",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
-							"OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/Nav_To_Cash_Collection_Payment.action",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/VisitPayment/NavToCollectionPayment.action",
 							"Title": "Start",
 							"Visible": true
 						},
@@ -193,7 +193,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar42",
+		"_Name": "ActionBar43",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

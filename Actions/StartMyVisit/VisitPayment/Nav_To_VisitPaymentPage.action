@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_To_VisitPaymentPage"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/CollectionPayment.page"
+}

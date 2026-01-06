@@ -1,0 +1,27 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "Collection_Cheque_Creation"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/VisitPayment/Collection_Cheque_Creation_Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Creation_Cheque.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Collections"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/Payment/Collection_VisitPaymentReadLink.js"
+		},
+		"Property": "to_Collections"
+	},
+	"Properties": {
+		"CollectionID": "/LMD_MDKApp/Rules/Visit/Payment/GenerateCollectionID.js",
+		"CollectionDate": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js",
+		"Currency": "{#Control:ChequeCurrencyInput/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

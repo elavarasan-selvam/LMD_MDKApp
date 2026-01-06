@@ -1,0 +1,63 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "PaymentType_ListPicker",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": true,
+							"Caption": "Payment Type",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Select Cash/Cheque",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/OnPaymentTypeChange.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": "/LMD_MDKApp/Rules/Visit/Payments/GetPaymentTypes.js"
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "VisitPayment",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar1",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Payment"
+	}
+}

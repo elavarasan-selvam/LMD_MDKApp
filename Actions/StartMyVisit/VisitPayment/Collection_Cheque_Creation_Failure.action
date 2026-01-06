@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Collection_Cheque_Creation_Failure"
+	},
+	"Message": "{#ActionResults:Collection_Cheque_Creation/error}",
+	"Title": "{Error}",
+	"OKCaption": "OK"
+}
