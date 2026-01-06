@@ -8,11 +8,29 @@
             "width": 231.9980926513672
         },
         "right": {
-            "visible": true
-        },
-        "device": "tablet"
+            "visible": true,
+            "width": 306
+        }
     },
     "mdk.i18n": {
         "displayLanguages": "i18n"
+    },
+    "mdk.defaultEditor": "Text Editor",
+    "workbench.editorAssociations": {
+        "*.app": "default",
+        "*.global": "default",
+        "*.action": "default",
+        "*.extension": "default",
+        "*.page": "default",
+        "*.service": "default",
+        "*.cim": "default",
+        "*.rule": "default",
+        "*.properties": "default",
+        "*.fragment": "default"
+    },
+    "mdk.favoritesTemplates": {
+        "templates": [
+            "mde.action.navigation"
+        ]
     }
 }

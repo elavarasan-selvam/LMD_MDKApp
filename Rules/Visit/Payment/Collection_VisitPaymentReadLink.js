@@ -15,7 +15,7 @@ export default function Collection_VisitPaymentReadLink(context) {
         // Build Stop ReadLink
         const stopReadLink = `Stops(guid'${stopUUID}')`;
 
-        alert(`Generated Stop ReadLink: ${stopReadLink}`);
+        //alert(`Generated Stop ReadLink: ${stopReadLink}`);
 
         // Return Stop ReadLink (used as ParentReadLink for Collections)
         return stopReadLink;

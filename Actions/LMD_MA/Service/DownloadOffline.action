@@ -37,6 +37,11 @@
 			"Name": "COCIPayments",
 			"Query": "COCIPayments",
 			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "OpenItems",
+			"Query": "OpenItems",
+			"AutomaticallyRetrievesStreams": false
 		}
 	]
 }

@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToOpenItemsPopUp"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/OpenItemsListView.page"
+}

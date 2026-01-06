@@ -19,6 +19,6 @@ export default function GenerateCollectionID(clientAPI) {
     // COL + last 7 chars = 10 chars
     const collectionID = "COL" + stopUUID.slice(-7);
 
-    alert("Generated CollectionID: " + collectionID);
+    //alert("Generated CollectionID: " + collectionID);
     return collectionID;
 }

@@ -5,7 +5,6 @@
  */
 export default async function GetCollectionReadLink(clientAPI) {
     try {
-        alert('Rule started');
 
         const appCD = clientAPI.getAppClientData();
         const stopRef = appCD.currentStop || clientAPI.getPageProxy().binding;
@@ -16,10 +15,10 @@ export default async function GetCollectionReadLink(clientAPI) {
         }
 
         const stopUUID = stopRef.StopUUID;
-        alert(`Current StopUUID: ${stopUUID}`);
+        //alert(`Current StopUUID: ${stopUUID}`);
 
         const stopReadLink = `Stops(guid'${stopUUID}')`;
-        alert(`Stop ReadLink: ${stopReadLink}`);
+        //alert(`Stop ReadLink: ${stopReadLink}`);
 
         const service = '/LMD_MDKApp/Services/LMD_MA.service';
 
@@ -31,19 +30,19 @@ export default async function GetCollectionReadLink(clientAPI) {
             `$filter=StopUUID eq guid'${stopUUID}'`
         );
 
-        alert(`Collections found: ${collectionsResult.length}`);
+        //alert(`Collections found: ${collectionsResult.length}`);
 
         if (collectionsResult && collectionsResult.length > 0) {
             const collection = collectionsResult.getItem(0);
             const collectionReadLink = collection['@odata.readLink'];
 
-            alert(`Collection found, ReadLink:\n${collectionReadLink}`);
+            //alert(`Collection found, ReadLink:\n${collectionReadLink}`);
 
             appCD.CollectionReadLink = collectionReadLink;
             return collectionReadLink;
         }
 
-        alert('No Collection found for this Stop, returning Stop ReadLink');
+        //alert('No Collection found for this Stop, returning Stop ReadLink');
         return stopReadLink;
 
     } catch (err) {

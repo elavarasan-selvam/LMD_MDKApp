@@ -1,0 +1,32 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "CollectionClearings_Cash"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Success.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "CollectionClearings"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "CollectionPayments",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/Payment/Collection_Clearings_ReadLink.js"
+		},
+		"Property": "to_CollectionClearings"
+	},
+	"Properties": {
+		"Amount": "/LMD_MDKApp/Rules/Visit/Payment/Get_CollectionPayment_Amount.js",
+		"Currency": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionPaymentCurrency.js",
+		"AssignmentType": "FIA",
+		"OpenItemAmount": "{{#Property:Amount}}",
+		"AccountingDocument": "{{#Property:AccountingDocument}}",
+		"AccountingDocumentItem": "{{#Property:AccountingDocumentItem}}",
+		"CompanyCode": "{{#Property:CompanyCode}}",
+		"FiscalYear": "{{#Property:FiscalYear}}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

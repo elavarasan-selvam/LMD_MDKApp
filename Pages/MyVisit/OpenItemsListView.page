@@ -1,0 +1,91 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Name": "FilterFeedbackBar",
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Grouping": {
+						"GroupingProperties": [],
+						"Header": {
+							"Items": []
+						}
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "OpenItems",
+						"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+					},
+					"_Name": "SectionObjectTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"ContextMenu": {
+							"_Type": "ObjectCell.Type.ContextMenu",
+							"Items": [],
+							"LeadingItems": [],
+							"TrailingItems": [],
+							"PerformFirstActionWithFullSwipe": true
+						},
+						"Title": "Acc Doc  : {AccountingDocument}",
+						"Subhead": "Invoice Date : {ReferenceDocumentDate}",
+						"Footnote": "{Amount} {Currency}",
+						"Description": "AssignmentReference : {AssignmentReference}",
+						"DisplayDescriptionInMobile": true,
+						"AccessoryType": "None",
+						"Tags": [],
+						"AvatarStack": {
+							"ImageIsCircular": true,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"ImageIsCircular": true
+						},
+						"OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/Nav_From_OpenItemsList_To_Details.action",
+						"_Type": "ObjectTable.Type.ObjectCell",
+						"Selected": false
+					},
+					"Search": {
+						"Enabled": true,
+						"Placeholder": "Search Accounting Document",
+						"Delay": 500,
+						"MinimumCharacterThreshold": 1
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": true,
+						"PageSize": 50
+					},
+					"HighlightSelectedItem": true,
+					"Selection": {
+						"Mode": "None",
+						"LongPressToEnable": "None",
+						"ExitOnLastDeselect": false
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "OpenItemsPopUp",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar4",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Open Items List"
+	}
+}

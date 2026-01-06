@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_From_OpenItemsList_To_Details"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/OpenItems_Details.page"
+}

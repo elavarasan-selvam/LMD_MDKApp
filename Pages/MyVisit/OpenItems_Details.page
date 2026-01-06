@@ -1,0 +1,63 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard0",
+							"Visible": true,
+							"Title": "Acc Doc : {AccountingDocument}",
+							"Subhead": "AR : {AssignmentReference}                       Fiscal Year : {FiscalYear}",
+							"Footnote": "{Amount}  {Currency}",
+							"DetailImageIsCircular": false,
+							"StatusText": "Invoice Date : {ReferenceDocumentDate}",
+							"Description": "Acc DocItem : {AccountingDocumentItem}"
+						}
+					],
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				}
+			],
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "OpenItems_Details",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Done",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/CollectionClearings_Cash.action"
+			}
+		],
+		"_Name": "ActionBar0",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "OpenItem Details"
+	}
+}

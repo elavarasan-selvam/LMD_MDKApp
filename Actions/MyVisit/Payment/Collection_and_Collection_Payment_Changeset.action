@@ -8,6 +8,7 @@
 	},
 	"Actions": [
 		"/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Creation.action",
-		"/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Creation_Cash.action"
+		"/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Creation_Cash.action",
+		"/LMD_MDKApp/Actions/MyVisit/Payment/CollectionClearings_Cash.action"
 	]
 }
