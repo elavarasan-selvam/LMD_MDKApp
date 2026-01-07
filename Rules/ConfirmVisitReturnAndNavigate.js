@@ -1,11 +1,12 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
 export default function ConfirmVisitReturnAndNavigate(context) {
-        context.getAppClientData().TruckReturnConfirmed = true;
-    
-    // Navigate back to Visit
-    return context.executeAction('/LMD_MDKApp/Actions/NavBackToMyVisitFromConfirmReturn.action');
+    const appCD = context.getAppClientData();
+    const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
 
+    if (stopUUID) {
+        appCD.ReturnConfirmedByStop[stopUUID] = true;
+    }
+
+    return context.executeAction(
+        '/LMD_MDKApp/Actions/NavBackToMyVisitFromConfirmReturn.action'
+    );
 }

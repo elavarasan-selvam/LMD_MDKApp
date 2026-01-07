@@ -1,21 +1,20 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
 export default function CompleteVisitButtonEnabling(context) {
     try {
-        // CompleteVisitButton is enabled only if CompleteVisitButton is True
-        //let isConfirmed = context.getAppClientData().CompleteVisitButton;
-        //return isConfirmed;  // true = Enabled, false = hidden
-        let c = context.getAppClientData();
+        const appCD = context.getAppClientData();
+        const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
 
-        // Enabled only if BOTH TruckDeliveryConfirmed and TruckReturnConfirmed are true
-        let isTruckDeliveryConfirmed = c.TruckDeliveryConfirmed === true;
-        let isTruckReturnConfirmed = c.TruckReturnConfirmed === true;
+        if (!stopUUID) {
+            return false;
+        }
 
-        return isTruckDeliveryConfirmed || isTruckReturnConfirmed;  
+        const deliveryDone = appCD.DeliveryConfirmedByStop?.[stopUUID] === true;
+        const returnDone = appCD.ReturnConfirmedByStop?.[stopUUID] === true;
+
+        // Enable ONLY when both are confirmed for THIS visit
+        return deliveryDone && returnDone;
+
     } catch (e) {
-        context.getLogger().error("IsStartButtonVisible error: " + e);
-        return false;  // safe fallback: Don't show button
+        context.getLogger().error("CompleteVisitButtonEnabling error: " + e);
+        return false;
     }
 }

@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.OpenDocument",
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Failure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Successfully_Created.action",
+	"Path": "{@odata.mediaReadLink}",
+	"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentMimeTypeFromContent.js",
+	"Properties": {
+		"Path": "{@odata.mediaReadLink}"
+	}
+}

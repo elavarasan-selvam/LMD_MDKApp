@@ -1,0 +1,13 @@
+{
+	"_Type": "Action.Type.ODataService.DownloadMedia",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Contents",
+		"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLinks.js"
+	},
+	"Properties": {
+		"Target": {
+			"ReadLink": "{@odata.readLink}"
+		}
+	}
+}

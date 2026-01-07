@@ -1,0 +1,26 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "CreateActionForAttachments"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Content_MediaCreation.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Attachments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Routes",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLink.js"
+		},
+		"Property": "to_Attachments"
+	},
+	"Properties": {
+		"FileName": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetDisplayedAttachmentFileName.js",
+		"ReferenceID": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetReferenceID.js",
+		"AttachmentKind": "DL"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

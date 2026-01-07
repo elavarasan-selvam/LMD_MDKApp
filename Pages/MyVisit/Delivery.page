@@ -66,9 +66,10 @@
 	],
 	"_Type": "Page",
 	"_Name": "Delivery",
+	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Delivery/LoadProductDescriptions.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar24",
+		"_Name": "ActionBar31",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Delivery"
 	},

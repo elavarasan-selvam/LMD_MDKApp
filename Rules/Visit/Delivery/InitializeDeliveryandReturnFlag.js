@@ -1,12 +1,18 @@
+
+
 export default async function InitializeDeliveryandReturnFlag(context) {
     const appCD = context.getAppClientData();
 
+    // Existing flags (leave them if used elsewhere)
     if (appCD.TruckDeliveryConfirmed === undefined) appCD.TruckDeliveryConfirmed = false;
     if (appCD.TruckReturnConfirmed === undefined) appCD.TruckReturnConfirmed = false;
 
+    // ADD: per-stop maps
+    if (!appCD.DeliveryConfirmedByStop) appCD.DeliveryConfirmedByStop = {};
+    if (!appCD.ReturnConfirmedByStop) appCD.ReturnConfirmedByStop = {};
+
     const binding = context.binding;
     if (!binding || !binding.StopUUID) {
-        //alert("Visit page has no StopUUID in binding, fetching it...");
         const readStops = await context.read(
             '/LMD_MDKApp/Services/LMD_MA.service',
             'Stops',
@@ -15,16 +21,12 @@ export default async function InitializeDeliveryandReturnFlag(context) {
         );
 
         if (readStops && readStops.length > 0) {
-            const stopEntity = readStops.getItem ? readStops.getItem(0) : readStops[0];
-            appCD.currentStop = stopEntity;
-            //alert("Fetched Stop for Visit: " + stopEntity.StopID);
-        } else {
-            alert("No Stop found for StopID: " + binding.StopID);
+            appCD.currentStop = readStops.getItem(0);
         }
     } else {
         appCD.currentStop = binding;
-        //alert("Visit Stop reference set: " + binding.StopID);
     }
 
+    context.getPageProxy().redraw();
     return true;
 }

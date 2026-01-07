@@ -1,0 +1,13 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "Attachment_Changeset"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/CreateActionForAttachments.action",
+		"/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Content_MediaCreation.action"
+	]
+}

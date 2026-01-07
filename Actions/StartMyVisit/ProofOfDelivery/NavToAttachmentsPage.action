@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToAttachmentsPage"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MyVisitAttachmentPage.page"
+}
