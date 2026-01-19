@@ -3,7 +3,6 @@
 	"ActionResult": {
 		"_Name": "UpdateDeliveryDate"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/UpdateDeliveryDateSuccess.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Documents",

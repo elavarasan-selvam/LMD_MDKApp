@@ -153,16 +153,16 @@
 					"Card": {
 						"Visible": true,
 						"Title": "Collected Payments",
-						"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDisplayAmount_Currency.js",
-						"Footnote": "Open",
+						"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/GetCOCICheckinPayment_Description.js",
+						"Footnote": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",
 						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
-						"StatusText": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",
+						"StatusText": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDisplayAmount_Currency.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_CheckIn_Payment_Summary.action",
 							"Title": "Start",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Checkin/Payment/IsStartButtonVisibleforCOCICheckinPayment.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -221,7 +221,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar42",
+		"_Name": "ActionBar44",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In"
 	},

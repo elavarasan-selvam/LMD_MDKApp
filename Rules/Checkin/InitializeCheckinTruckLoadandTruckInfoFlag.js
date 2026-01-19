@@ -3,6 +3,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     if (appData.CheckinTruckLoadConfirmed === undefined) appData.CheckinTruckLoadConfirmed = false;
     if (appData.CheckinTruckInfoConfirmed === undefined) appData.CheckinTruckInfoConfirmed = false;
+    if (appData.CheckinCOCIPaymentConfirmed === undefined) appData.CheckinCOCIPaymentConfirmed = false;
 
     appData.PendingProductList = [];
 

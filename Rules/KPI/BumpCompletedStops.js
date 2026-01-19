@@ -19,7 +19,7 @@ export default async function BumpCompletedStops(context) {
         `$filter=StopUUID eq guid'${stopUUID}'`
     );
 
-    alert("StopID: " + stopID + "\nStopUUID: " + stopUUID);
+    //alert("StopID: " + stopID + "\nStopUUID: " + stopUUID);
 
     if (!readResult || readResult.length === 0) {
         alert("Stop not found");
@@ -38,7 +38,7 @@ export default async function BumpCompletedStops(context) {
         }
     });
 
-    alert("Stop " + stopID + " EndDateTime updated successfully.");
+    //alert("Stop " + stopID + " EndDateTime updated successfully.");
 
     await context.executeAction('/LMD_MDKApp/Actions/MyVisit/ReadDocumentUUID.action');
 

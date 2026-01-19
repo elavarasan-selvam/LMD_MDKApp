@@ -12,8 +12,8 @@ export default function CompleteCheckoutButtonEnabling(context) {
         // Enabled only if BOTH TruckLoadConfirmed and TruckInfoConfirmed are true
         let isTruckLoadConfirmed = c.TruckLoadConfirmed === true;
         let isTruckInfoConfirmed = c.TruckInfoConfirmed === true;
-
-        return isTruckLoadConfirmed && isTruckInfoConfirmed;  
+        let COCIPaymentConfirmed = c.COCIPaymentConfirmed === true;
+        return isTruckLoadConfirmed && isTruckInfoConfirmed && COCIPaymentConfirmed;  
     } catch (e) {
         context.getLogger().error("IsStartButtonVisible error: " + e);
         return false;  // safe fallback: Don't show button

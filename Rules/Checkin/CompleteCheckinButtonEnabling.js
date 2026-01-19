@@ -12,8 +12,8 @@ export default function CompleteCheckinButtonEnabling(context) {
         // Enabled only if BOTH TruckLoadConfirmed and TruckInfoConfirmed are true
         let isCheckinTruckLoadConfirmed = c.CheckinTruckLoadConfirmed === true;
         let isCheckinTruckInfoConfirmed = c.CheckinTruckInfoConfirmed === true;
-
-        return isCheckinTruckLoadConfirmed && isCheckinTruckInfoConfirmed;  
+        let CheckinCOCIPaymentConfirmed = c.CheckinCOCIPaymentConfirmed === true;
+        return isCheckinTruckLoadConfirmed && isCheckinTruckInfoConfirmed && CheckinCOCIPaymentConfirmed;  
     } catch (e) {
         context.getLogger().error("CompleteCheckinButtonEnabling error: " + e);
         return false;  // safe fallback: Don't show button

@@ -4,7 +4,7 @@
 		"_Name": "COCI_CheckoutPayment"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/COCI_CheckoutPaymentFailure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/COCI_CheckoutPayment_Success.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/Checkout/Payment/ConfirmPaymentandnavigation.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIPayments"

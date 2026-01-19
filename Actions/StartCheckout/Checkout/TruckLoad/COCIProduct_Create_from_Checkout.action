@@ -4,7 +4,7 @@
 		"_Name": "COCIProduct_Create_from_Checkout"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/CheckoutDifferences_failure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/COCIProduct_Checkout_Success.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/TruckLoad/Nav_Back_To_TruckLoad_from_EditItem.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIProducts"

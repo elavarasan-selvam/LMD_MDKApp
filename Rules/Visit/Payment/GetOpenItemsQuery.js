@@ -12,7 +12,7 @@ export default function GetOpenItemsQuery(context) {
     const locationID = stop?.LocationID;
 
     if (!stopUUID || !payerRaw) {
-        alert('StopUUID or ShipToID missing');
+        //alert('StopUUID or ShipToID missing');
         return '';
     }
 

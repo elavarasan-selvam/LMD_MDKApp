@@ -1,91 +1,105 @@
+/**
+ * Check CH payment currency
+ * Priority:
+ * 1. CHECKIN stop (if present, return immediately)
+ * 2. VISIT stops → return currency ONLY if all are same
+ * @param {IClientAPI} clientAPI
+ */
 export default async function CheckCurrency_Loaded(clientAPI) {
 
     const binding = clientAPI.getPageProxy().binding;
     if (!binding || !binding.RouteUUID) {
-        alert("RouteUUID missing");
         return "";
     }
 
     const routeUUID = binding.RouteUUID;
-    //alert("RouteUUID: " + routeUUID);
+    const service = "/LMD_MDKApp/Services/LMD_MA.service";
 
     try {
-        // -------------------------------
-        // 1. CHECK CHECKIN STOP FIRST
-        // -------------------------------
+
+        // ===============================
+        // 1. CHECKIN STOP (OVERRIDES ALL)
+        // ===============================
         const checkinStops = await clientAPI.read(
-            "/LMD_MDKApp/Services/LMD_MA.service",
+            service,
             "Stops",
             [],
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKIN'`
         );
 
-        if (checkinStops && checkinStops.length > 0) {
+        if (checkinStops.length > 0) {
 
-            const checkinStopUUID = checkinStops.getItem(0).StopUUID;
-            //alert("CHECKIN Stop Found: " + checkinStopUUID);
+            const stopUUID = checkinStops.getItem(0).StopUUID;
 
-            const checkinPayments = await clientAPI.read(
-                "/LMD_MDKApp/Services/LMD_MA.service",
+            const payments = await clientAPI.read(
+                service,
                 "COCIPayments",
                 [],
-                `$filter=PaymentType eq 'CH' and StopUUID eq guid'${checkinStopUUID}'`
+                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CH'`
             );
 
-            if (checkinPayments && checkinPayments.length > 0) {
-
-                const currency = checkinPayments.getItem(0).Currency || "";
-                //alert("CHECKIN Currency Found: " + currency);
-                return currency;
+            if (payments.length > 0) {
+                return payments.getItem(0).Currency || "";
             }
-
-            //alert("No CH payment in CHECKIN. Moving to VISITS...");
-        } 
-        else {
-            alert("No CHECKIN stop found. Moving to VISITS...");
         }
 
-        // -------------------------------
-        // 2. FALLBACK TO VISIT STOPS
-        // -------------------------------
+        // ===============================
+        // 2. VISIT STOPS – CHECK ALL
+        // ===============================
         const visitStops = await clientAPI.read(
-            "/LMD_MDKApp/Services/LMD_MA.service",
+            service,
             "Stops",
             [],
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'VISIT'`
         );
 
-        if (!visitStops || visitStops.length === 0) {
-            alert("No VISIT stops found");
-            return "";
-        }
-
-        //alert("VISIT Stops Count: " + visitStops.length);
+        let finalCurrency = null;
 
         for (let i = 0; i < visitStops.length; i++) {
 
             const stopUUID = visitStops.getItem(i).StopUUID;
-            //alert("Reading VISIT Stop: " + stopUUID);
 
-            const payments = await clientAPI.read(
-                "/LMD_MDKApp/Services/LMD_MA.service",
-                "CollectionPayments",
+            const collections = await clientAPI.read(
+                service,
+                "Collections",
                 [],
-                `$filter=PaymentType eq 'CH' and StopUUID eq guid'${stopUUID}'`
+                `$filter=StopUUID eq guid'${stopUUID}'`
             );
 
-            if (payments && payments.length > 0) {
-                const currency = payments.getItem(0).Currency || "";
-                alert("VISIT Currency Found: " + currency);
-                return currency;   // first found currency is returned
+            for (let j = 0; j < collections.length; j++) {
+
+                const collection = collections.getItem(j);
+                const collectionReadLink = collection["@odata.readLink"];
+
+                const payments = await clientAPI.read(
+                    service,
+                    "CollectionPayments",
+                    [],
+                    `$filter=PaymentType eq 'CH'`,
+                    collectionReadLink
+                );
+
+                for (let k = 0; k < payments.length; k++) {
+
+                    const currency = payments.getItem(k).Currency;
+
+                    if (!currency) {
+                        continue;
+                    }
+
+                    if (finalCurrency === null) {
+                        finalCurrency = currency;   // first currency found
+                    } else if (finalCurrency !== currency) {
+                        return "";
+                    }
+                }
             }
         }
 
-        //alert("No CH currency found in VISITS");
-        return "";
+        return finalCurrency || "";
 
     } catch (e) {
-        alert("Error in CheckCurrency_Loaded: " + e);
+        alert("Error in CheckCurrency_Loaded: " + e.message);
         return "";
     }
 }

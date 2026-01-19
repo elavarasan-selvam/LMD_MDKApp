@@ -1,15 +1,22 @@
+/**
+ * Calculate CHECK (CH) payment loaded for a route
+ * CHECKIN overrides everything
+ * @param {IClientAPI} clientAPI
+ */
 export default async function CheckTotalAmount_Loaded(clientAPI) {
 
     const binding = clientAPI.getPageProxy().binding;
-    if (!binding || !binding.RouteUUID) return "0";
+    if (!binding?.RouteUUID) {
+        // alert("Binding or RouteUUID missing");
+        return "0";
+    }
 
     const routeUUID = binding.RouteUUID;
     const service = "/LMD_MDKApp/Services/LMD_MA.service";
+    let totalAmount = 0;
 
     try {
-        // -------------------------------
-        // 1. CHECK CHECKIN STOP (COCIPayments - SINGLE RECORD)
-        // -------------------------------
+        // 1. CHECKIN OVERRIDE
         const checkinStops = await clientAPI.read(
             service,
             "Stops",
@@ -17,25 +24,24 @@ export default async function CheckTotalAmount_Loaded(clientAPI) {
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKIN'`
         );
 
-        if (checkinStops && checkinStops.length > 0) {
-            const checkinStopUUID = checkinStops.getItem(0).StopUUID;
+        if (checkinStops?.length > 0) {
+            const stopUUID = checkinStops.getItem(0).StopUUID;
 
             const checkinPayments = await clientAPI.read(
                 service,
                 "COCIPayments",
                 [],
-                `$filter=PaymentType eq 'CH' and StopUUID eq guid'${checkinStopUUID}'`
+                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CH'`
             );
 
-            if (checkinPayments && checkinPayments.length > 0) {
-                const amt = checkinPayments.getItem(0).Amount;
-                return (amt !== null && amt !== undefined && amt !== "") ? amt.toString() : "0";
+            if (checkinPayments?.length > 0) {
+                const amt = Number(checkinPayments.getItem(0).Amount || 0);
+                // alert("CHECKIN CH OVERRIDE AMOUNT: " + amt);
+                return amt.toString();
             }
         }
 
-        // -------------------------------
-        // 2. FALLBACK TO VISIT STOPS (CollectionPayments - MAY HAVE MULTIPLE)
-        // -------------------------------
+        // 2. VISIT STOPS → Collections → CollectionPayments
         const visitStops = await clientAPI.read(
             service,
             "Stops",
@@ -43,33 +49,40 @@ export default async function CheckTotalAmount_Loaded(clientAPI) {
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'VISIT'`
         );
 
-        let visitTotal = 0;
+        for (let i = 0; i < visitStops.length; i++) {
+            const stopUUID = visitStops.getItem(i).StopUUID;
 
-        if (visitStops && visitStops.length > 0) {
-            for (let i = 0; i < visitStops.length; i++) {
-                const stopUUID = visitStops.getItem(i).StopUUID;
+            const collections = await clientAPI.read(
+                service,
+                "Collections",
+                [],
+                `$filter=StopUUID eq guid'${stopUUID}'`
+            );
+
+            for (let j = 0; j < collections.length; j++) {
+                const collectionReadLink = collections.getItem(j)["@odata.readLink"];
 
                 const payments = await clientAPI.read(
                     service,
-                    "CollectionPayments",
+                    `${collectionReadLink}/to_CollectionPayments`,
                     [],
-                    `$filter=PaymentType eq 'CH' and StopUUID eq guid'${stopUUID}'`
+                    '' // fetch all, filter by type manually
                 );
 
-                if (payments && payments.length > 0) {
-                    for (let j = 0; j < payments.length; j++) {
-                        const amt = payments.getItem(j).Amount;
-                        if (amt !== null && amt !== undefined && amt !== "") {
-                            visitTotal += Number(amt);
-                        }
+                for (let k = 0; k < payments.length; k++) {
+                    const payment = payments.getItem(k);
+                    if (payment.PaymentType === 'CH') {
+                        totalAmount += Number(payment.Amount || 0);
                     }
                 }
             }
         }
 
-        return visitTotal === 0 ? "0" : visitTotal.toString();
+        // alert("FINAL TOTAL CH AMOUNT: " + totalAmount);
+        return totalAmount.toString();
 
     } catch (e) {
+        // alert("Error in CheckTotalAmount_Loaded: " + e.message);
         return "0";
     }
 }

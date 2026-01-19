@@ -1,65 +1,137 @@
+/**
+ * Calculate CA payment loaded for a route
+ * CHECKIN overrides everything if present
+ * Source: Collections → CollectionPayments (navigation)
+ * @param {IClientAPI} clientAPI
+ */
 export default async function CheckinSetAmountPaymentloaded(clientAPI) {
+
     const binding = clientAPI.getPageProxy().binding;
-    if (!binding) return "";
+    if (!binding?.RouteUUID) {
+        alert("RouteUUID missing");
+        return 0;
+    }
 
     const routeUUID = binding.RouteUUID;
-    if (!routeUUID) return "";
+    const service = "/LMD_MDKApp/Services/LMD_MA.service";
+    let totalAmount = 0;
 
     try {
-        // 1. Read CHECKIN stop using RouteUUID
+        // 1. CHECKIN STOP
         const checkinStops = await clientAPI.read(
-            "/LMD_MDKApp/Services/LMD_MA.service",
+            service,
             "Stops",
             [],
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKIN'`
         );
 
-        if (checkinStops && checkinStops.length > 0) {
-            const checkinStopUUID = checkinStops.getItem(0).StopUUID;
+        // alert("CHECKIN Stops found: " + checkinStops.length);
+
+        if (checkinStops.length > 0) {
+            const stopUUID = checkinStops.getItem(0).StopUUID;
 
             const checkinPayments = await clientAPI.read(
-                "/LMD_MDKApp/Services/LMD_MA.service",
+                service,
                 "COCIPayments",
                 [],
-                `$filter=StopUUID eq guid'${checkinStopUUID}' and PaymentType eq 'CA'`
+                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CA'`
             );
 
-            if (checkinPayments && checkinPayments.length > 0) {
-                const payment = checkinPayments.getItem(0);
-                if (payment.Amount !== null && payment.Amount !== undefined && payment.Amount !== "") {
-                    return payment.Amount;
+            // alert("CHECKIN CA payments found: " + checkinPayments.length);
+
+            if (checkinPayments.length > 0) {
+                const amt = Number(checkinPayments.getItem(0).Amount || 0);
+                // alert("CHECKIN CA override amount: " + amt);
+                return amt; // CHECKIN override
+            }
+        }
+
+        // 2. VISIT STOPS → Collections → CollectionPayments
+        const visitStops = await clientAPI.read(
+            service,
+            "Stops",
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'VISIT'`
+        );
+
+        // alert("VISIT stops found: " + visitStops.length);
+
+        for (let i = 0; i < visitStops.length; i++) {
+            const stopUUID = visitStops.getItem(i).StopUUID;
+            // alert("Processing VISIT " + (i + 1) + " StopUUID: " + stopUUID);
+
+            const collections = await clientAPI.read(
+                service,
+                "Collections",
+                [],
+                `$filter=StopUUID eq guid'${stopUUID}'`
+            );
+
+            // alert("Collections found: " + collections.length);
+
+            for (let j = 0; j < collections.length; j++) {
+                const collectionReadLink = collections.getItem(j)['@odata.readLink'];
+
+                const payments = await clientAPI.read(
+                    service,
+                    `${collectionReadLink}/to_CollectionPayments`,
+                    [],
+                    ''
+                );
+
+                // alert("Payments in collection: " + payments.length);
+
+                for (let k = 0; k < payments.length; k++) {
+                    const payment = payments.getItem(k);
+
+                    if (payment.PaymentType !== 'CA') {
+                        // alert("Skipped non-CA payment");
+                        continue;
+                    }
+
+                    const amt = Number(payment.Amount || 0);
+                    // alert("Adding CA from VISIT Visit: " + (i + 1) + " Collection: " + (j + 1) + " Amount: " + amt + " Total before: " + totalAmount);
+                    totalAmount += amt;
+                    // alert("Total after: " + totalAmount);
                 }
             }
         }
 
-        // 2. If no CHECKIN payment, read CHECKOUT stop
+        // 3. CHECKOUT STOP → add CA
         const checkoutStops = await clientAPI.read(
-            "/LMD_MDKApp/Services/LMD_MA.service",
+            service,
             "Stops",
             [],
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'CHECKOUT'`
         );
 
-        if (checkoutStops && checkoutStops.length > 0) {
-            const checkoutStopUUID = checkoutStops.getItem(0).StopUUID;
+        // alert("CHECKOUT Stops found: " + checkoutStops.length);
+
+        if (checkoutStops.length > 0) {
+            const stopUUID = checkoutStops.getItem(0).StopUUID;
 
             const checkoutPayments = await clientAPI.read(
-                "/LMD_MDKApp/Services/LMD_MA.service",
+                service,
                 "COCIPayments",
                 [],
-                `$filter=StopUUID eq guid'${checkoutStopUUID}'`
+                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CA'`
             );
 
-            if (checkoutPayments && checkoutPayments.length > 0) {
-                const payment = checkoutPayments.getItem(0);
-                if (payment.Amount !== null && payment.Amount !== undefined && payment.Amount !== "") {
-                    return payment.Amount;
-                }
+            // alert("CHECKOUT CA payments found: " + checkoutPayments.length);
+
+            for (let i = 0; i < checkoutPayments.length; i++) {
+                const amt = Number(checkoutPayments.getItem(i).Amount || 0);
+                // alert("Adding CA from CHECKOUT Amount: " + amt + " Total before: " + totalAmount);
+                totalAmount += amt;
+                // alert("Total after: " + totalAmount);
             }
         }
 
-        return "";
-    } catch {
-        return "";
+        // alert("FINAL TOTAL CA AMOUNT: " + totalAmount);
+        return totalAmount;
+
+    } catch (err) {
+        alert("Error: " + err.message);
+        return totalAmount;
     }
 }

@@ -18,6 +18,7 @@
 	},
 	"Properties": {
 		"CollectionID": "/LMD_MDKApp/Rules/Visit/Payment/GenerateCollectionID.js",
+		"StopUUID": "/LMD_MDKApp/Rules/Visit/Payment/GetCurrentStopUUID.js",
 		"CollectionDate": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js",
 		"Currency": "{#Control:ChequeCurrencyInput/#Value}"
 	},

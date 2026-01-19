@@ -155,15 +155,15 @@
 						"Visible": true,
 						"Title": "Cash",
 						"Subhead": "/LMD_MDKApp/Rules/Checkout/Payment/DisplayAmount_Currency.js",
-						"Footnote": "Open",
+						"Footnote": "/LMD_MDKApp/Rules/Checkout/Payment/GetCOCIPayment_Status.js",
 						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
-						"Description": "Record and confirm the amount of cash you recieve for this stop.",
+						"Description": "/LMD_MDKApp/Rules/Checkout/Payment/GetCOCIPayment_Description.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartCheckout/Checkout/Nav_To_PaymentPage.action",
 							"Title": "Start",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Checkout/Payment/IsStartButtonVisibleforCOCIPayment.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -222,7 +222,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar32",
+		"_Name": "ActionBar33",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

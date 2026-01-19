@@ -1,17 +1,22 @@
-export default async function CheckDisplayAmount_Currency_FromVisits(clientAPI) {
+/**
+ * Calculate CHECK (CH) payment loaded for a route
+ * CHECKIN overrides everything
+ * @param {IClientAPI} clientAPI
+ */
+export default async function CheckTotalAmount_Loaded(clientAPI) {
 
     const binding = clientAPI.getPageProxy().binding;
-    if (!binding || !binding.RouteUUID) {
+    if (!binding?.RouteUUID) {
+        // alert("Binding or RouteUUID missing");
         return "0";
     }
 
     const routeUUID = binding.RouteUUID;
     const service = "/LMD_MDKApp/Services/LMD_MA.service";
+    let totalAmount = 0;
 
     try {
-        // ==================================================
-        // 1. CHECK CHECKIN STOP FIRST (CH)
-        // ==================================================
+        // 1. CHECKIN OVERRIDE
         const checkinStops = await clientAPI.read(
             service,
             "Stops",
@@ -20,27 +25,23 @@ export default async function CheckDisplayAmount_Currency_FromVisits(clientAPI) 
         );
 
         if (checkinStops?.length > 0) {
-            const checkinStopUUID = checkinStops.getItem(0).StopUUID;
+            const stopUUID = checkinStops.getItem(0).StopUUID;
 
             const checkinPayments = await clientAPI.read(
                 service,
                 "COCIPayments",
                 [],
-                `$filter=StopUUID eq guid'${checkinStopUUID}' and PaymentType eq 'CH'`
+                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CH'`
             );
 
             if (checkinPayments?.length > 0) {
-                const payment = checkinPayments.getItem(0);
-                const amount = Number(payment.Amount) || 0;
-
-                if (amount === 0) return "0";
-                return `${payment.Currency} ${amount}`;
+                const amt = Number(checkinPayments.getItem(0).Amount || 0);
+                // alert("CHECKIN CH OVERRIDE AMOUNT: " + amt);
+                return `Cheque Collected : ${amt.toString()}`;
             }
         }
 
-        // ==================================================
-        // 2. FALLBACK → SUM FROM VISIT STOPS (CH)
-        // ==================================================
+        // 2. VISIT STOPS → Collections → CollectionPayments
         const visitStops = await clientAPI.read(
             service,
             "Stops",
@@ -48,39 +49,40 @@ export default async function CheckDisplayAmount_Currency_FromVisits(clientAPI) 
             `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'VISIT'`
         );
 
-        if (!visitStops || visitStops.length === 0) {
-            return "0";
-        }
-
-        let total = 0;
-        let currency = "";
-
         for (let i = 0; i < visitStops.length; i++) {
             const stopUUID = visitStops.getItem(i).StopUUID;
 
-            const payments = await clientAPI.read(
+            const collections = await clientAPI.read(
                 service,
-                "CollectionPayments",
+                "Collections",
                 [],
-                `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CH'`
+                `$filter=StopUUID eq guid'${stopUUID}'`
             );
 
-            for (let j = 0; j < payments.length; j++) {
-                const p = payments.getItem(j);
-                const amt = Number(p.Amount) || 0;
+            for (let j = 0; j < collections.length; j++) {
+                const collectionReadLink = collections.getItem(j)["@odata.readLink"];
 
-                total += amt;
-                if (!currency && p.Currency) {
-                    currency = p.Currency;
+                const payments = await clientAPI.read(
+                    service,
+                    `${collectionReadLink}/to_CollectionPayments`,
+                    [],
+                    '' // fetch all, filter by type manually
+                );
+
+                for (let k = 0; k < payments.length; k++) {
+                    const payment = payments.getItem(k);
+                    if (payment.PaymentType === 'CH') {
+                        totalAmount += Number(payment.Amount || 0);
+                    }
                 }
             }
         }
 
-        if (total === 0) return "0";
-        return `${currency} ${total}`;
+        // alert("FINAL TOTAL CH AMOUNT: " + totalAmount);
+        return `Cheque Collected : ${totalAmount.toString()}`;
 
     } catch (e) {
-        alert("Error in CheckDisplayAmount_Currency_FromVisits: " + e);
+        // alert("Error in CheckTotalAmount_Loaded: " + e.message);
         return "0";
     }
 }
