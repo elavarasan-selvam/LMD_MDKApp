@@ -4,7 +4,7 @@
 		"_Name": "COCIProduct_Create_from_Stops"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityUpdateSucccess.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Nav_Back_TruckLoad_From_CheckinEditItem.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIProducts"

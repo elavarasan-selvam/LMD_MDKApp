@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_Back_TruckLoad_From_CheckinEditItem"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/CheckinTruckLoad.page"
+}

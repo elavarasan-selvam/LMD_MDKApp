@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "COCI_CheckPayment"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/CheckIn_CheckPaymentSuccess.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_Payments_from_check.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIPayments"

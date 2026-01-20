@@ -27,9 +27,9 @@
 							"_Type": "ObjectCardCollection.Type.Card",
 							"_Name": "ObjectCardCollectionTypeCard0",
 							"Visible": true,
-							"Title": "{ProductID}",
-							"Subhead": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/Loaded_Actual_Quantity.js",
-							"Footnote": "Footnote",
+							"Title": "/LMD_MDKApp/Rules/Visit/Delivery/GetEditProductDescription.js",
+							"Subhead": "{ProductID}",
+							"Footnote": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/Loaded_Actual_Quantity.js",
 							"DetailImage": "res://mdk_logo.png",
 							"DetailImageIsCircular": false
 						}
@@ -55,8 +55,9 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Actual :",
-							"PlaceHolder": "PlaceHolder",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/UpdateActualQuantity.js",
+							"KeyboardType": "Number",
+							"AlternateInput": "None",
 							"Enabled": true,
 							"IsEditable": true
 						},
@@ -70,6 +71,7 @@
 							"Caption": "Unloaded:",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/UpdateUnloadedQuantity.js",
 							"KeyboardType": "Number",
+							"AlternateInput": "None",
 							"Enabled": true,
 							"IsEditable": true
 						},

@@ -28,7 +28,7 @@
 						"PageSize": 50
 					},
 					"ObjectCell": {
-						"Title": "Product Description ",
+						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
 						"DisplayDescriptionInMobile": true,
 						"StatusText": "{ActualQuantity}   {ActualUOM}",
@@ -55,6 +55,13 @@
 					}
 				},
 				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
@@ -65,13 +72,6 @@
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
-					},
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
 					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
@@ -113,7 +113,7 @@
 	"_Name": "TruckLoad",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar17",
+		"_Name": "ActionBar18",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},
