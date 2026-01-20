@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Failed"
+	},
+	"Message": "{#ActionResults:Content_MediaCreation/error}",
+	"Title": "{Error}",
+	"OKCaption": "OK"
+}

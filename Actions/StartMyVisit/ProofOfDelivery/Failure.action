@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "Failure"
+	},
+	"Message": "{#ActionResults:OpenDownload/error}",
+	"Title": "{Error}",
+	"OKCaption": "OK"
+}

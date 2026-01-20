@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "SuccessMessage"
+	},
+	"Message": "Successfully Created Attachment and contents!!",
+	"Title": "{Success}",
+	"OKCaption": "OK"
+}

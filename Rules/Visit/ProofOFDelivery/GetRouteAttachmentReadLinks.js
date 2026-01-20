@@ -44,7 +44,7 @@ export default async function GetRouteAttachmentReadLinks(context) {
             const attachment = attachments.getItem(i);
             const readLink = attachment['@odata.readLink'];
 
-         //   alert(` Attachment ${i + 1} ReadLink:\n${readLink}`);
+       //     alert(` Attachment ${i + 1} ReadLink:\n${readLink}`);
 
             if (readLink) {
                 readLinks.push(readLink);

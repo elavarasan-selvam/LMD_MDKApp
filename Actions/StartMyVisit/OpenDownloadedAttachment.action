@@ -1,9 +1,13 @@
 {
 	"_Type": "Action.Type.OpenDocument",
+	"ActionResult": {
+		"_Name": "OpenDownload"
+	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Failure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Successfully_Created.action",
 	"Path": "{@odata.mediaReadLink}",
-	"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentMimeTypeFromContent.js",
+	"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentMimeType.js",
+	"UseExternalViewer": true,
 	"Properties": {
 		"Path": "{@odata.mediaReadLink}"
 	}

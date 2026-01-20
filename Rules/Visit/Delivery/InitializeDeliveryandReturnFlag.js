@@ -10,6 +10,8 @@ export default async function InitializeDeliveryandReturnFlag(context) {
     // ADD: per-stop maps
     if (!appCD.DeliveryConfirmedByStop) appCD.DeliveryConfirmedByStop = {};
     if (!appCD.ReturnConfirmedByStop) appCD.ReturnConfirmedByStop = {};
+    if (!appCD.PODConfirmedByStop) appCD.PODConfirmedByStop = {};
+
 
     const binding = context.binding;
     if (!binding || !binding.StopUUID) {

@@ -1,22 +1,13 @@
 {
-	"_Type": "Action.Type.ODataService.CreateRelatedMedia",
+	"_Type": "Action.Type.ODataService.CreateEntity",
 	"ActionResult": {
-		"_Name": "Content_MediaCreation"
+		"_Name": "ContentCreation_Attachments"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Failed.action",
-	"OnSuccess": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/SetPODConfirmed.js",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/SuccessMessage.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Contents"
-	},
-	"IsOnlineRequest": true,
-	"Media": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetDisplayedAttachmentMedia.js",
-	"ParentLink": {
-		"Target": {
-			"EntitySet": "Attachments",
-			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLinkByDocument.js"
-		},
-		"Property": "to_Content"
 	},
 	"Properties": {
 		"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetDisplayedAttachmentContentType.js",

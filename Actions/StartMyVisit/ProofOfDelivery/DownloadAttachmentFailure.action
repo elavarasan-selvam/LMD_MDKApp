@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "DownloadAttachmentFailure"
+	},
+	"Message": "{#ActionResults:DownloadAttachment/error}",
+	"Title": "{Failed}",
+	"OKCaption": "OK"
+}

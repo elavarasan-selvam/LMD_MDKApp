@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "Collection_Failure"
 	},
-	"Message": "{#ActionResults:CollectionClearings_Cash/error}",
+	"Message": "failed",
 	"Title": "{Error}",
 	"OKCaption": "Ok"
 }

@@ -1,13 +1,15 @@
 {
 	"_Type": "Action.Type.ODataService.DownloadMedia",
+	"ActionResult": {
+		"_Name": "DownloadAttachment"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/DownloadAttachmentFailure.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Contents",
-		"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLinks.js"
+		"ReadLink": "{@odata.readLink}"
 	},
-	"Properties": {
-		"Target": {
-			"ReadLink": "{@odata.readLink}"
-		}
-	}
+	"DownloadResult": "DownloadedFile"
+	
+	
 }

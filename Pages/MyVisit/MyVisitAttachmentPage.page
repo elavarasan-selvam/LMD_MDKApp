@@ -124,7 +124,7 @@
 							"Avatars": [],
 							"ImageIsCircular": true
 						},
-						"OnPress": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/DownloadAndOpenAttachment.js",
+						"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/OpenDownloadedAttachment.action",
 						"_Type": "ObjectTable.Type.ObjectCell",
 						"Selected": false
 					},
@@ -150,7 +150,7 @@
 			{
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
-				"Caption": "Proof Of Delivery Page",
+				"Caption": "Proof Of Delivery ",
 				"Position": "Left",
 				"IsIconCircular": false,
 				"Visible": true
