@@ -30,16 +30,29 @@
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_Loaded.js",
-							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "CheckinCurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
 							"Caption": "Currency",
-							"PlaceHolder": "Enter currency (e.g. USD)",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinCurrency_OnValueChange.js",
-							"Enabled": true,
-							"IsEditable": true
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"INR",
+								"EUR",
+								"AUD"
+							]
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetAmountPaymentloaded.js",
@@ -49,7 +62,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Check-In: Cash Collected ",
-							"PlaceHolder": "Enter amount  \"<>= 0>\"",
+							"PlaceHolder": "Enter amount  ",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinSetPaymentAmount.js",
 							"Enabled": true,
 							"IsEditable": true
@@ -82,11 +95,21 @@
 				"IsIconCircular": false,
 				"Visible": true,
 				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
+			},
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem1",
+				"Caption": "",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://cancel",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
 			}
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Cash",
-		"OnBackButtonPressed": "/LMD_MDKApp/Actions/StartCheckin/NavBackToCheckinFromConfirmTruckLoad.action"
+		"Caption": "Check-In: Cash"
 	}
 }

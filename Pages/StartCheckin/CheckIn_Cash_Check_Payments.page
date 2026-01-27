@@ -86,7 +86,7 @@
 	"_Name": "CheckIn_Cash_Check_Payments",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar8",
+		"_Name": "ActionBar10",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In - Collection Payments",
 		"CaptionAlignment": "Center"

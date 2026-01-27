@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "COCI_CheckPayment"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_To_Payments_from_check.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/CheckPaymentMessage.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIPayments"
@@ -17,7 +17,7 @@
 	},
 	"Properties": {
 		"PaymentType": "{#Control:CheckinCheckPaymentTypeInput:/#Value}",
-		"Currency": "{#Control:CheckinCheckCurrencyInput/#Value}",
+		"Currency": "{#Control:CheckinCheckCurrencyInput/#SelectedValue}",
 		"Amount": "{#Control:CheckinCheckAmountInput/#Value}"
 	},
 	"Headers": {

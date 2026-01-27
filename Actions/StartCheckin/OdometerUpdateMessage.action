@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "OdometerUpdateMessage"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Message": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/BuildOdometerEndToast.js",
+	"Duration": 2,
+	"Animated": true
+}

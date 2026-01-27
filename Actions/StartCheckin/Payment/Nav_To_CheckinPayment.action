@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "Nav_To_CheckinPayment"
 	},
-	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/Payment.page"
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/Payment.page",
+	"ModalPage": true
 }

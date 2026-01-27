@@ -1,0 +1,11 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "ActualandUnloadedUpdationMessage"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Message": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/BuildQuantityToast.js",
+	"NumberOfLines": 2,
+	"Duration": 3,
+	"Animated": true
+}

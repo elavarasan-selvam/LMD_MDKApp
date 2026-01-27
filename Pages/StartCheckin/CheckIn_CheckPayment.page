@@ -1,14 +1,14 @@
 {
 	"Controls": [
 		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
 			"_Type": "Control.Type.SectionedTable",
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -16,8 +16,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell0",
 					"Controls": [
 						{
 							"Value": "CH",
@@ -32,15 +30,29 @@
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckCurrency_Loaded.js",
-							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "CheckinCheckCurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
 							"Caption": "Currency",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckCurrency_OnValueChange.js",
-							"Enabled": true,
-							"IsEditable": true
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"INR",
+								"EUR",
+								"AUD"
+							]
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkin/Payment/CheckTotalAmount_Loaded.js",
@@ -50,6 +62,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Amount",
+							"PlaceHolder": "Enter Amount",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/Payment/CheckSetPayment_Amount.js",
 							"Enabled": true,
 							"IsEditable": true
@@ -57,19 +70,32 @@
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
 				}
-			],
-			"FilterFeedbackBar": {
-				"ShowAllFilters": false,
-				"_Type": "Control.Type.FilterFeedbackBar"
-			}
+			]
 		}
 	],
 	"_Type": "Page",
 	"_Name": "CheckIn_CheckPayment",
 	"ActionBar": {
 		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem1",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://cancel",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			},
 			{
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",

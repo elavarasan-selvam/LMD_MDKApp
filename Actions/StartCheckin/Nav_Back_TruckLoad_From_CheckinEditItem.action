@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "Nav_Back_TruckLoad_From_CheckinEditItem"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ActualandUnloadedUpdationMessage.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/CheckinTruckLoad.page"
 }

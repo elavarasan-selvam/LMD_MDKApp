@@ -91,6 +91,7 @@
 							"Separator": true,
 							"Caption": "Odometer Reading at Checkout*",
 							"PlaceHolder": "Enter Odometer Reading",
+							"OnValueChange": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/OdometerEnd_OnValueChange.js",
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
@@ -117,8 +118,19 @@
 	"_Type": "Page",
 	"_Name": "TruckInfo",
 	"ActionBar": {
-		"Items": [],
-		"_Name": "ActionBar18",
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"SystemItem": "Cancel",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			}
+		],
+		"_Name": "ActionBar21",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},

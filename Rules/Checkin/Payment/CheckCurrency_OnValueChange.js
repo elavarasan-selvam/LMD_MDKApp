@@ -1,9 +1,15 @@
 export default function CheckCurrency_OnValueChange(clientAPI) {
+
     const appData = clientAPI.getAppClientData();
-    const currency = clientAPI.getValue();
 
-    //alert("CHECK Currency changed to: " + currency);
+    let currency = clientAPI.getValue();
 
-    appData.Check_Currency = currency;   // store modified currency
+    // Extract from ListPicker array
+    if (Array.isArray(currency) && currency.length > 0) {
+        currency = currency[0].ReturnedValue || currency[0].DisplayValue || "";
+    }
+
+    appData.Check_Currency = currency;
+
     return true;
 }
