@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "ActualQuantityUpdateMessage"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Message": "/LMD_MDKApp/Rules/Checkout/TruckLoad/BuildActualQtyToast.js",
+	"Duration": 2,
+	"Animated": true
+}

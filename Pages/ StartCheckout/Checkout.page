@@ -222,7 +222,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar33",
+		"_Name": "ActionBar34",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

@@ -18,7 +18,7 @@
 	},
 	"Properties": {
 		"PaymentType": "{#Control:PaymentTypeInput:/#Value}",
-		"Currency": "{#Control:CurrencyInput/#Value}",
+		"Currency": "{#Control:CurrencyInput/#SelectedValue}",
 		"Amount": "{#Control:AmountInput/#Value}"
 	},
 	"Headers": {

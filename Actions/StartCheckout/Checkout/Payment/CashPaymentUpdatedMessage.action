@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "CashPaymentUpdatedMessage"
+	},
+	"Message": "/LMD_MDKApp/Rules/Checkout/Payment/BuildCashPaymentToast.js",
+	"Duration": 2
+}

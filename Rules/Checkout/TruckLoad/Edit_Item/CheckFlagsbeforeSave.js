@@ -8,7 +8,7 @@ export default function CheckBeforeSave(clientAPI) {
 
     if (orderedFlag === 0) {
         //alert("No OrderedQuantity change → Just navigate");
-        return clientAPI.executeAction("/LMD_MDKApp/Actions/StartCheckout/NavToTruckLoadfromEditItemSave.action");
+        return clientAPI.executeAction("/LMD_MDKApp/Actions/CloseModalPage_Complete.action");
     }
 
     if (orderedFlag === 1) {

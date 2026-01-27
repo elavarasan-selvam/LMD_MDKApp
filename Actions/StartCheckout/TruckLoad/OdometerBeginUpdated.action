@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "OdometerBeginUpdated"
+	},
+	"Message": "/LMD_MDKApp/Rules/Checkout/TruckInfo/OdometerBegin/BuildOdometerBeginToastMessage.js",
+	"NumberOfLines": 2,
+	"Duration": 2
+}

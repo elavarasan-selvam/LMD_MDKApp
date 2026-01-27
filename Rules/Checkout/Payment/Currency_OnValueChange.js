@@ -1,14 +1,16 @@
-/**
- * Store latest entered currency on value change
- * @param {IClientAPI} clientAPI
- */
 export default function Currency_OnValueChange(clientAPI) {
+
     const appData = clientAPI.getAppClientData();
 
-    const currency = clientAPI.getValue();  // latest entered value
+    let currency = clientAPI.getValue(); // array
 
-    // Store in AppClientData
+    // Extract from array
+    if (Array.isArray(currency) && currency.length > 0) {
+        currency = currency[0].ReturnedValue || currency[0].DisplayValue || "";
+    }
+
+    // Store only string
     appData.Checkout_Currency = currency;
 
-    return true;  
+    return true;
 }

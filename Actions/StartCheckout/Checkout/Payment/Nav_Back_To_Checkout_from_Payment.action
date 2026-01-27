@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "Nav_Back_To_Checkout_from_Payment"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/CashPaymentUpdatedMessage.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/Checkout.page"
 }

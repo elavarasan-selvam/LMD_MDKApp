@@ -4,5 +4,5 @@
 		"_Name": "Nav_To_PaymentPage"
 	},
 	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/Payment.page",
-	"BackStackVisible": true
+	"ModalPage": true
 }

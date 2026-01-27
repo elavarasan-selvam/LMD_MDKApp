@@ -30,16 +30,29 @@
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkout/Payment/Currency_Loaded.js",
-							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "CurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
 							"Caption": "Currency",
-							"PlaceHolder": "Enter currency (e.g. USD)",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/Payment/Currency_OnValueChange.js",
-							"Enabled": true,
-							"IsEditable": true
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"EUR",
+								"INR",
+								"AUD"
+							]
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Checkout/Payment/SetAmountPaymentloaded.js",
@@ -49,8 +62,9 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Check-Out: Amount",
-							"PlaceHolder": "Enter amount  \"<>= 0>\"",
+							"PlaceHolder": "Enter amount",
 							"OnValueChange": "/LMD_MDKApp/Rules/Checkout/Payment/SetPaymentAmount.js",
+							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
 						}

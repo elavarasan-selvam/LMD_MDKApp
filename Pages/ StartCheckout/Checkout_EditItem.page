@@ -116,6 +116,7 @@
 	],
 	"_Type": "Page",
 	"_Name": "Checkout_EditItem",
+	"OnLoaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/Edit_Item/StoreBindingforEditItemPage_Checkout.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -131,6 +132,7 @@
 		],
 		"_Name": "ActionBar2",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Edit Item"
+		"Caption": "Edit Item",
+		"OnBackButtonPressed": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
 	}
 }
