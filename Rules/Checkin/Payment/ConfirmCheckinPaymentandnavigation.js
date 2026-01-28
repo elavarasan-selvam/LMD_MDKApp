@@ -8,7 +8,7 @@ export default function ConfirmCheckinPaymentandnavigation(context) {
     //context.getAppClientData().CompleteCheckoutButton = true;
 
     // Navigate back to CheckIn//
-    return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_Back_To_Checkout_from_Payment.action');
-    //return context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
+    //return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_Back_To_Checkout_from_Payment.action');
+    return context.executeAction('/LMD_MDKApp/Actions/CloseModalPage_Complete.action');
     
 }

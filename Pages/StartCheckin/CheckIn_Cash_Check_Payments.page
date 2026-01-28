@@ -85,7 +85,19 @@
 	"_Type": "Page",
 	"_Name": "CheckIn_Cash_Check_Payments",
 	"ActionBar": {
-		"Items": [],
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://arrow-left",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			}
+		],
 		"_Name": "ActionBar10",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Check-In - Collection Payments",

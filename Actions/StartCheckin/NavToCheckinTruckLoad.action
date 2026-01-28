@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavToTruckLoad"
 	},
-	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/CheckinTruckLoad.page"
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/CheckinTruckLoad.page",
+	"ModalPage": true
 }

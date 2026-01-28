@@ -95,21 +95,11 @@
 				"IsIconCircular": false,
 				"Visible": true,
 				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCIPayment_Checkin.action"
-			},
-			{
-				"_Type": "Control.Type.ActionBarItem",
-				"_Name": "ActionBarItem1",
-				"Caption": "",
-				"SystemItem": "Cancel",
-				"Icon": "sap-icon://cancel",
-				"Position": "Left",
-				"IsIconCircular": false,
-				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
 			}
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Cash"
+		"Caption": "Check-In: Cash",
+		"OnBackButtonPressed": "/LMD_MDKApp/Actions/ClosePage.action"
 	}
 }

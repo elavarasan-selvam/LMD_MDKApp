@@ -3,6 +3,5 @@
 	"ActionResult": {
 		"_Name": "NavToCheckout_EditItem"
 	},
-	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/Checkin_EditItem.page",
-	"ModalPage": true
+	"PageToOpen": "/LMD_MDKApp/Pages/StartCheckin/Checkin_EditItem.page"
 }

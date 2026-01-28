@@ -74,31 +74,6 @@
 							"AlternateInput": "None",
 							"Enabled": true,
 							"IsEditable": true
-						},
-						{
-							"_Type": "Control.Type.FormCell.ListPicker",
-							"_Name": "FormCellListPicker0",
-							"RequiredIndicator": false,
-							"IsVisible": true,
-							"Separator": true,
-							"AllowMultipleSelection": true,
-							"AllowEmptySelection": true,
-							"Caption": "Reason Code",
-							"DataPaging": {
-								"ShowLoadingIndicator": false,
-								"PageSize": 50
-							},
-							"PlaceHolder": "Select",
-							"IsSelectedSectionEnabled": false,
-							"IsPickerDismissedOnSelection": false,
-							"IsSearchCancelledAfterSelection": false,
-							"AllowDefaultValueIfOneItem": false,
-							"IsEditable": true,
-							"PickerItems": [
-								"One",
-								"Two",
-								"Three"
-							]
 						}
 					],
 					"Layout": {
@@ -132,6 +107,6 @@
 		"_Name": "ActionBar2",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Edit Item",
-		"OnBackButtonPressed": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+		"OnBackButtonPressed": "/LMD_MDKApp/Actions/ClosePage.action"
 	}
 }

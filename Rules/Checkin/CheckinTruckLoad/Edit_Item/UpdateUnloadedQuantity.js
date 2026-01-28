@@ -1,24 +1,21 @@
-export default function UpdateUnloadedQuantity(clientAPI) {
+import GetActualQty from './Actual_Quantity_Checkin'; 
 
-    const newValue = Number(clientAPI.getValue()) || 0;
-    const page = clientAPI.getPageProxy();
-    const binding = page.binding;   // This is your current PendingProduct item
+export default async function UpdateUnloadedQuantity(clientAPI) { 
+    const newValue = Number(clientAPI.getValue()) || 0; 
+    const page = clientAPI.getPageProxy(); const binding = page.binding; 
+    const actualQty = await GetActualQty(clientAPI); 
+    if (newValue > actualQty) {
+         await clientAPI.executeAction('/LMD_MDKApp/Actions/StartCheckin/UnloadedQuantityValidationMessage.action'); 
+         
+         clientAPI.setValue(actualQty); return false;
+    } 
+    binding.UnloadedQuantity = newValue; 
+    const appData = clientAPI.getAppClientData(); 
+    const list = appData.PendingProductList || []; 
+    const index = list.findIndex(item => item.ProductID === binding.ProductID && item.StopUUID === binding.StopUUID ); 
+    if (index !== -1) { 
+        list[index].UnloadedQuantity = newValue; 
+    } 
+    return true; 
 
-    // Update only this card's value
-    binding.UnloadedQuantity = newValue;
-
-    // Also update inside PendingProductList array
-    const appData = clientAPI.getAppClientData();
-    const list = appData.PendingProductList || [];
-
-    const index = list.findIndex(item =>
-        item.ProductID === binding.ProductID &&
-        item.StopUUID === binding.StopUUID
-    );
-
-    if (index !== -1) {
-        list[index].UnloadedQuantity = newValue;
-    }
-
-    return true;
 }

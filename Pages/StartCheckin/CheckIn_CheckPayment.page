@@ -87,17 +87,6 @@
 		"Items": [
 			{
 				"_Type": "Control.Type.ActionBarItem",
-				"_Name": "ActionBarItem1",
-				"Caption": "Item",
-				"SystemItem": "Cancel",
-				"Icon": "sap-icon://cancel",
-				"Position": "Left",
-				"IsIconCircular": false,
-				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
-			},
-			{
-				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
 				"Caption": "Save",
 				"Icon": "sap-icon://save",
@@ -109,6 +98,7 @@
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Check"
+		"Caption": "Check-In: Check",
+		"OnBackButtonPressed": "/LMD_MDKApp/Actions/ClosePage.action"
 	}
 }

@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "ActualandUnloadedUpdationMessage"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/ClosePage.action",
 	"Message": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/BuildQuantityToast.js",
 	"NumberOfLines": 2,
 	"Duration": 3,

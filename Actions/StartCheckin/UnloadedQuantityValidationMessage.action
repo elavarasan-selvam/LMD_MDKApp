@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UnloadedQuantityValidationMessage"
+	},
+	"Message": "Unloaded quantity cannot be greater than Actual quantity.",
+	"Title": "Validate Unloaded Quantity",
+	"OKCaption": "Ok"
+}
