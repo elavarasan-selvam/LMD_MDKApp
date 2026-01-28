@@ -4,7 +4,7 @@
 		"_Name": "DeliveryUpdateEntity"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateFailure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/ClosePage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/DeliveryQuantitySuccessMessage.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "DocumentItems",
