@@ -6,7 +6,7 @@
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Failure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Successfully_Created.action",
 	"Path": "{@odata.mediaReadLink}",
-	"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentMimeType.js",
+	"MimeType": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetStopAttachmentMimeType.js",
 	"UseExternalViewer": true,
 	"Properties": {
 		"Path": "{@odata.mediaReadLink}"

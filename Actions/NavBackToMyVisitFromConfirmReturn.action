@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavBackToMyVisitFromConfirmReturn"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/NavToConfirmReturnToMVisit.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MyVisit.page"
 }

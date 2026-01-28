@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavToMYVisitPageFromPOD"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/NavVisitPODtoMyVisit.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MyVisit.page"
 }

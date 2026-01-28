@@ -10,8 +10,8 @@
 	},
 	"ParentLink": {
 		"Target": {
-			"EntitySet": "Routes",
-			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLink.js"
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetStopAttachmentReadLink.js"
 		},
 		"Property": "to_Attachments"
 	},

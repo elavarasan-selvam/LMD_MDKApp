@@ -9,18 +9,18 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"_Type": "Section.Type.ObjectCardCollection",
-					"_Name": "SectionObjectCardCollection1",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
 						"HeaderSeparator": true,
 						"FooterSeparator": true,
 						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection1",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
 					},
 					"Cards": [
 						{
@@ -48,12 +48,23 @@
 					},
 					"Controls": [
 						{
+							"Validation": {
+								"Message": "/LMD_MDKApp/Rules/Visit/Delivery/DeliveredQtyErrorMessage.js",
+								"Visible": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js",
+								"SeparatorVisible": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js",
+								"Styles": {
+									"ValidationView": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js"
+								}
+							},
 							"Value": "{DeliveredQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FCDeliveredQuantity",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"Styles": {
+								"Value": "Styles/RedValue.less"
+							},
 							"Caption": "Delivered:",
 							"KeyboardType": "Number",
 							"Enabled": true,
@@ -79,9 +90,9 @@
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
 							"PickerItems": [
-								"One",
-								"Two",
-								"Three"
+								"Damaged Goods",
+								"Driver Correction",
+								"Others"
 							]
 						}
 					],
@@ -100,6 +111,7 @@
 	],
 	"_Type": "Page",
 	"_Name": "Checkout_EditItem",
+	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Delivery/RedrawPage.js",
 	"ActionBar": {
 		"Items": [
 			{

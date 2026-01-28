@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "NavToConfirmReturnToMVisit"
+	},
+	"Message": "Return has been successfully updated"
+}

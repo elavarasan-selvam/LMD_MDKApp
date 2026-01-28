@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "NavToVisitToMainPage"
+	},
+	"Message": "Visit has been Successfully Completed"
+}
