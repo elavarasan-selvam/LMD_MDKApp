@@ -3,6 +3,6 @@
 	"ActionResult": {
 		"_Name": "Nav_Back_To_TruckLoad_from_EditItem"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/TruckLoad/ActualQuantityUpdateMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/Checkout/TruckLoad/ActualQuantityUpdateMessage.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/TruckLoad.page"
 }

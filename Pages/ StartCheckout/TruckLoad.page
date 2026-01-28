@@ -30,10 +30,9 @@
 					"ObjectCell": {
 						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
 						"Subhead": "{ProductID}",
-						"Footnote": "{DocumentItemIDs}",
+						"Footnote": "DocIds: {DocumentIDs}",
 						"Description": "Documents: {DocumentCount}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "DocIds: {DocumentIDs}",
 						"SubstatusText": "{OrderedQuantity}   {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -69,7 +68,7 @@
 	"OnUnloaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/ResetTruckLoadFlags.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar29",
+		"_Name": "ActionBar30",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

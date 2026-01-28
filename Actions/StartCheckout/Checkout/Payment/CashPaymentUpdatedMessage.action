@@ -3,6 +3,7 @@
 	"ActionResult": {
 		"_Name": "CashPaymentUpdatedMessage"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
 	"Message": "/LMD_MDKApp/Rules/Checkout/Payment/BuildCashPaymentToast.js",
 	"Duration": 2
 }

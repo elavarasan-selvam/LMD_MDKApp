@@ -5,5 +5,5 @@ export default function ConfirmTruckInfoAndNavigate(context) {
 
     // Navigate back to Checkout 
     //return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/NavBackToCheckoutFromConfirmTruckInfo.action');
-    return context.executeAction('/LMD_MDKApp/Actions/CloseModalPage_Complete.action');
+    return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/TruckInfo/OdometerBeginUpdated.action');
 }

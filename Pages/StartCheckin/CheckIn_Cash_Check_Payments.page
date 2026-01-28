@@ -57,7 +57,7 @@
 								},
 								"_Type": "ObjectTable.Type.ObjectCell",
 								"_Name": "ObjectCollectionTypeObjectCell4",
-								"Title": "Check Collections",
+								"Title": "Cheque Collections",
 								"Visible": true,
 								"Selected": false,
 								"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",

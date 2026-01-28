@@ -106,7 +106,7 @@
 	"_Name": "TruckInfo",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar23",
+		"_Name": "ActionBar24",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
 	},

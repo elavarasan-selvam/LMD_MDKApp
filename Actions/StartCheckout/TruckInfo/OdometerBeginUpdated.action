@@ -3,6 +3,7 @@
 	"ActionResult": {
 		"_Name": "OdometerBeginUpdated"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
 	"Message": "/LMD_MDKApp/Rules/Checkout/TruckInfo/OdometerBegin/BuildOdometerBeginToastMessage.js",
 	"NumberOfLines": 2,
 	"Duration": 2

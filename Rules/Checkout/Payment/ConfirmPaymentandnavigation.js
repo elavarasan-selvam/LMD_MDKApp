@@ -9,5 +9,5 @@ export default function ConfirmPaymentandnavigation(context) {
 
     // Navigate back to Checkout
     //return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/Nav_Back_To_Checkout_from_Payment.action');
-    return context.executeAction('/LMD_MDKApp/Actions/CloseModalPage_Complete.action');
+    return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/CashPaymentUpdatedMessage.action');
 }

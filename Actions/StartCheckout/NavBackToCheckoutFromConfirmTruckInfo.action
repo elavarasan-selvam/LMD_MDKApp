@@ -3,6 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavBackToCheckoutFromConfirmTruckInfo"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/TruckLoad/OdometerBeginUpdated.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckout/TruckInfo/OdometerBeginUpdated.action",
 	"PageToOpen": "/LMD_MDKApp/Pages/ StartCheckout/Checkout.page"
 }

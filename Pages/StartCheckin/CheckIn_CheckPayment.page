@@ -98,7 +98,7 @@
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Check",
+		"Caption": "Check-In: Cheque",
 		"OnBackButtonPressed": "/LMD_MDKApp/Actions/ClosePage.action"
 	}
 }
