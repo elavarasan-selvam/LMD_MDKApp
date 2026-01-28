@@ -43,10 +43,6 @@ export default async function bumpCompletedAtcheckout(clientAPI) {
 
     //alert("Stop EndDateTime updated");
 
-    //return clientAPI.executeAction(
-    //    "/LMD_MDKApp/Actions/StartCheckout/CompleteCheckout.action"
-    //);
-    return clientAPI.executeAction(
-        "/LMD_MDKApp/Actions/ClosePage.action"
-    );
+    return clientAPI.executeAction( "/LMD_MDKApp/Actions/StartCheckout/CompleteCheckout.action");
+   
 }
