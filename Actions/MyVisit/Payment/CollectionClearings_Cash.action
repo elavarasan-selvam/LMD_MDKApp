@@ -4,7 +4,7 @@
 		"_Name": "CollectionClearings_Cash"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Failure.action",
-	"OnSuccess": "/LMD_MDKApp/Rules/Visit/Payments/CollectionPaymentSaveSuccess.js",
+	"OnSuccess": "/LMD_MDKApp/Rules/Visit/Payment/CloseToVisit.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "CollectionClearings"

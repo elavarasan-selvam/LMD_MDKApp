@@ -41,10 +41,6 @@
 					"_Name": "SectionFormCell0"
 				},
 				{
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -52,8 +48,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell5",
 					"Controls": [
 						{
 							"_Type": "Control.Type.FormCell.SimpleProperty",
@@ -63,19 +57,22 @@
 							"Separator": true,
 							"Caption": "Currency",
 							"PlaceHolder": "Enter Currency ",
+							"KeyboardType": "Default",
 							"Enabled": true,
 							"IsEditable": true
 						}
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
-				},
-				{
+					},
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell5"
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -83,8 +80,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell2",
 					"Controls": [
 						{
 							"_Type": "Control.Type.FormCell.SimpleProperty",
@@ -93,20 +88,23 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Amount",
-							"PlaceHolder": "Enter amount  \"<>= 0>\"",
+							"PlaceHolder": "Enter the Amount",
+							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
 						}
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
-				},
-				{
+					},
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell2"
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -114,10 +112,11 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell4",
 					"Controls": [
 						{
+							"Validation": {
+								"Message": "Check Number must be exactly 12 digits"
+							},
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "CheckNumberInput",
 							"RequiredIndicator": false,
@@ -125,19 +124,23 @@
 							"Separator": true,
 							"Caption": "Check Number",
 							"PlaceHolder": "Enter Cheque Number",
+							"KeyboardType": "Number",
+							"AlternateInput": "None",
 							"Enabled": true,
 							"IsEditable": true
 						}
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
-				},
-				{
+					},
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell4"
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -145,8 +148,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell6",
 					"Controls": [
 						{
 							"_Type": "Control.Type.FormCell.SimpleProperty",
@@ -162,7 +163,13 @@
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell6"
 				}
 			]
 		}
@@ -174,7 +181,7 @@
 			{
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem1",
-				"Caption": "Collection Cheque Payment",
+				"Caption": "Collection Cheque Payment ",
 				"Position": "Left",
 				"IsIconCircular": false,
 				"Visible": true

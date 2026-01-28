@@ -15,6 +15,6 @@ export default function SetPODConfirmed(context) {
 
     // ✅ Navigate back to Visit page
     return context.executeAction(
-        '/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/NavToMYVisitPageFromPOD.action'
+        '/LMD_MDKApp/Actions/ClosePage.action'
     );
 }

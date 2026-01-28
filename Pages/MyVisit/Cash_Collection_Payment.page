@@ -35,7 +35,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Currency",
-							"PlaceHolder": "PlaceHolder",
+							"PlaceHolder": "Enter Currency (Eg:USD)",
 							"Enabled": true,
 							"IsEditable": true
 						},
@@ -46,7 +46,8 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Amount",
-							"PlaceHolder": "PlaceHolder",
+							"PlaceHolder": "Enter Amount",
+							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
 						}
@@ -80,6 +81,7 @@
 			}
 		],
 		"_Name": "ActionBar0",
-		"_Type": "Control.Type.ActionBar"
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Cash Payment"
 	}
 }

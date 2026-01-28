@@ -119,14 +119,16 @@
 					"Card": {
 						"Visible": true,
 						"Title": "Cash/Cheque",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/Payments/DisplayAmount_Currency_Visit.js",
+						"Footnote": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionPaymentStatus.js",
 						"DetailImage": "sap-icon://money-bills",
 						"DetailImageIsCircular": false,
-						"Description": "Record and confirm the amount of Cash/Cheque you receive for this stop.",
+						"Description": "/LMD_MDKApp/Rules/Visit/Payments/GetCashChequeDescription.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/VisitPayment/NavToCollectionPayment.action",
 							"Title": "Start",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Visit/Payments/IsStartButtonVisibleForCashCheque.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -234,7 +236,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar44",
+		"_Name": "ActionBar45",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

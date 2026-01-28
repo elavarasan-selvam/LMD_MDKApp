@@ -56,8 +56,8 @@
 	"_Name": "VisitPayment",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar1",
+		"_Name": "ActionBar2",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Payment"
+		"Caption": "Payment Type"
 	}
 }

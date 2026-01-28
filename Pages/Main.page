@@ -117,7 +117,7 @@
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Rules/Main/NavigateBasedOnStopType.js",
 							"Title": "START {StopType}",
-							"Visible": true
+							"Visible": "/LMD_MDKApp/Rules/Main/IsStartVisibleByEndDate.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},

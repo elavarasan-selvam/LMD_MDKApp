@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "CashPaymentToast"
+	},
+	 "Message": "Collection Payment Updated",
+	"NumberOfLines": 3,
+	"Duration": 3
+}

@@ -7,6 +7,6 @@ export default function ConfirmVisitReturnAndNavigate(context) {
     }
 
     return context.executeAction(
-        '/LMD_MDKApp/Actions/NavBackToMyVisitFromConfirmReturn.action'
+        '/LMD_MDKApp/Actions/ClosePage.action'
     );
 }
