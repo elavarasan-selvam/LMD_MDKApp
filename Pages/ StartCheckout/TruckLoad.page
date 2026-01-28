@@ -65,9 +65,11 @@
 	],
 	"_Type": "Page",
 	"_Name": "TruckLoad",
+	"OnLoaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/PreloadProductDescriptionTruckLoad.js",
+	"OnUnloaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/ResetTruckLoadFlags.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar28",
+		"_Name": "ActionBar29",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Load"
 	},

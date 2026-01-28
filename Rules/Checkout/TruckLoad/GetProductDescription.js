@@ -1,18 +1,19 @@
-export default function GetProductDescription(context) {
+export default function GetProductDescriptionsTruckLoad(context) {
     const appCD = context.getAppClientData();
     const productId = context.binding?.ProductID;
-
+ 
     if (!productId) return "";
-
-    appCD.ProductDescriptions = appCD.ProductDescriptions || {};
-
-    // trigger preload once
-    if (!appCD._prefetchStarted) {
-        appCD._prefetchStarted = true;
+ 
+    appCD.TruckLoadDescriptions =
+        appCD.TruckLoadDescriptions || {};
+ 
+    if (!appCD._truckPrefetchStarted) {
+        appCD._truckPrefetchStarted = true;
         context.executeAction(
-            "/LMD_MDKApp/Rules/Visit/Delivery/PreloadProductDescriptions.js"
+            "/LMD_MDKApp/Rules/Checkout/TruckLoad/PreloadProductDescriptionTruckLoad.js"
         );
     }
-
-    return appCD.ProductDescriptions[productId] || "";
+ 
+    return appCD.TruckLoadDescriptions[productId] || "";
 }
+ 
