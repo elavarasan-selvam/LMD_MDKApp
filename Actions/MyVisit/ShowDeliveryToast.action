@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "ShowDeliveryToast"
+	},
+	"Message": "Delivery confirmed Successfully",
+	"NumberOfLines": 3,
+	"Duration": 3
+}
