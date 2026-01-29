@@ -236,7 +236,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar45",
+		"_Name": "ActionBar46",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
