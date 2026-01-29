@@ -18,7 +18,7 @@
 	"Properties": {
 		"PaymentType": "{#Control:VisitPaymentInput/#Value}",
 		"Amount": "{#Control:VisitAmountInput/#Value}",
-		"Currency": "{#Control:VisitCurrencyInput/#Value}"
+		"Currency": "{#Control:VisitCurrencyInput/#SelectedValue}"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"

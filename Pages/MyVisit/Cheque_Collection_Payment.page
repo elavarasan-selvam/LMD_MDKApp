@@ -50,16 +50,30 @@
 					},
 					"Controls": [
 						{
-							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "ChequeCurrencyInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": true,
 							"Caption": "Currency",
-							"PlaceHolder": "Enter Currency ",
-							"KeyboardType": "Default",
-							"Enabled": true,
-							"IsEditable": true
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "None",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"EUR",
+								"INR",
+								"AUD"
+							]
 						},
 						{
 							"Value": "/LMD_MDKApp/Rules/Visit/Payment/Collection_ClearingOnload.js",

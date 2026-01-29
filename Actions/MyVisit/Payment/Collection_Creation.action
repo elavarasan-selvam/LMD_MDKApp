@@ -19,7 +19,7 @@
 		"CollectionID": "/LMD_MDKApp/Rules/Visit/Payment/GenerateCollectionID.js",
 		"StopUUID": "/LMD_MDKApp/Rules/Visit/Payment/GetCurrentStopUUID.js",
 		"CollectionDate": "/LMD_MDKApp/Rules/Checkout/TruckInfo/GetLastChangeTimeStamp.js",
-		"Currency": "{#Control:VisitCurrencyInput/#Value}"
+		"Currency": "{#Control:VisitCurrencyInput/#SelectedValue}"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"

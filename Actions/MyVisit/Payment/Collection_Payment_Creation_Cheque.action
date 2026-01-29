@@ -19,7 +19,7 @@
 		"CheckNumber": "{#Control:CheckNumberInput/#Value}",
 		"PaymentType": "{#Control:ChequePaymentInput/#Value}",
 		"Amount": "{#Control:ChequeAmountInput/#Value}",
-		"Currency": "{#Control:ChequeCurrencyInput/#Value}",
+		"Currency": "{#Control:ChequeCurrencyInput/#SelectedValue}",
 		"BankName": "{#Control:BankNameInput/#Value}"
 	},
 	"Headers": {
