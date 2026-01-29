@@ -42,7 +42,7 @@
 								"PageSize": 50
 							},
 							"PickerPrompt": "Please select one single item",
-							"PlaceHolder": "None",
+							"PlaceHolder": "Select Currency",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
@@ -69,6 +69,7 @@
 								"PageSize": 50
 							},
 							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Select Invoice",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,

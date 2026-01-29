@@ -50,32 +50,6 @@
 					},
 					"Controls": [
 						{
-							"_Type": "Control.Type.FormCell.ListPicker",
-							"_Name": "ChequeCurrencyInput",
-							"RequiredIndicator": false,
-							"IsVisible": true,
-							"Separator": true,
-							"AllowMultipleSelection": false,
-							"AllowEmptySelection": true,
-							"Caption": "Currency",
-							"DataPaging": {
-								"ShowLoadingIndicator": false,
-								"PageSize": 50
-							},
-							"PickerPrompt": "Please select one single item",
-							"PlaceHolder": "None",
-							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
-							"IsSelectedSectionEnabled": false,
-							"AllowDefaultValueIfOneItem": false,
-							"IsEditable": true,
-							"PickerItems": [
-								"USD",
-								"EUR",
-								"INR",
-								"AUD"
-							]
-						},
-						{
 							"Value": "/LMD_MDKApp/Rules/Visit/Payment/Collection_ClearingOnload.js",
 							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "FormCellListPicker0",
@@ -90,6 +64,7 @@
 								"PageSize": 50
 							},
 							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Select Invoice",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
@@ -118,6 +93,31 @@
 								},
 								"ReturnValue": "{AccountingDocument}"
 							}
+						},
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "ChequeCurrencyInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": true,
+							"Caption": "Currency",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PlaceHolder": "Select Currency",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"EUR",
+								"INR",
+								"AUD"
+							]
 						}
 					],
 					"Layout": {
@@ -199,6 +199,10 @@
 					"_Name": "SectionFormCell4"
 				},
 				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -206,28 +210,47 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell7",
 					"Controls": [
 						{
-							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "BankNameInput",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
+							"AllowMultipleSelection": true,
+							"AllowEmptySelection": true,
 							"Caption": "Bank Name",
-							"PlaceHolder": "Enter bank Name",
-							"Enabled": true,
-							"IsEditable": true
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Select Bank Name",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/BankNameOnValueChange.js",
+							"IsSelectedSectionEnabled": false,
+							"IsPickerDismissedOnSelection": false,
+							"IsSearchCancelledAfterSelection": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"HSBC",
+								"Citibank",
+								"Standard Chartered Bank",
+								"Deutsche Bank",
+								"Barclays",
+								"BNP Paribas",
+								"ING Bank",
+								"Santander",
+								"JPMorgan Chase",
+								"Bank of America"
+							]
 						}
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					},
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell6"
+					}
 				}
 			]
 		}

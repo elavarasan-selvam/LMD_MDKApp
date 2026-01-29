@@ -20,7 +20,7 @@
 		"PaymentType": "{#Control:ChequePaymentInput/#Value}",
 		"Amount": "{#Control:ChequeAmountInput/#Value}",
 		"Currency": "{#Control:ChequeCurrencyInput/#SelectedValue}",
-		"BankName": "{#Control:BankNameInput/#Value}"
+		"BankName": "{#Control:BankNameInput/#SelectedValue}"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"
