@@ -60,6 +60,50 @@
 							"KeyboardType": "Default",
 							"Enabled": true,
 							"IsEditable": true
+						},
+						{
+							"Value": "/LMD_MDKApp/Rules/Visit/Payment/Collection_ClearingOnload.js",
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "FormCellListPicker0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Reference Invoice Number",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"Search": {
+								"Enabled": true,
+								"Placeholder": "Search Accounting Document",
+								"Delay": 500,
+								"MinimumCharacterThreshold": 1
+							},
+							"PickerItems": {
+								"Target": {
+									"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+									"EntitySet": "OpenItems",
+									"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+								},
+								"ObjectCell": {
+									"Description": "Acc Doc : {AccountingDocument}",
+									"DisplayDescriptionInMobile": true,
+									"Footnote": "{Amount} {Currency}",
+									"PreserveIconStackSpacing": true,
+									"Subhead": "Date:{ReferenceDocumentDate}:",
+									"SubstatusText": " ",
+									"Title": "{AssignmentReference}",
+									"Visible": true
+								},
+								"ReturnValue": "{AccountingDocument}"
+							}
 						}
 					],
 					"Layout": {

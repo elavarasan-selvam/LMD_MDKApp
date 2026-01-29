@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "Collection_Payment_Creation_Cash"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/NavToOpenItemsPopUp.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/CollectionClearings_Cash.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "CollectionPayments"

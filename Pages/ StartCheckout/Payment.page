@@ -47,6 +47,9 @@
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
+							"Search": {
+								"Enabled": true
+							},
 							"PickerItems": [
 								"USD",
 								"EUR",

@@ -45,7 +45,7 @@
 						"Title": "Acc Doc  : {AccountingDocument}",
 						"Subhead": "Invoice Date : {ReferenceDocumentDate}",
 						"Footnote": "{Amount} {Currency}",
-						"Description": "AssignmentReference : {AssignmentReference}",
+						"Description": "Invoice Number : {AssignmentReference}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
 						"Tags": [],
@@ -84,7 +84,7 @@
 	"_Name": "OpenItemsPopUp",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar4",
+		"_Name": "ActionBar5",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Open Items List"
 	}

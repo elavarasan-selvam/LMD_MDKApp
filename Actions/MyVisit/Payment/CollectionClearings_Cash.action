@@ -20,11 +20,11 @@
 		"Amount": "/LMD_MDKApp/Rules/Visit/Payment/Get_CollectionPayment_Amount.js",
 		"Currency": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionPaymentCurrency.js",
 		"AssignmentType": "FIA",
-		"OpenItemAmount": "{{#Property:Amount}}",
-		"AccountingDocument": "{{#Property:AccountingDocument}}",
-		"AccountingDocumentItem": "{{#Property:AccountingDocumentItem}}",
-		"CompanyCode": "{{#Property:CompanyCode}}",
-		"FiscalYear": "{{#Property:FiscalYear}}"
+		"OpenItemAmount": "/LMD_MDKApp/Rules/Visit/Payment/GetSelectedOpenItemAmount.js",
+		"AccountingDocument": "/LMD_MDKApp/Rules/Visit/Payment/GetSelectedOpenItemAccountingDoc.js",
+		"AccountingDocumentItem": "/LMD_MDKApp/Rules/Visit/Payment/GetSelectedOpenItemAccountingItem.js",
+		"CompanyCode": "/LMD_MDKApp/Rules/Visit/Payment/GetSelectedOpenItemCompanyCode.js",
+		"FiscalYear": "/LMD_MDKApp/Rules/Visit/Payment/GetSelectedOpenItemFiscalYear.js"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"

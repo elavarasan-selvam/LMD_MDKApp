@@ -24,7 +24,7 @@
 							"_Name": "ObjectCardCollectionTypeCard0",
 							"Visible": true,
 							"Title": "Acc Doc : {AccountingDocument}",
-							"Subhead": "AR : {AssignmentReference}                       Fiscal Year : {FiscalYear}",
+							"Subhead": "Invoice Number : {AssignmentReference}                       Fiscal Year : {FiscalYear}",
 							"Footnote": "{Amount}  {Currency}",
 							"DetailImageIsCircular": false,
 							"StatusText": "Invoice Date : {ReferenceDocumentDate}",

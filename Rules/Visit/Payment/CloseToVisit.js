@@ -10,8 +10,8 @@ export default async function CloseToVisit(context) {
    // ✅ ADD THIS LINE (toast)
    await context.executeAction('/LMD_MDKApp/Actions/MyVisit/Payment/CashPaymentToast.action');
    // ✅ KEEP all your ClosePage calls
-   await context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
-   await context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
+   //await context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
+   //await context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
    await context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
    return context.executeAction('/LMD_MDKApp/Actions/ClosePage.action');
 }
