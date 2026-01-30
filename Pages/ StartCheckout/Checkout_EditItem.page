@@ -121,6 +121,17 @@
 		"Items": [
 			{
 				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem1",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://cancel",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			},
+			{
+				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
 				"Caption": "",
 				"Icon": "sap-icon://save",
@@ -132,7 +143,6 @@
 		],
 		"_Name": "ActionBar2",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Edit Item",
-		"OnBackButtonPressed": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+		"Caption": "Edit Item"
 	}
 }

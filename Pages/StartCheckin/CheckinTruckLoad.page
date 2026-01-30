@@ -53,55 +53,6 @@
 					"Layout": {
 						"NumberOfColumns": 2
 					}
-				},
-				{
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
-					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "/LMD_MDKApp/Rules/Visit/Return/GetPlannedReturn.js"
-					},
-					"_Name": "SectionObjectCollection4",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"DataPaging": {
-						"ShowLoadingIndicator": false,
-						"PageSize": 50
-					},
-					"ObjectCell": {
-						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
-						"Subhead": "{ProductID}",
-						"DisplayDescriptionInMobile": true,
-						"SubstatusText": "{DeliveredQuantity} {OrderedUOM}",
-						"AccessoryType": "None",
-						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
-						"ContextMenu": {
-							"PerformFirstActionWithFullSwipe": true
-						},
-						"AvatarStack": {
-							"Avatars": [],
-							"ImageIsCircular": true,
-							"ImageHasBorder": false
-						},
-						"AvatarGrid": {
-							"Avatars": [],
-							"ImageIsCircular": true
-						},
-						"_Type": "ObjectCollection.Type.ObjectCell"
-					},
-					"Layout": {
-						"NumberOfColumns": 2
-					}
 				}
 			],
 			"LoadingIndicator": {

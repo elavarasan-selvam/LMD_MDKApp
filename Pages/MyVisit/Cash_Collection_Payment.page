@@ -68,15 +68,13 @@
 								"ShowLoadingIndicator": false,
 								"PageSize": 50
 							},
-							"PickerPrompt": "Please select one single item",
-							"PlaceHolder": "Select Invoice",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
+							"FilterProperty": "SearchKey",
 							"Search": {
 								"Enabled": true,
-								"Placeholder": "Search Accounting Document",
 								"Delay": 500,
 								"MinimumCharacterThreshold": 1
 							},

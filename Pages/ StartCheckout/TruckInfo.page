@@ -105,7 +105,19 @@
 	"_Type": "Page",
 	"_Name": "TruckInfo",
 	"ActionBar": {
-		"Items": [],
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://cancel",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			}
+		],
 		"_Name": "ActionBar24",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Truck Info"
