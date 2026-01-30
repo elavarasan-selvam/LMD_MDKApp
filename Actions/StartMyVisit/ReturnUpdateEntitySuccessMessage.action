@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "ReturnUpdateEntitySuccessMessage"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Message": "/LMD_MDKApp/Rules/Visit/Return/BuildReturnqtyToast.js",
+	"Duration": 2
+}

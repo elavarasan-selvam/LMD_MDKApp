@@ -4,7 +4,7 @@
 		"_Name": "ReturnUpdateEntity"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/Failure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/Successfully_Updated.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/ReturnUpdateEntitySuccessMessage.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "DocumentItems",

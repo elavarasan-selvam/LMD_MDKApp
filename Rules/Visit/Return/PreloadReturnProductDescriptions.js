@@ -1,13 +1,11 @@
-import GetPlannedReturn from
-  "/LMD_MDKApp/Rules/Visit/Return/GetPlannedReturn";
+import GetPlannedReturn from '/LMD_MDKApp/Rules/Visit/Return/GetPlannedReturn';
 
 export default async function PreloadReturnProductDescriptions(context) {
     try {
         const pageProxy = context.getPageProxy();
         const appCD = context.getAppClientData();
 
-        appCD._returnReady = false;     // 👈 not ready yet
-        appCD.ReturnDescriptions = {}; // clear
+        appCD.ReturnDescriptions = appCD.ReturnDescriptions || {};
 
         const filter = await GetPlannedReturn(context);
         if (!filter || filter === "$filter=1 eq 0") return;
@@ -23,8 +21,7 @@ export default async function PreloadReturnProductDescriptions(context) {
 
         for (let i = 0; i < items.length; i++) {
             const pid = items.getItem(i).ProductID;
-
-            if (pid) {
+            if (pid && !appCD.ReturnDescriptions[pid]) {
                 reads.push(
                     context.read(
                         "/LMD_MDKApp/Services/API_PRODUCT_SRV.service",
@@ -43,17 +40,11 @@ export default async function PreloadReturnProductDescriptions(context) {
 
         await Promise.all(reads);
 
-        appCD._returnReady = true; // 👈 now ready
-
-        const section =
-            pageProxy.getControl("SectionedTable0")
-                ?.getSection("SectionObjectCollection0");
-
+        const table = pageProxy.getControl("SectionedTable0");
+        const section = table?.getSection("SectionObjectCollection0");
         section?.redraw();
 
     } catch (e) {
-        context.getLogger().error(
-            "PreloadReturnProductDescriptions: " + e
-        );
+        context.getLogger().error("PreloadReturnProductDescriptions: " + e);
     }
 }
