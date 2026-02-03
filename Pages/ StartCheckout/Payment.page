@@ -18,7 +18,7 @@
 					},
 					"Controls": [
 						{
-							"Value": "CA",
+							"Value": "/LMD_MDKApp/Rules/Visit/Payments/CashPaymentTypeFormat.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "PaymentTypeInput",
 							"RequiredIndicator": false,
