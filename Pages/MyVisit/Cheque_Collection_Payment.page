@@ -18,7 +18,7 @@
 					},
 					"Controls": [
 						{
-							"Value": "CH",
+							"Value": "/LMD_MDKApp/Rules/Visit/Payments/ChequePaymentTypeFormat.js",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "ChequePaymentInput",
 							"RequiredIndicator": false,

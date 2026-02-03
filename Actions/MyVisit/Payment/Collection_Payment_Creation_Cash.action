@@ -16,7 +16,7 @@
 		"Property": "to_CollectionPayments"
 	},
 	"Properties": {
-		"PaymentType": "{#Control:VisitPaymentInput/#Value}",
+		"PaymentType": "CA",
 		"Amount": "{#Control:VisitAmountInput/#Value}",
 		"Currency": "{#Control:VisitCurrencyInput/#SelectedValue}"
 	},
