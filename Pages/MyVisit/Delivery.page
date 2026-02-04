@@ -38,7 +38,6 @@
 						"StatusText": "{DeliveredQuantity} {OrderedUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
 						"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToDeliveryEditItemPage.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
@@ -69,7 +68,7 @@
 	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Delivery/PreloadProductDescriptions.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar34",
+		"_Name": "ActionBar35",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Delivery"
 	},

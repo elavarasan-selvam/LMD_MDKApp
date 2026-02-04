@@ -4,7 +4,7 @@ export default async function UpdateUnloadedQuantity(clientAPI) {
     const newValue = Number(clientAPI.getValue()) || 0; 
     const page = clientAPI.getPageProxy(); const binding = page.binding; 
     const actualQty = await GetActualQty(clientAPI); 
-    if (newValue > actualQty) {
+    if (newValue > actualQty || newValue < actualQty) {
          await clientAPI.executeAction('/LMD_MDKApp/Actions/StartCheckin/UnloadedQuantityValidationMessage.action'); 
          
          clientAPI.setValue(actualQty); return false;

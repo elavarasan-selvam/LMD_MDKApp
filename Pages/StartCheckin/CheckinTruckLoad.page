@@ -29,12 +29,12 @@
 					},
 					"ObjectCell": {
 						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
-						"Subhead": "{ProductID}",
+						"Subhead": "{ProductID}                           ",
+						"Footnote": "Unloaded : {UnloadedQuantity}   {ActualUOM}",
 						"DisplayDescriptionInMobile": true,
-						"StatusText": "{ActualQuantity}   {ActualUOM}",
+						"SubstatusText": "Actual : {ActualQuantity}   {ActualUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
 						"OnPress": "/LMD_MDKApp/Actions/StartCheckin/NavToCheckin_EditItem.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
@@ -62,6 +62,7 @@
 	],
 	"_Type": "Page",
 	"_Name": "TruckLoad",
+	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [
 			{

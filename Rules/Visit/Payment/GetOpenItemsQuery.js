@@ -23,7 +23,7 @@ export default async function GetOpenItemsQuery(context) {
             '/LMD_MDKApp/Services/LMD_MA.service',
             'OpenItems',
             [],
-            `$filter=StopUUID eq guid'${stopUUID}' and Payer eq '${locationID}'`
+            `$filter=Payer eq '${locationID}'`
         );
 
         if (!result || result.length === 0) {

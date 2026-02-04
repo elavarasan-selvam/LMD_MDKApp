@@ -224,7 +224,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             appData.PendingProductList.push({
                 ProductID: product.ProductID,
                 ActualQuantity: finalActual,
-                UnloadedQuantity: "",
+                UnloadedQuantity: 0,
                 ActualUOM: product.OrderedUOM,
                 RouteUUID: product.RouteUUID,
                 StopUUID: product.StopUUIDs.join(',')
