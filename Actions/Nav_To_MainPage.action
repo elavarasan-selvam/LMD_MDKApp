@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "Nav_To_MainPage"
 	},
-	"PageToOpen": "/LMD_MDKApp/Pages/Main.page"
+	"PageToOpen": "/LMD_MDKApp/Pages/Main.page",
+	"ClearHistory": true
 }

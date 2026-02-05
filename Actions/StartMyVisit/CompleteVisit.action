@@ -3,6 +3,6 @@
 	"ActionResult": {
 		"_Name": "CompleteVisit"
 	},
-	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/NavToVisitToMainPage.action",
-	"PageToOpen": "/LMD_MDKApp/Pages/Main.page"
+	"PageToOpen": "/LMD_MDKApp/Pages/Main.page",
+	"ClearHistory": true
 }
