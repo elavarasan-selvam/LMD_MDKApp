@@ -7,14 +7,19 @@ export default function CompleteVisitButtonEnabling(context) {
             return false;
         }
 
-        const deliveryDone = appCD.DeliveryConfirmedByStop?.[stopUUID] === true;
-        const returnDone = appCD.ReturnConfirmedByStop?.[stopUUID] === true;
+        const deliveryDone =
+            appCD.DeliveryConfirmedByStop?.[stopUUID] === true;
 
-        // Enable ONLY when both are confirmed for THIS visit
+        const returnDone =
+            appCD.ReturnConfirmedByStop?.[stopUUID] === true;
+
+        //  Enable ONLY when BOTH are completed
         return deliveryDone && returnDone;
 
     } catch (e) {
-        context.getLogger().error("CompleteVisitButtonEnabling error: " + e);
+        context.getLogger().error(
+            "CompleteVisitButtonEnabling error: " + e
+        );
         return false;
     }
 }

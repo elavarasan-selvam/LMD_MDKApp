@@ -14,7 +14,7 @@
 	"ParentLink": {
 		"Target": {
 			"EntitySet": "Attachments",
-			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetStopAttachmentReadLinkByDocument.js"
+			"ReadLink": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentReadLinkByDocument.js"
 		},
 		"Property": "to_Content"
 	},

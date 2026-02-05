@@ -213,13 +213,13 @@
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToMyVisitReturnItemPage.action",
 							"Title": "Start",
-							"Visible": "/LMD_MDKApp/Rules/Visit/IsStartButtonVisibleForReturn.js"
+							"Visible": "/LMD_MDKApp/Rules/Visit/Return/IsReturnActionVisible.js"
 						},
 						"SecondaryAction": {
-							"_Name": "Confirm",
 							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Rules/Visit/Return/ConfirmVisitReturn.js",
 							"Title": "Confirm",
-							"Visible": "/LMD_MDKApp/Rules/Visit/Return/IsConfirmButtonVisibleForReturn.js"
+							"Visible": "/LMD_MDKApp/Rules/Visit/Return/IsReturnActionVisible.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
 					},
@@ -236,7 +236,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar46",
+		"_Name": "ActionBar48",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

@@ -92,7 +92,7 @@
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 						"EntitySet": "Attachments",
-						"QueryOptions": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetStopAttachmentFilter.js"
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
 					"_Name": "SectionObjectTable0",
 					"Visible": true,
@@ -108,7 +108,7 @@
 							"_Type": "ObjectCell.Type.ContextMenu"
 						},
 						"Title": "{FileName}",
-						"Subhead": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetStopAttachmentMimeType.js",
+						"Subhead": "/LMD_MDKApp/Rules/Visit/ProofOFDelivery/GetRouteAttachmentMimeType.js",
 						"Footnote": "{AttachmentKind}",
 						"DisplayDescriptionInMobile": true,
 						"PreserveIconStackSpacing": true,

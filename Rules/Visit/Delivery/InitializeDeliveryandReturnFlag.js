@@ -1,32 +1,32 @@
-
-
 export default async function InitializeDeliveryandReturnFlag(context) {
     const appCD = context.getAppClientData();
 
-    // Existing flags (leave them if used elsewhere)
-    if (appCD.TruckDeliveryConfirmed === undefined) appCD.TruckDeliveryConfirmed = false;
-    if (appCD.TruckReturnConfirmed === undefined) appCD.TruckReturnConfirmed = false;
+    // Global flags
+    if (appCD.TruckDeliveryConfirmed === undefined) {
+        appCD.TruckDeliveryConfirmed = false;
+    }
+    if (appCD.TruckReturnConfirmed === undefined) {
+        appCD.TruckReturnConfirmed = false;
+    }
 
-    // ADD: per-stop maps
-    if (!appCD.DeliveryConfirmedByStop) appCD.DeliveryConfirmedByStop = {};
-     if (!appCD.CollectionPaymentConfirmed) appCD.CollectionPaymentConfirmed = {};
-    if (!appCD.ReturnConfirmedByStop) appCD.ReturnConfirmedByStop = {};
-    if (!appCD.PODConfirmedByStop) appCD.PODConfirmedByStop = {};
+    // Per-stop maps (MUST exist)
+    if (!appCD.ReturnConfirmedByStop) {
+        appCD.ReturnConfirmedByStop = {};
+    }
 
+    if (!appCD.DeliveryConfirmedByStop) {
+        appCD.DeliveryConfirmedByStop = {};
+    }
+    if (!appCD.PODConfirmedByStop) {
+        appCD.PODConfirmedByStop = {};
+    }
+    if (!appCD.CollectionPaymentConfirmed) {
+        appCD.CollectionPaymentConfirmed = {};
+    }
 
+    // Set currentStop correctly
     const binding = context.binding;
-    if (!binding || !binding.StopUUID) {
-        const readStops = await context.read(
-            '/LMD_MDKApp/Services/LMD_MA.service',
-            'Stops',
-            [],
-            `$filter=StopID eq '${binding.StopID}'`
-        );
-
-        if (readStops && readStops.length > 0) {
-            appCD.currentStop = readStops.getItem(0);
-        }
-    } else {
+    if (binding?.StopUUID) {
         appCD.currentStop = binding;
     }
 

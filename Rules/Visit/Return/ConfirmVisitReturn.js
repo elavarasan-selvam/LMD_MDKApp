@@ -1,4 +1,4 @@
-export default function ConfirmVisitReturnAndNavigate(context) {
+export default function ConfirmVisitReturn(context) {
     const appCD = context.getAppClientData();
     const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
 
@@ -10,9 +10,11 @@ export default function ConfirmVisitReturnAndNavigate(context) {
         appCD.ReturnConfirmedByStop[stopUUID] = true;
     }
 
-    // Toast
-    return context.executeAction('/LMD_MDKApp/Actions/MyVisit/ShowVisitReturnToast.action')
-        .then(() =>
-            context.executeAction('/LMD_MDKApp/Actions/ClosePage.action')
-        );
+    return context.executeAction(
+        '/LMD_MDKApp/Actions/MyVisit/ShowVisitReturnToast.action'
+    ).then(() => {
+        //  Force redraw of current page
+        context.getPageProxy().redraw();
+        return true;
+    });
 }
