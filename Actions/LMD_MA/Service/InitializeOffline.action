@@ -4,6 +4,7 @@
 		"_Name": "init"
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/LMD_MA/Service/InitializeOfflineFailureMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/Application/InitSuccess_SaveTime.js",
 	"ShowActivityIndicator": true,
 	"ActivityIndicatorText": "Downloading...",
 	"Service": "/LMD_MDKApp/Services/LMD_MA.service",

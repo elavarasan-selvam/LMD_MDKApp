@@ -16,7 +16,7 @@
 		"Property": "to_COCIPayments"
 	},
 	"Properties": {
-		"PaymentType": "{#Control:CheckinPaymentTypeInput:/#Value}",
+		"PaymentType": "CA",
 		"Currency": "{#Control:CheckinCurrencyInput/#SelectedValue}",
 		"Amount": "{#Control:CheckinAmountInput/#Value}"
 	},

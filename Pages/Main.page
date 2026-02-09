@@ -86,9 +86,9 @@
 				{
 					"Separators": {
 						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
+						"BottomSectionSeparator": false,
 						"HeaderSeparator": true,
-						"FooterSeparator": true,
+						"FooterSeparator": false,
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
@@ -122,6 +122,34 @@
 					},
 					"Layout": {
 						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"_Type": "Section.Type.KeyValue",
+					"_Name": "SectionKeyValue0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"KeyAndValues": [
+						{
+							"Value": "/LMD_MDKApp/Rules/Main/GetLastSyncTime.js",
+							"_Type": "KeyValue.Type.Item",
+							"_Name": "KeyValue0",
+							"KeyName": "",
+							"Visible": true
+						}
+					],
+					"MaxItemCount": 1,
+					"Layout": {
+						"NumberOfColumns": 2
 					}
 				}
 			]

@@ -27,7 +27,7 @@
 							"Caption": "Payment Type",
 							"PlaceHolder": "PlaceHolder",
 							"Enabled": true,
-							"IsEditable": true
+							"IsEditable": false
 						}
 					],
 					"Layout": {
@@ -210,7 +210,7 @@
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"AllowMultipleSelection": true,
+							"AllowMultipleSelection": false,
 							"AllowEmptySelection": true,
 							"Caption": "Bank Name",
 							"DataPaging": {
@@ -221,8 +221,6 @@
 							"PlaceHolder": "Select Bank Name",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/BankNameOnValueChange.js",
 							"IsSelectedSectionEnabled": false,
-							"IsPickerDismissedOnSelection": false,
-							"IsSearchCancelledAfterSelection": false,
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
 							"PickerItems": [
