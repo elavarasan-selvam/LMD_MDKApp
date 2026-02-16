@@ -1,17 +1,35 @@
 /**
- * Describe this function...
- * @param {IClientAPI} clientAPI
+ * Get Check-in Payment Status (Per Stop)
+ * @param {IClientAPI} context
  */
 export default function GetCOCIPayment_Status(context) {
     try {
-        // Read the confirmation flag
-        let isConfirmed = context.getAppClientData().CheckinCOCIPaymentConfirmed;
-        if (isConfirmed === true) {
-            return "Done";   // only after confirmation
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop safely
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return "Open";
         }
-        return "Open";       // default before confirmation
+
+        const isConfirmed =
+            appCD.CheckinCOCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+        if (isConfirmed) {
+            return "Done";
+        }
+
+        return "Open";
+
     } catch (e) {
-        context.getLogger().error("COCIPaymentConfirmed error: " + e);
-        return "Open";       // fallback
+
+        context.getLogger().error(
+            "GetCOCIPayment_Status error: " + e
+        );
+
+        return "Open";
     }
 }

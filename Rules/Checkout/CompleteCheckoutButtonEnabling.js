@@ -1,21 +1,36 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
 export default function CompleteCheckoutButtonEnabling(context) {
-    try {
-        // CompleteCheckoutButton is enabled only if CompleteCheckoutButton is True
-        //let isConfirmed = context.getAppClientData().CompleteCheckoutButton;
-        //return isConfirmed;  // true = Enabled, false = hidden
-        let c = context.getAppClientData();
 
-        // Enabled only if BOTH TruckLoadConfirmed and TruckInfoConfirmed are true
-        let isTruckLoadConfirmed = c.TruckLoadConfirmed === true;
-        let isTruckInfoConfirmed = c.TruckInfoConfirmed === true;
-        //let COCIPaymentConfirmed = c.COCIPaymentConfirmed === true;&& COCIPaymentConfirmed
-        return isTruckLoadConfirmed && isTruckInfoConfirmed ;  
+    try {
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return false;
+        }
+
+        // Check per-stop confirmations
+        const loadDone =
+            appCD.TruckLoadConfirmedByStop?.[stopUUID] === true;
+
+        const infoDone =
+            appCD.TruckInfoConfirmedByStop?.[stopUUID] === true;
+
+        //const paymentDone =
+        //   appCD.COCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+        // Enable only if ALL done
+        return loadDone && infoDone ;
+
     } catch (e) {
-        context.getLogger().error("IsStartButtonVisible error: " + e);
-        return false;  // safe fallback: Don't show button
+
+        context.getLogger().error(
+            "CompleteCheckoutButtonEnabling error: " + e
+        );
+
+        return false;
     }
 }

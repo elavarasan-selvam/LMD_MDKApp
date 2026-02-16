@@ -1,0 +1,19 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0"
+		}
+	],
+	"_Type": "Page",
+	"_Name": "LoadingData",
+	"ActionBar": {
+		"Items": [],
+		"_Name": "ActionBar4",
+		"_Type": "Control.Type.ActionBar"
+	}
+}

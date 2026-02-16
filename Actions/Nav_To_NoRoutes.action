@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_To_NoRoutes"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/NoRoutesAssigned.page",
+	"ClearHistory": true
+}

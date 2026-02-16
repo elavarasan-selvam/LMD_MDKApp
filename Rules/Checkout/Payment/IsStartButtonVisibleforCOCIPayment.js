@@ -1,14 +1,27 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
-export default function IsStartButtonVisibleforCOCIPayment(context){
+export default function IsStartButtonVisibleforCOCIPayment(context) {
     try {
-        // Show Start button only if TruckLoadConfirmed is false
-        let isConfirmed = context.getAppClientData().COCIPaymentConfirmed;
-        return !isConfirmed;  // true = visible, false = hidden
+
+        const appCD = context.getAppClientData();
+
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return true;
+        }
+
+        const isConfirmed =
+            appCD.COCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+        // Show only if NOT confirmed
+        return !isConfirmed;
+
     } catch (e) {
-        context.getLogger().error("IsStartButtonVisibleforCOCIPayment error: " + e);
-        return true;  // safe fallback: show button
+
+        context.getLogger().error(
+            "IsStartButtonVisibleforCOCIPayment error: " + e
+        );
+
+        return true;
     }
 }

@@ -1,5 +1,5 @@
 {
-	"MainPage": "/LMD_MDKApp/Pages/Main.page",
+	"MainPage": "/LMD_MDKApp/Pages/LoadingData.page",
 	"OnLaunch": [
 		"/LMD_MDKApp/Rules/Service/Initialize.js"
 	],

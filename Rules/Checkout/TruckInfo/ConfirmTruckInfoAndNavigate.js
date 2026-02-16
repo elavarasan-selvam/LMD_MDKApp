@@ -1,9 +1,17 @@
 export default function ConfirmTruckInfoAndNavigate(context) {
-    //alert(JSON.stringify(context.binding));
-    context.getAppClientData().TruckInfoConfirmed = true;
-    //context.getAppClientData().CompleteCheckoutButton = true;
+    const appCD = context.getAppClientData();
 
-    // Navigate back to Checkout 
-    //return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/NavBackToCheckoutFromConfirmTruckInfo.action');
+    // Get StopUUID safely
+    const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
+
+    if (stopUUID) {
+
+        if (!appCD.TruckInfoConfirmedByStop) {
+            appCD.TruckInfoConfirmedByStop = {};
+        }
+
+        // Mark truck info confirmed for this stop only
+        appCD.TruckInfoConfirmedByStop[stopUUID] = true;
+    }
     return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/TruckInfo/OdometerBeginUpdated.action');
 }

@@ -1,12 +1,18 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
 export default function GetCOCIPayment_Description(context) {
-    let isConfirmed = context.getAppClientData().COCIPaymentConfirmed;
 
-    if (isConfirmed === true) {
-        return "";  // done → empty description
+    const appCD = context.getAppClientData();
+
+    const stopUUID =
+        (appCD.currentStop || context.binding)?.StopUUID;
+
+    if (!stopUUID) {
+        return "Record and confirm the amount of cash you receive for this stop.";
     }
-    return "Record and confirm the amount of cash you recieve for this stop.";  // open → show description
+
+    const isConfirmed =
+        appCD.COCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+    return isConfirmed
+        ? ""
+        : "Record and confirm the amount of cash you receive for this stop.";
 }

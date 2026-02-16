@@ -1,9 +1,20 @@
 export default function InitializeTruckLoadandTruckInfoFlag(context) {
     const appCD = context.getAppClientData();
 
-    if (appCD.TruckLoadConfirmed === undefined) appCD.TruckLoadConfirmed = false;
-    if (appCD.TruckInfoConfirmed === undefined) appCD.TruckInfoConfirmed = false;
-    if (appCD.COCIPaymentConfirmed === undefined) appCD.COCIPaymentConfirmed = false;
+    //if (appCD.TruckLoadConfirmed === undefined) appCD.TruckLoadConfirmed = false;
+    //if (appCD.TruckInfoConfirmed === undefined) appCD.TruckInfoConfirmed = false;
+    //if (appCD.COCIPaymentConfirmed === undefined) appCD.COCIPaymentConfirmed = false;
+    if (!appCD.TruckLoadConfirmedByStop) {
+        appCD.TruckLoadConfirmedByStop = {};
+    }
+
+    if (!appCD.TruckInfoConfirmedByStop) {
+        appCD.TruckInfoConfirmedByStop = {};
+    }
+
+    if (!appCD.COCIPaymentConfirmedByStop) {
+        appCD.COCIPaymentConfirmedByStop = {};
+    }
     // Store Checkout Stop reference separately
     if (!appCD.currentStop && context.binding) {
         appCD.currentStop = context.binding; // store Stop entity

@@ -4,10 +4,20 @@
  */
 export default function ConfirmPaymentandnavigation(context) {
     //alert(JSON.stringify(context.binding));
-    context.getAppClientData().COCIPaymentConfirmed = true;
-    //context.getAppClientData().CompleteCheckoutButton = true;
+    const appCD = context.getAppClientData();
 
-    // Navigate back to Checkout
-    //return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/Nav_Back_To_Checkout_from_Payment.action');
+    // Get StopUUID safely
+    const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
+
+    if (stopUUID) {
+
+        if (!appCD.COCIPaymentConfirmedByStop) {
+            appCD.COCIPaymentConfirmedByStop = {};
+        }
+
+        // Mark payment confirmed for this stop only
+        appCD.COCIPaymentConfirmedByStop[stopUUID] = true;
+    }
+
     return context.executeAction('/LMD_MDKApp/Actions/StartCheckout/Checkout/Payment/CashPaymentUpdatedMessage.action');
 }

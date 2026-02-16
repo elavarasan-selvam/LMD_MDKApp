@@ -3,12 +3,17 @@
  * @param {IClientAPI} clientAPI
  */
 export default function ConfirmCheckinPaymentandnavigation(context) {
-    //alert(JSON.stringify(context.binding));
-    context.getAppClientData().CheckinCOCIPaymentConfirmed = true;
-    //context.getAppClientData().CompleteCheckoutButton = true;
+    const appCD = context.getAppClientData();
+    const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
 
-    // Navigate back to CheckIn//
-    //return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/Payment/Nav_Back_To_Checkout_from_Payment.action');
+    if (stopUUID) {
+
+        if (!appCD.CheckinCOCIPaymentConfirmedByStop) {
+            appCD.CheckinCOCIPaymentConfirmedByStop = {};
+        }
+
+        appCD.CheckinCOCIPaymentConfirmedByStop[stopUUID] = true;
+    }
     return context.executeAction('/LMD_MDKApp/Actions/CloseModalPage_Complete.action');
     
 }

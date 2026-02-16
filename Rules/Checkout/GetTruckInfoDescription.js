@@ -1,8 +1,16 @@
 export default function GetTruckInfoDescription(context) {
-    let isConfirmed = context.getAppClientData().TruckInfoConfirmed;
 
-    if (isConfirmed === true) {
-        return "";  // done → empty description
+    const appCD = context.getAppClientData();
+
+    const stopUUID =
+        (appCD.currentStop || context.binding)?.StopUUID;
+
+    if (!stopUUID) {
+        return "Record the mileage of your truck.";
     }
-    return "Record the mileage of your truck.";  // open → show description
+
+    const isConfirmed =
+        appCD.TruckInfoConfirmedByStop?.[stopUUID] === true;
+
+    return isConfirmed ? "" : "Record the mileage of your truck.";
 }

@@ -1,8 +1,16 @@
 export default function GetTruckLoadDescription(context) {
-    let isConfirmed = context.getAppClientData().TruckLoadConfirmed;
 
-    if (isConfirmed === true) {
-        return "";  // done → empty description
+    const appCD = context.getAppClientData();
+
+    const stopUUID =
+        (appCD.currentStop || context.binding)?.StopUUID;
+
+    if (!stopUUID) {
+        return "Check and confirm your truck load.";
     }
-    return "Check and confirm your truck load.";  // open → show description
+
+    const isConfirmed =
+        appCD.TruckLoadConfirmedByStop?.[stopUUID] === true;
+
+    return isConfirmed ? "" : "Check and confirm your truck load.";
 }

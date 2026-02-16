@@ -2,10 +2,20 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     const appData = clientAPI.getAppClientData();
 
-    if (appData.CheckinTruckLoadConfirmed === undefined) appData.CheckinTruckLoadConfirmed = false;
-    if (appData.CheckinTruckInfoConfirmed === undefined) appData.CheckinTruckInfoConfirmed = false;
-    if (appData.CheckinCOCIPaymentConfirmed === undefined) appData.CheckinCOCIPaymentConfirmed = false;
+    //if (appData.CheckinTruckLoadConfirmed === undefined) appData.CheckinTruckLoadConfirmed = false;
+    //if (appData.CheckinTruckInfoConfirmed === undefined) appData.CheckinTruckInfoConfirmed = false;
+    //if (appData.CheckinCOCIPaymentConfirmed === undefined) appData.CheckinCOCIPaymentConfirmed = false;
+    if (!appData.CheckinTruckLoadConfirmedByStop) {
+        appData.CheckinTruckLoadConfirmedByStop = {};
+    }
 
+    if (!appData.CheckinTruckInfoConfirmedByStop) {
+        appData.CheckinTruckInfoConfirmedByStop = {};
+    }
+
+    if (!appData.CheckinCOCIPaymentConfirmedByStop) {
+        appData.CheckinCOCIPaymentConfirmedByStop = {};
+    }
     appData.PendingProductList = [];
 
     const binding = clientAPI.getPageProxy().binding;

@@ -1,8 +1,10 @@
-export default async function Initialize(context) {
+export default async function ReInitialize(context) {
     try {
-        context.showActivityIndicator('Preparing Routes... Please wait');
+        context.showActivityIndicator('Checking for assigned routes...');
         const appCD = context.getAppClientData();
-
+        for (let key in appCD) {
+            delete appCD[key];
+        }
         // -------------------- STEP 0: Offline Store Initialization --------------------
         const initServices = [
             { name: 'LMD_MA', path: '/LMD_MDKApp/Actions/LMD_MA/Service/InitializeOffline.action' },
@@ -97,7 +99,6 @@ export default async function Initialize(context) {
                     Duration: 2
                 }
             });
-
             return context.executeAction(
                 '/LMD_MDKApp/Actions/Nav_To_NoRoutes.action'
             );
@@ -134,7 +135,7 @@ export default async function Initialize(context) {
         return context.executeAction('/LMD_MDKApp/Actions/Nav_To_MainPage.action');
 
     } catch (error) {
-        alert("Initialization Error: " + error.message);
+        alert("ReInitialization Error: " + error.message);
         return false;
     }
 }

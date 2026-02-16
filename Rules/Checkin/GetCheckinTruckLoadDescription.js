@@ -1,8 +1,33 @@
 export default function GetCheckinTruckLoadDescription(context) {
-    let isConfirmed = context.getAppClientData().CheckinTruckLoadConfirmed;
+    try {
 
-    if (isConfirmed === true) {
-        return "";  // done → empty description
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return "Confirm the number of loaded items.";
+        }
+
+        const isConfirmed =
+            appCD.CheckinTruckLoadConfirmedByStop?.[stopUUID] === true;
+
+        // If done → hide description
+        if (isConfirmed) {
+            return "";
+        }
+
+        // If open → show description
+        return "Confirm the number of loaded items.";
+
+    } catch (e) {
+
+        context.getLogger().error(
+            "GetCheckinTruckLoadDescription error: " + e
+        );
+
+        return "Confirm the number of loaded items.";
     }
-    return "Confirm the number of loaded items.";  // open → show description
 }

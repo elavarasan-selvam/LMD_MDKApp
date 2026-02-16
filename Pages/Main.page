@@ -33,7 +33,7 @@
 					},
 					"ObjectCell": {
 						"Title": "Route ID : {RouteID}",
-						"Footnote": "BusinessPartnerID : {MainDriverID}",
+						"Footnote": "DriverID : {MainDriverID}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
@@ -86,9 +86,9 @@
 				{
 					"Separators": {
 						"TopSectionSeparator": false,
-						"BottomSectionSeparator": false,
+						"BottomSectionSeparator": true,
 						"HeaderSeparator": true,
-						"FooterSeparator": false,
+						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCardCollection",
@@ -108,14 +108,15 @@
 					},
 					"Card": {
 						"Visible": true,
-						"Title": "{StopType}",
+						"Title": "/LMD_MDKApp/Rules/Main/Stops/GetStopTitle.js",
 						"Subhead": "/LMD_MDKApp/Rules/Main/GetStopTime.js",
+						"DetailImage": "/LMD_MDKApp/Rules/Main/Stops/GetStopIcon.js",
 						"DetailImageIsCircular": false,
 						"Description": "/LMD_MDKApp/Rules/Main/GetStopInfo.js",
 						"PrimaryAction": {
 							"_Type": "ObjectCard.Type.ActionItem",
 							"OnPress": "/LMD_MDKApp/Rules/Main/NavigateBasedOnStopType.js",
-							"Title": "START {StopType}",
+							"Title": "/LMD_MDKApp/Rules/Main/Stops/GetStopDisplayName.js",
 							"Visible": "/LMD_MDKApp/Rules/Main/IsStartVisibleByEndDate.js"
 						},
 						"_Type": "ObjectCardCollection.Type.Card"
@@ -125,12 +126,6 @@
 					}
 				},
 				{
-					"_Type": "Section.Type.KeyValue",
-					"_Name": "SectionKeyValue0",
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -148,6 +143,12 @@
 						}
 					],
 					"MaxItemCount": 1,
+					"_Type": "Section.Type.KeyValue",
+					"_Name": "SectionKeyValue0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
 					"Layout": {
 						"NumberOfColumns": 2
 					}
@@ -163,7 +164,7 @@
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
 				"Caption": "User Menu",
-				"Icon": "sap-icon://customer",
+				"Icon": "sap-icon://person-placeholder",
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,

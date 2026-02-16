@@ -1,13 +1,27 @@
 export default function GetCheckinTruckLoadStatus(context) {
     try {
-        // Read the confirmation flag
-        let isConfirmed = context.getAppClientData().CheckinTruckLoadConfirmed;
-        if (isConfirmed === true) {
-            return "Done";   // only after confirmation
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return "Open"; // default
         }
-        return "Open";       // default before confirmation
+
+        const isConfirmed =
+            appCD.CheckinTruckLoadConfirmedByStop?.[stopUUID] === true;
+
+        return isConfirmed ? "Done" : "Open";
+
     } catch (e) {
-        context.getLogger().error("GetCheckinTruckInfoStatus error: " + e);
-        return "Open";       // fallback
+
+        context.getLogger().error(
+            "GetCheckinTruckLoadStatus error: " + e
+        );
+
+        return "Open"; // safe fallback
     }
 }

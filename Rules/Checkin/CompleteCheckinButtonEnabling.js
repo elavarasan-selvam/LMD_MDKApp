@@ -1,21 +1,36 @@
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
 export default function CompleteCheckinButtonEnabling(context) {
-    try {
-        // CompleteCheckinButton is enabled only if CompleteCheckinButton is True
-        //let isConfirmed = context.getAppClientData().CompleteCheckoutButton;
-        //return isConfirmed;  // true = Enabled, false = hidden
-        let c = context.getAppClientData();
 
-        // Enabled only if BOTH TruckLoadConfirmed and TruckInfoConfirmed are true
-        let isCheckinTruckLoadConfirmed = c.CheckinTruckLoadConfirmed === true;
-        let isCheckinTruckInfoConfirmed = c.CheckinTruckInfoConfirmed === true;
-        let CheckinCOCIPaymentConfirmed = c.CheckinCOCIPaymentConfirmed === true;
-        return isCheckinTruckLoadConfirmed && isCheckinTruckInfoConfirmed && CheckinCOCIPaymentConfirmed;  
+    try {
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return false;
+        }
+
+        // Per-stop checks
+        const CheckInloadDone =
+            appCD.CheckinTruckLoadConfirmedByStop?.[stopUUID] === true;
+
+        const CheckIninfoDone =
+            appCD.CheckinTruckInfoConfirmedByStop?.[stopUUID] === true;
+
+        const CheckInpaymentDone =
+            appCD.CheckinCOCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+        // Enable only when ALL done
+        return CheckInloadDone && CheckIninfoDone && CheckInpaymentDone;
+
     } catch (e) {
-        context.getLogger().error("CompleteCheckinButtonEnabling error: " + e);
-        return false;  // safe fallback: Don't show button
+
+        context.getLogger().error(
+            "CompleteCheckinButtonEnabling error: " + e
+        );
+
+        return false;
     }
 }

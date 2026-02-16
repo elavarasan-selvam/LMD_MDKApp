@@ -1,0 +1,117 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.Image",
+					"_Name": "SectionImage0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Image": "/LMD_MDKApp/Images/TaskCompleted.png",
+					"Width": 400,
+					"Height": 300,
+					"Alignment": "Center",
+					"ContentMode": "ScaleAspectFit"
+				},
+				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0",
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"TextWrap": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel1",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"Text": "No Open Tasks ",
+							"TextWrap": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel2",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"TextWrap": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel3",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"Text": "You're all done. Time for a break!",
+							"TextWrap": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "RouteCompletion",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "User Menu",
+				"Icon": "sap-icon://customer",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/Application/UserMenuPopover.action"
+			},
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem1",
+				"Caption": "",
+				"Icon": "sap-icon://synchronize",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/LMD_MA/Service/SyncStartedMessage.action"
+			}
+		],
+		"_Name": "ActionBar1",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "My Route"
+	}
+}

@@ -1,14 +1,32 @@
 /**
- * Describe this function...
- * @param {IClientAPI} clientAPI
+ * Show Start button for Check-in Payment (Per Stop)
+ * @param {IClientAPI} context
  */
-export default function IsStartButtonVisibleforCOCICheckinPayment(context){
+export default function IsStartButtonVisibleforCOCICheckinPayment(context) {
     try {
-        // Show Start button only if TruckLoadConfirmed is false
-        let isConfirmed = context.getAppClientData().CheckinCOCIPaymentConfirmed;
-        return !isConfirmed;  // true = visible, false = hidden
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return true; // show button by default
+        }
+
+        const isConfirmed =
+            appCD.CheckinCOCIPaymentConfirmedByStop?.[stopUUID] === true;
+
+        // Show only if NOT confirmed
+        return !isConfirmed;
+
     } catch (e) {
-        context.getLogger().error("IsStartButtonVisibleforCOCIPayment error: " + e);
-        return true;  // safe fallback: show button
+
+        context.getLogger().error(
+            "IsStartButtonVisibleforCOCICheckinPayment error: " + e
+        );
+
+        return true;
     }
 }

@@ -4,6 +4,6 @@
 		"_Name": "NavToMainPagefromCompleteCheckout"
 	},
 	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/UpdateOdometerChangeSet.action",
-	"PageToOpen": "/LMD_MDKApp/Pages/Main.page",
+	"PageToOpen": "/LMD_MDKApp/Pages/RouteCompletion.page",
 	"ClearHistory": true
 }

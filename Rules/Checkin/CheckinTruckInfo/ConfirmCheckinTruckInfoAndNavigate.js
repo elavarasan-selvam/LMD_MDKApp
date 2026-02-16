@@ -1,7 +1,14 @@
 export default function ConfirmTruckInfoAndNavigate(context) {
-    context.getAppClientData().CheckinTruckInfoConfirmed = true;
-    //context.getAppClientData().CompleteCheckoutButton = true;
+    const appCD = context.getAppClientData();
+    const stopUUID = (appCD.currentStop || context.binding)?.StopUUID;
 
-    // Navigate back to Checkin/LMD_MDKApp/Actions/StartCheckin/NavBackToCheckinFromConfirmTruckInfo.action
+    if (stopUUID) {
+
+        if (!appCD.CheckinTruckInfoConfirmedByStop) {
+            appCD.CheckinTruckInfoConfirmedByStop = {};
+        }
+
+        appCD.CheckinTruckInfoConfirmedByStop[stopUUID] = true;
+    }
     return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/OdometerUpdateMessage.action');
 }

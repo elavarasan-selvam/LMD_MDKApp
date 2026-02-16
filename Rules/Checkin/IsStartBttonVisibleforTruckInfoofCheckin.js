@@ -1,10 +1,28 @@
 export default function IsStartButtonVisibleforTruckInfoofCheckin(context) {
     try {
-        // Show Start button only if CheckinTruckInfoConfirmed is false
-        let isConfirmed = context.getAppClientData().CheckinTruckInfoConfirmed;
-        return !isConfirmed;  // true = visible, false = hidden
+
+        const appCD = context.getAppClientData();
+
+        // Get current stop
+        const stopUUID =
+            (appCD.currentStop || context.binding)?.StopUUID;
+
+        if (!stopUUID) {
+            return true; // show button if stop not found
+        }
+
+        const isConfirmed =
+            appCD.CheckinTruckInfoConfirmedByStop?.[stopUUID] === true;
+
+        // Show button only if NOT confirmed
+        return !isConfirmed;
+
     } catch (e) {
-        context.getLogger().error("IsStartButtonVisibleforTruckInfoofCheckin error: " + e);
-        return true;  // safe fallback: show button
+
+        context.getLogger().error(
+            "IsStartButtonVisibleforTruckInfoofCheckin error: " + e
+        );
+
+        return true; // safe fallback
     }
 }
