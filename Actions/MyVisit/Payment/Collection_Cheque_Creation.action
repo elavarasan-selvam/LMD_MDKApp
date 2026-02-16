@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/VisitPayment/Collection_Cheque_Creation_Failure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Payment_Creation_Cheque.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/Visit/Payments/ChequeNumberValidation.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Collections"

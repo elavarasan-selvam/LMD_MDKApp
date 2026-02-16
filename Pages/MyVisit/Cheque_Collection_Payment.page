@@ -110,6 +110,7 @@
 									"Footnote": "{Amount} {Currency}",
 									"PreserveIconStackSpacing": true,
 									"Subhead": "Date:{ReferenceDocumentDate}:",
+									"SubstatusText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
 									"Title": "{AssignmentReference}",
 									"Visible": true
 								},
@@ -170,7 +171,8 @@
 					"Controls": [
 						{
 							"Validation": {
-								"Message": "Check Number must be exactly 12 digits"
+								"Message": "/LMD_MDKApp/Rules/Visit/Payments/CheckNumberMessage.js",
+								"Visible": "/LMD_MDKApp/Rules/Visit/Payments/CheckNumberVisible.js"
 							},
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "CheckNumberInput",

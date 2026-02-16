@@ -90,7 +90,7 @@
 									"Footnote": "{Amount} {Currency}",
 									"PreserveIconStackSpacing": true,
 									"Subhead": "Date:{ReferenceDocumentDate}:",
-									"SubstatusText": " ",
+									"SubstatusText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
 									"Title": "{AssignmentReference}",
 									"Visible": true
 								},
