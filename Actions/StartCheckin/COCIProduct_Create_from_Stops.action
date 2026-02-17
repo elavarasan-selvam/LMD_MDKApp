@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ActualandUnloadedUpdationMessage.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/ValidateUnloadedQuantity.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIProducts"

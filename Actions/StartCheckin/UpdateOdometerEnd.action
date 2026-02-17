@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartCheckout/OdometerFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/ConfirmCheckinTruckInfoAndNavigate.js",
+	"ValidationRule": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/OdometerEnd_Validation.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Routes",

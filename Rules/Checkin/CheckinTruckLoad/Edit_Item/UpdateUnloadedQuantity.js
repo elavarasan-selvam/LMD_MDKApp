@@ -1,21 +1,29 @@
-import GetActualQty from './Actual_Quantity_Checkin'; 
+export default function UpdateUnloadedQuantity(clientAPI) {
+    const pageProxy = clientAPI.getPageProxy();
 
-export default async function UpdateUnloadedQuantity(clientAPI) { 
-    const newValue = Number(clientAPI.getValue()) || 0; 
-    const page = clientAPI.getPageProxy(); const binding = page.binding; 
-    const actualQty = await GetActualQty(clientAPI); 
-    if (newValue > actualQty) {
-         await clientAPI.executeAction('/LMD_MDKApp/Actions/StartCheckin/UnloadedQuantityValidationMessage.action'); 
-         
-         clientAPI.setValue(actualQty); return false;
-    } 
-    binding.UnloadedQuantity = newValue; 
-    const appData = clientAPI.getAppClientData(); 
-    const list = appData.PendingProductList || []; 
-    const index = list.findIndex(item => item.ProductID === binding.ProductID && item.StopUUID === binding.StopUUID ); 
-    if (index !== -1) { 
-        list[index].UnloadedQuantity = newValue; 
-    } 
-    return true; 
+    const unloadedControl = pageProxy.evaluateTargetPath(
+        "#Page:Checkout_EditItem/#Control:SectionedTable0/#Control:UnloadedQuantityInput"
+    );
 
+    // Get the latest value
+    const newValue = Number(unloadedControl.getValue()) || 0;
+    const binding = pageProxy.binding;
+
+    // Update the binding immediately
+    binding.UnloadedQuantity = newValue;
+
+    // Update app client data list
+    const appData = clientAPI.getAppClientData();
+    const list = appData.PendingProductList || [];
+    const index = list.findIndex(
+        item => item.ProductID === binding.ProductID && item.StopUUID === binding.StopUUID
+    );
+    if (index !== -1) {
+        list[index].UnloadedQuantity = newValue;
+    }
+
+    // Debug alert to check value is captured
+    //alert("DEBUG: Updated UnloadedQuantity = " + newValue);
+
+    return true;
 }
