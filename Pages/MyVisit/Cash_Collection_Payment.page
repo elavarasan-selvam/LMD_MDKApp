@@ -72,9 +72,10 @@
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
 							"IsEditable": true,
-							"FilterProperty": "SearchKey",
+							"FilterProperty": "AssignmentReference",
 							"Search": {
 								"Enabled": true,
+								"Placeholder": "Search Accounting Document",
 								"Delay": 500,
 								"MinimumCharacterThreshold": 1
 							},
@@ -90,7 +91,6 @@
 									"Footnote": "{Amount} {Currency}",
 									"PreserveIconStackSpacing": true,
 									"Subhead": "Date:{ReferenceDocumentDate}:",
-									"SubstatusText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
 									"Title": "{AssignmentReference}",
 									"Visible": true
 								},

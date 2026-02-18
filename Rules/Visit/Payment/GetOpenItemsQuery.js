@@ -1,24 +1,18 @@
-/**
- * Debug OpenItems filter + sort + multi-field search
- * @param {IClientAPI} context
- */
 export default async function GetOpenItemsQuery(context) {
 
     const appCD = context.getAppClientData();
     const stop = appCD.currentStop || context.getPageProxy().binding;
 
-    const stopUUID   = stop?.StopUUID;
-    const payerRaw   = stop?.ShipToID;
     const locationID = stop?.LocationID;
 
-    if (!stopUUID || !payerRaw) {
-        alert('StopUUID or ShipToID missing');
-        return '';
+    if (!locationID) {
+        return `$filter=false`;
     }
+
+    const searchText = context.searchString;
 
     try {
 
-        // Step 1: Read all OpenItems for the stop and payer
         const result = await context.read(
             '/LMD_MDKApp/Services/LMD_MA.service',
             'OpenItems',
@@ -30,25 +24,32 @@ export default async function GetOpenItemsQuery(context) {
             return `$filter=false`;
         }
 
-        // Step 2: Keep only rows with Amount > 0 and valid AssignmentReference
-        const validDocs = result
-            .filter(item => item.Amount > 0 && item.AssignmentReference && item.AssignmentReference.trim().length > 0)
-            .map(item => ({
-                AccountingDocument: item.AccountingDocument,
-                AssignmentReference: item.AssignmentReference,
-                Amount: item.Amount,
-                ReferenceDocumentDate: item.ReferenceDocumentDate,
-                // **Concatenate for multi-field search**
-                SearchKey: `${item.AccountingDocument} ${item.AssignmentReference} ${item.Amount}`
-            }));
+        let validDocs = result.filter(item =>
+            item.Amount > 0 &&
+            item.AssignmentReference &&
+            item.AssignmentReference.trim().length > 0
+        );
+
+        // APPLY SEARCH MANUALLY
+        if (searchText && searchText.length > 0) {
+
+            const lowerSearch = searchText.toLowerCase();
+
+            validDocs = validDocs.filter(item =>
+                item.AccountingDocument?.toLowerCase().includes(lowerSearch) ||
+                item.AssignmentReference?.toLowerCase().includes(lowerSearch) ||
+                item.Amount?.toString().includes(lowerSearch)
+            );
+        }
 
         if (validDocs.length === 0) {
             return `$filter=false`;
         }
 
-        // Step 3: Build final filter + sorting
         const finalQuery =
-            `$filter=${validDocs.map(i => `AccountingDocument eq '${i.AccountingDocument}'`).join(' or ')}` +
+            `$filter=${validDocs.map(i =>
+                `AccountingDocument eq '${i.AccountingDocument}'`
+            ).join(' or ')}` +
             `&$orderby=ReferenceDocumentDate desc, AccountingDocument desc`;
 
         return finalQuery;
