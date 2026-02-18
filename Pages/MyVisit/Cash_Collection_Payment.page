@@ -9,6 +9,23 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader0",
+					"ObjectHeader": {
+						"DetailImageIsCircular": false,
+						"HeadlineText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
+						"StatusPosition": "Stacked",
+						"StatusImagePosition": "Leading",
+						"SubstatusImagePosition": "Leading",
+						"Target": {
+							"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+							"EntitySet": "OpenItems",
+							"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+						}
+					},
+					"Visible": true
+				},
+				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,

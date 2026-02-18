@@ -10,6 +10,23 @@
 			"Sections": [
 				{
 					"ObjectHeader": {
+						"DetailImageIsCircular": false,
+						"HeadlineText": "/LMD_MDKApp/Rules/MyVisit/GetShipToID.js",
+						"StatusPosition": "Stacked",
+						"StatusImagePosition": "Leading",
+						"SubstatusImagePosition": "Leading",
+						"Target": {
+							"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+							"EntitySet": "OpenItems",
+							"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+						}
+					},
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader1",
+					"Visible": true
+				},
+				{
+					"ObjectHeader": {
 						"Subhead": "/LMD_MDKApp/Rules/Visit/GetStopTimeInsideVisit.js",
 						"DetailImageIsCircular": false,
 						"HeadlineText": "/LMD_MDKApp/Rules/Visit/GetStopInfoInsideVisit.js",
@@ -236,7 +253,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar48",
+		"_Name": "ActionBar50",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

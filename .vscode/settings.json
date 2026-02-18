@@ -5,11 +5,11 @@
     "mdk.uieditor": {
         "left": {
             "visible": true,
-            "width": 231.9980926513672
+            "width": 268
         },
         "right": {
             "visible": true,
-            "width": 306
+            "width": 677
         }
     },
     "mdk.i18n": {
