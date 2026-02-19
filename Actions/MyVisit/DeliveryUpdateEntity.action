@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/DeliveryUpdateFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/DeliveryQuantitySuccessMessage.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/Visit/Delivery/ValidateDeliveredQtyFromTruck.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "DocumentItems",

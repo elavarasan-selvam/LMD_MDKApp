@@ -48,24 +48,14 @@
 					},
 					"Controls": [
 						{
-							"Validation": {
-								"Message": "/LMD_MDKApp/Rules/Visit/Delivery/DeliveredQtyErrorMessage.js",
-								"Visible": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js",
-								"SeparatorVisible": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js",
-								"Styles": {
-									"ValidationView": "/LMD_MDKApp/Rules/Visit/Delivery/IsDeliveredQtyInvalid.js"
-								}
-							},
 							"Value": "{DeliveredQuantity}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FCDeliveredQuantity",
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"Styles": {
-								"Value": "Styles/RedValue.less"
-							},
 							"Caption": "Delivered:",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Delivery/ValidateDeliveredQtyFromTruck.js",
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
@@ -110,7 +100,7 @@
 		}
 	],
 	"_Type": "Page",
-	"_Name": "Checkout_EditItem",
+	"_Name": "MyVisit_EditItem",
 	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Delivery/RedrawPage.js",
 	"ActionBar": {
 		"Items": [
