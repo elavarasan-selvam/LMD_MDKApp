@@ -29,8 +29,8 @@ export default async function BumpCompletedStops(context) {
     }
 
     // KPI update
-    appCD.KPICompletedStops =
-        (appCD.KPICompletedStops || 0) + 1;
+    //appCD.KPICompletedStops =
+    //    (appCD.KPICompletedStops || 0) + 1;
 
     const readResult = await context.read(
         "/LMD_MDKApp/Services/LMD_MA.service",

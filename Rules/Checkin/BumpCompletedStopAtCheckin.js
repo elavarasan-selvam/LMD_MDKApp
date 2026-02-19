@@ -1,6 +1,6 @@
 export default async function BumpCompletedStopAtCheckin(context) {
     const appCD = context.getAppClientData();
-    appCD.KPICompletedStops = (appCD.KPICompletedStops || 0) + 1;
+    //appCD.KPICompletedStops = (appCD.KPICompletedStops || 0) + 1;
  
     // Use currentStop from CheckIn page binding
     const stop = appCD.currentStop || context.binding;

@@ -7,13 +7,13 @@ export default function GetStopIcon(context) {
 
     switch (stopType) {
         case 'CHECKIN':
-            return 'sap-icon://factory';
+            return 'sap-icon://inbox';
 
         case 'CHECKOUT':
-            return 'sap-icon://factory';
+            return 'sap-icon://outbox';
 
         case 'VISIT':
-            return 'sap-icon://customer';
+            return 'sap-icon://visits';
 
         default:
             return 'sap-icon://map'; // fallback icon

@@ -4,7 +4,7 @@
 export default async function bumpCompletedAtcheckout(clientAPI) {
 
     const appCD = clientAPI.getAppClientData();
-    appCD.KPICompletedStops = (appCD.KPICompletedStops || 0) + 1;
+    //appCD.KPICompletedStops = (appCD.KPICompletedStops || 0) + 1;
 
     const stopRef = appCD.currentStop || clientAPI.binding;
     if (!stopRef || !stopRef.StopUUID) {
