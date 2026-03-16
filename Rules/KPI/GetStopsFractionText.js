@@ -20,6 +20,6 @@ export default function GetStopsFractionText(context) {
                 }
             }
 
-            return completed + " / " + total + " Stops";
+            return "       " + completed + " / " + total + " Stops";
         });
 }
