@@ -67,9 +67,7 @@
 					},
 					"Controls": [
 						{
-							"Validation": {
-								"Visible": true
-							},
+							
 							"Value": "{OdometerBegin}",
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty0",
