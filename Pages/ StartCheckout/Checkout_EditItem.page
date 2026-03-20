@@ -68,7 +68,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"AllowMultipleSelection": false,
-							"AllowEmptySelection": false,
+							"AllowEmptySelection": true,
 							"Caption": "Reason Code",
 							"DataPaging": {
 								"ShowLoadingIndicator": false,
