@@ -15,6 +15,9 @@ export default function GetStopIcon(context) {
         case 'VISIT':
             return 'sap-icon://visits';
 
+        case 'DEPOSIT':
+            return 'sap-icon://money-bills';
+
         default:
             return 'sap-icon://map'; // fallback icon
     }

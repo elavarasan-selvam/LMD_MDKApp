@@ -1,0 +1,15 @@
+{
+	"_Type": "Action.Type.ODataService.Read",
+	"ActionResult": {
+		"_Name": "ReadDepositAccountReferences"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "DepositAccountReferences"
+	},
+	"Properties": [
+		"DepositAccountReferenceID",
+		"Language",
+		"Description"
+	]
+}

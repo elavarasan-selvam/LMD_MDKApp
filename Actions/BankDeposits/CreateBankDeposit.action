@@ -1,0 +1,32 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "CreateBankDeposit"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/BankDeposits/BankDeposits_StopCreateFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/BankDeposits/HandleDepositAttachmentAfterCreate.js",
+	"ValidationRule": "/LMD_MDKApp/Rules/BankDeposits/ValidateBankDepositAmount.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "BankDeposits"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetDepositStopReadLink.js"
+		},
+		"Property": "to_BankDeposits"
+	},
+	"Properties": {
+		"BankDepositID": "/LMD_MDKApp/Rules/BankDeposits/GetBankDepositID.js",
+		"RouteUUID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteUUID.js",
+		"ReferenceNumber": "{#Control:BankDepositReferencenumber/#Value}",
+		"PostingDate": "/LMD_MDKApp/Rules/BankDeposits/GetCurrentDateTime.js",
+		"Amount": "{#Control:BankDepositAmount/#Value}",
+		"Currency": "{#Control:BankDepositCurrency/#SelectedValue}",
+		"DepositAccountReferenceID": "{#Control:FormCellListPicker0/#SelectedValue}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

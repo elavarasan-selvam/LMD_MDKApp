@@ -1,0 +1,18 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "BankDepositChangeset"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/API_PRODUCT_SRV.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/BankDeposits/CreateStopforDeposit.action",
+		"/LMD_MDKApp/Actions/BankDeposits/CreateBankDeposit.action",
+		"/LMD_MDKApp/Actions/BankDeposits/CreateActionForAttachment.action",
+		"/LMD_MDKApp/Actions/BankDeposits/Content_MediaCreation.action"
+	],
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "BankDeposits_StopCreateFailure"
+	},
+	"Message": "#ActionResults:CreateBankDeposit/error",
+	"Title": "\"Falied\"",
+	"OKCaption": "Ok"
+}

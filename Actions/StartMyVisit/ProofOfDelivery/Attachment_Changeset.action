@@ -3,11 +3,15 @@
 	"ActionResult": {
 		"_Name": "Attachment_Changeset"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/BankDeposits/BankDepositChangeset.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
 		"/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/CreateActionForAttachments.action",
 		"/LMD_MDKApp/Actions/StartMyVisit/ProofOfDelivery/Content_MediaCreation.action"
-	]
+	],
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
 }

@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_To_CreateBankDeposits"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/BankDeposits/CreateBankDeposits.page"
+}

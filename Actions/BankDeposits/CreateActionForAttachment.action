@@ -1,0 +1,27 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "CreateActionForAttachment"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/BankDeposits/BankDeposits_StopCreateFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/BankDeposits/Content_MediaCreation.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Attachments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Routes",
+			"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetRouteReadLink.js"
+		},
+		"Property": "to_Attachments"
+	},
+	"Properties": {
+		"FileName": "/LMD_MDKApp/Rules/BankDeposits/GetDisplayedAttachmentFileName.js",
+		"ReferenceID": "/LMD_MDKApp/Rules/BankDeposits/GetBankDepositID.js",
+		"AttachmentKind": "BDP"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

@@ -128,7 +128,74 @@ export default async function CheckinSetAmountPaymentloaded(clientAPI) {
         }
 
         // alert("FINAL TOTAL CA AMOUNT: " + totalAmount);
-        return `Cash Collected : ${totalAmount}`; 
+        //return `Cash Collected : ${totalAmount}`; 
+        // =================================================
+        // 4. DEPOSIT STOPS -> BANK DEPOSITS
+        // =================================================
+
+        let totalDeposited = 0;
+
+        const depositStops =
+            await clientAPI.read(
+                service,
+                "Stops",
+                [],
+                `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'DEPOSIT'`
+            );
+
+        for (
+            let i = 0;
+            i < depositStops.length;
+            i++
+        ) {
+
+            const depositStop =
+                depositStops.getItem(i);
+
+            const stopReadLink =
+                depositStop['@odata.readLink'];
+
+            // Stop -> BankDeposits
+            const bankDeposits =
+                await clientAPI.read(
+                    service,
+                    `${stopReadLink}/to_BankDeposits`,
+                    [],
+                    ''
+                );
+
+            for (
+                let j = 0;
+                j < bankDeposits.length;
+                j++
+            ) {
+
+                const bankDeposit =
+                    bankDeposits.getItem(j);
+
+                const amt =
+                    Number(
+                        bankDeposit.Amount || 0
+                    );
+
+                totalDeposited += amt;
+            }
+        }
+
+        // =================================================
+        // 5. FINAL REMAINING
+        // =================================================
+
+        let remainingAmount =
+            totalAmount;
+
+        if (totalDeposited > 0) {
+
+            remainingAmount =
+                totalAmount - totalDeposited;
+        }
+
+        return `Cash Collected : ${remainingAmount}`;
 
     } catch (err) {
         alert("Error: " + err.message);

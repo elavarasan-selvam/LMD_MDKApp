@@ -33,7 +33,73 @@ export default async function GetStopInfo(context) {
            return 'Error fetching address';
        }
    }
-   // CASE 2: CHECKIN / CHECKOUT -> same as before (fetch vehicle from Routes)
+        // CASE 2: DEPOSIT
+    if (stopType === 'DEPOSIT') {
+
+        try {
+
+            const service = '/LMD_MDKApp/Services/LMD_MA.service';
+
+            // Current stop readlink from binding
+            const stopReadLink = stop['@odata.readLink'];
+
+            // Read fresh stop entity
+            const stopResult = await context.read(
+                service,
+                stopReadLink,
+                [],
+                ''
+            );
+
+            if (!stopResult || stopResult.length === 0) {
+                return 'Bank Deposit';
+            }
+
+            const freshStop = stopResult.getItem(0);
+
+            // Navigate to BankDeposits
+            const depositResult = await context.read(
+                service,
+                `${freshStop['@odata.readLink']}/to_BankDeposits`,
+                [],
+                ''
+            );
+
+            if (!depositResult || depositResult.length === 0) {
+                return 'Bank Deposit';
+            }
+
+            const deposit = depositResult.getItem(0);
+
+            const amount =
+                deposit.Amount ||
+                deposit.DepositAmount ||
+                deposit.TotalAmount ||
+                deposit.AmountInTransactionCurrency ||
+                '';
+
+            const currency =
+                deposit.Currency ||
+                deposit.CurrencyCode ||
+                deposit.TransactionCurrency ||
+                '';
+
+            if (amount && currency) {
+                return `Amount Deposited: ${amount} ${currency}`;
+            }
+
+            if (amount) {
+                return `Amount Deposited: ${amount}`;
+            }
+
+            return 'Bank Deposit';
+
+        } catch (e) {
+
+            return 'Bank Deposit';
+        }
+    }
+   // CASE 3: CHECKIN / CHECKOUT -> same as before (fetch vehicle from Routes)
    if ((stopType === 'CHECKIN' || stopType === 'CHECKOUT') && stop.RouteUUID) {
        const service = '/LMD_MDKApp/Services/LMD_MA.service';
        const entity = 'Routes';

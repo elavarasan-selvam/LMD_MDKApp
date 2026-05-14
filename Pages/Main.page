@@ -91,6 +91,41 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"Layout": {
+						"LayoutType": "Vertical",
+						"HorizontalAlignment": "Leading"
+					},
+					"_Type": "Section.Type.ButtonTable",
+					"_Name": "SectionButtonTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Buttons": [
+						{
+							"_Type": "ButtonTable.Type.Button",
+							"_Name": "ButtonTableTypeButton0",
+							"Title": "Add Deposit",
+							"Alignment": "Right",
+							"ButtonType": "Secondary",
+							"Semantic": "Normal",
+							"Image": "sap-icon://add",
+							"ImagePosition": "Trailing",
+							"FullWidth": false,
+							"Visible": "/LMD_MDKApp/Rules/BankDeposits/CanCreateBankDepositEnabledandVisible.js",
+							"Enabled": "/LMD_MDKApp/Rules/BankDeposits/CanCreateBankDepositEnabledandVisible.js",
+							"OnPress": "/LMD_MDKApp/Actions/BankDeposits/ConfirmBankVisit.action"
+						}
+					]
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCardCollection",
 					"Target": {
 						"Service": "/LMD_MDKApp/Services/LMD_MA.service",

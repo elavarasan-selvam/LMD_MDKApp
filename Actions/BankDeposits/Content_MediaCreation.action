@@ -1,0 +1,27 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedMedia",
+	"ActionResult": {
+		"_Name": "Content_MediaCreation"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/BankDeposits/NavBackToMain.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Contents"
+	},
+	"IsOnlineRequest": true,
+	"Media": "/LMD_MDKApp/Rules/BankDeposits/GetMediaContent.js",
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Attachments",
+			"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetBankDepositAttachmentReadLink.js"
+		},
+		"Property": "to_Content"
+	},
+	"Properties": {
+		"MimeType": "/LMD_MDKApp/Rules/BankDeposits/GetDisplayedAttachmentContentType.js",
+		"FileName": "/LMD_MDKApp/Rules/BankDeposits/GetDisplayedAttachmentFileName.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

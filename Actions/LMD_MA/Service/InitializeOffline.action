@@ -44,6 +44,11 @@
 			"Name": "OpenItems",
 			"Query": "OpenItems",
 			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "DepositAccountReferences",
+			"Query": "DepositAccountReferences",
+			"AutomaticallyRetrievesStreams": false
 		}
 	]
 }

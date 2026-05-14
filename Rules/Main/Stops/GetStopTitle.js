@@ -54,6 +54,50 @@ export default async function GetStopDisplayName(context) {
             return 'Visit';
         }
     }
+        // ---------------- DEPOSIT ----------------
+    if (stopType === 'DEPOSIT' && stop.RouteUUID) {
 
+        const service = '/LMD_MDKApp/Services/LMD_MA.service';
+
+        const filter =
+        `$filter=RouteUUID eq guid'${stop.RouteUUID}' and StopType eq 'DEPOSIT'&$orderby=Sequence asc`;
+
+        try {
+
+            const result = await context.read(
+                service,
+                'Stops',
+                [],
+                filter
+            );
+
+            if (result.length <= 1) {
+                return 'BankDeposit';
+            }
+
+            let depositIndex = 0;
+
+            for (let i = 0; i < result.length; i++) {
+
+                const item = result.getItem(i);
+
+                if (
+                    item['@odata.readLink'] ===
+                    stop['@odata.readLink']
+                ) {
+
+                    depositIndex = i + 1;
+
+                    break;
+                }
+            }
+
+            return 'BankDeposit-' + depositIndex;
+
+        } catch (e) {
+
+            return 'BankDeposit';
+        }
+    }
     return '';
 }

@@ -1,0 +1,30 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "CreateStopforDeposit"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/BankDeposits/StopFail.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/BankDeposits/Nav_To_CreateBankDeposits.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Stops"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Routes",
+			"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetRouteReadLink.js"
+		},
+		"Property": "to_Stops"
+	},
+	"Properties": {
+		"IsManuallyAdded": true,
+		"RouteUUID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteUUID.js",
+		"Sequence": "/LMD_MDKApp/Rules/BankDeposits/GetNextStopSequence.js",
+		"EndDateTime": "/LMD_MDKApp/Rules/BankDeposits/GetCurrentDateTime.js",
+		"StartDateTime": "/LMD_MDKApp/Rules/BankDeposits/GetCurrentDateTime.js",
+		"StopType": "DEPOSIT"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

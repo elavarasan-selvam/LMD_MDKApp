@@ -1,0 +1,12 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ConfirmBankVisit"
+	},
+	"Message": "Do you want to create a Bank Deposit stop ?",
+	"Title": "Confirm Bank Visit",
+	"OKCaption": "YES",
+	"OnOK": "/LMD_MDKApp/Actions/BankDeposits/CreateStopforDeposit.action",
+	"CancelCaption": "NO",
+	"OnCancel": "/LMD_MDKApp/Actions/BankDeposits/NavBackToMain.action"
+}

@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavBackToMain"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/Main.page"
+}

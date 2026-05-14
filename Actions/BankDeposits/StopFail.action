@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "StopFail"
+	},
+	"Message": "#ActionResults:CreateActionForAttachment/error",
+	"Title": "Falied",
+	"OKCaption": "ok"
+}

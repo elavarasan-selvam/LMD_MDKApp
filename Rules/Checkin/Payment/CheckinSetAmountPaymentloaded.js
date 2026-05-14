@@ -128,7 +128,67 @@ export default async function CheckinSetAmountPaymentloaded(clientAPI) {
         }
 
         // alert("FINAL TOTAL CA AMOUNT: " + totalAmount);
-        return totalAmount;
+        //return totalAmount;
+        // =================================================
+        // 4. DEPOSIT STOPS → BANK DEPOSITS
+        // =================================================
+
+        let totalDeposited = 0;
+
+        const depositStops = await clientAPI.read(
+            service,
+            "Stops",
+            [],
+            `$filter=RouteUUID eq guid'${routeUUID}' and StopType eq 'DEPOSIT'`
+        );
+
+        for (let i = 0; i < depositStops.length; i++) {
+
+            const depositStop =
+                depositStops.getItem(i);
+
+            const stopReadLink =
+                depositStop['@odata.readLink'];
+
+            // Stop -> BankDeposits
+            const bankDeposits =
+                await clientAPI.read(
+                    service,
+                    `${stopReadLink}/to_BankDeposits`,
+                    [],
+                    ''
+                );
+
+            for (let j = 0; j < bankDeposits.length; j++) {
+
+                const bankDeposit =
+                    bankDeposits.getItem(j);
+
+                const amt =
+                    Number(
+                        bankDeposit.Amount || 0
+                    );
+
+                totalDeposited += amt;
+            }
+        }
+
+        // =================================================
+        // 5. FINAL REMAINING AMOUNT
+        // =================================================
+
+        // No deposits yet
+        if (totalDeposited === 0) {
+
+            return totalAmount;
+        }
+
+        // Remaining
+        const remainingAmount =
+            totalAmount - totalDeposited;
+
+        return remainingAmount;
+
 
     } catch (err) {
         alert("Error: " + err.message);
