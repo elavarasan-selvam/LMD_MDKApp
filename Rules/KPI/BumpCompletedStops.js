@@ -17,7 +17,7 @@ export default async function BumpCompletedStops(context) {
         appCD.ReturnConfirmedByStop?.[stopUUID] !== true
     ) {
         await context.executeAction({
-            Name: "/LMD_MDKApp/Actions/Message.action",
+            Name: "/LMD_MDKApp/Actions/GenericMessageBox.action",
             Properties: {
                 Title: "Pending Actions",
                 Message:

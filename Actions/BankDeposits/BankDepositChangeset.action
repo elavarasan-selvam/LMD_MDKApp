@@ -4,7 +4,7 @@
 		"_Name": "BankDepositChangeset"
 	},
 	"Target": {
-		"Service": "/LMD_MDKApp/Services/API_PRODUCT_SRV.service"
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
 		"/LMD_MDKApp/Actions/BankDeposits/CreateStopforDeposit.action",
