@@ -1,0 +1,148 @@
+{
+	"Controls": [
+		{
+			"Caption": "Unplanned Return",
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "FormCellListPicker0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "ProductID",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 10
+							},
+							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Enter Product ID",
+							"OnValueChange": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnCaptureDocumentID.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"Search": {
+								"Enabled": true
+							},
+							"PickerItems": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedListPickerProductID.js"
+						},
+						{
+							"Value": "Unplanned Return",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty1",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "CustomerReferenceNumber",
+							"PlaceHolder": "Unplanned Return",
+							"OnValueChange": "/LMD_MDKApp/Actions/UnplannedReturnSave.action",
+							"AlternateInput": "None",
+							"Enabled": true,
+							"IsEditable": false
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty2",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Currency",
+							"PlaceHolder": "Enter Currency",
+							"Enabled": true,
+							"IsEditable": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "CustomerRelevantOrderNumber",
+							"PlaceHolder": "Enter Number",
+							"Enabled": true,
+							"IsEditable": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty3",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Returning Quantity",
+							"PlaceHolder": "Enter Quantity",
+							"KeyboardType": "Number",
+							"Enabled": true,
+							"IsEditable": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
+				}
+			]
+		}
+	],
+	"DesignTimeTarget": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "DocumentItems"
+	},
+	"_Type": "Page",
+	"_Name": "Page0",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"SystemItem": "Cancel",
+				"Icon": "sap-icon://cancel",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			}
+		],
+		"_Name": "ActionBar14",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Unplanned Return Page"
+	},
+	"FioriToolbar": {
+		"_Type": "Control.Type.FioriToolbar",
+		"_Name": "FioriToolbar0",
+		"Items": [
+			{
+				"_Type": "FioriToolbarItem.Type.Button",
+				"_Name": "ToolbarItem0",
+				"Visible": true,
+				"Title": "Confirm Return",
+				"OnPress": "/LMD_MDKApp/Actions/UnplannedReturnSave.action",
+				"Enabled": true,
+				"ButtonType": "Primary",
+				"Semantic": "Tint",
+				"ImagePosition": "Leading"
+			}
+		]
+	}
+}

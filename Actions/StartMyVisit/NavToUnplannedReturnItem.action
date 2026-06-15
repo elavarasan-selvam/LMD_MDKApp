@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToUnplannedReturnItem"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/UnplannedReturnItem.page",
+	"ModalPage": true
+}

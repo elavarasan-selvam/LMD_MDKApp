@@ -17,11 +17,7 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": {
-						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-						"EntitySet": "DocumentItems",
-						"QueryOptions": "/LMD_MDKApp/Rules/Visit/Return/GetPlannedReturn.js"
-					},
+					"Target": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnsGetMergedReturns.js",
 					"_Name": "SectionObjectCollection0",
 					"Visible": true,
 					"EmptySection": {
@@ -63,6 +59,7 @@
 	"_Type": "Page",
 	"_Name": "Return",
 	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Return/PreloadReturnProductDescriptions.js",
+	"OnReturning": "/LMD_MDKApp/Rules/Visit/Delivery/RedrawPage.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -72,7 +69,8 @@
 				"SystemItem": "Add",
 				"Position": "Right",
 				"IsIconCircular": false,
-				"Visible": true
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToUnplannedReturnItem.action"
 			}
 		],
 		"_Name": "ActionBar5",

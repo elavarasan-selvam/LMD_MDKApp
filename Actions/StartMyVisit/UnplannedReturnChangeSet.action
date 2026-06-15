@@ -1,0 +1,16 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "UnplannedReturnChangeSet"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/UnplannedReturnSave.action",
+		"/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnCaptureDocumentItemCreation.action"
+	],
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedReturnGetRouteValue.js"
+	}
+}

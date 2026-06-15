@@ -49,6 +49,11 @@
 			"Name": "DepositAccountReferences",
 			"Query": "DepositAccountReferences",
 			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "MobileDocumentTypes",
+			"Query": "MobileDocumentTypes",
+			"AutomaticallyRetrievesStreams": false
 		}
 	]
 }

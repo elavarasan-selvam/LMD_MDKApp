@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UnplannedReturnsFailedErrors"
+	},
+	"Message": "{#ActionResults:UnplannedReturnSave/error}",
+	"OKCaption": "OK"
+}

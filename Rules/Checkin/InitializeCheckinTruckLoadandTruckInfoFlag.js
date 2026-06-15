@@ -97,8 +97,18 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         '/LMD_MDKApp/Services/LMD_MA.service',
         'DocumentItems',
         [],
-        `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true`
+        `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true and IsManuallyAdded eq false`
     );
+
+    // ===============================
+    // FETCH UNPLANNED RETURN ITEMS
+    // ===============================
+    const unplannedReturnItems = await clientAPI.read(
+       '/LMD_MDKApp/Services/LMD_MA.service',
+       'DocumentItems',
+       [],
+       `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true and IsManuallyAdded eq true`,
+   );
 
     let pendingCount = 0;
 
@@ -129,6 +139,28 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
+        // ===============================
+        // ADD UNPLANNED RETURNS
+        // ===============================
+    const unplannedReturnMap = {};
+    if (unplannedReturnItems && unplannedReturnItems.length > 0) {
+    
+        for (let i = 0; i < unplannedReturnItems.length; i++) {
+    
+            const item = unplannedReturnItems.getItem(i);
+    
+            const productID = item.ProductID;
+    
+            const qty = Number(item.DeliveredQuantity || 0);
+    
+            if (!unplannedReturnMap[productID]) {
+                unplannedReturnMap[productID] = 0;
+            }
+            //alert("Unplanned Return - Product: " + productID + ", Qty: " + qty);
+            unplannedReturnMap[productID] += qty;
+        }
+    }
+//alert("Return Map: " + JSON.stringify(returnMap) + "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap));
     // ===============================
     // DELIVERY MAP
     // ===============================
@@ -167,6 +199,47 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             }
         }
     }
+    if (unplannedReturnItems && unplannedReturnItems.length > 0) {
+        for (let i = 0; i < unplannedReturnItems.length; i++) {
+        const item = unplannedReturnItems.getItem(i);
+        const productKey = item.ProductID + "::" + item.OrderedUOM;
+        if (!productMap[productKey]) {
+            productMap[productKey] = {
+                ProductID: item.ProductID,
+                OrderedSum: 0,
+                DeliveredSum: 0,
+                OrderedUOM: item.OrderedUOM,
+                RouteUUID: item.RouteUUID,
+                StopUUIDs: [item.StopUUID]
+            };
+        }
+    }
+    }
+    
+        // ADD PLANNED RETURN-ONLY PRODUCTS
+    // ===============================
+    if (returnItems && returnItems.length > 0) {
+
+        for (let i = 0; i < returnItems.length; i++) {
+
+            const item = returnItems.getItem(i);
+
+            const productKey = item.ProductID + "::" + item.OrderedUOM;
+
+            if (!productMap[productKey]) {
+
+                productMap[productKey] = {
+                    ProductID: item.ProductID,
+                    OrderedSum: 0,
+                    DeliveredSum: 0,
+                    OrderedUOM: item.OrderedUOM,
+                    RouteUUID: item.RouteUUID,
+                    StopUUIDs: [item.StopUUID]
+                };
+            }
+        }
+    }
+
 
     // ===============================
     // CALCULATE FINAL ACTUAL
@@ -204,6 +277,8 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         // ADD RETURN QTY
         // ===============================
         const returnQty = returnMap[product.ProductID] || 0;
+        const unplannedReturnQty = unplannedReturnMap[product.ProductID] || 0;
+        //alert("Product: " + product.ProductID + ", Return Qty: " + returnQty + ", Unplanned Return Qty: " + unplannedReturnQty);
 
         // ===============================
         // FINAL FORMULA
@@ -212,7 +287,8 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             checkoutActual +
             product.OrderedSum -
             product.DeliveredSum +
-            returnQty;
+            returnQty +
+            unplannedReturnQty;
 
         // ===============================
         // DEBUG ALERT
@@ -223,9 +299,9 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         //    "\nOrdered: " + product.OrderedSum +
         //    "\nDelivered: " + product.DeliveredSum +
         //    "\nReturned: " + returnQty +
-        //    "\n------------------" +
-        //    "\nFinal: " + finalActual
-        //);
+         //   "\nUnplanned Return: " + unplannedReturnQty +
+           // "\n------------------" +
+           // "\nFinal: " + finalActual);
 
         if (finalActual > 0) {
 

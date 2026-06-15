@@ -1,0 +1,36 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "UnplannedReturnCaptureDocumentItemCreation"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnSaveFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "DocumentItems"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Documents",
+			"ReadLink": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnCaptureDocumetReadLink.js"
+		},
+		"Property": "to_DocumentItems"
+	},
+	"Properties": {
+		"StopUUID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnDocItemCreationStopUUID.js",
+		"RouteUUID": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedReturnGetRouteValue.js",
+		"DocumentItemID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnCaptureDocItemCreationDocItemID.js",
+		"ProductID": "{#Control:FormCellListPicker0/#SelectedValue}",
+		"OrderedUOM": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnCaptureDocItemCreationOrderedOUM.js",
+		"DeliveredQuantity": "{#Control:FormCellSimpleProperty3/#Value}",
+		"IsReturn": true,
+		"IsManuallyAdded": true,
+		"IsUntiedEmpty": true,
+		"Currency": "{#Control:FormCellSimpleProperty2/#Value}",
+		"DocumentID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnDocument.js",
+		"DocumentCategory": "DL"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedReturnGetRouteValue.js"
+	}
+}

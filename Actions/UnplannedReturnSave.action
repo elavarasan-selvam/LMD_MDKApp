@@ -1,0 +1,41 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "UnplannedReturnSave"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnsFailedErrors.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnCaptureDocumentItemCreation.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Documents"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnStopReadLink.js"
+		},
+		"Property": "to_Documents"
+	},
+	"Properties": {
+		"RouteUUID": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedReturnGetRouteValue.js",
+		"StopUUID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnDocItemCreationStopUUID.js",
+		"DocumentID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnGenerateDocID.js",
+		"DocumentCategory": "DL",
+		"SoldToPartyID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnSoldToPartyID.js",
+		"SalesOrganization": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnSalesOrganization.js",
+		"DistributionChannel": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnDistributionChannel.js",
+		"Division": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnDivision.js",
+		"DocumentDate": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnPrintDateTime.js",
+		"DeliveryDate": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnPrintDateTime.js",
+		"ShipToPartyID": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnShipToPartyID.js",
+		"IsManuallyAdded": true,
+		"PrintDateTime": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnPrintDateTime.js",
+		"CustomerReferenceNumber": "Unplanned Return",
+		"IsReturn": true,
+		"Currency": "{#Control:FormCellSimpleProperty2/#Value}",
+		"CustomerRelevantOrderNumber": "{#Control:FormCellSimpleProperty0/#Value}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/Visit/UnplannedReturn/UnplannedReturnGetRouteValue.js"
+	}
+}
