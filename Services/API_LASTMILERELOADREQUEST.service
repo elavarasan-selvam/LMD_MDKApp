@@ -1,0 +1,6 @@
+{
+	"DestinationName": "API_LASTMILERELOADREQUEST",
+	"OfflineEnabled": false,
+	"SourceType": "Mobile",
+	"RestService": true
+}
