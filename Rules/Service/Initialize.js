@@ -8,6 +8,7 @@ export default async function Initialize(context) {
             { name: 'LMD_MA', path: '/LMD_MDKApp/Actions/LMD_MA/Service/InitializeOffline.action' },
             { name: 'MD_BUSINESSPARTNER_SRV', path: '/LMD_MDKApp/Actions/MD_BUSINESSPARTNER_SRV/Service/InitializeOffline.action' },
             { name: 'API_PRODUCT_SRV', path: '/LMD_MDKApp/Actions/API_PRODUCT_SRV/Service/InitializeOffline.action' },
+            {name: 'API_LASTMILERELOADREQUEST', path: '/LMD_MDKApp/Actions/API_LASTMILERELOADREQUEST/Service/InitializeOffline.action' }
         ];
 
         for (let service of initServices) {

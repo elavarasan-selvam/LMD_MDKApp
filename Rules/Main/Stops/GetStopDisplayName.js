@@ -15,6 +15,8 @@ export default async function GetStopDisplayName(context) {
     if (stopType === 'Checkout') return 'Start Checkout';
     if (stopType === 'Checkin') return 'Start Checkin';
     if (stopType === 'Visit') return 'Start Visit';
+    if (stopType === 'Reload_ci') return 'Start ReloadCheckin';
+    if (stopType === 'Reload_co') return 'Start ReloadCheckout';
 
     return '';
 }

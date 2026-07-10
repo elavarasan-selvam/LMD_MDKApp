@@ -16,5 +16,7 @@ export default function NavigateBasedOnStopType(context) {
 
     } else if (stopType === 'CHECKIN') {
         return context.executeAction('/LMD_MDKApp/Actions/StartCheckin/NavToStartCheckIn.action');
+    }else if (stopType === 'RELOAD_CO') {
+        return context.executeAction('/LMD_MDKApp/Actions/ReloadCheckout/NavToReloadCheckout.action');
     }
 }

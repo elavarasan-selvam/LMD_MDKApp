@@ -18,6 +18,14 @@ export default async function GetStopDisplayName(context) {
     if (stopType === 'CHECKIN') {
         return 'Checkin';
     }
+   // ----------------ReloadRequest CHECKIN & CHECKOOUT---------------------
+    if ( stopType === 'RELOAD_CI'){
+        return 'RELOAD CHECKIN'; 
+    }
+
+    if ( stopType === 'RELOAD_CO'){
+        return 'RELOAD CHECKOUT'; 
+    }
 
     // ---------------- VISIT ----------------
     if (stopType === 'VISIT' && stop.RouteUUID) {

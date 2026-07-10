@@ -1,0 +1,95 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"_Name": "SectionObjectCardCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Cards": [
+						{
+							"_Type": "ObjectCardCollection.Type.Card",
+							"_Name": "ObjectCardCollectionTypeCard0",
+							"Visible": true,
+							"Title": "/LMD_MDKApp/Rules/Reload_CheckOut/ReGetProductDescription.js",
+							"Subhead": "{ProductID}",
+							"DetailImageIsCircular": false,
+							"StatusText": "/LMD_MDKApp/Rules/Reload_CheckOut/ReLoaded_Valuecard.js"
+						}
+					],
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0",
+					"Controls": [
+						{
+							"Value": "/LMD_MDKApp/Rules/Reload_CheckOut/ReLoaded_Valuecard.js",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Loaded : ",
+							"KeyboardType": "Number",
+							"AlternateInput": "None",
+							"Enabled": true,
+							"IsEditable": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ReloadCheckOutEditItem",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Item",
+				"Width": 18,
+				"Icon": "sap-icon://save",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true
+			}
+		],
+		"_Name": "ActionBar2",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Edit item"
+	}
+}
