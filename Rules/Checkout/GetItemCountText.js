@@ -1,16 +1,18 @@
-export default function GetItemCountText(context) {
-    let binding = context.binding;
-    let service = "/LMD_MDKApp/Services/LMD_MA.service";
+import Checkout_Stop_Items_List from './TruckLoad/Checkout_Stop_Items_List';
 
-    let query = `$apply=filter(RouteUUID eq guid'${binding.RouteUUID}')/aggregate(ProductID with countdistinct as ProductCount)`;
+/**
+ * @param {IClientAPI} context
+ */
+export default async function GetItemCountText(context) {
 
-    return context.read(service, "DocumentItems", [], query)
-    .then(result => {
-        if (result && result.length > 0) {
-            let count = result.getItem(0).ProductCount || 0;
-            return `Items: ${count}`;
-        } else {
-            return "Items: 0";
-        }
-    });
+    try {
+
+        const finalList = await Checkout_Stop_Items_List(context);
+
+        return `Items: ${finalList.length}`;
+
+    } catch (e) {
+
+        return "Items: 0";
+    }
 }

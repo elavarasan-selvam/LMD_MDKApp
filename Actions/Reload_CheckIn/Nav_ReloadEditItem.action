@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "Nav_ReloadEditItem"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/Reload_CheckIn/ReloadCheckin_EditItem.page"
+}

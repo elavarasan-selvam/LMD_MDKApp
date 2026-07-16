@@ -1,0 +1,20 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "ReloadEndDateTime"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Stops",
+		"ReadLink": "{{#Property:ReadLink}}"
+	},
+	"Properties": {
+		"EndDateTime": "{{#Property:EndDateTime}}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	},
+	"RequestOptions": {
+		"UpdateMode": "Merge"
+	}
+}

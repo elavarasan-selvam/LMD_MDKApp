@@ -2,9 +2,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     const appData = clientAPI.getAppClientData();
 
-    //if (appData.CheckinTruckLoadConfirmed === undefined) appData.CheckinTruckLoadConfirmed = false;
-    //if (appData.CheckinTruckInfoConfirmed === undefined) appData.CheckinTruckInfoConfirmed = false;
-    //if (appData.CheckinCOCIPaymentConfirmed === undefined) appData.CheckinCOCIPaymentConfirmed = false;
     if (!appData.CheckinTruckLoadConfirmedByStop) {
         appData.CheckinTruckLoadConfirmedByStop = {};
     }
@@ -16,6 +13,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     if (!appData.CheckinCOCIPaymentConfirmedByStop) {
         appData.CheckinCOCIPaymentConfirmedByStop = {};
     }
+
     appData.PendingProductList = [];
 
     const binding = clientAPI.getPageProxy().binding;
@@ -52,8 +50,11 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     const routeUUID = appData.currentRouteUUID;
 
     if (!routeUUID) {
+        alert("RouteUUID not found");
         return true;
     }
+
+    //alert("NORMAL CHECKIN STARTED\nRouteUUID: " + routeUUID);
 
     // ===============================
     // FETCH ALL STOPS
@@ -66,6 +67,8 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     );
 
     let checkoutStopUUID = null;
+    let reloadCIStopUUID = null;
+    let reloadCOStopUUID = null;
 
     if (stopsResult && stopsResult.length > 0) {
 
@@ -75,13 +78,29 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
             if (stop.StopType === 'CHECKOUT') {
                 checkoutStopUUID = stop.StopUUID;
-                break;
+            }
+
+            if (stop.StopType === 'RELOAD_CI') {
+                reloadCIStopUUID = stop.StopUUID;
+            }
+
+            if (stop.StopType === 'RELOAD_CO') {
+                reloadCOStopUUID = stop.StopUUID;
             }
         }
     }
 
+    const hasReloadRequest = !!(reloadCIStopUUID && reloadCOStopUUID);
+
+   /* alert(
+        "Checkout StopUUID: " + checkoutStopUUID +
+        "\nReload CI StopUUID: " + reloadCIStopUUID +
+        "\nReload CO StopUUID: " + reloadCOStopUUID +
+        "\nHas Reload: " + hasReloadRequest
+    );*/
+
     // ===============================
-    // FETCH DELIVERY ITEMS (IsReturn = false)
+    // FETCH DELIVERY ITEMS
     // ===============================
     const deliveryItems = await clientAPI.read(
         '/LMD_MDKApp/Services/LMD_MA.service',
@@ -91,7 +110,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     );
 
     // ===============================
-    // FETCH RETURN ITEMS (IsReturn = true)
+    // FETCH RETURN ITEMS
     // ===============================
     const returnItems = await clientAPI.read(
         '/LMD_MDKApp/Services/LMD_MA.service',
@@ -104,15 +123,22 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     // FETCH UNPLANNED RETURN ITEMS
     // ===============================
     const unplannedReturnItems = await clientAPI.read(
-       '/LMD_MDKApp/Services/LMD_MA.service',
-       'DocumentItems',
-       [],
-       `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true and IsManuallyAdded eq true`,
-   );
+        '/LMD_MDKApp/Services/LMD_MA.service',
+        'DocumentItems',
+        [],
+        `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true and IsManuallyAdded eq true`
+    );
+
+    /*alert(
+        "Delivery Items Count: " + (deliveryItems ? deliveryItems.length : 0) +
+        "\nReturn Items Count: " + (returnItems ? returnItems.length : 0) +
+        "\nUnplanned Return Items Count: " + (unplannedReturnItems ? unplannedReturnItems.length : 0)
+    );*/
 
     let pendingCount = 0;
 
     if (!deliveryItems || deliveryItems.length === 0) {
+        alert("No delivery items found");
         return true;
     }
 
@@ -128,7 +154,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             const item = returnItems.getItem(i);
 
             const productID = item.ProductID;
-
             const qty = Number(item.DeliveredQuantity || 0);
 
             if (!returnMap[productID]) {
@@ -139,36 +164,38 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-        // ===============================
-        // ADD UNPLANNED RETURNS
-        // ===============================
+    // ===============================
+    // BUILD UNPLANNED RETURN MAP
+    // ===============================
     const unplannedReturnMap = {};
+
     if (unplannedReturnItems && unplannedReturnItems.length > 0) {
-    
+
         for (let i = 0; i < unplannedReturnItems.length; i++) {
-    
+
             const item = unplannedReturnItems.getItem(i);
-    
+
             const productID = item.ProductID;
-    
             const qty = Number(item.DeliveredQuantity || 0);
-    
+
             if (!unplannedReturnMap[productID]) {
                 unplannedReturnMap[productID] = 0;
             }
-            //alert("Unplanned Return - Product: " + productID + ", Qty: " + qty);
+
             unplannedReturnMap[productID] += qty;
         }
     }
-//alert("Return Map: " + JSON.stringify(returnMap) + "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap));
+
+    /*alert(
+        "Return Map: " + JSON.stringify(returnMap) +
+        "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
+    );*/    
+
     // ===============================
-    // DELIVERY MAP
+    // DELIVERY MAP - YOUR OLD LOGIC
     // ===============================
     const productMap = {};
 
-    // ===============================
-    // LOOP DELIVERY ITEMS
-    // ===============================
     for (let i = 0; i < deliveryItems.length; i++) {
 
         const item = deliveryItems.getItem(i);
@@ -199,24 +226,34 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             }
         }
     }
+
+    // ===============================
+    // ADD UNPLANNED RETURN-ONLY PRODUCTS
+    // ===============================
     if (unplannedReturnItems && unplannedReturnItems.length > 0) {
+
         for (let i = 0; i < unplannedReturnItems.length; i++) {
-        const item = unplannedReturnItems.getItem(i);
-        const productKey = item.ProductID + "::" + item.OrderedUOM;
-        if (!productMap[productKey]) {
-            productMap[productKey] = {
-                ProductID: item.ProductID,
-                OrderedSum: 0,
-                DeliveredSum: 0,
-                OrderedUOM: item.OrderedUOM,
-                RouteUUID: item.RouteUUID,
-                StopUUIDs: [item.StopUUID]
-            };
+
+            const item = unplannedReturnItems.getItem(i);
+
+            const productKey = item.ProductID + "::" + item.OrderedUOM;
+
+            if (!productMap[productKey]) {
+
+                productMap[productKey] = {
+                    ProductID: item.ProductID,
+                    OrderedSum: 0,
+                    DeliveredSum: 0,
+                    OrderedUOM: item.OrderedUOM,
+                    RouteUUID: item.RouteUUID,
+                    StopUUIDs: [item.StopUUID]
+                };
+            }
         }
     }
-    }
-    
-        // ADD PLANNED RETURN-ONLY PRODUCTS
+
+    // ===============================
+    // ADD PLANNED RETURN-ONLY PRODUCTS
     // ===============================
     if (returnItems && returnItems.length > 0) {
 
@@ -240,6 +277,78 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
+    //alert("Product Map Count: " + Object.keys(productMap).length);
+
+    // ===============================
+    // READ RELOAD_CI COCI PRODUCTS
+    // This is the important correction
+    // We read unloaded qty from many possible fields
+    // ===============================
+    const reloadCIProductMapByProductID = {};
+    const reloadCIProductMapByKey = {};
+
+    if (reloadCIStopUUID) {
+
+        try {
+
+            const reloadCIProducts = await clientAPI.read(
+                '/LMD_MDKApp/Services/LMD_MA.service',
+                'COCIProducts',
+                [],
+                `$filter=StopUUID eq guid'${reloadCIStopUUID}'`
+            );
+
+            //alert("ReloadCI COCI Count: " + (reloadCIProducts ? reloadCIProducts.length : 0));
+
+            if (reloadCIProducts && reloadCIProducts.length > 0) {
+
+                for (let i = 0; i < reloadCIProducts.length; i++) {
+
+                    const reloadCIItem = reloadCIProducts.getItem(i);
+
+                    alert("ReloadCI Raw Item: " + JSON.stringify(reloadCIItem));
+
+                    const productID = reloadCIItem.ProductID;
+
+                    const uom =
+                        reloadCIItem.ActualUOM ||
+                        reloadCIItem.OrderedUOM ||
+                        reloadCIItem.UOM ||
+                        "";
+
+                    const qty =
+                        Number(reloadCIItem.UnloadedQuantity || 0) ||
+                        Number(reloadCIItem.ActualUnloadedQuantity || 0) ||
+                        Number(reloadCIItem.UnloadedQty || 0) ||
+                        Number(reloadCIItem.ActualQuantity || 0) ||
+                        Number(reloadCIItem.Quantity || 0) ||
+                        0;
+
+                    const productKey = productID + "::" + uom;
+
+                    if (!reloadCIProductMapByProductID[productID]) {
+                        reloadCIProductMapByProductID[productID] = 0;
+                    }
+
+                    reloadCIProductMapByProductID[productID] += qty;
+
+                    if (!reloadCIProductMapByKey[productKey]) {
+                        reloadCIProductMapByKey[productKey] = 0;
+                    }
+
+                    reloadCIProductMapByKey[productKey] += qty;
+                }
+            }
+
+        } catch (e) {
+            alert("Error reading RELOAD_CI COCIProducts: " + e);
+        }
+    }
+
+    /*alert(
+        "ReloadCI Product Map By ProductID: " + JSON.stringify(reloadCIProductMapByProductID) +
+        "\nReloadCI Product Map By Key: " + JSON.stringify(reloadCIProductMapByKey)
+    );*/
 
     // ===============================
     // CALCULATE FINAL ACTUAL
@@ -273,17 +382,13 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             }
         }
 
-        // ===============================
-        // ADD RETURN QTY
-        // ===============================
         const returnQty = returnMap[product.ProductID] || 0;
         const unplannedReturnQty = unplannedReturnMap[product.ProductID] || 0;
-        //alert("Product: " + product.ProductID + ", Return Qty: " + returnQty + ", Unplanned Return Qty: " + unplannedReturnQty);
 
         // ===============================
-        // FINAL FORMULA
+        // OLD FORMULA - SAME AS YOUR ORIGINAL
         // ===============================
-        const finalActual =
+        const oldFinalActual =
             checkoutActual +
             product.OrderedSum -
             product.DeliveredSum +
@@ -291,17 +396,19 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             unplannedReturnQty;
 
         // ===============================
-        // DEBUG ALERT
+        // GET RELOAD_CI UNLOADED QTY
+        // First try ProductID + UOM key
+        // If not found, try only ProductID
         // ===============================
-        //alert(
-        //    "Product: " + product.ProductID +
-        //    "\nCheckout: " + checkoutActual +
-        //    "\nOrdered: " + product.OrderedSum +
-        //    "\nDelivered: " + product.DeliveredSum +
-        //    "\nReturned: " + returnQty +
-         //   "\nUnplanned Return: " + unplannedReturnQty +
-           // "\n------------------" +
-           // "\nFinal: " + finalActual);
+        const reloadCIByKey = reloadCIProductMapByKey[key] || 0;
+        const reloadCIByProduct = reloadCIProductMapByProductID[product.ProductID] || 0;
+
+        const reloadCIActual = hasReloadRequest
+            ? (reloadCIByKey || reloadCIByProduct || 0)
+            : 0;
+
+        const finalActual = oldFinalActual - reloadCIActual;
+
 
         if (finalActual > 0) {
 
@@ -315,6 +422,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 RouteUUID: product.RouteUUID,
                 StopUUID: product.StopUUIDs.join(',')
             });
+
         }
     }
 

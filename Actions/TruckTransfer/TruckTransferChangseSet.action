@@ -1,0 +1,14 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "TruckTransferChangseSet"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/TruckTransfer/RouteStartDateTimeUpdate_OnTransfer.action",
+		"/LMD_MDKApp/Actions/TruckTransfer/UpdateStopDateTime.action",
+		"/LMD_MDKApp/Actions/TruckTransfer/DocumentUpdate_OnTransfer.action"
+	]
+}

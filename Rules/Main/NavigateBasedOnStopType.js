@@ -19,4 +19,7 @@ export default function NavigateBasedOnStopType(context) {
     }else if (stopType === 'RELOAD_CO') {
         return context.executeAction('/LMD_MDKApp/Actions/ReloadCheckout/NavToReloadCheckout.action');
     }
+    else if (stopType === 'RELOAD_CI') {
+        return context.executeAction('/LMD_MDKApp/Actions/Reload_CheckIn/NavToReloadCheckIn.action');
+    }
 }

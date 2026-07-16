@@ -1,0 +1,18 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "DocumentUpdate_OnTransfer"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Failure.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Documents",
+		"ReadLink": "/LMD_MDKApp/Rules/TruckTransfer/DocumentReadLink_OnTransfer.js"
+	},
+	"Properties": {
+		"TransferType": "I"
+	},
+	"Headers": {
+		"OfflineOdata.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

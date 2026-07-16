@@ -9,6 +9,7 @@
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},
 	"Actions": [
-		"/LMD_MDKApp/Actions/StartCheckin/COCIProduct_Create_from_Stops.action"
+		"/LMD_MDKApp/Actions/StartCheckin/COCIProduct_Create_from_Stops.action",
+		"/LMD_MDKApp/Actions/Reload_CheckIn/COCIProduct_Create_from_Stops.action"
 	]
 }

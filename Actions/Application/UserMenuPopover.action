@@ -42,6 +42,23 @@
 			"OnPress": "/LMD_MDKApp/Actions/Application/Logout.action",
 			"Title": "Logout",
 			"Visible": "/LMD_MDKApp/Rules/Application/ClientIsMultiUserMode.js"
+		},
+		{
+			"Title": "Transfer",
+			"Icon": "sap-icon://forward",
+			"OnPress": "/LMD_MDKApp/Actions/TruckTransfer/RouteStartDateTimeUpdate_OnTransfer.action",
+			"Visible": true,
+			"Enabled": true,
+			"Styles.Title": "",
+			"Styles.Icon": ""
+		},
+		{
+			"Title": "Receive",
+			"Icon": "sap-icon://inbox",
+			"Visible": true,
+			"Enabled": true,
+			"Styles.Title": "",
+			"Styles.Icon": ""
 		}
 	]
 }

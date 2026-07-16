@@ -1,0 +1,30 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "COCIProduct_Create_from_Stops"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ActualandUnloadedUpdationMessage.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/ReloadCheckIn/ValidateUnloadedQuantity.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "COCIProducts"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/Checkin/CheckinTruckLoad/Edit_Item/GetCOCIStopReadLink.js"
+		},
+		"Property": "to_COCIProducts"
+	},
+	"Properties": {
+		"ActualQuantity": "{ActualQuantity}",
+		"ProductID": "{ProductID}",
+		"ActualUOM": "{ActualUOM}",
+		"IsManuallyAdded": true,
+		"UnloadedQuantity": "{UnloadedQuantity}"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "#Property:RouteUUID"
+	}
+}

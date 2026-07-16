@@ -3,6 +3,7 @@
 	"ActionResult": {
 		"_Name": "BankDepositChangeset"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/TruckTransfer/TruckTransferChangseSet.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},

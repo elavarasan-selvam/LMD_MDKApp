@@ -1,0 +1,20 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "UpdateStopDateTime"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/Main/Stops/UpdateStopsChangesetFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/TruckTransfer/GetDocument_OnTransfer.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Stops",
+		"ReadLink": "/LMD_MDKApp/Rules/TruckTransfer/StopsReadLink_OnTransfer.js"
+	},
+	"Properties": {
+		"EndDateTime": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/GetLastChangeTimeStampcheckin.js",
+		"StartDateTime": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/GetLastChangeTimeStampcheckin.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

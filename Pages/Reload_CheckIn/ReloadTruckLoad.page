@@ -17,8 +17,8 @@
 						"ControlSeparator": true
 					},
 					"_Type": "Section.Type.ObjectCollection",
-					"Target": "/LMD_MDKApp/Rules/Reload_CheckOut/ReloadCheckOutStopItems.js",
-					"_Name": "SectionObjectCollection4",
+					"Target": "/LMD_MDKApp/Rules/ReloadCheckIn/GetUploadProducts.js",
+					"_Name": "SectionObjectCollection3",
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -29,15 +29,13 @@
 					},
 					"ObjectCell": {
 						"Title": "/LMD_MDKApp/Rules/Checkout/TruckLoad/GetProductDescription.js",
-						"Subhead": "{ProductID}",
-						"Footnote": "DocIds: {DocumentIDs}",
-						"Description": "Documents: {DocumentCount}",
+						"Subhead": "{ProductID}                           ",
+						"Footnote": "Unloaded : {UnloadedQuantity}   {ActualUOM}",
 						"DisplayDescriptionInMobile": true,
-						"SubstatusText": "{OrderedQuantity}   {OrderedUOM}",
+						"SubstatusText": "Actual : {ActualQuantity}   {ActualUOM}",
 						"AccessoryType": "None",
 						"PreserveIconStackSpacing": true,
-						"ProgressIndicator": "InProgress",
-						"OnPress": "/LMD_MDKApp/Actions/ReloadCheckout/NavToReloadCheckOutEditItem.action",
+						"OnPress": "/LMD_MDKApp/Actions/Reload_CheckIn/Nav_ReloadEditItem.action",
 						"ContextMenu": {
 							"PerformFirstActionWithFullSwipe": true
 						},
@@ -63,14 +61,27 @@
 		}
 	],
 	"_Type": "Page",
-	"_Name": "TruckLoad",
-	"OnLoaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/PreloadProductDescriptionTruckLoad.js",
-	"OnUnloaded": "/LMD_MDKApp/Rules/Checkout/TruckLoad/ResetTruckLoadFlags.js",
+	"_Name": "ReloadTruckLoad",
+	"OnLoaded": "/LMD_MDKApp/Rules/ReloadCheckIn/InitializeReloadCheckIn.js",
+	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
 	"ActionBar": {
-		"Items": [],
-		"_Name": "ActionBar35",
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Width": 18,
+				"Icon": "sap-icon://arrow-left",
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			}
+		],
+		"_Name": "ActionBar21",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Reload Truck Load"
+		"Caption": "Truck Load"
 	},
 	"FioriToolbar": {
 		"_Type": "Control.Type.FioriToolbar",
@@ -80,8 +91,8 @@
 				"_Type": "FioriToolbarItem.Type.Button",
 				"_Name": "ToolbarItem0",
 				"Visible": true,
-				"Title": "Confirm Reload Truck Load",
-				"OnPress": "/LMD_MDKApp/Rules/ReloadCheckIn/bumpCompletedAtcheckout.js",
+				"Title": "Confirm Truck Load",
+				"OnPress": "/LMD_MDKApp/Rules/KPI/bumpCompletedAtcheckout.js",
 				"Enabled": true,
 				"ButtonType": "Primary",
 				"Semantic": "Normal",

@@ -1,0 +1,18 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "UpdateRouteEndDateTime"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/TruckTransfer/TruckTransferChangseSet.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Routes",
+		"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetRouteReadLink.js"
+	},
+	"Properties": {
+		"EndDateTime": "/LMD_MDKApp/Rules/Checkin/CheckinTruckInfo/GetLastChangeTimeStampcheckin.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}
