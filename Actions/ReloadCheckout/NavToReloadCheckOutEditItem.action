@@ -3,5 +3,6 @@
 	"ActionResult": {
 		"_Name": "NavToReloadCheckOutEditItem"
 	},
+	"OnSuccess": "/LMD_MDKApp/Rules/Reload_CheckOut/ReloadStoreBindingforEditItemPage_Checkout.js",
 	"PageToOpen": "/LMD_MDKApp/Pages/ReloadCheckout/ReloadCheckOutEditItem.page"
 }

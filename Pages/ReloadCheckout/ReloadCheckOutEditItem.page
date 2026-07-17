@@ -38,10 +38,6 @@
 					}
 				},
 				{
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -49,8 +45,6 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell0",
 					"Controls": [
 						{
 							"Value": "/LMD_MDKApp/Rules/Reload_CheckOut/ReLoaded_Valuecard.js",
@@ -60,6 +54,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Loaded : ",
+							"OnValueChange": "/LMD_MDKApp/Rules/Reload_CheckOut/ReloadSetReasonFlag.js",
 							"KeyboardType": "Number",
 							"AlternateInput": "None",
 							"Enabled": true,
@@ -68,13 +63,20 @@
 					],
 					"Layout": {
 						"NumberOfColumns": 1
-					}
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
 				}
 			]
 		}
 	],
 	"_Type": "Page",
 	"_Name": "ReloadCheckOutEditItem",
+	"OnLoaded": "/LMD_MDKApp/Rules/Reload_CheckOut/ReloadStoreBindingforEditItemPage_Checkout.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -85,7 +87,8 @@
 				"Icon": "sap-icon://save",
 				"Position": "Right",
 				"IsIconCircular": false,
-				"Visible": true
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Rules/Reload_CheckOut/ReloadCheckFlagsbeforeSave.js"
 			}
 		],
 		"_Name": "ActionBar2",

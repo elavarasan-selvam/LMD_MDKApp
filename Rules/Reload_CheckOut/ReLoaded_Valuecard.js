@@ -9,9 +9,9 @@ export default async function ReLoaded_Valuecard(clientAPI) {
         return '0';
     }
 
-    const productID = binding.ProductID;
-    const orderedQty = Number(binding.OrderedQuantity) || 0;
-    const routeUUID = binding.RouteUUID;
+    const reproductID = binding.ProductID;
+    const reorderedQty = Number(binding.OrderedQuantity) || 0;
+    const rerouteUUID = binding.RouteUUID;
 
     try {
         // 1. Read CHECKOUT Stop for this Route
@@ -19,34 +19,34 @@ export default async function ReLoaded_Valuecard(clientAPI) {
             '/LMD_MDKApp/Services/LMD_MA.service',
             'Stops',
             [],
-            "$filter=RouteUUID eq guid'" + routeUUID + "' and StopType eq 'RELOAD_CO'"
+            "$filter=RouteUUID eq guid'" + rerouteUUID + "' and StopType eq 'RELOAD_CO'"
         );
 
         if (stopResult && stopResult.length > 0) {
-            const checkoutStop = stopResult.getItem ? stopResult.getItem(0) : stopResult[0];
-            const checkoutStopUUID = checkoutStop.StopUUID;
+            const recheckoutStop = stopResult.getItem ? stopResult.getItem(0) : stopResult[0];
+            const recheckoutStopUUID = recheckoutStop.StopUUID;
 
             // 2. Read COCIProducts using CHECKOUT StopUUID
-            const cociResult = await clientAPI.read(
+            const recociResult = await clientAPI.read(
                 '/LMD_MDKApp/Services/LMD_MA.service',
                 'COCIProducts',
                 [],
-                "$filter=ProductID eq '" + productID + "' and StopUUID eq guid'" + checkoutStopUUID + "'"
+                "$filter=ProductID eq '" + reproductID + "' and StopUUID eq guid'" + recheckoutStopUUID + "'"
             );
 
-            if (cociResult && cociResult.length > 0) {
-                const cociProduct = cociResult.getItem ? cociResult.getItem(0) : cociResult[0];
+            if (recociResult && recociResult.length > 0) {
+                const recociProduct = recociResult.getItem ? recociResult.getItem(0) : recociResult[0];
 
-                if (cociProduct.ActualQuantity !== null && cociProduct.ActualQuantity !== undefined) {
-                    return String(Number(cociProduct.ActualQuantity) + orderedQty);
+                if (recociProduct.ActualQuantity !== null && recociProduct.ActualQuantity !== undefined) {
+                    return String(Number(recociProduct.ActualQuantity) + reorderedQty);
                 }
             }
         }
 
-        return String(orderedQty);
+        return String(reorderedQty);
 
     } catch (e) {
-        return String(orderedQty);
+        return String(reorderedQty);
     }
 }
 
