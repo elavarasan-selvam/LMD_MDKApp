@@ -7,6 +7,227 @@ export default async function InitializeReloadCheckIn(clientAPI) {
     const binding = clientAPI.getPageProxy().binding;
 
     // ===============================
+    // HELPER: SAFE NUMBER
+    // ===============================
+    function getSafeNumber(value) {
+        if (value === undefined || value === null || value === '') {
+            return 0;
+        }
+
+        return Number(value) || 0;
+    }
+
+    // ===============================
+    // HELPER: READ RESULT ITEM SAFELY
+    // ===============================
+    function getReadItem(result, index) {
+        if (result && typeof result.getItem === 'function') {
+            return result.getItem(index);
+        }
+
+        return result[index];
+    }
+
+    // ===============================
+    // HELPER:
+    // GET CHECKOUT PRODUCTS WHICH ARE STILL NOT FULLY DELIVERED
+    //
+    // This follows your Checkout_Stop_Items_List logic:
+    // 1. Get ReloadRequest for route
+    // 2. Get ReloadRequestDelivery documents
+    // 3. Get checkout DocumentItems for route
+    // 4. Exclude documents already present in ReloadRequestDelivery
+    // 5. Aggregate checkout ordered qty
+    // 6. Subtract delivered qty before RELOAD_CI
+    // 7. Return only products where pending qty > 0
+    // ===============================
+    async function getCheckoutPendingProductsAfterDeliveredCheck(context, routeUUID, reloadVisitStopMap) {
+
+        try {
+
+            if (!routeUUID) {
+                return [];
+            }
+
+            //====================================================
+            // FETCH RELOAD REQUESTS FOR ROUTE
+            // Same as Checkout_Stop_Items_List
+            //====================================================
+            const reloadRequests = await context.read(
+                "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
+                "ReloadRequest",
+                [],
+                `$filter=LastMileRouteUUID eq ${routeUUID}`
+            );
+
+            const reloadUUIDs = [];
+
+            if (reloadRequests && reloadRequests.length > 0) {
+
+                for (let i = 0; i < reloadRequests.length; i++) {
+
+                    const item = getReadItem(reloadRequests, i);
+
+                    if (item && item.LastMileReloadRequestUUID) {
+                        reloadUUIDs.push(item.LastMileReloadRequestUUID);
+                    }
+                }
+            }
+
+            //====================================================
+            // FETCH RELOAD REQUEST DELIVERY DOCUMENTS
+            //====================================================
+            const reloadDeliveryDocuments = [];
+
+            if (reloadUUIDs.length > 0) {
+
+                for (let i = 0; i < reloadUUIDs.length; i++) {
+
+                    const reloadDeliveries = await context.read(
+                        "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
+                        "ReloadRequestDelivery",
+                        [],
+                        `$filter=LastMileReloadRequestUUID eq ${reloadUUIDs[i]}`
+                    );
+
+                    if (reloadDeliveries && reloadDeliveries.length > 0) {
+
+                        for (let j = 0; j < reloadDeliveries.length; j++) {
+
+                            const item = getReadItem(reloadDeliveries, j);
+
+                            if (item && item.DeliveryDocument) {
+                                reloadDeliveryDocuments.push(item.DeliveryDocument);
+                            }
+                        }
+                    }
+                }
+            }
+
+            const uniqueReloadDeliveryDocs = [...new Set(reloadDeliveryDocuments)];
+
+            //====================================================
+            // FETCH CHECKOUT DOCUMENT ITEMS
+            //====================================================
+            const documentItems = await context.read(
+                "/LMD_MDKApp/Services/LMD_MA.service",
+                "DocumentItems",
+                [],
+                `$filter=IsReturn eq false and RouteUUID eq guid'${routeUUID}'`
+            );
+
+            //====================================================
+            // CHECKOUT PRODUCT MAP
+            // Only items whose DocumentID is NOT in ReloadRequestDelivery
+            //====================================================
+            const checkoutProductMap = {};
+
+            if (documentItems && documentItems.length > 0) {
+
+                for (let i = 0; i < documentItems.length; i++) {
+
+                    const item = getReadItem(documentItems, i);
+
+                    if (!item) {
+                        continue;
+                    }
+
+                    // Same filter from your Checkout_Stop_Items_List
+                    if (uniqueReloadDeliveryDocs.includes(item.DocumentID)) {
+                        continue;
+                    }
+
+                    const productID = item.ProductID || "";
+                    const orderedUOM = item.OrderedUOM || "";
+                    const productKey = productID + "::" + orderedUOM;
+
+                    if (!productID) {
+                        continue;
+                    }
+
+                    const orderedQty = getSafeNumber(item.OrderedQuantity);
+                    const deliveredQty = getSafeNumber(item.DeliveredQuantity);
+
+                    if (!checkoutProductMap[productKey]) {
+
+                        checkoutProductMap[productKey] = {
+                            ProductID: productID,
+                            OrderedQuantity: orderedQty,
+                            DeliveredBeforeReloadCI: 0,
+                            OrderedUOM: orderedUOM,
+                            RouteUUID: item.RouteUUID || routeUUID,
+                            StopUUIDs: item.StopUUID ? [item.StopUUID] : [],
+                            DocumentIDs: item.DocumentID ? [item.DocumentID] : [],
+                            DocumentItemIDs: item.DocumentItemID ? [item.DocumentItemID] : []
+                        };
+
+                    } else {
+
+                        checkoutProductMap[productKey].OrderedQuantity += orderedQty;
+
+                        if (item.StopUUID &&
+                            !checkoutProductMap[productKey].StopUUIDs.includes(item.StopUUID)) {
+                            checkoutProductMap[productKey].StopUUIDs.push(item.StopUUID);
+                        }
+
+                        if (item.DocumentID &&
+                            !checkoutProductMap[productKey].DocumentIDs.includes(item.DocumentID)) {
+                            checkoutProductMap[productKey].DocumentIDs.push(item.DocumentID);
+                        }
+
+                        if (item.DocumentItemID &&
+                            !checkoutProductMap[productKey].DocumentItemIDs.includes(item.DocumentItemID)) {
+                            checkoutProductMap[productKey].DocumentItemIDs.push(item.DocumentItemID);
+                        }
+                    }
+
+                    // Delivered qty only from completed visits before RELOAD_CI
+                    if (reloadVisitStopMap[item.StopUUID]) {
+                        checkoutProductMap[productKey].DeliveredBeforeReloadCI += deliveredQty;
+                    }
+                }
+            }
+
+            //====================================================
+            // RETURN ONLY NOT FULLY DELIVERED PRODUCTS
+            // Pending = Ordered - DeliveredBeforeReloadCI
+            // If pending <= 0, product is already delivered, so do not add
+            //====================================================
+            const pendingCheckoutProducts = [];
+
+            for (const key in checkoutProductMap) {
+
+                const product = checkoutProductMap[key];
+
+                const pendingQty =
+                    getSafeNumber(product.OrderedQuantity) -
+                    getSafeNumber(product.DeliveredBeforeReloadCI);
+
+                if (pendingQty > 0) {
+
+                    pendingCheckoutProducts.push({
+                        ProductID: product.ProductID,
+                        PendingQuantity: pendingQty,
+                        OrderedQuantity: product.OrderedQuantity,
+                        DeliveredBeforeReloadCI: product.DeliveredBeforeReloadCI,
+                        OrderedUOM: product.OrderedUOM,
+                        RouteUUID: product.RouteUUID || routeUUID,
+                        StopUUIDs: product.StopUUIDs,
+                        DocumentIDs: product.DocumentIDs,
+                        DocumentItemIDs: product.DocumentItemIDs
+                    });
+                }
+            }
+
+            return pendingCheckoutProducts;
+
+        } catch (e) {
+            // alert("Error in getCheckoutPendingProductsAfterDeliveredCheck: " + e);
+            return [];
+        }
+    }
+
+    // ===============================
     // SET CURRENT STOP
     // ===============================
     if (binding && binding.StopUUID) {
@@ -343,6 +564,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     // ===============================
     // CALCULATE RELOAD FINAL ACTUAL
+    // Your existing logic is untouched
     // ===============================
     for (const key in reloadProductMap) {
 
@@ -415,11 +637,101 @@ export default async function InitializeReloadCheckIn(clientAPI) {
         }
     }
 
+    // ============================================================
+    // ADDITIONAL FEATURE ONLY
+    //
+    // Existing above logic already completed.
+    // Now get checkout products.
+    // If product is not fully delivered before RELOAD_CI,
+    // and if product is not already in ReloadPendingProductList,
+    // add remaining qty to ReloadPendingProductList.
+    //
+    // Fully delivered products will NOT be added.
+    // ============================================================
+    const checkoutPendingProducts =
+        await getCheckoutPendingProductsAfterDeliveredCheck(
+            clientAPI,
+            routeUUID,
+            reloadVisitStopMap
+        );
+
+    if (checkoutPendingProducts && checkoutPendingProducts.length > 0) {
+
+        for (let i = 0; i < checkoutPendingProducts.length; i++) {
+
+            const checkoutProduct = checkoutPendingProducts[i];
+
+            const checkoutProductID = checkoutProduct.ProductID || "";
+            const checkoutUOM = checkoutProduct.OrderedUOM || "";
+            const checkoutPendingQty = getSafeNumber(checkoutProduct.PendingQuantity);
+
+            if (!checkoutProductID) {
+                continue;
+            }
+
+            if (checkoutPendingQty <= 0) {
+                continue;
+            }
+
+            // Compare product with already prepared ReloadPendingProductList
+            // If already present, do not add duplicate
+            const alreadyExistsInPendingList =
+                appData.ReloadPendingProductList.some(item => {
+                    return (item.ProductID || "") === checkoutProductID &&
+                           (item.ActualUOM || "") === checkoutUOM;
+                });
+
+            if (alreadyExistsInPendingList) {
+                continue;
+            }
+
+            reloadPendingCount++;
+
+            appData.ReloadPendingProductList.push({
+                ProductID: checkoutProductID,
+                ActualQuantity: checkoutPendingQty,
+                UnloadedQuantity: 0,
+                ActualUOM: checkoutUOM,
+                RouteUUID: checkoutProduct.RouteUUID || routeUUID,
+                StopUUID: checkoutProduct.StopUUIDs && checkoutProduct.StopUUIDs.length > 0
+                    ? checkoutProduct.StopUUIDs.join(',')
+                    : '',
+                IsCheckoutPendingProduct: true,
+                OrderedQuantity: checkoutProduct.OrderedQuantity,
+                DeliveredBeforeReloadCI: checkoutProduct.DeliveredBeforeReloadCI,
+                DocumentIDs: checkoutProduct.DocumentIDs
+                    ? checkoutProduct.DocumentIDs.join(',')
+                    : '',
+                DocumentItemIDs: checkoutProduct.DocumentItemIDs
+                    ? checkoutProduct.DocumentItemIDs.join(',')
+                    : ''
+            });
+
+            /*
+            alert(
+                "Added Checkout Pending Product" +
+                "\nProduct: " + checkoutProductID +
+                "\nOrdered: " + checkoutProduct.OrderedQuantity +
+                "\nDelivered Before Reload CI: " + checkoutProduct.DeliveredBeforeReloadCI +
+                "\nPending: " + checkoutPendingQty +
+                "\nUOM: " + checkoutUOM
+            );
+            */
+        }
+    }
+
     // ===============================
     // FINALIZE
     // ===============================
     appData.StartButton = (reloadPendingCount > 0);
     appData.ReloadPendingCount = reloadPendingCount;
+
+    /*
+    alert(
+        "Final Reload Pending Count: " + reloadPendingCount +
+        "\nFinal List Count: " + appData.ReloadPendingProductList.length
+    );
+    */
 
     clientAPI.getPageProxy().redraw();
 

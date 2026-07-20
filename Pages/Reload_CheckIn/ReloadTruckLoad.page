@@ -81,7 +81,7 @@
 		],
 		"_Name": "ActionBar21",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Truck Load"
+		"Caption": "Reload Truck Load"
 	},
 	"FioriToolbar": {
 		"_Type": "Control.Type.FioriToolbar",
@@ -91,7 +91,7 @@
 				"_Type": "FioriToolbarItem.Type.Button",
 				"_Name": "ToolbarItem0",
 				"Visible": true,
-				"Title": "Confirm Truck Load",
+				"Title": "Confirm Reload CheckIn",
 				"OnPress": "/LMD_MDKApp/Rules/KPI/bumpCompletedAtcheckout.js",
 				"Enabled": true,
 				"ButtonType": "Primary",

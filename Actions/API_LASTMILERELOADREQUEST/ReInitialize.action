@@ -1,0 +1,25 @@
+{
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": {
+		"_Name": "ReInitialize"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/LMD_MA/Service/DownloadStartedMessage.action",
+	"Service": "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
+	"DefiningRequests": [
+		{
+			"Name": "ReloadRequest",
+			"Query": "ReloadRequest",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "ReloadRequestDelivery",
+			"Query": "ReloadRequestDelivery",
+			"AutomaticallyRetrievesStreams": false
+		},
+		{
+			"Name": "ReloadRequestItem",
+			"Query": "ReloadRequestItem",
+			"AutomaticallyRetrievesStreams": false
+		}
+	]
+}

@@ -59,6 +59,17 @@
 			"Enabled": true,
 			"Styles.Title": "",
 			"Styles.Icon": ""
+		},
+		{
+			"Title": "Download Data ",
+			"Icon": "sap-icon://download",
+			"Styles": {
+				"Title": "",
+				"Icon": ""
+			},
+			"OnPress": "/LMD_MDKApp/Actions/API_LASTMILERELOADREQUEST/ReInitialize.action",
+			"Visible": true,
+			"Enabled": true
 		}
 	]
 }

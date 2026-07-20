@@ -17,15 +17,15 @@ export default function ValidateUnloadedQuantity(clientAPI) {
     unloadedValue = unloadedValue !== '' ? Number(unloadedValue) : NaN;
 
     // Validation: empty or zero
-    if (!unloadedValue) {
+    /*if (!unloadedValue) {
         unloadedControl.setValidationProperty("ValidationMessage",
             "Unloaded quantity is required and must be greater than 0.");
         unloadedControl.setValidationProperty("ValidationViewIsHidden", false);
         unloadedControl.redraw(); // safe: redraw only the control
         return false;
-    }
+    }*/
     // Validation: negative
-    else if (unloadedValue < 0) {
+    if (unloadedValue < 0) {
         unloadedControl.setValidationProperty("ValidationMessage",
             "Unloaded quantity cannot be negative.");
         unloadedControl.setValidationProperty("ValidationViewIsHidden", false);
