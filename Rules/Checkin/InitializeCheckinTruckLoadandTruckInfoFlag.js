@@ -2,6 +2,8 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     const appData = clientAPI.getAppClientData();
 
+    const ENABLE_DEBUG_ALERTS = true;
+
     if (!appData.CheckinTruckLoadConfirmedByStop) {
         appData.CheckinTruckLoadConfirmedByStop = {};
     }
@@ -56,6 +58,48 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     }
 
     // ===============================
+    // HELPER: NORMALIZE TEXT
+    // ===============================
+    function normalizeText(value) {
+        if (value === undefined || value === null) {
+            return "";
+        }
+
+        return String(value).trim().toUpperCase();
+    }
+
+    // ===============================
+    // HELPER: GET PRODUCT ID SAFELY
+    // ===============================
+    function getItemProductID(item) {
+        if (!item) {
+            return "";
+        }
+
+        return (
+            item.ProductID ||
+            item.ProductId ||
+            item.ProductNo ||
+            item.ProductNumber ||
+            item.Material ||
+            item.MaterialNumber ||
+            item.ItemProductID ||
+            ""
+        );
+    }
+
+    // ===============================
+    // HELPER: NORMALIZED PRODUCT ID
+    // ===============================
+    function getNormalizedProductID(itemOrProductID) {
+        if (typeof itemOrProductID === "object") {
+            return normalizeText(getItemProductID(itemOrProductID));
+        }
+
+        return normalizeText(itemOrProductID);
+    }
+
+    // ===============================
     // HELPER: GET UOM
     // ===============================
     function getItemUOM(item) {
@@ -69,10 +113,14 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
     }
 
     // ===============================
+    // HELPER: MAKE PRODUCT KEY
+    // ===============================
+    function makeProductKey(productID, uom) {
+        return normalizeText(productID) + "::" + normalizeText(uom || "");
+    }
+
+    // ===============================
     // HELPER: RELOAD CI ACTUAL QTY
-    //
-    // This is the actual qty created in RELOAD_CI COCIProducts.
-    // Example: ReloadCI ActualQuantity = 25
     // ===============================
     function getReloadCIActualQuantity(item) {
         return (
@@ -86,10 +134,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // HELPER: RELOAD CI UNLOADED QTY
-    //
-    // User unloads some qty at RELOAD_CI.
-    // Final check-in should carry only remaining.
-    // Remaining = ActualQuantity - UnloadedQuantity
     // ===============================
     function getReloadCIUnloadedQuantity(item) {
         return (
@@ -103,8 +147,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // HELPER: RELOAD CO REGISTERED / LOADED QTY
-    //
-    // This is reload checkout / reload request loaded qty.
     // ===============================
     function getReloadCOActualQuantity(item) {
         return (
@@ -112,6 +154,20 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             getSafeNumber(item.LoadedQuantity) ||
             getSafeNumber(item.ActualLoadedQuantity) ||
             getSafeNumber(item.LoadedQty) ||
+            getSafeNumber(item.OrderedQuantityInput) ||
+            getSafeNumber(item.OrderedQuantity) ||
+            getSafeNumber(item.Quantity) ||
+            0
+        );
+    }
+
+    // ===============================
+    // HELPER: CHECKOUT ACTUAL QTY
+    // Used only for no reload flow
+    // ===============================
+    function getCheckoutActualQuantity(item) {
+        return (
+            getSafeNumber(item.ActualQuantity) ||
             getSafeNumber(item.OrderedQuantityInput) ||
             getSafeNumber(item.OrderedQuantity) ||
             getSafeNumber(item.Quantity) ||
@@ -128,17 +184,19 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             return;
         }
 
-        const productKey = productID + "::" + (uom || "");
+        const productKey = makeProductKey(productID, uom);
 
         if (!productMap[productKey]) {
 
             productMap[productKey] = {
                 ProductID: productID,
+                NormalizedProductID: normalizeText(productID),
                 OrderedSum: 0,
                 DeliveredSum: 0,
                 OrderedUOM: uom || "",
                 RouteUUID: routeUUID,
-                StopUUIDs: stopUUID ? [stopUUID] : []
+                StopUUIDs: stopUUID ? [stopUUID] : [],
+                HasAfterReloadDelivery: false
             };
 
         } else {
@@ -147,6 +205,49 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 productMap[productKey].StopUUIDs.push(stopUUID);
             }
         }
+    }
+
+    // ===============================
+    // HELPER: ADD QTY TO MAPS
+    // ===============================
+    function addQtyToMaps(mapByProductID, mapByKey, productID, uom, qty) {
+
+        const normalizedProductID = normalizeText(productID);
+        const productKey = makeProductKey(productID, uom);
+
+        if (!normalizedProductID) {
+            return;
+        }
+
+        if (!mapByProductID[normalizedProductID]) {
+            mapByProductID[normalizedProductID] = 0;
+        }
+
+        mapByProductID[normalizedProductID] += getSafeNumber(qty);
+
+        if (!mapByKey[productKey]) {
+            mapByKey[productKey] = 0;
+        }
+
+        mapByKey[productKey] += getSafeNumber(qty);
+    }
+
+    // ===============================
+    // HELPER: ADD RETURN QTY
+    // ===============================
+    function addReturnQty(map, productID, qty) {
+
+        const normalizedProductID = normalizeText(productID);
+
+        if (!normalizedProductID) {
+            return;
+        }
+
+        if (!map[normalizedProductID]) {
+            map[normalizedProductID] = 0;
+        }
+
+        map[normalizedProductID] += getSafeNumber(qty);
     }
 
     // ===============================
@@ -240,13 +341,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // AFTER RELOAD VISIT STOPS
-    //
-    // Primary:
-    //      completed VISIT stops after RELOAD_CO
-    //
-    // Fallback:
-    //      if RELOAD_CO sequence not available,
-    //      use completed VISIT stops after RELOAD_CI
     // ===============================
     const afterReloadCOVisitStopMap = {};
     const afterReloadCIVisitStopMap = {};
@@ -286,19 +380,19 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             ? afterReloadCOVisitStopMap
             : afterReloadCIVisitStopMap;
 
-    /*
-    alert(
-        "FINAL CHECKIN STARTED" +
-        "\nRouteUUID: " + routeUUID +
-        "\nCheckout StopUUID: " + checkoutStopUUID +
-        "\nReload CI StopUUID: " + reloadCIStopUUID +
-        "\nReload CO StopUUID: " + reloadCOStopUUID +
-        "\nHas Reload: " + hasReloadRequest +
-        "\nReload CI Sequence: " + reloadCISequence +
-        "\nReload CO Sequence: " + reloadCOSequence +
-        "\nAfter Reload Visits Used: " + Object.keys(afterReloadVisitStopMap).join(',')
-    );
-    */
+    if (ENABLE_DEBUG_ALERTS) {
+        alert(
+            "FINAL CHECKIN STARTED" +
+            "\nRouteUUID: " + routeUUID +
+            "\nCheckout StopUUID: " + checkoutStopUUID +
+            "\nReload CI StopUUID: " + reloadCIStopUUID +
+            "\nReload CO StopUUID: " + reloadCOStopUUID +
+            "\nHas Reload: " + hasReloadRequest +
+            "\nReload CI Sequence: " + reloadCISequence +
+            "\nReload CO Sequence: " + reloadCOSequence +
+            "\nAfter Reload Visits Used: " + Object.keys(afterReloadVisitStopMap).join(',')
+        );
+    }
 
     // ===============================
     // FETCH DELIVERY ITEMS
@@ -339,12 +433,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // BUILD RETURN MAP
-    //
-    // NO RELOAD:
-    //      old logic - all returns
-    //
-    // RELOAD:
-    //      only returns after reload
     // ===============================
     const returnMap = {};
 
@@ -362,29 +450,15 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 continue;
             }
 
-            const productID = item.ProductID;
+            const productID = getItemProductID(item);
             const qty = getSafeNumber(item.DeliveredQuantity);
 
-            if (!productID) {
-                continue;
-            }
-
-            if (!returnMap[productID]) {
-                returnMap[productID] = 0;
-            }
-
-            returnMap[productID] += qty;
+            addReturnQty(returnMap, productID, qty);
         }
     }
 
     // ===============================
     // BUILD UNPLANNED RETURN MAP
-    //
-    // NO RELOAD:
-    //      old logic - all unplanned returns
-    //
-    // RELOAD:
-    //      only unplanned returns after reload
     // ===============================
     const unplannedReturnMap = {};
 
@@ -402,40 +476,20 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 continue;
             }
 
-            const productID = item.ProductID;
+            const productID = getItemProductID(item);
             const qty = getSafeNumber(item.DeliveredQuantity);
 
-            if (!productID) {
-                continue;
-            }
-
-            if (!unplannedReturnMap[productID]) {
-                unplannedReturnMap[productID] = 0;
-            }
-
-            unplannedReturnMap[productID] += qty;
+            addReturnQty(unplannedReturnMap, productID, qty);
         }
     }
 
     // ===============================
     // PRODUCT MAP
-    //
-    // This map includes:
-    // 1. Delivery products after reload
-    // 2. Return-only products after reload
-    // 3. RELOAD_CI products
-    // 4. RELOAD_CO products
     // ===============================
     const productMap = {};
 
     // ===============================
     // DELIVERY MAP
-    //
-    // NO RELOAD:
-    //      old logic - all delivery items
-    //
-    // RELOAD:
-    //      only delivery items after reload
     // ===============================
     if (deliveryItems && deliveryItems.length > 0) {
 
@@ -451,9 +505,9 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 continue;
             }
 
-            const productID = item.ProductID || "";
+            const productID = getItemProductID(item);
             const orderedUOM = item.OrderedUOM || getItemUOM(item);
-            const productKey = productID + "::" + orderedUOM;
+            const productKey = makeProductKey(productID, orderedUOM);
 
             if (!productID) {
                 continue;
@@ -466,17 +520,22 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
                 productMap[productKey] = {
                     ProductID: productID,
+                    NormalizedProductID: normalizeText(productID),
                     OrderedSum: ordered,
                     DeliveredSum: delivered,
                     OrderedUOM: orderedUOM,
                     RouteUUID: item.RouteUUID || routeUUID,
-                    StopUUIDs: item.StopUUID ? [item.StopUUID] : []
+                    StopUUIDs: item.StopUUID ? [item.StopUUID] : [],
+                    HasAfterReloadDelivery: hasReloadRequest
                 };
 
             } else {
 
                 productMap[productKey].OrderedSum += ordered;
                 productMap[productKey].DeliveredSum += delivered;
+
+                productMap[productKey].HasAfterReloadDelivery =
+                    productMap[productKey].HasAfterReloadDelivery || hasReloadRequest;
 
                 if (item.StopUUID &&
                     !productMap[productKey].StopUUIDs.includes(item.StopUUID)) {
@@ -503,7 +562,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 continue;
             }
 
-            const productID = item.ProductID || "";
+            const productID = getItemProductID(item);
             const orderedUOM = item.OrderedUOM || getItemUOM(item);
 
             addProductToMap(
@@ -533,7 +592,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 continue;
             }
 
-            const productID = item.ProductID || "";
+            const productID = getItemProductID(item);
             const orderedUOM = item.OrderedUOM || getItemUOM(item);
 
             addProductToMap(
@@ -548,12 +607,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // READ RELOAD_CI COCI PRODUCTS
-    //
-    // IMPORTANT:
-    // This is main actual base for products recorded at Reload CheckIn.
-    //
-    // Remaining from Reload CI:
-    //      ActualQuantity - UnloadedQuantity
     // ===============================
     const reloadCIRemainingMapByProductID = {};
     const reloadCIRemainingMapByKey = {};
@@ -575,11 +628,16 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
                     const reloadCIItem = getReadItem(reloadCIProducts, i);
 
-                    if (!reloadCIItem || !reloadCIItem.ProductID) {
+                    if (!reloadCIItem) {
                         continue;
                     }
 
-                    const productID = reloadCIItem.ProductID;
+                    const productID = getItemProductID(reloadCIItem);
+
+                    if (!productID) {
+                        continue;
+                    }
+
                     const uom = getItemUOM(reloadCIItem);
 
                     const actualQty = getReloadCIActualQuantity(reloadCIItem);
@@ -591,22 +649,14 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                         remainingQty = 0;
                     }
 
-                    const productKey = productID + "::" + uom;
+                    addQtyToMaps(
+                        reloadCIRemainingMapByProductID,
+                        reloadCIRemainingMapByKey,
+                        productID,
+                        uom,
+                        remainingQty
+                    );
 
-                    if (!reloadCIRemainingMapByProductID[productID]) {
-                        reloadCIRemainingMapByProductID[productID] = 0;
-                    }
-
-                    reloadCIRemainingMapByProductID[productID] += remainingQty;
-
-                    if (!reloadCIRemainingMapByKey[productKey]) {
-                        reloadCIRemainingMapByKey[productKey] = 0;
-                    }
-
-                    reloadCIRemainingMapByKey[productKey] += remainingQty;
-
-                    // Add RELOAD_CI product also in productMap.
-                    // If no delivery/return after reload also, it should still calculate.
                     addProductToMap(
                         productMap,
                         productID,
@@ -624,10 +674,6 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
     // ===============================
     // READ RELOAD_CO COCI PRODUCTS
-    //
-    // IMPORTANT:
-    // These are registered / loaded products from reload checkout.
-    // For reload flow, this is used instead of old Checkout actual.
     // ===============================
     const reloadCOActualMapByProductID = {};
     const reloadCOActualMapByKey = {};
@@ -649,31 +695,27 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
                     const reloadCOItem = getReadItem(reloadCOProducts, i);
 
-                    if (!reloadCOItem || !reloadCOItem.ProductID) {
+                    if (!reloadCOItem) {
                         continue;
                     }
 
-                    const productID = reloadCOItem.ProductID;
-                    const uom = getItemUOM(reloadCOItem);
+                    const productID = getItemProductID(reloadCOItem);
 
+                    if (!productID) {
+                        continue;
+                    }
+
+                    const uom = getItemUOM(reloadCOItem);
                     const actualQty = getReloadCOActualQuantity(reloadCOItem);
 
-                    const productKey = productID + "::" + uom;
+                    addQtyToMaps(
+                        reloadCOActualMapByProductID,
+                        reloadCOActualMapByKey,
+                        productID,
+                        uom,
+                        actualQty
+                    );
 
-                    if (!reloadCOActualMapByProductID[productID]) {
-                        reloadCOActualMapByProductID[productID] = 0;
-                    }
-
-                    reloadCOActualMapByProductID[productID] += actualQty;
-
-                    if (!reloadCOActualMapByKey[productKey]) {
-                        reloadCOActualMapByKey[productKey] = 0;
-                    }
-
-                    reloadCOActualMapByKey[productKey] += actualQty;
-
-                    // Add RELOAD_CO product also in productMap.
-                    // This prevents only RELOAD_CI products coming.
                     addProductToMap(
                         productMap,
                         productID,
@@ -689,16 +731,16 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-    /*
-    alert(
-        "Before Final Calculation" +
-        "\nProductMap Count: " + Object.keys(productMap).length +
-        "\nReload CI Remaining By Product: " + JSON.stringify(reloadCIRemainingMapByProductID) +
-        "\nReload CO Actual By Product: " + JSON.stringify(reloadCOActualMapByProductID) +
-        "\nReturn Map: " + JSON.stringify(returnMap) +
-        "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
-    );
-    */
+    if (ENABLE_DEBUG_ALERTS) {
+        alert(
+            "Before Final Calculation" +
+            "\nProductMap Count: " + Object.keys(productMap).length +
+            "\nReload CI Remaining By Product: " + JSON.stringify(reloadCIRemainingMapByProductID) +
+            "\nReload CO Actual By Product: " + JSON.stringify(reloadCOActualMapByProductID) +
+            "\nReturn Map: " + JSON.stringify(returnMap) +
+            "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
+        );
+    }
 
     // ===============================
     // CALCULATE FINAL ACTUAL
@@ -707,13 +749,15 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
         const product = productMap[key];
 
+        const normalizedProductID =
+            product.NormalizedProductID ||
+            normalizeText(product.ProductID);
+
         let checkoutActual = 0;
 
         // ===============================
         // CHECKOUT ACTUAL
-        //
-        // Used only for NO RELOAD old flow.
-        // For reload flow, do not use checkout actual.
+        // Used only for no reload old flow
         // ===============================
         if (!hasReloadRequest && checkoutStopUUID) {
 
@@ -723,14 +767,27 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                     '/LMD_MDKApp/Services/LMD_MA.service',
                     'COCIProducts',
                     [],
-                    `$filter=StopUUID eq guid'${checkoutStopUUID}' and ProductID eq '${product.ProductID}'`
+                    `$filter=StopUUID eq guid'${checkoutStopUUID}'`
                 );
 
                 if (cociResult && cociResult.length > 0) {
 
-                    const cociItem = getReadItem(cociResult, 0);
+                    for (let i = 0; i < cociResult.length; i++) {
 
-                    checkoutActual = getSafeNumber(cociItem.ActualQuantity);
+                        const cociItem = getReadItem(cociResult, i);
+
+                        if (!cociItem) {
+                            continue;
+                        }
+
+                        const cociProductID = getItemProductID(cociItem);
+
+                        if (normalizeText(cociProductID) !== normalizedProductID) {
+                            continue;
+                        }
+
+                        checkoutActual += getCheckoutActualQuantity(cociItem);
+                    }
                 }
 
             } catch (e) {
@@ -738,112 +795,135 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             }
         }
 
-        const returnQty = returnMap[product.ProductID] || 0;
-        const unplannedReturnQty = unplannedReturnMap[product.ProductID] || 0;
+        const returnQty = returnMap[normalizedProductID] || 0;
+        const unplannedReturnQty = unplannedReturnMap[normalizedProductID] || 0;
 
         // ===============================
         // OLD FORMULA
-        //
-        // Only for no reload.
-        // This keeps your old flow untouched.
+        // Only for no reload
         // ===============================
         const oldFinalActual =
             checkoutActual +
-            product.OrderedSum -
-            product.DeliveredSum +
-            returnQty +
-            unplannedReturnQty;
+            getSafeNumber(product.OrderedSum) -
+            getSafeNumber(product.DeliveredSum) +
+            getSafeNumber(returnQty) +
+            getSafeNumber(unplannedReturnQty);
 
         // ===============================
         // RELOAD CI REMAINING ACTUAL
         // ===============================
         const reloadCIRemainingByKey = reloadCIRemainingMapByKey[key] || 0;
-        const reloadCIRemainingByProduct = reloadCIRemainingMapByProductID[product.ProductID] || 0;
+        const reloadCIRemainingByProduct = reloadCIRemainingMapByProductID[normalizedProductID] || 0;
 
         const reloadCIRemaining =
-            reloadCIRemainingByKey || reloadCIRemainingByProduct || 0;
+            getSafeNumber(reloadCIRemainingByKey) > 0
+                ? getSafeNumber(reloadCIRemainingByKey)
+                : getSafeNumber(reloadCIRemainingByProduct);
 
         // ===============================
         // RELOAD CO REGISTERED / LOADED ACTUAL
         // ===============================
         const reloadCOActualByKey = reloadCOActualMapByKey[key] || 0;
-        const reloadCOActualByProduct = reloadCOActualMapByProductID[product.ProductID] || 0;
+        const reloadCOActualByProduct = reloadCOActualMapByProductID[normalizedProductID] || 0;
 
         const reloadCOActual =
-            reloadCOActualByKey || reloadCOActualByProduct || 0;
+            getSafeNumber(reloadCOActualByKey) > 0
+                ? getSafeNumber(reloadCOActualByKey)
+                : getSafeNumber(reloadCOActualByProduct);
 
         let finalActual = 0;
 
         let reloadBaseActual = 0;
         let orderedFallback = 0;
+        let afterReloadPendingDelivery = 0;
 
         if (hasReloadRequest) {
 
             // =================================================
-            // RELOAD FLOW FINAL FORMULA - CORRECTED
+            // RELOAD FLOW FINAL FORMULA
             //
-            // IMPORTANT:
-            // If product has quantity from RELOAD_CI or RELOAD_CO,
-            // do NOT add OrderedSum again.
+            // If product has delivery visit after reload:
+            // Final Actual = Ordered After Reload - Delivered After Reload
             //
             // Example:
-            // ReloadCI Actual = 25
-            // ReloadCI Unloaded = 0
-            // Delivered after reload visit = 20
+            // Ordered 35, Delivered 33
+            // Final Actual = 2
             //
-            // Correct:
-            // 25 - 20 = 5
+            // If product has no delivery visit after reload:
+            // Final Actual = Reload CI Remaining + Reload CO Loaded
             //
-            // Wrong old:
-            // 25 + 25 - 20 = 30
+            // Example:
+            // Reload CI remaining 2, no after reload delivery
+            // Final Actual = 2
             // =================================================
 
             reloadBaseActual =
                 getSafeNumber(reloadCIRemaining) +
                 getSafeNumber(reloadCOActual);
 
-            // OrderedSum should be used only as fallback
-            // when product is not present in RELOAD_CI / RELOAD_CO.
-            orderedFallback =
-                reloadBaseActual > 0
-                    ? 0
-                    : getSafeNumber(product.OrderedSum);
+            afterReloadPendingDelivery =
+                getSafeNumber(product.OrderedSum) -
+                getSafeNumber(product.DeliveredSum);
 
-            finalActual =
-                reloadBaseActual +
-                orderedFallback -
-                getSafeNumber(product.DeliveredSum) +
-                getSafeNumber(returnQty) +
-                getSafeNumber(unplannedReturnQty);
+            if (product.HasAfterReloadDelivery === true) {
+
+                finalActual =
+                    getSafeNumber(afterReloadPendingDelivery) +
+                    getSafeNumber(returnQty) +
+                    getSafeNumber(unplannedReturnQty);
+
+            } else {
+
+                orderedFallback =
+                    reloadBaseActual > 0
+                        ? 0
+                        : getSafeNumber(product.OrderedSum);
+
+                finalActual =
+                    getSafeNumber(reloadBaseActual) +
+                    getSafeNumber(orderedFallback) +
+                    getSafeNumber(returnQty) +
+                    getSafeNumber(unplannedReturnQty);
+            }
+
+            if (finalActual < 0) {
+                finalActual = 0;
+            }
 
         } else {
 
             // =================================================
             // NO RELOAD FLOW
-            //
-            // Your old final checkin logic untouched.
+            // Old final checkin logic
             // =================================================
             finalActual = oldFinalActual;
         }
 
-        /*
-        alert(
-            "Product Calculation" +
-            "\nProduct: " + product.ProductID +
-            "\nKey: " + key +
-            "\nHas Reload: " + hasReloadRequest +
-            "\nCheckout Actual Only No Reload: " + checkoutActual +
-            "\nReload CI Remaining: " + reloadCIRemaining +
-            "\nReload CO Actual: " + reloadCOActual +
-            "\nReload Base Actual: " + reloadBaseActual +
-            "\nOrdered After Reload: " + product.OrderedSum +
-            "\nOrdered Fallback Used: " + orderedFallback +
-            "\nDelivered After Reload: " + product.DeliveredSum +
-            "\nReturn After Reload: " + returnQty +
-            "\nUnplanned Return After Reload: " + unplannedReturnQty +
-            "\nFinal Actual: " + finalActual
-        );
-        */
+        /*if (ENABLE_DEBUG_ALERTS) {
+            alert(
+                "Product Calculation" +
+                "\nProduct: " + product.ProductID +
+                "\nNormalized Product: " + normalizedProductID +
+                "\nKey: " + key +
+                "\nHas Reload: " + hasReloadRequest +
+                "\nHas After Reload Delivery: " + product.HasAfterReloadDelivery +
+                "\nCheckout Actual Only No Reload: " + checkoutActual +
+                "\nReload CI Remaining By Key: " + reloadCIRemainingByKey +
+                "\nReload CI Remaining By Product: " + reloadCIRemainingByProduct +
+                "\nReload CI Remaining Used: " + reloadCIRemaining +
+                "\nReload CO Actual By Key: " + reloadCOActualByKey +
+                "\nReload CO Actual By Product: " + reloadCOActualByProduct +
+                "\nReload CO Actual Used: " + reloadCOActual +
+                "\nReload Base Actual: " + reloadBaseActual +
+                "\nOrdered After Reload: " + product.OrderedSum +
+                "\nDelivered After Reload: " + product.DeliveredSum +
+                "\nAfter Reload Pending Delivery: " + afterReloadPendingDelivery +
+                "\nOrdered Fallback Used: " + orderedFallback +
+                "\nReturn After Reload: " + returnQty +
+                "\nUnplanned Return After Reload: " + unplannedReturnQty +
+                "\nFinal Actual: " + finalActual
+            );
+        }*/
 
         if (finalActual > 0) {
 
@@ -862,7 +942,13 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-    //alert(JSON.stringify(appData.PendingProductList, null, 2));
+    /*if (ENABLE_DEBUG_ALERTS) {
+        alert(
+            "FINAL PENDING LIST" +
+            "\nPending Count: " + pendingCount +
+            "\nPending Product List: " + JSON.stringify(appData.PendingProductList, null, 2)
+        );
+    }*/
 
     // ===============================
     // FINALIZE

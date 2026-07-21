@@ -83,6 +83,47 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
     }
 
     //--------------------------------------------------
+    // HELPER: PRODUCT MATCH
+    //--------------------------------------------------
+    function normalizeText(value) {
+        if (value === undefined || value === null) {
+            return "";
+        }
+
+        return String(value).trim().toUpperCase();
+    }
+
+    function getItemProductID(item) {
+        return (
+            item.ProductID ||
+            item.ProductId ||
+            item.ProductNo ||
+            item.Material ||
+            item.MaterialNumber ||
+            item.ItemProductID ||
+            ""
+        );
+    }
+
+    function isSameProduct(item, currentProductID) {
+        return normalizeText(getItemProductID(item)) === normalizeText(currentProductID);
+    }
+
+    //--------------------------------------------------
+    // HELPER: UOM MATCH
+    //--------------------------------------------------
+    function isSameUOM(item, currentUOM) {
+        const itemUOM = getItemUOM(item);
+
+        // If either side is missing, do not block the product
+        if (!currentUOM || !itemUOM) {
+            return true;
+        }
+
+        return normalizeText(currentUOM) === normalizeText(itemUOM);
+    }
+
+    //--------------------------------------------------
     // HELPER: CHECKOUT ACTUAL QTY
     //--------------------------------------------------
     function getCheckoutActualQuantity(item) {
@@ -142,7 +183,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
     //--------------------------------------------------
     const rawValue = getControlValue(qtyControl);
 
-    // Empty -> allow
+    // Empty should allow
     // Important: 0 should not be treated as empty
     if (rawValue === undefined || rawValue === null || rawValue === '') {
         qtyControl.clearValidation();
@@ -152,7 +193,6 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
 
     const enteredQty = Number(rawValue);
 
-    // Number check
     if (isNaN(enteredQty)) {
         qtyControl.setValidationProperty(
             "ValidationMessage",
@@ -168,7 +208,6 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
         return false;
     }
 
-    // Negative check
     if (enteredQty < 0) {
         qtyControl.setValidationProperty(
             "ValidationMessage",
@@ -263,15 +302,6 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
 
     //--------------------------------------------------
     // DECIDE VALIDATION BASE
-    //
-    // NO RELOAD:
-    //      CHECKOUT
-    //
-    // RELOAD + CURRENT VISIT BEFORE RELOAD_CI:
-    //      CHECKOUT
-    //
-    // RELOAD + CURRENT VISIT AFTER RELOAD_CI:
-    //      RELOAD_CI / RELOAD_CO
     //--------------------------------------------------
     let isVisitAfterReloadCI = false;
 
@@ -330,7 +360,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                 if (useReloadDetails) {
 
                     // Current visit is after RELOAD_CI.
-                    // Compare only visits after RELOAD_CI.
+                    // For orderedSum, take all visits after RELOAD_CI.
                     includeThisItem =
                         itemStopSeq !== undefined &&
                         itemStopSeq !== null &&
@@ -339,7 +369,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                 } else {
 
                     // Current visit is before RELOAD_CI.
-                    // Compare only visits before RELOAD_CI.
+                    // For orderedSum, take all visits before RELOAD_CI.
                     includeThisItem =
                         itemStopSeq !== undefined &&
                         itemStopSeq !== null &&
@@ -353,12 +383,28 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
 
             orderedSum += getSafeNumber(item.OrderedQuantity);
 
-            // Edit mode:
-            // Exclude current stop delivered qty because enteredQty is replacing it.
+            // IMPORTANT FIX:
+            // For validation, subtract only previous visit delivered qty.
+            // Do not subtract future visits.
+            // Current visit enteredQty is replacing saved value.
             if (itemStopUUID === stopUUID) {
                 currentStopSavedDeliveredQty += getSafeNumber(item.DeliveredQuantity);
             } else {
-                deliveredOtherStops += getSafeNumber(item.DeliveredQuantity);
+
+                let isPreviousVisit = true;
+
+                if (
+                    currentStopSequence !== null &&
+                    currentStopSequence !== undefined &&
+                    itemStopSeq !== null &&
+                    itemStopSeq !== undefined
+                ) {
+                    isPreviousVisit = itemStopSeq < currentStopSequence;
+                }
+
+                if (isPreviousVisit) {
+                    deliveredOtherStops += getSafeNumber(item.DeliveredQuantity);
+                }
             }
         }
     }
@@ -387,8 +433,15 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
         let reloadCIRemainingQty = 0;
         let reloadCOActualQty = 0;
 
+        let hasReloadCIProduct = false;
+        let hasReloadCOProduct = false;
+
         //--------------------------------------------------
         // READ RELOAD_CI COCIProducts
+        //
+        // IMPORTANT FIX:
+        // Read by StopUUID first, then match product in JS.
+        // This avoids product filter mismatch issue.
         //--------------------------------------------------
         if (reloadCIStopUUID) {
 
@@ -398,7 +451,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                     '/LMD_MDKApp/Services/LMD_MA.service',
                     'COCIProducts',
                     [],
-                    `$filter=ProductID eq '${productID}' and StopUUID eq guid'${reloadCIStopUUID}'`
+                    `$filter=StopUUID eq guid'${reloadCIStopUUID}'`
                 );
 
                 if (reloadCIProducts && reloadCIProducts.length > 0) {
@@ -411,12 +464,15 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                             continue;
                         }
 
-                        const itemUOM = getItemUOM(reloadCIItem);
-
-                        // Match UOM if both are available
-                        if (currentUOM && itemUOM && currentUOM !== itemUOM) {
+                        if (!isSameProduct(reloadCIItem, productID)) {
                             continue;
                         }
+
+                        if (!isSameUOM(reloadCIItem, currentUOM)) {
+                            continue;
+                        }
+
+                        hasReloadCIProduct = true;
 
                         const actualQty = getReloadCIActualQuantity(reloadCIItem);
                         const unloadedQty = getReloadCIUnloadedQuantity(reloadCIItem);
@@ -433,11 +489,16 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
 
             } catch (e) {
                 reloadCIRemainingQty = 0;
+                hasReloadCIProduct = false;
             }
         }
 
         //--------------------------------------------------
         // READ RELOAD_CO COCIProducts
+        //
+        // IMPORTANT FIX:
+        // Read by StopUUID first, then match product in JS.
+        // This is the main fix for Almond Reload CO qty not coming.
         //--------------------------------------------------
         if (reloadCOStopUUID) {
 
@@ -447,7 +508,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                     '/LMD_MDKApp/Services/LMD_MA.service',
                     'COCIProducts',
                     [],
-                    `$filter=ProductID eq '${productID}' and StopUUID eq guid'${reloadCOStopUUID}'`
+                    `$filter=StopUUID eq guid'${reloadCOStopUUID}'`
                 );
 
                 if (reloadCOProducts && reloadCOProducts.length > 0) {
@@ -460,19 +521,27 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                             continue;
                         }
 
-                        const itemUOM = getItemUOM(reloadCOItem);
-
-                        // Match UOM if both are available
-                        if (currentUOM && itemUOM && currentUOM !== itemUOM) {
+                        if (!isSameProduct(reloadCOItem, productID)) {
                             continue;
                         }
 
-                        reloadCOActualQty += getReloadCOActualQuantity(reloadCOItem);
+                        if (!isSameUOM(reloadCOItem, currentUOM)) {
+                            continue;
+                        }
+
+                        const qty = getReloadCOActualQuantity(reloadCOItem);
+
+                        reloadCOActualQty += qty;
+
+                        if (qty > 0) {
+                            hasReloadCOProduct = true;
+                        }
                     }
                 }
 
             } catch (e) {
                 reloadCOActualQty = 0;
+                hasReloadCOProduct = false;
             }
         }
 
@@ -482,8 +551,26 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
 
         baseSource = "RELOAD_COCI";
 
-        // If reload COCIProducts are missing or zero,
-        // use normal ordered quantity fallback.
+        //--------------------------------------------------
+        // IMPORTANT FIX:
+        //
+        // If Reload CI has remaining qty but Reload CO product qty
+        // did not come for same product, then the old code was using
+        // only Reload CI qty.
+        //
+        // Example:
+        // Almond Reload CI remaining = 10
+        // Almond Reload CO loaded = 25 but not read
+        // truckStock became 10 instead of 35.
+        //
+        // So for reload flow, if ordered after reload is greater
+        // than COCI calculated stock, use orderedSum as safe fallback.
+        //--------------------------------------------------
+        if (orderedSum > truckStock) {
+            truckStock = orderedSum;
+            baseSource = "RELOAD_ORDERED_SCOPE_FALLBACK";
+        }
+
         if (truckStock <= 0) {
             truckStock = orderedSum;
             baseSource = "RELOAD_ORDERED_FALLBACK";
@@ -511,7 +598,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                     '/LMD_MDKApp/Services/LMD_MA.service',
                     'COCIProducts',
                     [],
-                    `$filter=ProductID eq '${productID}' and StopUUID eq guid'${checkoutStopUUID}'`
+                    `$filter=StopUUID eq guid'${checkoutStopUUID}'`
                 );
 
                 if (checkoutCOCIProducts && checkoutCOCIProducts.length > 0) {
@@ -524,10 +611,11 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
                             continue;
                         }
 
-                        const itemUOM = getItemUOM(checkoutItem);
+                        if (!isSameProduct(checkoutItem, productID)) {
+                            continue;
+                        }
 
-                        // Match UOM if both are available
-                        if (currentUOM && itemUOM && currentUOM !== itemUOM) {
+                        if (!isSameUOM(checkoutItem, currentUOM)) {
                             continue;
                         }
 
@@ -547,9 +635,6 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
             }
         }
 
-        // IMPORTANT:
-        // If Checkout COCI qty exists and > 0, use it.
-        // If no Checkout COCIProducts qty, use normal ordered quantity.
         truckStock =
             hasCheckoutActualQty && checkoutActualQty > 0
                 ? checkoutActualQty
@@ -564,13 +649,16 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
     //--------------------------------------------------
     // REMAINING TRUCK
     //
-    // deliveredOtherStops excludes the current stop.
-    // This is correct for edit mode because enteredQty
-    // is replacing current delivered quantity.
+    // deliveredOtherStops now has only previous visits.
     //--------------------------------------------------
-    const remainingTruck =
+    let remainingTruck =
         getSafeNumber(truckStock) -
         getSafeNumber(deliveredOtherStops);
+
+    // Do not show negative remaining like -15
+    if (remainingTruck < 0) {
+        remainingTruck = 0;
+    }
 
     //--------------------------------------------------
     // CUSTOMER LIMIT
@@ -596,7 +684,7 @@ export default async function ValidateDeliveredQtyFromTruck(context) {
         "\nOrdered Sum Scope: " + orderedSum +
         "\nTruck Stock: " + truckStock +
         "\nCurrent Stop Saved Delivered: " + currentStopSavedDeliveredQty +
-        "\nDelivered Other Stops: " + deliveredOtherStops +
+        "\nDelivered Other Previous Stops: " + deliveredOtherStops +
         "\nRemaining Truck: " + remainingTruck +
         "\nAllowed Qty: " + allowedQty +
         "\nEntered Qty: " + enteredQty
