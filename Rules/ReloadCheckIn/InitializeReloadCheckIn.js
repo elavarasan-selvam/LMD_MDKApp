@@ -29,17 +29,15 @@ export default async function InitializeReloadCheckIn(clientAPI) {
     }
 
     // ===============================
+    // HELPER: PRODUCT KEY
+    // ===============================
+    function getProductKey(productID, uom) {
+        return (productID || "") + "::" + (uom || "");
+    }
+
+    // ===============================
     // HELPER:
     // GET CHECKOUT PRODUCTS WHICH ARE STILL NOT FULLY DELIVERED
-    //
-    // This follows your Checkout_Stop_Items_List logic:
-    // 1. Get ReloadRequest for route
-    // 2. Get ReloadRequestDelivery documents
-    // 3. Get checkout DocumentItems for route
-    // 4. Exclude documents already present in ReloadRequestDelivery
-    // 5. Aggregate checkout ordered qty
-    // 6. Subtract delivered qty before RELOAD_CI
-    // 7. Return only products where pending qty > 0
     // ===============================
     async function getCheckoutPendingProductsAfterDeliveredCheck(context, routeUUID, reloadVisitStopMap) {
 
@@ -51,7 +49,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
             //====================================================
             // FETCH RELOAD REQUESTS FOR ROUTE
-            // Same as Checkout_Stop_Items_List
             //====================================================
             const reloadRequests = await context.read(
                 "/LMD_MDKApp/Services/API_LASTMILERELOADREQUEST.service",
@@ -116,10 +113,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 `$filter=IsReturn eq false and RouteUUID eq guid'${routeUUID}'`
             );
 
-            //====================================================
-            // CHECKOUT PRODUCT MAP
-            // Only items whose DocumentID is NOT in ReloadRequestDelivery
-            //====================================================
             const checkoutProductMap = {};
 
             if (documentItems && documentItems.length > 0) {
@@ -132,14 +125,14 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                         continue;
                     }
 
-                    // Same filter from your Checkout_Stop_Items_List
+                    // Exclude reload request delivery documents
                     if (uniqueReloadDeliveryDocs.includes(item.DocumentID)) {
                         continue;
                     }
 
                     const productID = item.ProductID || "";
-                    const orderedUOM = item.OrderedUOM || "";
-                    const productKey = productID + "::" + orderedUOM;
+                    const orderedUOM = item.OrderedUOM || item.ActualUOM || "";
+                    const productKey = getProductKey(productID, orderedUOM);
 
                     if (!productID) {
                         continue;
@@ -188,11 +181,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 }
             }
 
-            //====================================================
-            // RETURN ONLY NOT FULLY DELIVERED PRODUCTS
-            // Pending = Ordered - DeliveredBeforeReloadCI
-            // If pending <= 0, product is already delivered, so do not add
-            //====================================================
             const pendingCheckoutProducts = [];
 
             for (const key in checkoutProductMap) {
@@ -206,6 +194,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 if (pendingQty > 0) {
 
                     pendingCheckoutProducts.push({
+                        ProductKey: key,
                         ProductID: product.ProductID,
                         PendingQuantity: pendingQty,
                         OrderedQuantity: product.OrderedQuantity,
@@ -235,8 +224,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
         appData.currentStop = binding;
         appData.currentRouteUUID = binding.RouteUUID;
 
-        //alert("StopUUID: " + binding.StopUUID + "\nRouteUUID: " + binding.RouteUUID);
-
     } else if (binding && binding.StopID) {
 
         const readStop = await clientAPI.read(
@@ -248,7 +235,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
         if (readStop && readStop.length > 0) {
 
-            const stopEntity = readStop.getItem(0);
+            const stopEntity = getReadItem(readStop, 0);
 
             appData.currentStop = stopEntity;
             appData.currentRouteUUID = stopEntity.RouteUUID;
@@ -279,14 +266,11 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     const allStops = [];
 
-    // ===============================
-    // GET CHECKOUT AND RELOAD_CI SEQUENCE
-    // ===============================
     if (stopsResult && stopsResult.length > 0) {
 
         for (let i = 0; i < stopsResult.length; i++) {
 
-            const stop = stopsResult.getItem(i);
+            const stop = getReadItem(stopsResult, i);
 
             const stopSequence = Number(
                 stop.Sequence ||
@@ -312,7 +296,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
         }
     }
 
-    // If RELOAD_CI is not found, this Reload CheckIn should not calculate anything
     if (reloadCISequence === null) {
 
         alert("RELOAD_CI stop not found");
@@ -327,8 +310,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
     }
 
     // ===============================
-    // GET RELOAD VISIT STOPS
-    // Only completed VISIT stops before RELOAD_CI
+    // GET COMPLETED VISIT STOPS BEFORE RELOAD_CI
     // ===============================
     const reloadVisitStopMap = {};
 
@@ -340,26 +322,18 @@ export default async function InitializeReloadCheckIn(clientAPI) {
             continue;
         }
 
-        // Ignore visits not completed
         if (!stop.EndDateTime) {
             continue;
         }
 
         const visitSequence = Number(stop.__ReloadSequence || 0);
 
-        // Take only visits before RELOAD_CI
         if (visitSequence >= reloadCISequence) {
             continue;
         }
 
         reloadVisitStopMap[stop.StopUUID] = true;
     }
-
-    /*alert(
-        "Reload Checkout StopUUID: " + reloadCheckoutStopUUID +
-        "\nReload CI Sequence: " + reloadCISequence +
-        "\nReload Visit Stops: " + Object.keys(reloadVisitStopMap).join(', ')
-    );*/
 
     // ===============================
     // FETCH DELIVERY ITEMS
@@ -371,8 +345,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
         `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq false`
     );
 
-    //alert("Reload Delivery Items Count: " + (reloadDeliveryItems ? reloadDeliveryItems.length : 0));
-
     // ===============================
     // FETCH PLANNED RETURN ITEMS
     // ===============================
@@ -382,8 +354,6 @@ export default async function InitializeReloadCheckIn(clientAPI) {
         [],
         `$filter=RouteUUID eq guid'${routeUUID}' and IsReturn eq true and IsManuallyAdded eq false`
     );
-
-    //alert("Reload Planned Return Items Count: " + (reloadReturnItems ? reloadReturnItems.length : 0));
 
     // ===============================
     // FETCH UNPLANNED RETURN ITEMS
@@ -398,8 +368,9 @@ export default async function InitializeReloadCheckIn(clientAPI) {
     let reloadPendingCount = 0;
 
     // ===============================
-    // BUILD RELOAD RETURN MAP
+    // BUILD PLANNED RETURN MAP
     // Only completed VISIT stops before RELOAD_CI
+    // Key is ProductID only, kept same as your old logic
     // ===============================
     const reloadReturnMap = {};
 
@@ -407,14 +378,22 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
         for (let i = 0; i < reloadReturnItems.length; i++) {
 
-            const item = reloadReturnItems.getItem(i);
+            const item = getReadItem(reloadReturnItems, i);
+
+            if (!item) {
+                continue;
+            }
 
             if (!reloadVisitStopMap[item.StopUUID]) {
                 continue;
             }
 
-            const productID = item.ProductID;
-            const qty = Number(item.DeliveredQuantity || 0);
+            const productID = item.ProductID || "";
+            const qty = getSafeNumber(item.DeliveredQuantity);
+
+            if (!productID) {
+                continue;
+            }
 
             if (!reloadReturnMap[productID]) {
                 reloadReturnMap[productID] = 0;
@@ -425,8 +404,9 @@ export default async function InitializeReloadCheckIn(clientAPI) {
     }
 
     // ===============================
-    // BUILD RELOAD UNPLANNED RETURN MAP
+    // BUILD UNPLANNED RETURN MAP
     // Only completed VISIT stops before RELOAD_CI
+    // Key is ProductID only, kept same as your old logic
     // ===============================
     const reloadUnplannedReturnMap = {};
 
@@ -434,14 +414,22 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
         for (let i = 0; i < reloadUnplannedReturnItems.length; i++) {
 
-            const item = reloadUnplannedReturnItems.getItem(i);
+            const item = getReadItem(reloadUnplannedReturnItems, i);
+
+            if (!item) {
+                continue;
+            }
 
             if (!reloadVisitStopMap[item.StopUUID]) {
                 continue;
             }
 
-            const productID = item.ProductID;
-            const qty = Number(item.DeliveredQuantity || 0);
+            const productID = item.ProductID || "";
+            const qty = getSafeNumber(item.DeliveredQuantity);
+
+            if (!productID) {
+                continue;
+            }
 
             if (!reloadUnplannedReturnMap[productID]) {
                 reloadUnplannedReturnMap[productID] = 0;
@@ -453,37 +441,45 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     // ===============================
     // RELOAD PRODUCT MAP
-    // Only completed VISIT stops before RELOAD_CI
+    // Delivery shortage products from completed visits before RELOAD_CI
     // ===============================
     const reloadProductMap = {};
 
-    // ===============================
-    // LOOP DELIVERY ITEMS
-    // ===============================
     if (reloadDeliveryItems && reloadDeliveryItems.length > 0) {
 
         for (let i = 0; i < reloadDeliveryItems.length; i++) {
 
-            const item = reloadDeliveryItems.getItem(i);
+            const item = getReadItem(reloadDeliveryItems, i);
+
+            if (!item) {
+                continue;
+            }
 
             if (!reloadVisitStopMap[item.StopUUID]) {
                 continue;
             }
 
-            const productKey = item.ProductID + "::" + item.OrderedUOM;
+            const productID = item.ProductID || "";
+            const orderedUOM = item.OrderedUOM || item.ActualUOM || "";
+            const productKey = getProductKey(productID, orderedUOM);
 
-            const ordered = Number(item.OrderedQuantity) || 0;
-            const delivered = Number(item.DeliveredQuantity) || 0;
+            if (!productID) {
+                continue;
+            }
+
+            const ordered = getSafeNumber(item.OrderedQuantity);
+            const delivered = getSafeNumber(item.DeliveredQuantity);
 
             if (!reloadProductMap[productKey]) {
 
                 reloadProductMap[productKey] = {
-                    ProductID: item.ProductID,
+                    ProductID: productID,
                     OrderedSum: ordered,
                     DeliveredSum: delivered,
-                    OrderedUOM: item.OrderedUOM,
+                    OrderedUOM: orderedUOM,
                     RouteUUID: item.RouteUUID,
-                    StopUUIDs: [item.StopUUID]
+                    StopUUIDs: item.StopUUID ? [item.StopUUID] : [],
+                    IsReturnOnlyProduct: false
                 };
 
             } else {
@@ -491,72 +487,95 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 reloadProductMap[productKey].OrderedSum += ordered;
                 reloadProductMap[productKey].DeliveredSum += delivered;
 
-                if (!reloadProductMap[productKey].StopUUIDs.includes(item.StopUUID)) {
+                if (item.StopUUID &&
+                    !reloadProductMap[productKey].StopUUIDs.includes(item.StopUUID)) {
                     reloadProductMap[productKey].StopUUIDs.push(item.StopUUID);
                 }
+
+                reloadProductMap[productKey].IsReturnOnlyProduct = false;
             }
         }
     }
 
-    //alert("Reload Product Map Count: " + Object.keys(reloadProductMap).length);
-
     // ===============================
     // ADD UNPLANNED RETURN-ONLY PRODUCTS
-    // Only completed VISIT stops before RELOAD_CI
+    // This is needed for CHOCO case
+    // CHOCO has no delivery item in visit, but has unplanned return 2
+    // So first it becomes CHOCO 2
+    // Later checkout pending 20 will be merged into this same item
     // ===============================
     if (reloadUnplannedReturnItems && reloadUnplannedReturnItems.length > 0) {
 
         for (let i = 0; i < reloadUnplannedReturnItems.length; i++) {
 
-            const item = reloadUnplannedReturnItems.getItem(i);
+            const item = getReadItem(reloadUnplannedReturnItems, i);
+
+            if (!item) {
+                continue;
+            }
 
             if (!reloadVisitStopMap[item.StopUUID]) {
                 continue;
             }
 
-            const productKey = item.ProductID + "::" + item.OrderedUOM;
+            const productID = item.ProductID || "";
+            const orderedUOM = item.OrderedUOM || item.ActualUOM || "";
+            const productKey = getProductKey(productID, orderedUOM);
+
+            if (!productID) {
+                continue;
+            }
 
             if (!reloadProductMap[productKey]) {
 
                 reloadProductMap[productKey] = {
-                    ProductID: item.ProductID,
+                    ProductID: productID,
                     OrderedSum: 0,
                     DeliveredSum: 0,
-                    OrderedUOM: item.OrderedUOM,
+                    OrderedUOM: orderedUOM,
                     RouteUUID: item.RouteUUID,
-                    StopUUIDs: [item.StopUUID]
+                    StopUUIDs: item.StopUUID ? [item.StopUUID] : [],
+                    IsReturnOnlyProduct: true
                 };
             }
         }
     }
 
-    //alert("Reload Product Map Count After Unplanned Return: " + Object.keys(reloadProductMap).length);
-
     // ===============================
     // ADD PLANNED RETURN-ONLY PRODUCTS
-    // Only completed VISIT stops before RELOAD_CI
     // ===============================
     if (reloadReturnItems && reloadReturnItems.length > 0) {
 
         for (let i = 0; i < reloadReturnItems.length; i++) {
 
-            const item = reloadReturnItems.getItem(i);
+            const item = getReadItem(reloadReturnItems, i);
+
+            if (!item) {
+                continue;
+            }
 
             if (!reloadVisitStopMap[item.StopUUID]) {
                 continue;
             }
 
-            const productKey = item.ProductID + "::" + item.OrderedUOM;
+            const productID = item.ProductID || "";
+            const orderedUOM = item.OrderedUOM || item.ActualUOM || "";
+            const productKey = getProductKey(productID, orderedUOM);
+
+            if (!productID) {
+                continue;
+            }
 
             if (!reloadProductMap[productKey]) {
 
                 reloadProductMap[productKey] = {
-                    ProductID: item.ProductID,
+                    ProductID: productID,
                     OrderedSum: 0,
                     DeliveredSum: 0,
-                    OrderedUOM: item.OrderedUOM,
+                    OrderedUOM: orderedUOM,
                     RouteUUID: item.RouteUUID,
-                    StopUUIDs: [item.StopUUID]
+                    StopUUIDs: item.StopUUID ? [item.StopUUID] : [],
+                    IsReturnOnlyProduct: true
                 };
             }
         }
@@ -564,7 +583,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     // ===============================
     // CALCULATE RELOAD FINAL ACTUAL
-    // Your existing logic is untouched
+    // Existing formula is kept
     // ===============================
     for (const key in reloadProductMap) {
 
@@ -585,9 +604,9 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
                 if (cociResult && cociResult.length > 0) {
 
-                    const cociItem = cociResult.getItem(0);
+                    const cociItem = getReadItem(cociResult, 0);
 
-                    reloadCheckoutActual = Number(cociItem.ActualQuantity) || 0;
+                    reloadCheckoutActual = getSafeNumber(cociItem.ActualQuantity);
                 }
 
             } catch (e) {
@@ -595,32 +614,29 @@ export default async function InitializeReloadCheckIn(clientAPI) {
             }
         }
 
-        // ===============================
-        // ADD RELOAD RETURN QTY
-        // ===============================
         const reloadReturnQty = reloadReturnMap[product.ProductID] || 0;
         const reloadUnplannedReturnQty = reloadUnplannedReturnMap[product.ProductID] || 0;
 
-        // ===============================
-        // RELOAD FINAL FORMULA
-        // ===============================
         const reloadFinalActual =
             reloadCheckoutActual +
-            product.OrderedSum -
-            product.DeliveredSum +
+            getSafeNumber(product.OrderedSum) -
+            getSafeNumber(product.DeliveredSum) +
             reloadReturnQty +
             reloadUnplannedReturnQty;
 
-        /*alert(
-            "Product: " + product.ProductID +
-            "\nReload Checkout: " + reloadCheckoutActual +
-            "\nOrdered: " + product.OrderedSum +
-            "\nDelivered: " + product.DeliveredSum +
-            "\nReload Returned: " + reloadReturnQty +
-            "\nReload Unplanned Return: " + reloadUnplannedReturnQty +
-            "\n------------------" +
-            "\nReload Final: " + reloadFinalActual
-        );*/
+        /*
+        alert(
+            "Reload Product Calculation" +
+            "\nProduct: " + product.ProductID +
+            "\nReload Checkout Actual: " + reloadCheckoutActual +
+            "\nOrdered Sum: " + product.OrderedSum +
+            "\nDelivered Sum: " + product.DeliveredSum +
+            "\nPlanned Return Qty: " + reloadReturnQty +
+            "\nUnplanned Return Qty: " + reloadUnplannedReturnQty +
+            "\nIs Return Only: " + product.IsReturnOnlyProduct +
+            "\nFinal Actual: " + reloadFinalActual
+        );
+        */
 
         if (reloadFinalActual > 0) {
 
@@ -632,21 +648,36 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 UnloadedQuantity: 0,
                 ActualUOM: product.OrderedUOM,
                 RouteUUID: product.RouteUUID,
-                StopUUID: product.StopUUIDs.join(',')
+                StopUUID: product.StopUUIDs.join(','),
+                IsReloadProduct: true,
+                IsReturnOnlyProduct: product.IsReturnOnlyProduct === true,
+                PlannedReturnQuantity: reloadReturnQty,
+                UnplannedReturnQuantity: reloadUnplannedReturnQty,
+                OrderedSum: product.OrderedSum,
+                DeliveredSum: product.DeliveredSum
             });
         }
     }
 
     // ============================================================
-    // ADDITIONAL FEATURE ONLY
+    // ADDITIONAL CHECKOUT PENDING FEATURE
     //
-    // Existing above logic already completed.
-    // Now get checkout products.
-    // If product is not fully delivered before RELOAD_CI,
-    // and if product is not already in ReloadPendingProductList,
-    // add remaining qty to ReloadPendingProductList.
+    // IMPORTANT FIX:
     //
-    // Fully delivered products will NOT be added.
+    // Earlier issue:
+    // CHOCO was already added as return-only product with qty 2.
+    // Then checkout pending CHOCO 20 was skipped because duplicate existed.
+    //
+    // New behavior:
+    // If duplicate exists and it is return-only product,
+    // add checkout pending qty into existing ActualQuantity.
+    //
+    // This gives:
+    // CHOCO = return 2 + checkout pending 20 = 22
+    //
+    // But for LMD:
+    // LMD already came from delivery shortage 10 - 8 = 2.
+    // So we should NOT add checkout pending again.
     // ============================================================
     const checkoutPendingProducts =
         await getCheckoutPendingProductsAfterDeliveredCheck(
@@ -673,18 +704,80 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 continue;
             }
 
-            // Compare product with already prepared ReloadPendingProductList
-            // If already present, do not add duplicate
-            const alreadyExistsInPendingList =
-                appData.ReloadPendingProductList.some(item => {
+            const existingPendingItem =
+                appData.ReloadPendingProductList.find(item => {
                     return (item.ProductID || "") === checkoutProductID &&
                            (item.ActualUOM || "") === checkoutUOM;
                 });
 
-            if (alreadyExistsInPendingList) {
+            if (existingPendingItem) {
+
+                // ==========================================
+                // THIS IS THE MAIN FIX
+                //
+                // If product already exists only because of return,
+                // merge checkout pending into same product.
+                //
+                // Example:
+                // CHOCO existing return = 2
+                // CHOCO checkout pending = 20
+                // Final CHOCO = 22
+                // ==========================================
+                if (existingPendingItem.IsReturnOnlyProduct === true) {
+
+                    existingPendingItem.ActualQuantity =
+                        getSafeNumber(existingPendingItem.ActualQuantity) +
+                        checkoutPendingQty;
+
+                    existingPendingItem.CheckoutPendingQuantity = checkoutPendingQty;
+                    existingPendingItem.OrderedQuantity = checkoutProduct.OrderedQuantity;
+                    existingPendingItem.DeliveredBeforeReloadCI = checkoutProduct.DeliveredBeforeReloadCI;
+                    existingPendingItem.IsCheckoutPendingProduct = true;
+                    existingPendingItem.IsMergedReturnAndCheckoutPending = true;
+
+                    existingPendingItem.DocumentIDs = checkoutProduct.DocumentIDs
+                        ? checkoutProduct.DocumentIDs.join(',')
+                        : '';
+
+                    existingPendingItem.DocumentItemIDs = checkoutProduct.DocumentItemIDs
+                        ? checkoutProduct.DocumentItemIDs.join(',')
+                        : '';
+
+                    /*
+                    alert(
+                        "Merged Checkout Pending With Return-Only Product" +
+                        "\nProduct: " + checkoutProductID +
+                        "\nReturn Qty Already Existing: " +
+                            (
+                                getSafeNumber(existingPendingItem.PlannedReturnQuantity) +
+                                getSafeNumber(existingPendingItem.UnplannedReturnQuantity)
+                            ) +
+                        "\nCheckout Pending Added: " + checkoutPendingQty +
+                        "\nFinal Qty: " + existingPendingItem.ActualQuantity
+                    );
+                    */
+
+                } else {
+
+                    // For LMD type products, do not add again.
+                    // Because LMD shortage is already calculated by existing delivery logic.
+                    /*
+                    alert(
+                        "Skipped duplicate delivery shortage product" +
+                        "\nProduct: " + checkoutProductID +
+                        "\nExisting Qty: " + existingPendingItem.ActualQuantity +
+                        "\nCheckout Pending Qty: " + checkoutPendingQty
+                    );
+                    */
+                }
+
                 continue;
             }
 
+            // ==========================================
+            // Product not already present.
+            // Push checkout pending normally.
+            // ==========================================
             reloadPendingCount++;
 
             appData.ReloadPendingProductList.push({
@@ -697,8 +790,10 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                     ? checkoutProduct.StopUUIDs.join(',')
                     : '',
                 IsCheckoutPendingProduct: true,
+                IsReturnOnlyProduct: false,
                 OrderedQuantity: checkoutProduct.OrderedQuantity,
                 DeliveredBeforeReloadCI: checkoutProduct.DeliveredBeforeReloadCI,
+                CheckoutPendingQuantity: checkoutPendingQty,
                 DocumentIDs: checkoutProduct.DocumentIDs
                     ? checkoutProduct.DocumentIDs.join(',')
                     : '',
@@ -712,7 +807,7 @@ export default async function InitializeReloadCheckIn(clientAPI) {
                 "Added Checkout Pending Product" +
                 "\nProduct: " + checkoutProductID +
                 "\nOrdered: " + checkoutProduct.OrderedQuantity +
-                "\nDelivered Before Reload CI: " + checkoutProduct.DeliveredBeforeReloadCI +
+                "\nDelivered Before RELOAD_CI: " + checkoutProduct.DeliveredBeforeReloadCI +
                 "\nPending: " + checkoutPendingQty +
                 "\nUOM: " + checkoutUOM
             );
@@ -722,7 +817,11 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     // ===============================
     // FINALIZE
+    // Count should match final list length
+    // Because some products are merged, not newly pushed
     // ===============================
+    reloadPendingCount = appData.ReloadPendingProductList.length;
+
     appData.StartButton = (reloadPendingCount > 0);
     appData.ReloadPendingCount = reloadPendingCount;
 

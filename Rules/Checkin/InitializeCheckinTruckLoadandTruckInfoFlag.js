@@ -380,7 +380,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             ? afterReloadCOVisitStopMap
             : afterReloadCIVisitStopMap;
 
-    if (ENABLE_DEBUG_ALERTS) {
+    /*if (ENABLE_DEBUG_ALERTS) {
         alert(
             "FINAL CHECKIN STARTED" +
             "\nRouteUUID: " + routeUUID +
@@ -392,7 +392,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             "\nReload CO Sequence: " + reloadCOSequence +
             "\nAfter Reload Visits Used: " + Object.keys(afterReloadVisitStopMap).join(',')
         );
-    }
+    }*/
 
     // ===============================
     // FETCH DELIVERY ITEMS
@@ -731,7 +731,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-    if (ENABLE_DEBUG_ALERTS) {
+    /*if (ENABLE_DEBUG_ALERTS) {
         alert(
             "Before Final Calculation" +
             "\nProductMap Count: " + Object.keys(productMap).length +
@@ -740,7 +740,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             "\nReturn Map: " + JSON.stringify(returnMap) +
             "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
         );
-    }
+    }*/
 
     // ===============================
     // CALCULATE FINAL ACTUAL
@@ -842,19 +842,27 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             // =================================================
             // RELOAD FLOW FINAL FORMULA
             //
-            // If product has delivery visit after reload:
-            // Final Actual = Ordered After Reload - Delivered After Reload
+            // IMPORTANT FIX:
             //
-            // Example:
-            // Ordered 35, Delivered 33
-            // Final Actual = 2
+            // If product exists in RELOAD_CI / RELOAD_CO,
+            // use reload base actual and subtract delivered after reload.
             //
-            // If product has no delivery visit after reload:
-            // Final Actual = Reload CI Remaining + Reload CO Loaded
+            // Example CHOCO:
+            // Reload checkin remaining = 22
+            // Delivered after reload = 20
+            // Final = 22 - 20 = 2
             //
-            // Example:
-            // Reload CI remaining 2, no after reload delivery
-            // Final Actual = 2
+            // If product does not exist in RELOAD_CI / RELOAD_CO,
+            // use ordered after reload - delivered after reload.
+            //
+            // Example NUTS:
+            // Ordered after reload = 10
+            // Delivered after reload = 9
+            // Final = 1
+            //
+            // Return-only products:
+            // Example LMD unplanned return 4
+            // Final = 4
             // =================================================
 
             reloadBaseActual =
@@ -867,15 +875,32 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
             if (product.HasAfterReloadDelivery === true) {
 
-                finalActual =
-                    getSafeNumber(afterReloadPendingDelivery) +
-                    getSafeNumber(returnQty) +
-                    getSafeNumber(unplannedReturnQty);
+                // =============================================
+                // MAIN FIX IS HERE
+                // If reload base exists, do not use ordered-delivered only.
+                // Use reload base minus delivered after reload.
+                // =============================================
+                if (getSafeNumber(reloadBaseActual) > 0) {
+
+                    finalActual =
+                        getSafeNumber(reloadBaseActual) -
+                        getSafeNumber(product.DeliveredSum) +
+                        getSafeNumber(returnQty) +
+                        getSafeNumber(unplannedReturnQty);
+
+                } else {
+
+                    finalActual =
+                        getSafeNumber(product.OrderedSum) -
+                        getSafeNumber(product.DeliveredSum) +
+                        getSafeNumber(returnQty) +
+                        getSafeNumber(unplannedReturnQty);
+                }
 
             } else {
 
                 orderedFallback =
-                    reloadBaseActual > 0
+                    getSafeNumber(reloadBaseActual) > 0
                         ? 0
                         : getSafeNumber(product.OrderedSum);
 
@@ -894,7 +919,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
             // =================================================
             // NO RELOAD FLOW
-            // Old final checkin logic
+            // Old final checkin logic untouched
             // =================================================
             finalActual = oldFinalActual;
         }
