@@ -23,7 +23,7 @@ export default async function GetShipToPartyIDBack(context) {
     );
 
     if (result && result.length > 0) {
-        alert(`ShipToPartyID: ${result.getItem(0).ShipToPartyID}`);
+    //    alert(`ShipToPartyID: ${result.getItem(0).ShipToPartyID}`);
         return result.getItem(0).ShipToPartyID;
     }
 

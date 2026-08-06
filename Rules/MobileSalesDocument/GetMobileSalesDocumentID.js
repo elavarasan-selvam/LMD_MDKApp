@@ -30,6 +30,6 @@ export default async function GetMobileSalesDocumentID(context) {
         nextDocumentID =
             Number(latestDocument.MobileSalesDocumentID) + 1;
     }
-alert(`Next MobileSalesDocumentID: ${nextDocumentID}`); 
+// alert(`Next MobileSalesDocumentID: ${nextDocumentID}`); 
     return nextDocumentID.toString();
 }

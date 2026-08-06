@@ -22,8 +22,8 @@ export default async function GetMobileSalesDocumentReadLink(context) {
     );
 
     if (result && result.length > 0) {
-        alert(`MobileSalesDocumentReadLink: ${result.getItem(0)['@odata.readLink']}`);
-        alert(`MobileSalesDocumentID: ${result.getItem(0).MobileSalesDocumentID}`);
+    //    alert(`MobileSalesDocumentReadLink: ${result.getItem(0)['@odata.readLink']}`);
+    //    alert(`MobileSalesDocumentID: ${result.getItem(0).MobileSalesDocumentID}`);
         return result.getItem(0)['@odata.readLink'];
     }
 

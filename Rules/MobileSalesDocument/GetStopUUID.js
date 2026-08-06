@@ -8,6 +8,6 @@ export default function GetStopUUID(context) {
         return [];
     }
     const stopUUID = currentStop.StopUUID;
-    alert(`StopUUID: ${stopUUID}`);
+ //   alert(`StopUUID: ${stopUUID}`);
     return stopUUID;
 }
