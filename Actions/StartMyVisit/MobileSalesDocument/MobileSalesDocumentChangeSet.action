@@ -1,0 +1,17 @@
+{
+	"_Type": "Action.Type.ODataService.ChangeSet",
+	"ActionResult": {
+		"_Name": "MobileSalesDocumentChangeSet"
+	},
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
+	},
+	"Actions": [
+		"/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileDocumentCreateRelatedEntity.action",
+		"/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentItems.action",
+		"/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentUpdateEntity.action"
+	],
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
+	}
+}

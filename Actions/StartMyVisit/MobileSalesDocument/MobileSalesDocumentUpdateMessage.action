@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "MobileSalesDocumentUpdateMessage"
+	},
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Message": "/LMD_MDKApp/Rules/MobileSalesDocument/BuildMobileSalesOrderedqtyToast.js",
+	"Duration": 2
+}

@@ -1,0 +1,7 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"ActionResult": {
+		"_Name": "NavToMobileSalesPage"
+	},
+	"PageToOpen": "/LMD_MDKApp/Pages/MyVisit/MobileSalesPage.page"
+}

@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "MobileSalesDocumentUpdateFailure"
+	},
+	"Message": "{#ActionResults:MobileSalesDocumentUpdateEntity/error}",
+	"Title": "{error}",
+	"OKCaption": "OK"
+}

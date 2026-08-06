@@ -209,6 +209,48 @@
 						"EntitySet": "Routes",
 						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
 					},
+					"_Name": "SectionObjectCardCollection8",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"Card": {
+						"Visible": true,
+						"Title": "Mobile Sales Document",
+						"Footnote": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentStatus.js",
+						"DetailImage": "sap-icon://my-sales-order",
+						"DetailImageIsCircular": false,
+						"Description": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentDescription.js",
+						"PrimaryAction": {
+							"_Type": "ObjectCard.Type.ActionItem",
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/NavToMobileSalesPage.action",
+							"Title": "Start",
+							"Visible": "/LMD_MDKApp/Rules/MobileSalesDocument/IsStartButtonVisibleForMobileSalesDocument.js"
+						},
+						"_Type": "ObjectCardCollection.Type.Card"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCardCollection",
+					"Target": {
+						"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+						"EntitySet": "Routes",
+						"QueryOptions": "/LMD_MDKApp/Rules/Main/GetRouteFilter.js"
+					},
 					"_Name": "SectionObjectCardCollection5",
 					"Visible": true,
 					"EmptySection": {
@@ -253,7 +295,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar50",
+		"_Name": "ActionBar54",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},

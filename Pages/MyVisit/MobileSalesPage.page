@@ -1,0 +1,97 @@
+{
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMergedMobileSales.js",
+					"_Name": "SectionObjectCollection0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"ObjectCell": {
+						"Title": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesProductDescription.js",
+						"Subhead": "{ProductID}",
+						"DisplayDescriptionInMobile": true,
+						"StatusText": "{OrderedQuantity} {OrderedUOM}",
+						"AccessoryType": "None",
+						"PreserveIconStackSpacing": true,
+						"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/NavToMobileSalesDocumentEditPage.action",
+						"ContextMenu": {
+							"PerformFirstActionWithFullSwipe": true
+						},
+						"AvatarStack": {
+							"Avatars": [],
+							"ImageIsCircular": true,
+							"ImageHasBorder": false
+						},
+						"AvatarGrid": {
+							"Avatars": [],
+							"ImageIsCircular": true
+						},
+						"_Type": "ObjectCollection.Type.ObjectCell"
+					},
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "MobileSalesPage",
+	"OnReturning": "/LMD_MDKApp/Rules/MobileSalesDocument/RedrawPage.js",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Add",
+				"SystemItem": "Add",
+				"Width": 18,
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/NavFromMobileSalesPageToMobileSalesDocumentPage.action"
+			}
+		],
+		"_Name": "ActionBar0",
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Mobile Sales Page"
+	},
+	"FioriToolbar": {
+		"_Type": "Control.Type.FioriToolbar",
+		"_Name": "FioriToolbar0",
+		"Items": [
+			{
+				"_Type": "FioriToolbarItem.Type.Button",
+				"_Name": "ToolbarItem0",
+				"Visible": true,
+				"Title": "Confirm MobileSales",
+				"OnPress": "/LMD_MDKApp/Rules/MobileSalesDocument/SetMobileSalesDocumentConfirmed.js",
+				"Enabled": true,
+				"ButtonType": "Primary",
+				"Semantic": "Tint",
+				"ImagePosition": "Leading"
+			}
+		]
+	}
+}

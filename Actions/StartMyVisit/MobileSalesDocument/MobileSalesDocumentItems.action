@@ -1,0 +1,31 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "MobileSalesDocumentItems"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentItemFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "MobileSalesDocumentItems"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "MobileSalesDocuments",
+			"ReadLink": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentReadLink.js"
+		},
+		"Property": "to_MobileSalesDocItems"
+	},
+	"Properties": {
+		"ProductID": "{#Control:MobileSalesProductID/#SelectedValue}",
+		"OrderedQuantity": "/LMD_MDKApp/Rules/MobileSalesDocument/GetOrderedQuantity.js",
+		"OrderedUOM": "/LMD_MDKApp/Rules/MobileSalesDocument/GetOrderedUOMMobileSalesDocument.js",
+		"CustomerReferenceNumber": "#Control:FormCellSimpleProperty4/#Value",
+		"Plant": "/LMD_MDKApp/Rules/MobileSalesDocument/GetPlant.js",
+		"RouteUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js",
+		"StopUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetStopUUID.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
+	}
+}

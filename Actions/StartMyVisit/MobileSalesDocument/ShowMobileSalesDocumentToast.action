@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "ShowMobileSalesDocumentToast"
+	},
+	"Message": "MobileSalesDocument has updated",
+	"NumberOfLines": 3,
+	"Duration": 3
+}

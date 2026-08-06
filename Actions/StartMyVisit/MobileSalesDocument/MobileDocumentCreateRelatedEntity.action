@@ -1,0 +1,35 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "MobileDocumentCreateRelatedEntity"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/MobileSalesDocument/AfterMobileSalesDocumentCreated.js",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "MobileSalesDocuments"
+	},
+	"ParentLink": {
+		"Target": {
+			"EntitySet": "Stops",
+			"ReadLink": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesDocumentUpdateReadlink.js"
+		},
+		"Property": "to_MobileSalesDocuments"
+	},
+	"Properties": {
+		"MobileSalesDocumentID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentID.js",
+		"ShipToPartyID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetShipToPartyIDBack.js",
+		"SoldToPartyID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetSoldToPartyIDBack.js",
+		"Division": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesDivision.js",
+		"DistributionChannel": "/LMD_MDKApp/Rules/MobileSalesDocument/MobilesalesDistributionChannel.js",
+		"SalesOrganization": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesOrganization.js",
+		"CustomerRelevantOrderNumber": "#Control:FormCellSimpleProperty3/#Value",
+		"MobileSalesDocumentDate": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentDate.js",
+		"CustomerReferenceNumber": "#Control:FormCellSimpleProperty4/#Value",
+		"StopUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetStopUUID.js",
+		"RouteUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
+	}
+}

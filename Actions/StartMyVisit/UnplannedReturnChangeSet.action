@@ -3,6 +3,7 @@
 	"ActionResult": {
 		"_Name": "UnplannedReturnChangeSet"
 	},
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentChangeSet.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service"
 	},

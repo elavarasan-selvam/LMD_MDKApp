@@ -1,0 +1,19 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"ActionResult": {
+		"_Name": "MobileSalesDocumentUpdateEntity"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentUpdateFailure.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentUpdateMessage.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "MobileSalesDocumentItems",
+		"ReadLink": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesDocumentUpdateEntityReadlink.js"
+	},
+	"Properties": {
+		"OrderedQuantity": "#Control:FCOrderedQuantity/#Value"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
+	}
+}

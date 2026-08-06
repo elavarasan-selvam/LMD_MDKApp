@@ -24,6 +24,10 @@ export default async function InitializeDeliveryandReturnFlag(context) {
         appCD.CollectionPaymentConfirmed = {};
     }
 
+     if (!appCD.MobileSalesDocumentByStop) {
+        appCD.MobileSalesDocumentByStop = {};
+    }
+
     // Set currentStop correctly
     const binding = context.binding;
     if (binding?.StopUUID) {
