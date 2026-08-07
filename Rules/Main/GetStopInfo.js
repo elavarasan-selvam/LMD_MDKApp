@@ -100,7 +100,7 @@ export default async function GetStopInfo(context) {
         }
     }
    // CASE 3: CHECKIN / CHECKOUT -> same as before (fetch vehicle from Routes)
-   if ((stopType === 'CHECKIN' || stopType === 'CHECKOUT') && stop.RouteUUID) {
+   if ((stopType === 'CHECKIN' || stopType === 'CHECKOUT' || stopType === "RELOAD_CI" || stopType === "RELOAD_CO") && stop.RouteUUID) {
        const service = '/LMD_MDKApp/Services/LMD_MA.service';
        const entity = 'Routes';
        const filter = `$filter=RouteUUID eq guid'${stop.RouteUUID}'`;

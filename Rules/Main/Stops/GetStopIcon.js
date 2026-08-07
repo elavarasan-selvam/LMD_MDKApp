@@ -18,6 +18,12 @@ export default function GetStopIcon(context) {
         case 'DEPOSIT':
             return 'sap-icon://money-bills';
 
+       case 'RELOAD_CI':
+            return 'sap-icon://inbox';
+
+        case 'RELOAD_CO':
+            return 'sap-icon://outbox';
+
         default:
             return 'sap-icon://map'; // fallback icon
     }

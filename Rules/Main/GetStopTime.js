@@ -77,6 +77,13 @@ export default function GetStopTime(context) {
 
             return start ? formatTo12Hour(start) : "";
         }
+        
+        // RELOAD_CI / RELOAD_CO - Display LocationID instead of time
+        const stopType = (binding.StopType || "").toUpperCase();
+
+        if (stopType === "RELOAD_CI" || stopType === "RELOAD_CO") {
+        return `LocationID : ${binding.LocationID || ""}`;
+        }
 
         // Try direct binding first
         const direct = formatStartEnd(binding);

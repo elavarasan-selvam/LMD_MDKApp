@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnsFailedErrors.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/StartMyVisit/UnplannedReturnCaptureDocumentItemCreation.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnValidations.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "Documents"

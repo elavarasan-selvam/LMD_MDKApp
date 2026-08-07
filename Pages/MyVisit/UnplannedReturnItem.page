@@ -63,7 +63,7 @@
 							"IsVisible": true,
 							"Separator": true,
 							"Caption": "Currency",
-							"PlaceHolder": "Enter Currency",
+							"PlaceHolder": "Enter Currency e.g USD",
 							"Enabled": true,
 							"IsEditable": true
 						},
@@ -117,6 +117,7 @@
 				"_Name": "ActionBarItem0",
 				"Caption": "",
 				"SystemItem": "Cancel",
+				"Width": 18,
 				"Icon": "sap-icon://cancel",
 				"Position": "Right",
 				"IsIconCircular": false,

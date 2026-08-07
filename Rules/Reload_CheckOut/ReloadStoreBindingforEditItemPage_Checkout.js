@@ -2,20 +2,6 @@
  * Describe this function...
  * @param {IClientAPI} clientAPI
  */
-/**export default function ReloadStoreBindingforEditItemPage_Checkout(clientAPI) {
-    const binding = clientAPI.getPageProxy().binding;
-    const appData = clientAPI.getAppClientData();
-
-    // Store product info
-    appData.Checkout_ProductID  = binding.ProductID;
-    appData.Checkout_UOM        = binding.OrderedUOM;
-    appData.Edit_OrderedQty     = binding.OrderedQuantity; // sum already
-
-    alert("Tapped product on Edit Item page:\n" +"ProductID = " + appData.ReCheckout_ProductID + "\n" +"UOM = " + appData.ReCheckout_UOM + "\n" +"OrderedQuantity (sum) = " + appData.ReEdit_OrderedQty);
-
-    return true;
-}*/
-
 export default function ReloadStoreBindingforEditItemPage_Checkout(clientAPI) {
 
     const binding = clientAPI.binding;
