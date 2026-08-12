@@ -16,6 +16,72 @@
 						"FooterSeparator": true,
 						"ControlSeparator": true
 					},
+					"Layout": {
+						"LayoutType": "Vertical",
+						"HorizontalAlignment": "Leading"
+					},
+					"_Type": "Section.Type.ButtonTable",
+					"_Name": "SectionButtonTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Buttons": [
+						{
+							"_Type": "ButtonTable.Type.Button",
+							"_Name": "ButtonTableTypeButton0",
+							"Alignment": "Center",
+							"ButtonType": "Secondary",
+							"Semantic": "Tint",
+							"Image": "sap-icon://add",
+							"ImagePosition": "Leading",
+							"ImageSize": {
+								"Width": 20
+							},
+							"FullWidth": false,
+							"Visible": true,
+							"Enabled": true,
+							"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToUnplannedReturnItem.action"
+						}
+					]
+				},
+				{
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0",
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.Label",
+							"_Name": "FormCellLabel0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Text": "Click + button to create unplanned return",
+							"TextWrap": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
 					"_Type": "Section.Type.ObjectCollection",
 					"Target": "/LMD_MDKApp/Rules/MyVisit/UnplannedReturnsGetMergedReturns.js",
 					"_Name": "SectionObjectCollection0",
@@ -61,19 +127,8 @@
 	"OnLoaded": "/LMD_MDKApp/Rules/Visit/Return/PreloadReturnProductDescriptions.js",
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/Delivery/RedrawPage.js",
 	"ActionBar": {
-		"Items": [
-			{
-				"_Type": "Control.Type.ActionBarItem",
-				"_Name": "ActionBarItem0",
-				"Caption": "Add",
-				"SystemItem": "Add",
-				"Position": "Right",
-				"IsIconCircular": false,
-				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartMyVisit/NavToUnplannedReturnItem.action"
-			}
-		],
-		"_Name": "ActionBar5",
+		"Items": [],
+		"_Name": "ActionBar8",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Return Page"
 	},

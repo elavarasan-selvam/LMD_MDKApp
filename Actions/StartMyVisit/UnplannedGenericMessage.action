@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "UnplannedGenericMessage"
+	},
+	"Message": "Error",
+	"Title": "OK"
+}
