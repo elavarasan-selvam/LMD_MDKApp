@@ -3,5 +3,5 @@
  * @param {IClientAPI} clientAPI
  */
 export default function ChequePaymentTypeFormat(context) {
-     return "Cheque"; 
+     return "Check"; 
 }

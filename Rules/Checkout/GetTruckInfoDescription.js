@@ -6,11 +6,11 @@ export default function GetTruckInfoDescription(context) {
         (appCD.currentStop || context.binding)?.StopUUID;
 
     if (!stopUUID) {
-        return "Record the mileage of your truck.";
+        return "Record the Odometer of your truck.";
     }
 
     const isConfirmed =
         appCD.TruckInfoConfirmedByStop?.[stopUUID] === true;
 
-    return isConfirmed ? "" : "Record the mileage of your truck.";
+    return isConfirmed ? "" : "Record the Odometer of your truck.";
 }

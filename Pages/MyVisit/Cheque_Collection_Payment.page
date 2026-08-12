@@ -1,293 +1,295 @@
 {
-    "Controls": [
-        {
-            "FilterFeedbackBar": {
-                "ShowAllFilters": false,
-                "_Type": "Control.Type.FilterFeedbackBar"
-            },
-            "_Type": "Control.Type.SectionedTable",
-            "_Name": "SectionedTable0",
-            "Sections": [
-                {
-                    "ObjectHeader": {
-                        "DetailImageIsCircular": false,
-                        "HeadlineText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
-                        "StatusPosition": "Stacked",
-                        "StatusImagePosition": "Leading",
-                        "SubstatusImagePosition": "Leading",
-                        "Target": {
-                            "Service": "/LMD_MDKApp/Services/LMD_MA.service",
-                            "EntitySet": "OpenItems",
-                            "QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
-                        }
-                    },
-                    "_Type": "Section.Type.ObjectHeader",
-                    "_Name": "SectionObjectHeader0",
-                    "Visible": true
-                },
-                {
-                    "Separators": {
-                        "TopSectionSeparator": false,
-                        "BottomSectionSeparator": true,
-                        "HeaderSeparator": true,
-                        "FooterSeparator": true,
-                        "ControlSeparator": true
-                    },
-                    "Controls": [
-                        {
-                            "Value": "/LMD_MDKApp/Rules/Visit/Payments/ChequePaymentTypeFormat.js",
-                            "_Type": "Control.Type.FormCell.SimpleProperty",
-                            "_Name": "ChequePaymentInput",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": true,
-                            "Caption": "Payment Type",
-                            "PlaceHolder": "PlaceHolder",
-                            "Enabled": true,
-                            "IsEditable": false
-                        }
-                    ],
-                    "Layout": {
-                        "NumberOfColumns": 1
-                    },
-                    "Visible": true,
-                    "EmptySection": {
-                        "FooterVisible": false
-                    },
-                    "_Type": "Section.Type.FormCell",
-                    "_Name": "SectionFormCell0"
-                },
-                {
-                    "Separators": {
-                        "TopSectionSeparator": false,
-                        "BottomSectionSeparator": true,
-                        "HeaderSeparator": true,
-                        "FooterSeparator": true,
-                        "ControlSeparator": true
-                    },
-                    "Controls": [
-                        {
-                            "_Type": "Control.Type.FormCell.ListPicker",
-                            "_Name": "ChequeCurrencyInput",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": true,
-                            "AllowMultipleSelection": false,
-                            "AllowEmptySelection": true,
-                            "Caption": "Currency",
-                            "DataPaging": {
-                                "ShowLoadingIndicator": false,
-                                "PageSize": 50
-                            },
-                            "PlaceHolder": "Select Currency",
-                            "OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
-                            "IsSelectedSectionEnabled": false,
-                            "AllowDefaultValueIfOneItem": false,
-                            "IsEditable": true,
-                            "PickerItems": [
-                                "USD",
-                                "EUR",
-                                "INR",
-                                "AUD"
-                            ]
-                        },
-                        {
-                            "Value": "/LMD_MDKApp/Rules/Visit/Payment/Collection_ClearingOnload.js",
-                            "_Type": "Control.Type.FormCell.ListPicker",
-                            "_Name": "FormCellListPicker0",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": false,
-                            "AllowMultipleSelection": false,
-                            "AllowEmptySelection": false,
-                            "Caption": "Reference Invoice Number",
-                            "DataPaging": {
-                                "ShowLoadingIndicator": false,
-                                "PageSize": 50
-                            },
-                            "OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
-                            "IsSelectedSectionEnabled": false,
-                            "AllowDefaultValueIfOneItem": false,
-                            "IsEditable": true,
-                            "FilterProperty": "SearchKey",
-                            "Search": {
-                                "Enabled": true,
-                                "Delay": 500,
-                                "MinimumCharacterThreshold": 1
-                            },
-                            "PickerItems": {
-                                "Target": {
-                                    "Service": "/LMD_MDKApp/Services/LMD_MA.service",
-                                    "EntitySet": "OpenItems",
-                                    "QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
-                                },
-                                "ObjectCell": {
-                                    "Description": "Acc Doc : {AccountingDocument}",
-                                    "DisplayDescriptionInMobile": true,
-                                    "Footnote": "{Amount} {Currency}",
-                                    "PreserveIconStackSpacing": true,
-                                    "Subhead": "Date:{ReferenceDocumentDate}:",
-                                    "Title": "{AssignmentReference}",
-                                    "Visible": true
-                                },
-                                "ReturnValue": "{AccountingDocument}"
-                            }
-                        }
-                    ],
-                    "Layout": {
-                        "NumberOfColumns": 1
-                    },
-                    "Visible": true,
-                    "EmptySection": {
-                        "FooterVisible": false
-                    },
-                    "_Type": "Section.Type.FormCell",
-                    "_Name": "SectionFormCell5"
-                },
-                {
-                    "Separators": {
-                        "TopSectionSeparator": false,
-                        "BottomSectionSeparator": true,
-                        "HeaderSeparator": true,
-                        "FooterSeparator": true,
-                        "ControlSeparator": true
-                    },
-                    "Controls": [
-                        {
-                            "_Type": "Control.Type.FormCell.SimpleProperty",
-                            "_Name": "ChequeAmountInput",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": true,
-                            "Caption": "Amount",
-                            "PlaceHolder": "Enter the Amount",
-                            "KeyboardType": "Number",
-                            "Enabled": true,
-                            "IsEditable": true
-                        }
-                    ],
-                    "Layout": {
-                        "NumberOfColumns": 1
-                    },
-                    "Visible": true,
-                    "EmptySection": {
-                        "FooterVisible": false
-                    },
-                    "_Type": "Section.Type.FormCell",
-                    "_Name": "SectionFormCell2"
-                },
-                {
-                    "Separators": {
-                        "TopSectionSeparator": false,
-                        "BottomSectionSeparator": true,
-                        "HeaderSeparator": true,
-                        "FooterSeparator": true,
-                        "ControlSeparator": true
-                    },
-                    "Controls": [
-                        {
-                            "_Type": "Control.Type.FormCell.SimpleProperty",
-                            "_Name": "CheckNumberInput",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": true,
-                            "Caption": "Check Number",
-                            "PlaceHolder": "Enter Cheque Number",
-                            "KeyboardType": "Number",
-                            "AlternateInput": "None",
-                            "Enabled": true,
-                            "IsEditable": true
-                        }
-                    ],
-                    "Layout": {
-                        "NumberOfColumns": 1
-                    },
-                    "Visible": true,
-                    "EmptySection": {
-                        "FooterVisible": false
-                    },
-                    "_Type": "Section.Type.FormCell",
-                    "_Name": "SectionFormCell4"
-                },
-                {
-                    "Separators": {
-                        "TopSectionSeparator": false,
-                        "BottomSectionSeparator": true,
-                        "HeaderSeparator": true,
-                        "FooterSeparator": true,
-                        "ControlSeparator": true
-                    },
-                    "Controls": [
-                        {
-                            "_Type": "Control.Type.FormCell.ListPicker",
-                            "_Name": "BankNameInput",
-                            "RequiredIndicator": false,
-                            "IsVisible": true,
-                            "Separator": true,
-                            "AllowMultipleSelection": false,
-                            "AllowEmptySelection": true,
-                            "Caption": "Bank Name",
-                            "DataPaging": {
-                                "ShowLoadingIndicator": false,
-                                "PageSize": 50
-                            },
-                            "PickerPrompt": "Please select one single item",
-                            "PlaceHolder": "Select Bank Name",
-                            "OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/BankNameOnValueChange.js",
-                            "IsSelectedSectionEnabled": false,
-                            "AllowDefaultValueIfOneItem": false,
-                            "IsEditable": true,
-                            "PickerItems": [
-                                "HSBC",
-                                "Citibank",
-                                "Standard Chartered Bank",
-                                "Deutsche Bank",
-                                "Barclays",
-                                "BNP Paribas",
-                                "ING Bank",
-                                "Santander",
-                                "JPMorgan Chase",
-                                "Bank of America"
-                            ]
-                        }
-                    ],
-                    "Layout": {
-                        "NumberOfColumns": 1
-                    },
-                    "Visible": true,
-                    "EmptySection": {
-                        "FooterVisible": false
-                    },
-                    "_Type": "Section.Type.FormCell",
-                    "_Name": "SectionFormCell7"
-                }
-            ]
-        }
-    ],
-    "_Type": "Page",
-    "_Name": "Cheque_Collection_Payment",
-    "ActionBar": {
-        "Items": [
-            {
-                "_Type": "Control.Type.ActionBarItem",
-                "_Name": "ActionBarItem1",
-                "Caption": "Collection Cheque Payment ",
-                "Position": "Left",
-                "IsIconCircular": false,
-                "Visible": true
-            },
-            {
-                "_Type": "Control.Type.ActionBarItem",
-                "_Name": "ActionBarItem0",
-                "Caption": "Save",
-                "Icon": "sap-icon://save",
-                "Position": "Right",
-                "IsIconCircular": false,
-                "Visible": true,
-                "OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Cheque_Creation.action"
-            }
-        ],
-        "_Name": "ActionBar1",
-        "_Type": "Control.Type.ActionBar"
-    }
+	"Controls": [
+		{
+			"FilterFeedbackBar": {
+				"ShowAllFilters": false,
+				"_Type": "Control.Type.FilterFeedbackBar"
+			},
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"DetailImageIsCircular": false,
+						"HeadlineText": "/LMD_MDKApp/Rules/Visit/Payments/FormatPayerSubstatus.js",
+						"StatusPosition": "Stacked",
+						"StatusImagePosition": "Leading",
+						"SubstatusImagePosition": "Leading",
+						"Target": {
+							"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+							"EntitySet": "OpenItems",
+							"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+						}
+					},
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader0",
+					"Visible": true
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"Value": "/LMD_MDKApp/Rules/Visit/Payments/ChequePaymentTypeFormat.js",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ChequePaymentInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Payment Type",
+							"PlaceHolder": "PlaceHolder",
+							"Enabled": true,
+							"IsEditable": false
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell0"
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "ChequeCurrencyInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": true,
+							"Caption": "Currency",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PlaceHolder": "Select Currency",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/Currency_OnValueChange_Visit.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"USD",
+								"EUR",
+								"INR",
+								"AUD"
+							]
+						},
+						{
+							"Value": "/LMD_MDKApp/Rules/Visit/Payment/Collection_ClearingOnload.js",
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "FormCellListPicker0",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": false,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Reference Invoice Number",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payment/OpenItem_OnValueChange.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"FilterProperty": "SearchKey",
+							"Search": {
+								"Enabled": true,
+								"Delay": 500,
+								"MinimumCharacterThreshold": 1
+							},
+							"PickerItems": {
+								"Target": {
+									"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+									"EntitySet": "OpenItems",
+									"QueryOptions": "/LMD_MDKApp/Rules/Visit/Payment/GetOpenItemsQuery.js"
+								},
+								"ObjectCell": {
+									"Description": "Acc Doc : {AccountingDocument}",
+									"DisplayDescriptionInMobile": true,
+									"Footnote": "{Amount} {Currency}",
+									"PreserveIconStackSpacing": true,
+									"Subhead": "Date:{ReferenceDocumentDate}:",
+									"Title": "{AssignmentReference}",
+									"Visible": true
+								},
+								"ReturnValue": "{AccountingDocument}"
+							}
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell5"
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ChequeAmountInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Amount",
+							"PlaceHolder": "Enter the Amount",
+							"KeyboardType": "Number",
+							"Enabled": true,
+							"IsEditable": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell2"
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "CheckNumberInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "Check Number",
+							"PlaceHolder": "Enter Check Number",
+							"KeyboardType": "Number",
+							"AlternateInput": "None",
+							"Enabled": true,
+							"IsEditable": true
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell4"
+				},
+				{
+					"Separators": {
+						"TopSectionSeparator": false,
+						"BottomSectionSeparator": true,
+						"HeaderSeparator": true,
+						"FooterSeparator": true,
+						"ControlSeparator": true
+					},
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "BankNameInput",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": true,
+							"Caption": "Bank Name",
+							"DataPaging": {
+								"ShowLoadingIndicator": false,
+								"PageSize": 50
+							},
+							"PickerPrompt": "Please select one single item",
+							"PlaceHolder": "Select Bank Name",
+							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/BankNameOnValueChange.js",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": false,
+							"IsEditable": true,
+							"PickerItems": [
+								"HSBC",
+								"Citibank",
+								"Standard Chartered Bank",
+								"Deutsche Bank",
+								"Barclays",
+								"BNP Paribas",
+								"ING Bank",
+								"Santander",
+								"JPMorgan Chase",
+								"Bank of America"
+							]
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"_Type": "Section.Type.FormCell",
+					"_Name": "SectionFormCell7"
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Cheque_Collection_Payment",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem1",
+				"Caption": "Collection Check Payment ",
+				"Width": 18,
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true
+			},
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "Save",
+				"Width": 18,
+				"Icon": "sap-icon://save",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/MyVisit/Payment/Collection_Cheque_Creation.action"
+			}
+		],
+		"_Name": "ActionBar1",
+		"_Type": "Control.Type.ActionBar"
+	}
 }

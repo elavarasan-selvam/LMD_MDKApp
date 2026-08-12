@@ -8,7 +8,7 @@ export default function GetCashChequeDescription(context) {
     }
 
     // If POD is open → show description
-    return "Record and confirm the amount of Cash/Cheque you receive for this stop. ";
+    return "Record and confirm the amount of Cash/Check you receive for this stop. ";
 }
 
 

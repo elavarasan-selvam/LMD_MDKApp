@@ -79,7 +79,7 @@ export default async function CheckTotalAmount_Loaded(clientAPI) {
         }
 
         // alert("FINAL TOTAL CH AMOUNT: " + totalAmount);
-        return `Cheque Collected : ${totalAmount.toString()}`;
+        return `Check Collected : ${totalAmount.toString()}`;
 
     } catch (e) {
         // alert("Error in CheckTotalAmount_Loaded: " + e.message);

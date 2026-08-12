@@ -31,7 +31,7 @@
 								"PageSize": 50
 							},
 							"PickerPrompt": "Please select one single item",
-							"PlaceHolder": "Select Cash/Cheque",
+							"PlaceHolder": "Select Cash/Check",
 							"OnValueChange": "/LMD_MDKApp/Rules/Visit/Payments/OnPaymentTypeChange.js",
 							"IsSelectedSectionEnabled": false,
 							"AllowDefaultValueIfOneItem": false,
@@ -56,7 +56,7 @@
 	"_Name": "VisitPayment",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar2",
+		"_Name": "ActionBar3",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Payment Type"
 	}

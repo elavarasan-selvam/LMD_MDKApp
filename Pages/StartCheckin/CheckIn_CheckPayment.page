@@ -89,6 +89,7 @@
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem0",
 				"Caption": "Save",
+				"Width": 18,
 				"Icon": "sap-icon://save",
 				"Position": "Right",
 				"IsIconCircular": false,
@@ -98,7 +99,7 @@
 		],
 		"_Name": "ActionBar0",
 		"_Type": "Control.Type.ActionBar",
-		"Caption": "Check-In: Cheque",
+		"Caption": "Check-In: Check",
 		"OnBackButtonPressed": "/LMD_MDKApp/Actions/ClosePage.action"
 	}
 }

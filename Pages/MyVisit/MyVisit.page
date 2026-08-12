@@ -134,7 +134,7 @@
 					},
 					"Card": {
 						"Visible": true,
-						"Title": "Cash/Cheque",
+						"Title": "Cash/Check",
 						"Subhead": "/LMD_MDKApp/Rules/Visit/Payments/DisplayAmount_Currency_Visit.js",
 						"Footnote": "/LMD_MDKApp/Rules/Visit/Payment/GetCollectionPaymentStatus.js",
 						"DetailImage": "sap-icon://money-bills",
@@ -294,7 +294,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Visit/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar55",
+		"_Name": "ActionBar56",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Visit"
 	},
