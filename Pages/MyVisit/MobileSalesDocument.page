@@ -9,68 +9,6 @@
 			"_Name": "SectionedTable0",
 			"Sections": [
 				{
-					"ObjectHeader": {
-						"DetailImageIsCircular": false,
-						"HeadlineText": "/LMD_MDKApp/Rules/MobileSalesDocument/GetShipToPartyID.js",
-						"StatusPosition": "Stacked",
-						"StatusImagePosition": "Leading",
-						"SubstatusImagePosition": "Leading",
-						"Target": {
-							"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-							"EntitySet": "Documents"
-						}
-					},
-					"_Type": "Section.Type.ObjectHeader",
-					"_Name": "SectionObjectHeader0",
-					"Visible": true
-				},
-				{
-					"ObjectHeader": {
-						"DetailImageIsCircular": false,
-						"HeadlineText": "/LMD_MDKApp/Rules/MobileSalesDocument/GetSoldToPartyID.js",
-						"StatusPosition": "Stacked",
-						"StatusImagePosition": "Leading",
-						"SubstatusImagePosition": "Leading",
-						"Target": {
-							"Service": "/LMD_MDKApp/Services/LMD_MA.service",
-							"EntitySet": "Documents"
-						}
-					},
-					"_Type": "Section.Type.ObjectHeader",
-					"_Name": "SectionObjectHeader1",
-					"Visible": true
-				},
-				{
-					"Separators": {
-						"TopSectionSeparator": false,
-						"BottomSectionSeparator": true,
-						"HeaderSeparator": true,
-						"FooterSeparator": true,
-						"ControlSeparator": true
-					},
-					"Controls": [
-						{
-							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty3",
-							"RequiredIndicator": false,
-							"IsVisible": true,
-							"Separator": true,
-							"Caption": "CustomerRelevantOrderNumber",
-							"Enabled": true,
-							"IsEditable": true
-						}
-					],
-					"Layout": {
-						"NumberOfColumns": 1
-					},
-					"Visible": true,
-					"EmptySection": {
-						"FooterVisible": false
-					},
-					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell5"
-				},
-				{
 					"Separators": {
 						"TopSectionSeparator": false,
 						"BottomSectionSeparator": true,
@@ -105,6 +43,13 @@
 					"Layout": {
 						"NumberOfColumns": 1
 					},
+					"Header": {
+						"_Type": "SectionCommon.Type.Header",
+						"_Name": "SectionCommonTypeHeader2",
+						"AccessoryType": "None",
+						"UseTopPadding": true,
+						"Caption": "/LMD_MDKApp/Rules/MobileSalesDocument/GetPartyIDs.js"
+					},
 					"Visible": true,
 					"EmptySection": {
 						"FooterVisible": false
@@ -125,7 +70,7 @@
 							"_Type": "Control.Type.FormCell.SimpleProperty",
 							"_Name": "FormCellSimpleProperty5",
 							"RequiredIndicator": false,
-							"IsVisible": true,
+							"IsVisible": false,
 							"Separator": true,
 							"Caption": "OrderedUOM",
 							"Enabled": true,
@@ -192,6 +137,16 @@
 							"PlaceHolder": "Enter Reference Number",
 							"Enabled": true,
 							"IsEditable": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty3",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "CustomerRelevantOrderNumber",
+							"Enabled": true,
+							"IsEditable": true
 						}
 					],
 					"Layout": {
@@ -215,6 +170,17 @@
 	"_Name": "MobileSalesDocument",
 	"ActionBar": {
 		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem4",
+				"Caption": "Item",
+				"SystemItem": "Cancel",
+				"Width": 18,
+				"Position": "Left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/CloseModalPage_Cancel.action"
+			},
 			{
 				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem3",

@@ -8,6 +8,6 @@ export default function GetOrderedQuantity(context) {
     const sectionedTable = pageProxy.getControl('SectionedTable0');
  
     const quantityControl = sectionedTable.getControl('FCOrderedQuantity');
- //   alert(`Ordered Quantity: ${quantityControl.getValue()}`);  
+  //  alert(`Ordered Quantity: ${quantityControl.getValue()}`);  
     return quantityControl.getValue();
 }
