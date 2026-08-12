@@ -33,7 +33,6 @@
 					},
 					"ObjectCell": {
 						"Title": "Warehouse: {DepartureLocationID}",
-						"Subhead": "/LMD_MDKApp/Rules/Main/GetStopTime.js",
 						"Footnote": "My Truck:  {VehicleID}",
 						"DisplayDescriptionInMobile": true,
 						"AccessoryType": "None",
@@ -222,7 +221,7 @@
 	"OnReturning": "/LMD_MDKApp/Rules/Checkout/OnReturnRefresh.js",
 	"ActionBar": {
 		"Items": [],
-		"_Name": "ActionBar35",
+		"_Name": "ActionBar36",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Checkout"
 	},

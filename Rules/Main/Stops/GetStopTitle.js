@@ -11,12 +11,12 @@ export default async function GetStopDisplayName(context) {
 
     // ---------------- CHECKOUT ----------------
     if (stopType === 'CHECKOUT') {
-        return 'Checkout';
+        return 'Driver Checkout';
     }
 
     // ---------------- CHECKIN ----------------
     if (stopType === 'CHECKIN') {
-        return 'Checkin';
+        return 'Driver Checkin';
     }
    // ----------------ReloadRequest CHECKIN & CHECKOOUT---------------------
     if ( stopType === 'RELOAD_CI'){
@@ -42,7 +42,7 @@ export default async function GetStopDisplayName(context) {
 
             // If only 1 visit → just "Visit"
             if (totalVisits <= 1) {
-                return 'Visit';
+                return 'Customer Visit';
             }
 
             let visitIndex = 0;
@@ -56,7 +56,7 @@ export default async function GetStopDisplayName(context) {
                 }
             }
 
-            return 'Visit-' + visitIndex;
+            return 'Customer Visit-' + visitIndex;
 
         } catch (error) {
             return 'Visit';
