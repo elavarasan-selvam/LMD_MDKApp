@@ -11,7 +11,7 @@
 		"ReadLink": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesDocumentUpdateEntityReadlink.js"
 	},
 	"Properties": {
-		"OrderedQuantity": "#Control:FCOrderedQuantity/#Value"
+		"OrderedQuantity": "#Control:FAOrderedQuantity/#Value"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"
