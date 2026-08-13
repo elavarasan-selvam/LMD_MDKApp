@@ -11,9 +11,6 @@
 		"ReadLink": "/LMD_MDKApp/Rules/Visit/Return/ReturnUpdatereadlink.js"
 	},
 	"Properties": {
-		"DeliveredQuantity": "#Control:FCReturnQuantity/#Value"
-	},
-	"Headers": {
-		"OfflineOData.TransactionID": "#Property:RouteUUID"
+		"DeliveredQuantity": "/LMD_MDKApp/Rules/Visit/Return/GetDeliveredQuantity.js"
 	}
 }

@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "Failure"
 	},
-	"Message": "{#ActionResults:DeliveryUpdateEntity/error}",
-	"Title": "{Error}",
-	"OKCaption": "Ok"
+	"Message": "{#ActionResults:ReturnUpdateEntity/error}",
+	"Title": "Failed",
+	"OKCaption": "OK"
 }
