@@ -8,5 +8,5 @@
 	"OKCaption": "YES",
 	"OnOK": "/LMD_MDKApp/Actions/BankDeposits/CreateStopforDeposit.action",
 	"CancelCaption": "NO",
-	"OnCancel": "/LMD_MDKApp/Actions/BankDeposits/NavBackToMain.action"
+	"OnCancel": "/LMD_MDKApp/Actions/ClosePage.action"
 }

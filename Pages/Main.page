@@ -192,6 +192,7 @@
 	],
 	"_Type": "Page",
 	"_Name": "Main",
+	"OnReturning": "/LMD_MDKApp/Rules/Main/RedrawMain.js",
 	"ActionBar": {
 		"Items": [
 			{

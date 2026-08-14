@@ -3,7 +3,7 @@
 	"ActionResult": {
 		"_Name": "ReadlinkFailedforRouteStart"
 	},
-	"Message": "{#ActionResults:ReadRouteByUUID/error}",
-	"Title": "{Error}",
+	"Message": "{#ActionResults:DepositStopDelete/error}",
+	"Title": "Failed",
 	"OKCaption": "Ok"
 }

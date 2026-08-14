@@ -1,0 +1,16 @@
+{
+	"_Type": "Action.Type.ODataService.DeleteEntity",
+	"ActionResult": {
+		"_Name": "DepositStopDelete"
+	},
+	"OnFailure": "/LMD_MDKApp/Actions/Main/Routes/ReadlinkFailedforRouteStart.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/BankDeposits/NavBackToMain.action",
+	"Target": {
+		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
+		"EntitySet": "Stops",
+		"ReadLink": "/LMD_MDKApp/Rules/BankDeposits/GetDepositStopReadLink.js"
+	},
+	"Headers": {
+		"OfflineOData.TransactionID": "/LMD_MDKApp/Rules/BankDeposits/GetRouteValue.js"
+	}
+}

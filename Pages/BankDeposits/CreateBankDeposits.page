@@ -120,7 +120,19 @@
 	"_Type": "Page",
 	"_Name": "CreateBankDeposits",
 	"ActionBar": {
-		"Items": [],
+		"Items": [
+			{
+				"_Type": "Control.Type.ActionBarItem",
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"SystemItem": "Cancel",
+				"Width": 18,
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/LMD_MDKApp/Actions/BankDeposits/DepositStopDelete.action"
+			}
+		],
 		"_Name": "ActionBar8",
 		"_Type": "Control.Type.ActionBar",
 		"Caption": "Deposit Collected Cash"

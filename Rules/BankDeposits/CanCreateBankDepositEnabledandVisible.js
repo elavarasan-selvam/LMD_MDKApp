@@ -222,6 +222,10 @@ export default async function CanCreateBankDeposit(context) {
 
         // all visits completed
         // and everything deposited
+        if(Number(totalDeposited) >= Number(totalCollected))
+        {
+            return false;
+        }
         if (
             allVisitsCompleted &&
             Number(totalDeposited) >= Number(totalCollected)
