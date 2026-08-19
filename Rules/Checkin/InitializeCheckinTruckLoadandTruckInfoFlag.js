@@ -836,33 +836,22 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         let reloadBaseActual = 0;
         let orderedFallback = 0;
         let afterReloadPendingDelivery = 0;
+        let extraDeliveredBeyondOrdered = 0;
 
         if (hasReloadRequest) {
 
             // =================================================
-            // RELOAD FLOW FINAL FORMULA
+            // CORRECTED RELOAD FLOW
             //
-            // IMPORTANT FIX:
+            // Do not subtract DeliveredSum directly from reloadBaseActual.
             //
-            // If product exists in RELOAD_CI / RELOAD_CO,
-            // use reload base actual and subtract delivered after reload.
-            //
-            // Example CHOCO:
-            // Reload checkin remaining = 22
-            // Delivered after reload = 20
-            // Final = 22 - 20 = 2
-            //
-            // If product does not exist in RELOAD_CI / RELOAD_CO,
-            // use ordered after reload - delivered after reload.
-            //
-            // Example NUTS:
-            // Ordered after reload = 10
-            // Delivered after reload = 9
-            // Final = 1
-            //
-            // Return-only products:
-            // Example LMD unplanned return 4
-            // Final = 4
+            // Example from your screenshot:
+            // NUTS_CHOCOLATE
+            // Reload Base Actual = 5
+            // Ordered After Reload = 10
+            // Delivered After Reload = 10
+            // Old wrong logic = 5 - 10 = -5 => 0
+            // Correct final = 5
             // =================================================
 
             reloadBaseActual =
@@ -873,26 +862,33 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 getSafeNumber(product.OrderedSum) -
                 getSafeNumber(product.DeliveredSum);
 
+            if (afterReloadPendingDelivery < 0) {
+                afterReloadPendingDelivery = 0;
+            }
+
+            extraDeliveredBeyondOrdered =
+                getSafeNumber(product.DeliveredSum) -
+                getSafeNumber(product.OrderedSum);
+
+            if (extraDeliveredBeyondOrdered < 0) {
+                extraDeliveredBeyondOrdered = 0;
+            }
+
             if (product.HasAfterReloadDelivery === true) {
 
-                // =============================================
-                // MAIN FIX IS HERE
-                // If reload base exists, do not use ordered-delivered only.
-                // Use reload base minus delivered after reload.
-                // =============================================
                 if (getSafeNumber(reloadBaseActual) > 0) {
 
                     finalActual =
                         getSafeNumber(reloadBaseActual) -
-                        getSafeNumber(product.DeliveredSum) +
+                        getSafeNumber(extraDeliveredBeyondOrdered) +
+                        getSafeNumber(afterReloadPendingDelivery) +
                         getSafeNumber(returnQty) +
                         getSafeNumber(unplannedReturnQty);
 
                 } else {
 
                     finalActual =
-                        getSafeNumber(product.OrderedSum) -
-                        getSafeNumber(product.DeliveredSum) +
+                        getSafeNumber(afterReloadPendingDelivery) +
                         getSafeNumber(returnQty) +
                         getSafeNumber(unplannedReturnQty);
                 }
@@ -922,6 +918,10 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             // Old final checkin logic untouched
             // =================================================
             finalActual = oldFinalActual;
+
+            if (finalActual < 0) {
+                finalActual = 0;
+            }
         }
 
         /*if (ENABLE_DEBUG_ALERTS) {
@@ -943,6 +943,7 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
                 "\nOrdered After Reload: " + product.OrderedSum +
                 "\nDelivered After Reload: " + product.DeliveredSum +
                 "\nAfter Reload Pending Delivery: " + afterReloadPendingDelivery +
+                "\nExtra Delivered Beyond Ordered: " + extraDeliveredBeyondOrdered +
                 "\nOrdered Fallback Used: " + orderedFallback +
                 "\nReturn After Reload: " + returnQty +
                 "\nUnplanned Return After Reload: " + unplannedReturnQty +
