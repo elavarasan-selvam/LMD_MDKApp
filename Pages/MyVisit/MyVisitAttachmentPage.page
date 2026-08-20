@@ -149,17 +149,10 @@
 		"Items": [
 			{
 				"_Type": "Control.Type.ActionBarItem",
-				"_Name": "ActionBarItem0",
-				"Caption": "Proof Of Delivery ",
-				"Position": "Left",
-				"IsIconCircular": false,
-				"Visible": true
-			},
-			{
-				"_Type": "Control.Type.ActionBarItem",
 				"_Name": "ActionBarItem1",
 				"Caption": "Save",
 				"SystemItem": "Save",
+				"Width": 18,
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
@@ -167,6 +160,7 @@
 			}
 		],
 		"_Name": "ActionBar0",
-		"_Type": "Control.Type.ActionBar"
+		"_Type": "Control.Type.ActionBar",
+		"Caption": "Proof Of Delivery"
 	}
 }
