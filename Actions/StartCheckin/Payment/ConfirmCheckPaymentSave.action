@@ -1,10 +1,9 @@
 {
 	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
 	"ActionResult": {
-		"_Name": "COCI_CheckPayment"
+		"_Name": "ConfirmCheckPaymentSave"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/GenericMessageBox.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/CheckPaymentMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ConfirmCheckPaymentSavedToast.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIPayments"

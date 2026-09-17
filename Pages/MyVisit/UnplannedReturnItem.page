@@ -84,7 +84,7 @@
 							"RequiredIndicator": false,
 							"IsVisible": true,
 							"Separator": true,
-							"Caption": "Returning Quantity",
+							"Caption": "Return Quantity",
 							"PlaceHolder": "Enter Quantity",
 							"KeyboardType": "Number",
 							"Enabled": true,

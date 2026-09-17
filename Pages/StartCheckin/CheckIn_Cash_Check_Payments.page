@@ -40,7 +40,6 @@
 								"Visible": true,
 								"Selected": false,
 								"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDisplayAmount_Currency.js",
-								"Footnote": "/LMD_MDKApp/Rules/Checkin/Payment/CheckinDisplayAmount_Currency.js",
 								"DisplayDescriptionInMobile": true,
 								"AccessoryButtonIcon": "sap-icon://action",
 								"AccessoryButtonText": "Tap to view cash summary",
@@ -61,7 +60,6 @@
 								"Visible": true,
 								"Selected": false,
 								"Subhead": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",
-								"Footnote": "/LMD_MDKApp/Rules/Checkin/Payment/CheckDisplayAmount_Currency_FromVisits.js",
 								"DisplayDescriptionInMobile": true,
 								"AccessoryButtonIcon": "sap-icon://action",
 								"AccessoryButtonText": "Tap to view check summary",
@@ -84,6 +82,8 @@
 	],
 	"_Type": "Page",
 	"_Name": "CheckIn_Cash_Check_Payments",
+	"OnLoaded": "/LMD_MDKApp/Rules/Checkin/Payment/ShowCheckinCollectionsDisabledInfo.js",
+	"OnReturning": "/LMD_MDKApp/Rules/Checkin/Payment/ShowCheckinCollectionsDisabledInfo.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -114,7 +114,7 @@
 				"Visible": true,
 				"Title": "Confirm Collections",
 				"OnPress": "/LMD_MDKApp/Rules/Checkin/Payment/ConfirmCheckinPaymentandnavigation.js",
-				"Enabled": true,
+				"Enabled": "/LMD_MDKApp/Rules/Checkin/Payment/ConfirmCollectionsButtonEnabling.js",
 				"ButtonType": "Primary",
 				"Semantic": "Tint",
 				"ImagePosition": "Leading"

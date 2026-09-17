@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ConfirmCheckPaymentSavedToast"
+	},
+	"Message": "Check payment saved successfully",
+	"Title": "Success",
+	"OKCaption": "OK"
+}

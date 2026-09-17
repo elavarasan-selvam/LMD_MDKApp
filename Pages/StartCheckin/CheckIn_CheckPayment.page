@@ -94,7 +94,7 @@
 				"Position": "Right",
 				"IsIconCircular": false,
 				"Visible": true,
-				"OnPress": "/LMD_MDKApp/Actions/StartCheckin/Payment/COCI_CheckPayment.action"
+							"OnPress": "/LMD_MDKApp/Rules/Checkin/Payment/CheckPaymentSaveDebug.js"
 			}
 		],
 		"_Name": "ActionBar0",

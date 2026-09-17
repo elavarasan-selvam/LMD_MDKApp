@@ -34,11 +34,11 @@ export default async function CheckTotalAmount_Loaded(clientAPI) {
                 `$filter=StopUUID eq guid'${stopUUID}' and PaymentType eq 'CH'`
             );
 
-            if (checkinPayments?.length > 0) {
-                const amt = Number(checkinPayments.getItem(0).Amount || 0);
+            //if (checkinPayments?.length > 0) {
+            //    const amt = Number(checkinPayments.getItem(0).Amount || 0);
                 // alert("CHECKIN CH OVERRIDE AMOUNT: " + amt);
-                return `Cheque Collected : ${amt.toString()}`;
-            }
+            //    return `Check Collected : ${amt.toString()}`;
+            //}
         }
 
         // 2. VISIT STOPS → Collections → CollectionPayments

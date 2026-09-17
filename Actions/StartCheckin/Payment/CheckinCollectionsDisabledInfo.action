@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.BannerMessage",
+	"ActionResult": {
+		"_Name": "CheckinCollectionsDisabledInfo"
+	},
+	"Message": "Save all cash and check collections before confirming.",
+	"Duration": 10,
+	"Animated": true
+}

@@ -4,12 +4,15 @@ export default function CheckCurrency_OnValueChange(clientAPI) {
 
     let currency = clientAPI.getValue();
 
-    // Extract from ListPicker array
     if (Array.isArray(currency) && currency.length > 0) {
         currency = currency[0].ReturnedValue || currency[0].DisplayValue || "";
     }
 
-    appData.Check_Currency = currency;
+    if (currency && typeof currency === 'object' && currency.ReturnedValue) {
+        currency = currency.ReturnedValue;
+    }
+
+    appData.Check_Currency = currency || "";
 
     return true;
 }

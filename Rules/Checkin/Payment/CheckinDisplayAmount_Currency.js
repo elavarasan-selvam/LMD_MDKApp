@@ -42,8 +42,8 @@ export default async function CheckinSetAmountPaymentloaded(clientAPI) {
             if (checkinPayments.length > 0) {
                 const amt = Number(checkinPayments.getItem(0).Amount || 0);
                 // alert("CHECKIN CA override amount: " + amt);
-                return `Cash Collected : ${amt}`; // CHECKIN override
-            }
+                return `Cash Collected : ${amt}`; // CHECKIN override 
+                }
         }
 
         // 2. VISIT STOPS → Collections → CollectionPayments
@@ -196,7 +196,7 @@ export default async function CheckinSetAmountPaymentloaded(clientAPI) {
         }
 
         return `Cash Collected : ${remainingAmount}`;
-
+       
     } catch (err) {
         alert("Error: " + err.message);
         return totalAmount;

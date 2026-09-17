@@ -1,10 +1,9 @@
 {
 	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
 	"ActionResult": {
-		"_Name": "COCI_CheckPayment"
+		"_Name": "ConfirmCashPaymentSave"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/GenericMessageBox.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/CheckPaymentMessage.action",
+	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ConfirmCashPaymentSavedToast.action",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "COCIPayments"
@@ -17,9 +16,9 @@
 		"Property": "to_COCIPayments"
 	},
 	"Properties": {
-		"PaymentType": "CH",
-		"Currency": "{#Control:CheckinCheckCurrencyInput/#SelectedValue}",
-		"Amount": "{#Control:CheckinCheckAmountInput/#Value}"
+		"PaymentType": "CA",
+		"Currency": "{(clientData.Checkin_Currency)}",
+		"Amount": "{(clientData.Checkin_Amount)}"
 	},
 	"Headers": {
 		"OfflineOData.TransactionID": "#Property:RouteUUID"

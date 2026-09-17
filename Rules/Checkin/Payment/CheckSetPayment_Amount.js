@@ -1,17 +1,14 @@
 export default function CheckSetPaymentAmount(clientAPI) {
     const appData = clientAPI.getAppClientData();
-    const newAmount = clientAPI.getValue();
-
-    // Store original amount if not already stored
+    const rawValue = clientAPI.getValue();
+    const newAmount = rawValue === null || rawValue === undefined || rawValue === '' ? 0 : Number(rawValue);
+ 
     if (appData._CheckOriginalAmount === undefined) {
         appData._CheckOriginalAmount = newAmount;
     }
-
-    // Store modified amount
-    appData.Check_Amount = newAmount;
-
-    // Flag to indicate if amount has changed
-    appData._CheckAmountChanged = (appData._CheckOriginalAmount !== newAmount);
-
+ 
+    appData.Check_Amount = Number.isFinite(newAmount) ? newAmount : 0;
+    appData._CheckAmountChanged = (appData._CheckOriginalAmount !== appData.Check_Amount);
+ 
     return true;
 }
