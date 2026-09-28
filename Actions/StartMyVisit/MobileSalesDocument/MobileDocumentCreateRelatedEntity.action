@@ -26,6 +26,7 @@
 		"SalesOrganization": "/LMD_MDKApp/Rules/MobileSalesDocument/MobileSalesOrganization.js",
 		"CustomerRelevantOrderNumber": "#Control:FormCellSimpleProperty3/#Value",
 		"MobileSalesDocumentDate": "/LMD_MDKApp/Rules/MobileSalesDocument/GetMobileSalesDocumentDate.js",
+		"RequestedDeliveryDate": "#Control:FormCellDatePicker0/#Value",
 		"CustomerReferenceNumber": "#Control:FormCellSimpleProperty4/#Value",
 		"StopUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetStopUUID.js",
 		"RouteUUID": "/LMD_MDKApp/Rules/MobileSalesDocument/GetRouteUUID.js"

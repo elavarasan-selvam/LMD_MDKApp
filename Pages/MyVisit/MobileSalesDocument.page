@@ -67,14 +67,16 @@
 					},
 					"Controls": [
 						{
-							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "FormCellSimpleProperty5",
+							"Value": "Select Date",
+							"_Type": "Control.Type.FormCell.DatePicker",
+							"_Name": "FormCellDatePicker0",
 							"RequiredIndicator": false,
-							"IsVisible": false,
+							"IsVisible": true,
 							"Separator": true,
-							"Caption": "OrderedUOM",
-							"Enabled": true,
-							"IsEditable": false
+							"Caption": "RequestedDeliveryDate",
+							"IsEditable": true,
+							"Mode": "Date",
+							"OnValueChange": "/LMD_MDKApp/Rules/MobileSalesDocument/ValidateRequestedDeliveryDate.js"
 						}
 					],
 					"Layout": {
@@ -85,7 +87,7 @@
 						"FooterVisible": false
 					},
 					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell8"
+					"_Name": "SectionFormCell9"
 				},
 				{
 					"Separators": {
@@ -106,6 +108,16 @@
 							"KeyboardType": "Number",
 							"Enabled": true,
 							"IsEditable": true
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "FormCellSimpleProperty5",
+							"RequiredIndicator": false,
+							"IsVisible": true,
+							"Separator": true,
+							"Caption": "OrderedUOM",
+							"Enabled": true,
+							"IsEditable": false
 						}
 					],
 					"Layout": {
@@ -116,7 +128,7 @@
 						"FooterVisible": false
 					},
 					"_Type": "Section.Type.FormCell",
-					"_Name": "SectionFormCell7"
+					"_Name": "SectionFormCell8"
 				},
 				{
 					"Separators": {

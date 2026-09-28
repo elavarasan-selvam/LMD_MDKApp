@@ -3,8 +3,8 @@
 	"ActionResult": {
 		"_Name": "COCIProduct_Create_from_Stops"
 	},
-	"OnFailure": "/LMD_MDKApp/Actions/StartCheckin/ActualQuantityFailure.action",
-	"OnSuccess": "/LMD_MDKApp/Actions/StartCheckin/Payment/ActualandUnloadedUpdationMessage.action",
+	"OnFailure": "/LMD_MDKApp/Actions/Reload_CheckIn/ValidateSaveFalure.action",
+	"OnSuccess": "/LMD_MDKApp/Rules/ReloadCheckIn/ValidateReloadProductsAfterSave.js",
 	"ValidationRule": "/LMD_MDKApp/Rules/ReloadCheckIn/ValidateUnloadedQuantity.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",

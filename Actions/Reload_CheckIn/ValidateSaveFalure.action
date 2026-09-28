@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.Message",
+	"ActionResult": {
+		"_Name": "ValidateSaveFalure"
+	},
+	"Message": "{#ActionResults:COCIProduct_Create_from_Stops/error}",
+	"OKCaption": "OK"
+}

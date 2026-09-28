@@ -63,7 +63,7 @@
 	"_Type": "Page",
 	"_Name": "ReloadTruckLoad",
 	"OnLoaded": "/LMD_MDKApp/Rules/ReloadCheckIn/InitializeReloadCheckIn.js",
-	"OnReturning": "/LMD_MDKApp/Rules/Checkin/OnReturnRefresh.js",
+	"OnReturning": "/LMD_MDKApp/Rules/ReloadCheckIn/ReloadBannerMessageOnreturn.js",
 	"ActionBar": {
 		"Items": [
 			{
@@ -93,7 +93,7 @@
 				"Visible": true,
 				"Title": "Confirm Reload CheckIn",
 				"OnPress": "/LMD_MDKApp/Rules/KPI/bumpCompletedAtcheckout.js",
-				"Enabled": true,
+				"Enabled": "/LMD_MDKApp/Rules/ReloadCheckIn/ConfirmReloadCheckInEnabled.js",
 				"ButtonType": "Primary",
 				"Semantic": "Normal",
 				"ImagePosition": "Leading"

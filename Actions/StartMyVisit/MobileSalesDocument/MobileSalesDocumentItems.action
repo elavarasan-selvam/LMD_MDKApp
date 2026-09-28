@@ -5,6 +5,7 @@
 	},
 	"OnFailure": "/LMD_MDKApp/Actions/StartMyVisit/MobileSalesDocument/MobileSalesDocumentItemFailure.action",
 	"OnSuccess": "/LMD_MDKApp/Actions/CloseModalPage_Complete.action",
+	"ValidationRule": "/LMD_MDKApp/Rules/MobileSalesDocument/ValidateMobileSalesDocument.js",
 	"Target": {
 		"Service": "/LMD_MDKApp/Services/LMD_MA.service",
 		"EntitySet": "MobileSalesDocumentItems"

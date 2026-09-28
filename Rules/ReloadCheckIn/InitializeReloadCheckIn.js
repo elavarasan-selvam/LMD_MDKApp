@@ -2,6 +2,18 @@ export default async function InitializeReloadCheckIn(clientAPI) {
 
     const appData = clientAPI.getAppClientData();
 
+    //==================================================//
+    //Initial State
+    //==================================================//
+
+    appData.IsReloadCheckInConfirmEnabled = false;
+
+    //====================================================//
+    // Saved Products 
+    //====================================================//
+
+    appData.ReloadSavedProductList = [];
+
     appData.ReloadPendingProductList = [];
 
     const binding = clientAPI.getPageProxy().binding;

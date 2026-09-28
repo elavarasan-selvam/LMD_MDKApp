@@ -1,0 +1,9 @@
+{
+	"_Type": "Action.Type.BannerMessage",
+	"ActionResult": {
+		"_Name": "ReloadSaveStatusBanner"
+	},
+	"Message": "/LMD_MDKApp/Rules/ReloadCheckIn/BuildReloadSaveStatusMessage.js",
+	"Duration": 10,
+	"Animated": true
+}
