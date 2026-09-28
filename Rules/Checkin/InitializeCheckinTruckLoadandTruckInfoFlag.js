@@ -380,19 +380,19 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
             ? afterReloadCOVisitStopMap
             : afterReloadCIVisitStopMap;
 
-    /*if (ENABLE_DEBUG_ALERTS) {
-        alert(
-            "FINAL CHECKIN STARTED" +
-            "\nRouteUUID: " + routeUUID +
-            "\nCheckout StopUUID: " + checkoutStopUUID +
-            "\nReload CI StopUUID: " + reloadCIStopUUID +
-            "\nReload CO StopUUID: " + reloadCOStopUUID +
-            "\nHas Reload: " + hasReloadRequest +
-            "\nReload CI Sequence: " + reloadCISequence +
-            "\nReload CO Sequence: " + reloadCOSequence +
-            "\nAfter Reload Visits Used: " + Object.keys(afterReloadVisitStopMap).join(',')
-        );
-    }*/
+    // if (ENABLE_DEBUG_ALERTS) {
+    //     alert(
+    //         "FINAL CHECKIN STARTED" +
+    //         "\nRouteUUID: " + routeUUID +
+    //         "\nCheckout StopUUID: " + checkoutStopUUID +
+    //         "\nReload CI StopUUID: " + reloadCIStopUUID +
+    //         "\nReload CO StopUUID: " + reloadCOStopUUID +
+    //         "\nHas Reload: " + hasReloadRequest +
+    //         "\nReload CI Sequence: " + reloadCISequence +
+    //         "\nReload CO Sequence: " + reloadCOSequence +
+    //         "\nAfter Reload Visits Used: " + Object.keys(afterReloadVisitStopMap).join(',')
+    //     );
+    // }
 
     // ===============================
     // FETCH DELIVERY ITEMS
@@ -731,16 +731,16 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-    /*if (ENABLE_DEBUG_ALERTS) {
-        alert(
-            "Before Final Calculation" +
-            "\nProductMap Count: " + Object.keys(productMap).length +
-            "\nReload CI Remaining By Product: " + JSON.stringify(reloadCIRemainingMapByProductID) +
-            "\nReload CO Actual By Product: " + JSON.stringify(reloadCOActualMapByProductID) +
-            "\nReturn Map: " + JSON.stringify(returnMap) +
-            "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
-        );
-    }*/
+    // if (ENABLE_DEBUG_ALERTS) {
+    //     alert(
+    //         "Before Final Calculation" +
+    //         "\nProductMap Count: " + Object.keys(productMap).length +
+    //         "\nReload CI Remaining By Product: " + JSON.stringify(reloadCIRemainingMapByProductID) +
+    //         "\nReload CO Actual By Product: " + JSON.stringify(reloadCOActualMapByProductID) +
+    //         "\nReturn Map: " + JSON.stringify(returnMap) +
+    //         "\nUnplanned Return Map: " + JSON.stringify(unplannedReturnMap)
+    //     );
+    // }
 
     // ===============================
     // CALCULATE FINAL ACTUAL
@@ -840,116 +840,110 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
 
         if (hasReloadRequest) {
 
-            // =================================================
-            // CORRECTED RELOAD FLOW
-            //
-            // Do not subtract DeliveredSum directly from reloadBaseActual.
-            //
-            // Example from your screenshot:
-            // NUTS_CHOCOLATE
-            // Reload Base Actual = 5
-            // Ordered After Reload = 10
-            // Delivered After Reload = 10
-            // Old wrong logic = 5 - 10 = -5 => 0
-            // Correct final = 5
-            // =================================================
+                reloadBaseActual =
+                    getSafeNumber(reloadCIRemaining) +
+                    getSafeNumber(reloadCOActual);
 
-            reloadBaseActual =
-                getSafeNumber(reloadCIRemaining) +
-                getSafeNumber(reloadCOActual);
+                afterReloadPendingDelivery =
+                    getSafeNumber(product.OrderedSum) -
+                    getSafeNumber(product.DeliveredSum);
 
-            afterReloadPendingDelivery =
-                getSafeNumber(product.OrderedSum) -
-                getSafeNumber(product.DeliveredSum);
+                if (afterReloadPendingDelivery < 0) {
+                    afterReloadPendingDelivery = 0;
+                }
 
-            if (afterReloadPendingDelivery < 0) {
-                afterReloadPendingDelivery = 0;
-            }
+                extraDeliveredBeyondOrdered =
+                    getSafeNumber(product.DeliveredSum) -
+                    getSafeNumber(product.OrderedSum);
 
-            extraDeliveredBeyondOrdered =
-                getSafeNumber(product.DeliveredSum) -
-                getSafeNumber(product.OrderedSum);
+                if (extraDeliveredBeyondOrdered < 0) {
+                    extraDeliveredBeyondOrdered = 0;
+                }
 
-            if (extraDeliveredBeyondOrdered < 0) {
-                extraDeliveredBeyondOrdered = 0;
-            }
+                if (product.HasAfterReloadDelivery === true) {
 
-            if (product.HasAfterReloadDelivery === true) {
+                    if (getSafeNumber(reloadBaseActual) > 0) {
 
-                if (getSafeNumber(reloadBaseActual) > 0) {
+                        /*
+                        * Corrected only this calculation.
+                        *
+                        * Reload stock
+                        * - delivery after reload
+                        * + planned return
+                        * + unplanned return
+                        */
+                        finalActual =
+                            getSafeNumber(reloadBaseActual) -
+                            getSafeNumber(product.DeliveredSum) +
+                            getSafeNumber(returnQty) +
+                            getSafeNumber(unplannedReturnQty);
 
-                    finalActual =
-                        getSafeNumber(reloadBaseActual) -
-                        getSafeNumber(extraDeliveredBeyondOrdered) +
-                        getSafeNumber(afterReloadPendingDelivery) +
-                        getSafeNumber(returnQty) +
-                        getSafeNumber(unplannedReturnQty);
+                    } else {
+
+                        /*
+                        * Existing fallback kept unchanged.
+                        * This produces NUTS = 2 pending + 1 return.
+                        */
+                        finalActual =
+                            getSafeNumber(afterReloadPendingDelivery) +
+                            getSafeNumber(returnQty) +
+                            getSafeNumber(unplannedReturnQty);
+                    }
 
                 } else {
 
+                    orderedFallback =
+                        getSafeNumber(reloadBaseActual) > 0
+                            ? 0
+                            : getSafeNumber(product.OrderedSum);
+
                     finalActual =
-                        getSafeNumber(afterReloadPendingDelivery) +
+                        getSafeNumber(reloadBaseActual) +
+                        getSafeNumber(orderedFallback) +
                         getSafeNumber(returnQty) +
                         getSafeNumber(unplannedReturnQty);
                 }
 
+                if (finalActual < 0) {
+                    finalActual = 0;
+                }
+
             } else {
 
-                orderedFallback =
-                    getSafeNumber(reloadBaseActual) > 0
-                        ? 0
-                        : getSafeNumber(product.OrderedSum);
+                // No-reload flow remains completely unchanged
+                finalActual = oldFinalActual;
 
-                finalActual =
-                    getSafeNumber(reloadBaseActual) +
-                    getSafeNumber(orderedFallback) +
-                    getSafeNumber(returnQty) +
-                    getSafeNumber(unplannedReturnQty);
+                if (finalActual < 0) {
+                    finalActual = 0;
+                }
             }
 
-            if (finalActual < 0) {
-                finalActual = 0;
-            }
-
-        } else {
-
-            // =================================================
-            // NO RELOAD FLOW
-            // Old final checkin logic untouched
-            // =================================================
-            finalActual = oldFinalActual;
-
-            if (finalActual < 0) {
-                finalActual = 0;
-            }
-        }
-
-        /*if (ENABLE_DEBUG_ALERTS) {
-            alert(
-                "Product Calculation" +
-                "\nProduct: " + product.ProductID +
-                "\nNormalized Product: " + normalizedProductID +
-                "\nKey: " + key +
-                "\nHas Reload: " + hasReloadRequest +
-                "\nHas After Reload Delivery: " + product.HasAfterReloadDelivery +
-                "\nCheckout Actual Only No Reload: " + checkoutActual +
-                "\nReload CI Remaining By Key: " + reloadCIRemainingByKey +
-                "\nReload CI Remaining By Product: " + reloadCIRemainingByProduct +
-                "\nReload CI Remaining Used: " + reloadCIRemaining +
-                "\nReload CO Actual By Key: " + reloadCOActualByKey +
-                "\nReload CO Actual By Product: " + reloadCOActualByProduct +
-                "\nReload CO Actual Used: " + reloadCOActual +
-                "\nReload Base Actual: " + reloadBaseActual +
-                "\nOrdered After Reload: " + product.OrderedSum +
-                "\nDelivered After Reload: " + product.DeliveredSum +
-                "\nAfter Reload Pending Delivery: " + afterReloadPendingDelivery +
-                "\nExtra Delivered Beyond Ordered: " + extraDeliveredBeyondOrdered +
-                "\nOrdered Fallback Used: " + orderedFallback +
-                "\nReturn After Reload: " + returnQty +
-                "\nUnplanned Return After Reload: " + unplannedReturnQty +
-                "\nFinal Actual: " + finalActual
-            );
-        }*/
+        // if (ENABLE_DEBUG_ALERTS) {
+        //     alert(
+        //         "Product Calculation" +
+        //         "\nProduct: " + product.ProductID +
+        //         "\nNormalized Product: " + normalizedProductID +
+        //         "\nKey: " + key +
+        //         "\nHas Reload: " + hasReloadRequest +
+        //         "\nHas After Reload Delivery: " + product.HasAfterReloadDelivery +
+        //         "\nCheckout Actual Only No Reload: " + checkoutActual +
+        //         "\nReload CI Remaining By Key: " + reloadCIRemainingByKey +
+        //         "\nReload CI Remaining By Product: " + reloadCIRemainingByProduct +
+        //         "\nReload CI Remaining Used: " + reloadCIRemaining +
+        //         "\nReload CO Actual By Key: " + reloadCOActualByKey +
+        //         "\nReload CO Actual By Product: " + reloadCOActualByProduct +
+        //         "\nReload CO Actual Used: " + reloadCOActual +
+        //         "\nReload Base Actual: " + reloadBaseActual +
+        //         "\nOrdered After Reload: " + product.OrderedSum +
+        //         "\nDelivered After Reload: " + product.DeliveredSum +
+        //         "\nAfter Reload Pending Delivery: " + afterReloadPendingDelivery +
+        //         "\nExtra Delivered Beyond Ordered: " + extraDeliveredBeyondOrdered +
+        //         "\nOrdered Fallback Used: " + orderedFallback +
+        //         "\nReturn After Reload: " + returnQty +
+        //         "\nUnplanned Return After Reload: " + unplannedReturnQty +
+        //         "\nFinal Actual: " + finalActual
+        //     );
+        // }
 
         if (finalActual > 0) {
 
@@ -968,13 +962,13 @@ export default async function InitializeCheckinTruckLoadandTruckInfoFlag(clientA
         }
     }
 
-    /*if (ENABLE_DEBUG_ALERTS) {
-        alert(
-            "FINAL PENDING LIST" +
-            "\nPending Count: " + pendingCount +
-            "\nPending Product List: " + JSON.stringify(appData.PendingProductList, null, 2)
-        );
-    }*/
+    // if (ENABLE_DEBUG_ALERTS) {
+    //     alert(
+    //         "FINAL PENDING LIST" +
+    //         "\nPending Count: " + pendingCount +
+    //         "\nPending Product List: " + JSON.stringify(appData.PendingProductList, null, 2)
+    //     );
+    // }
 
     // ===============================
     // FINALIZE

@@ -123,13 +123,9 @@ export default async function CanCreateBankDeposit(context) {
 
                                     const payment =
                                         paymentsResult.getItem(p);
-
-                                    const amount =
-                                        Number(
-                                            payment.Amount || 0
-                                        );
-
-                                    totalCollected += amount;
+                                    if ((payment.PaymentType || '').toUpperCase() === 'CA') {
+                                        totalCollected += Number(payment.Amount || 0);
+                                    }
                                 }
                             }
                         }

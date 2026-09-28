@@ -21,7 +21,7 @@ export default async function GetMobileSalesDocumentID(context) {
         `$filter=RouteUUID eq guid'${routeUUID}'&$orderby=MobileSalesDocumentID desc&$top=1`
     );
 
-    let nextDocumentID = 1;
+    let nextDocumentID = 999;
 
     if (documents && documents.length > 0) {
 
